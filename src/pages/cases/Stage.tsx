@@ -6,8 +6,8 @@ import styles from './Stage.module.css'
  *
  * As apresentações de case no Figma são composições livres de 1440 px. Cada seção vira um
  * “palco” (Stage) onde os elementos ficam nas coordenadas do Figma, em uma unidade (--u)
- * que vale 1 px a 1440 px de largura e escala com a tela. No celular a composição é a mesma,
- * só que reduzida — fica igual ao desktop.
+ * que vale 1 px a 1440 px de largura e escala com a tela até esse tamanho. No celular a composição
+ * é a mesma, só que reduzida. Fundos de textura têm 2560 de largura para cobrir telas grandes.
  */
 
 import { u } from './units'
@@ -62,14 +62,12 @@ type ImgProps = {
   src: string
   /** Texto alternativo; vazio para imagens decorativas */
   alt: string
-  /** Imagem que ocupa a largura toda da tela (fundos) */
-  bleed?: boolean
   eager?: boolean
   className?: string
 }
 
 /** Asset do Figma (mockup, foto, ilustração) posicionado no palco. */
-export function AbsImg({ x, y, w, h, src, alt, bleed, eager, className }: ImgProps) {
+export function AbsImg({ x, y, w, h, src, alt, eager, className }: ImgProps) {
   return (
     <img
       src={src}
@@ -78,7 +76,7 @@ export function AbsImg({ x, y, w, h, src, alt, bleed, eager, className }: ImgPro
       height={Math.round(h)}
       loading={eager ? 'eager' : 'lazy'}
       decoding="async"
-      className={[styles.abs, styles.img, bleed && styles.bleed, className].filter(Boolean).join(' ')}
+      className={[styles.abs, styles.img, className].filter(Boolean).join(' ')}
       style={{ left: u(x), top: u(y), width: u(w), height: u(h) }}
     />
   )

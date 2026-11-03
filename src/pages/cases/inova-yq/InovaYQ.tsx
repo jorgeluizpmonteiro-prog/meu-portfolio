@@ -7,8 +7,8 @@ import { IA_BOX_HEIGHT, iaBoxes, iaLines } from './arquitetura'
 import { flowBoxes, flowCircles, flowDiamonds, flowLines, flowTexts } from './fluxo'
 import s from './InovaYQ.module.css'
 
-import topoFundo from '../../../assets/cases/inova-yq/topo-fundo.webp'
-import rodapeFundo from '../../../assets/cases/inova-yq/rodape-fundo.webp'
+import topoFundo from '../../../assets/cases/inova-yq/topo-fundo-largo.webp'
+import rodapeFundo from '../../../assets/cases/inova-yq/rodape-fundo-largo.webp'
 import logoMiro from '../../../assets/cases/inova-yq/logo-miro.svg'
 import logoFigma from '../../../assets/cases/inova-yq/logo-figma.svg'
 import telaHabilidades from '../../../assets/cases/inova-yq/tela-habilidades.webp'
@@ -238,7 +238,7 @@ export default function InovaYQ() {
 function Topo() {
   return (
     <Stage h={2250} aria-label="Apresentação">
-      <AbsImg bleed eager x={0} y={0} w={1440} h={1632} src={topoFundo}
+      <AbsImg eager x={-560} y={0} w={2560} h={1632} src={topoFundo}
         alt="Telas do Inova+YQ em um notebook e um celular" />
       <Glow x={1156} y={1762} />
       <Abs x={79} y={999} w={260} className={cx(s.t, s.meta)} style={font(20.07, 36.1)}>
@@ -625,7 +625,7 @@ function Rodape() {
   const Y = 13597
   return (
     <Stage h={717} aria-labelledby="inova-fim">
-      <AbsImg bleed x={0} y={0} w={1440} h={717} src={rodapeFundo} alt="" />
+      <AbsImg x={-560} y={0} w={2560} h={717} src={rodapeFundo} alt="" />
       <T as="h2" x={391} y={13956 - Y} w={659} fs={66.77} lh={45} center className={s.footerTitle}>
         <span id="inova-fim">Gostou do processo?</span>
       </T>

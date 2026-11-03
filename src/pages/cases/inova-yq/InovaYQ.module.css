@@ -459,6 +459,14 @@
   height: auto;
 }
 
+/* Telas maiores que 1440 px: as galerias (cortadas nas bordas no Figma) somem suavemente */
+@media (min-width: 1441px) {
+  .gallery {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  }
+}
+
 /* —— Resultados —— */
 .stat {
   color: var(--blue);

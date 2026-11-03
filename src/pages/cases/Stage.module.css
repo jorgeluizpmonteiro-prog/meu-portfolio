@@ -1,9 +1,10 @@
 /*
  * Palco de uma seção do case: 1440 de largura no Figma.
- * A composição é a mesma em qualquer tela; tudo escala com a largura (no celular, fica reduzido).
+ * Até 1440 px a composição escala com a tela (no celular, fica reduzida); acima disso fica no
+ * tamanho do Figma, centralizada.
  */
 .stage {
-  --u: calc(100cqw / 1440);
+  --u: calc(min(100cqw, 1440px) / 1440);
   position: relative;
   width: calc(1440 * var(--u));
   margin-inline: auto;
@@ -20,10 +21,4 @@
   object-fit: fill;
   pointer-events: none;
   user-select: none;
-}
-
-/* Fundos que ocupam a largura toda */
-.bleed {
-  object-fit: cover;
-  object-position: center top;
 }
