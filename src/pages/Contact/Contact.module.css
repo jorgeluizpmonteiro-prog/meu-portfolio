@@ -1,0 +1,149 @@
+/* P.04 — título em y = 223 (91 px abaixo do header); card em y = 484 (35 px abaixo do título) */
+.main {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+  width: min(var(--layout-container), 100% - 2 * var(--layout-gutter));
+  margin-inline: auto;
+  padding-top: 91px;
+  padding-bottom: var(--space-96);
+}
+
+.title {
+  max-width: 848px;
+  color: var(--text-primary);
+  font-family: var(--typography-display-font-family);
+  font-size: var(--hero-title-font-size);
+  font-weight: var(--typography-display-large-font-weight);
+  line-height: var(--hero-title-line-height);
+  letter-spacing: var(--hero-title-letter-spacing);
+  text-align: center;
+  text-wrap: balance;
+  /* MOT-02 */
+  animation: rise var(--motion-duration-hero) var(--motion-easing-out) 100ms backwards;
+}
+
+/* Card do formulário — 810 px, padding 24, radius/large, surface-raised, shadow/overlay */
+.card {
+  width: min(810px, 100%);
+  padding: var(--space-medium);
+  border-radius: var(--radius-large);
+  background-color: var(--background-surface-raised);
+  box-shadow: var(--shadow-overlay);
+  animation: rise var(--motion-duration-slow) var(--motion-easing-out) 300ms backwards;
+}
+
+/* Campos e botão com gap de 48 (space/x-large) */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-x-large);
+}
+
+/* Entre os campos: 16 (space/small) */
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-small);
+}
+
+.submit {
+  width: 100%;
+}
+
+.submit:disabled {
+  cursor: progress;
+  opacity: var(--opacity-disabled);
+}
+
+/* Falha no envio (P.04-b, proposta do handoff): aviso no topo do card */
+.alert {
+  margin-bottom: calc(-1 * var(--space-medium));
+  padding: var(--space-small);
+  border: var(--border-width-default) solid var(--border-danger);
+  border-radius: var(--radius-small);
+  background-color: var(--background-danger-subtle);
+  color: var(--text-danger);
+  font-size: var(--typography-body-medium-font-size);
+  line-height: var(--typography-body-medium-line-height);
+}
+
+.alert a {
+  text-decoration: underline;
+}
+
+/* Sucesso (P.04-a, proposta do handoff): a confirmação ocupa o lugar do formulário */
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xx-small);
+  padding-block: var(--space-large) 0;
+  text-align: center;
+  animation: rise var(--motion-duration-medium) var(--motion-easing-out) backwards;
+}
+
+.successTitle {
+  color: var(--text-primary);
+  font-family: var(--typography-heading-font-family);
+  font-size: var(--typography-heading-large-font-size);
+  font-weight: var(--typography-heading-large-font-weight);
+  line-height: var(--typography-heading-large-line-height);
+}
+
+.successTitle:focus {
+  outline: none;
+}
+
+.successText {
+  margin-bottom: var(--space-large);
+  color: var(--text-secondary);
+  font-size: var(--typography-body-large-font-size);
+  line-height: var(--typography-body-large-line-height);
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .card,
+  .success {
+    animation-name: fade;
+    animation-duration: var(--motion-duration-fast);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .main {
+    gap: var(--space-large);
+    padding-top: var(--space-40);
+    padding-bottom: calc(var(--space-128) + env(safe-area-inset-bottom));
+  }
+
+  .card {
+    padding: var(--space-small);
+    border-radius: var(--radius-medium);
+  }
+}

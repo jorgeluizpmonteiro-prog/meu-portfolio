@@ -34,7 +34,9 @@ src/
   config/site.ts        Nome, LinkedIn, currículo, foto
   data/projects.ts      Lista de projetos da página inicial
   components/           Header, NavBar, Button, ButtonIcon, ProjectCard, Icon…
-  pages/                Home (P.01) e páginas provisórias
+  pages/                Home (P.01), Contato (P.04) e páginas provisórias
+api/contact.ts          Função da Vercel que envia o e-mail do formulário
+shared/contact.ts       Validação do formulário (usada no site e na função)
 ```
 
 ## Tokens do Figma
@@ -53,6 +55,26 @@ As apresentações dos projetos (cases) usam as cores e fontes próprias de cada
 - **Capas:** `public/images/projects/<slug>/cover.jpg` (exportação 2× da camada “Project image”, 758 × 504).
 - **Foto:** `public/images/avatar.png` (exportação 2× de “Avatar — Jorge Luiz”, 144 × 144).
 - **Currículo:** coloque o PDF em `public/` e preencha `cvUrl` em `src/config/site.ts`.
+
+## Formulário de contato (e-mail)
+
+A página `/contato` envia o formulário para a função `api/contact.ts`, que manda o e-mail pelo
+[Resend](https://resend.com). O botão “Responder” do e-mail já vai para quem escreveu.
+
+Configuração (uma vez só):
+
+1. Crie uma conta em [resend.com](https://resend.com) **com o e-mail que vai receber as mensagens**.
+2. Em **API Keys**, crie uma chave (permissão “Sending access”) e copie.
+3. Na Vercel, em **Settings → Environment Variables**, adicione:
+   - `RESEND_API_KEY` = a chave copiada
+   - `CONTACT_TO_EMAIL` = o e-mail que recebe as mensagens (o mesmo da conta do Resend)
+4. Em **Deployments**, abra o último deploy e clique em **Redeploy** para valer.
+
+Sem domínio próprio, o Resend só entrega para o e-mail da própria conta, e o remetente aparece
+como `onboarding@resend.dev`. Com um domínio verificado no Resend, defina também
+`CONTACT_FROM_EMAIL` (ex.: `Portfólio <contato@seudominio.com>`).
+
+A função só roda na Vercel; no `npm run dev` o envio mostra a mensagem de erro do formulário.
 
 ## Publicar na Vercel
 

@@ -1,0 +1,96 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xx-small);
+  width: 100%;
+}
+
+.label {
+  color: var(--text-primary);
+  font-family: var(--typography-heading-font-family);
+  font-size: var(--typography-heading-small-font-size);
+  font-weight: var(--typography-heading-small-font-weight);
+  line-height: var(--typography-heading-small-line-height);
+  letter-spacing: var(--typography-heading-small-letter-spacing);
+}
+
+/* Campo — 52 px de altura, padding 16, pílula, surface + border/subtle */
+.field {
+  display: block;
+  width: 100%;
+  /* No Figma a borda fica por dentro: 16 px até o texto e 52 px de altura no total */
+  padding: calc(var(--space-small) - var(--border-width-default));
+  border: var(--border-width-default) solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  background-color: var(--background-surface);
+  color: var(--text-primary);
+  font-family: var(--typography-body-font-family);
+  font-size: var(--typography-body-small-font-size);
+  font-weight: var(--typography-body-small-font-weight);
+  line-height: var(--typography-body-small-line-height);
+  letter-spacing: var(--typography-body-small-letter-spacing);
+  outline: none;
+  /* MOT-13 */
+  transition:
+    border-color var(--motion-duration-fast) var(--motion-easing-out),
+    box-shadow var(--motion-duration-fast) var(--motion-easing-out),
+    border-radius var(--motion-duration-fast) var(--motion-easing-out);
+}
+
+.field::placeholder {
+  color: var(--text-placeholder);
+  opacity: 1;
+}
+
+/* Hover e Filled: border/strong */
+.field:hover,
+.field:not(:placeholder-shown) {
+  border-color: var(--border-strong);
+}
+
+/* Focus: border/strong + anel de 2 px border/focus afastado do campo */
+.field:focus-visible,
+.field:focus {
+  border-color: var(--border-strong);
+  box-shadow:
+    0 0 0 2px var(--background-surface-raised),
+    0 0 0 calc(2px + var(--border-width-focus)) var(--border-focus);
+}
+
+/* Várias linhas: começa igual ao Input e, ao crescer, troca a pílula por cantos arredondados */
+.multiline {
+  min-height: 52px;
+  max-height: 320px;
+  resize: none;
+  overflow-y: auto;
+}
+
+.multiline:not(:placeholder-shown) {
+  border-radius: var(--radius-medium);
+}
+
+/* Erro (não desenhado no Figma — proposta do handoff) */
+.invalid .field {
+  border-color: var(--border-danger);
+}
+
+.error {
+  color: var(--text-danger);
+  font-family: var(--typography-body-font-family);
+  font-size: var(--typography-body-small-font-size);
+  line-height: var(--typography-body-small-line-height);
+}
+
+/* Evita o zoom automático do iOS ao focar campos com menos de 16 px */
+@media (max-width: 767px) {
+  .field {
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-20);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .field {
+    transition: none;
+  }
+}
