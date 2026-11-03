@@ -35,6 +35,8 @@ src/
   data/projects.ts      Lista de projetos da página inicial
   components/           Header, NavBar, Button, ButtonIcon, ProjectCard, Icon…
   pages/                Home (P.01), Contato (P.04) e páginas provisórias
+  pages/cases/          Páginas de case (Inova+YQ…) e o “palco” que posiciona tudo nas medidas do Figma
+  assets/cases/<slug>/  Imagens, ícones e fundos exportados do Figma para cada case
 api/contact.ts          Função da Vercel que envia o e-mail do formulário
 shared/contact.ts       Validação do formulário (usada no site e na função)
 ```
@@ -48,11 +50,21 @@ vêm dos modos `light` e `dark` da coleção semantic.
 As páginas do portfólio (Início, Sobre mim, Contato) usam só os tokens.
 As apresentações dos projetos (cases) usam as cores e fontes próprias de cada apresentação.
 
+## Páginas de case
+
+Cada case é uma página própria em `src/pages/cases/<slug>/` e é registrada em
+`src/pages/cases/index.ts`. As apresentações do Figma têm 1440 px de largura e são composições livres;
+cada seção vira um palco (`Stage`) em que os elementos usam as coordenadas do Figma numa unidade que
+escala com a tela. No celular, as seções de texto empilham em uma coluna e os diagramas rolam na horizontal.
+
+Textos, títulos, cards, diagramas e paletas são código. Ficam como imagem só os assets: mockups,
+telas do app, fotos, ilustrações, ícones e texturas de fundo.
+
 ## Como atualizar o conteúdo
 
 - **Projetos:** edite `src/data/projects.ts`. Projeto com `status: 'soon'` aparece como “Em breve”.
   Com mais de 3 projetos, o botão “Ver mais projetos” aparece sozinho.
-- **Capas:** `public/images/projects/<slug>/cover.jpg` (exportação 2× da camada “Project image”, 758 × 504).
+- **Capas:** `public/images/projects/<slug>/cover.webp` (exportação 2× da camada “Project image”, 758 × 504).
 - **Foto:** `public/images/avatar.png` (exportação 2× de “Avatar — Jorge Luiz”, 144 × 144).
 - **Currículo:** coloque o PDF em `public/` e preencha `cvUrl` em `src/config/site.ts`.
 

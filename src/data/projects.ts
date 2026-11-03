@@ -3,13 +3,15 @@
  *
  * Para publicar um novo case:
  * 1. adicione (ou edite) o projeto aqui, com o `slug` que vira o endereço /projetos/<slug>;
- * 2. coloque a capa em public/images/projects/<slug>/cover.jpg;
+ * 2. coloque a capa em public/images/projects/<slug>/cover.webp;
  * 3. mude `status` para 'published' quando a página do case estiver pronta.
  *
  * Projetos com status 'soon' aparecem com “Em breve” e sem link.
  * Os 3 primeiros ficam em destaque; os demais aparecem abaixo e o botão
  * “Ver mais projetos” passa a ser exibido automaticamente.
  */
+import inovaLogo from '../assets/cases/inova-yq/logo.svg'
+
 export type ProjectStatus = 'published' | 'soon'
 
 export type Project = {
@@ -21,6 +23,9 @@ export type Project = {
   cover: string
   coverAlt: string
   status: ProjectStatus
+  /** Logo e ano mostrados no header da página do case (Header Type=Project). */
+  logo?: string
+  year?: string
 }
 
 const PROVISIONAL_DESCRIPTION =
@@ -32,16 +37,18 @@ export const projects: Project[] = [
     title: 'Inova+YQ',
     description: PROVISIONAL_DESCRIPTION,
     category: 'Product Design',
-    cover: '/images/projects/inova-yq/cover.jpg',
+    cover: '/images/projects/inova-yq/cover.webp',
     coverAlt: 'Telas do Inova+YQ em um notebook e um celular',
     status: 'published',
+    logo: inovaLogo,
+    year: '2025',
   },
   {
     slug: 'vizu',
     title: 'Vizu',
     description: PROVISIONAL_DESCRIPTION,
     category: 'Product Design',
-    cover: '/images/projects/vizu/cover.jpg',
+    cover: '/images/projects/vizu/cover.webp',
     coverAlt: 'Telas do aplicativo Vizu em celulares',
     status: 'published',
   },
@@ -50,7 +57,7 @@ export const projects: Project[] = [
     title: 'Tiddo',
     description: PROVISIONAL_DESCRIPTION,
     category: 'Product Design',
-    cover: '/images/projects/tiddo/cover.jpg',
+    cover: '/images/projects/tiddo/cover.webp',
     coverAlt: 'Mãos segurando um celular com o aplicativo Tiddo',
     status: 'soon',
   },

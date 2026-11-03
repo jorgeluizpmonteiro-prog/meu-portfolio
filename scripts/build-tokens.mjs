@@ -89,8 +89,9 @@ const css = `/* Arquivo gerado por scripts/build-tokens.mjs — não edite à m�
 ${declarations(base, { useAlias: false }).join('\n')}
 }
 
-/* Semânticos — modo light (padrão) */
-:root {
+/* Semânticos — modo light (padrão). .theme-light força o claro num trecho (ex.: páginas de case) */
+:root,
+.theme-light {
   color-scheme: light;
 ${declarations([...semanticLight, ...specificLight], { useAlias: true }).join('\n')}
 ${shadows(['raised', 'overlay']).join('\n')}

@@ -4,6 +4,14 @@
   overflow-x: clip;
 }
 
+/* Páginas de case: o header fica por cima do topo da apresentação */
+.casePage > header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 /* Primeiro elemento focável, visível só ao receber foco */
 .skipLink {
   position: absolute;

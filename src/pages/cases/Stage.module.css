@@ -1,0 +1,76 @@
+/* Palco de uma seção do case: 1440 de largura no Figma, escala com a largura da tela */
+.stage {
+  --u: calc(100cqw / 1440);
+  position: relative;
+  width: calc(1440 * var(--u));
+  margin-inline: auto;
+}
+
+.abs {
+  position: absolute;
+  margin: 0;
+}
+
+.img {
+  display: block;
+  max-width: none;
+  object-fit: fill;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Fundos que ocupam a largura toda: em telas maiores que 1440 px, cobrem as laterais */
+.bleed {
+  left: 50% !important;
+  width: max(100cqw, calc(1440 * var(--u))) !important;
+  transform: translateX(-50%);
+  object-fit: cover;
+  object-position: center top;
+}
+
+.scroller {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  /* Seções de texto: elementos empilhados na ordem de leitura */
+  .flow {
+    --u: calc(100cqw / 1440);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    height: auto !important;
+    padding: 48px 16px;
+  }
+
+  .flow > .abs {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    width: auto !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  .flow > .img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .desktopOnly {
+    display: none !important;
+  }
+
+  /* Diagramas: mantêm o desenho e rolam na horizontal */
+  .scroller {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .scrollStage {
+    --u: 0.62px;
+    margin-inline: 0;
+  }
+}

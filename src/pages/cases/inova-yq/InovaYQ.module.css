@@ -1,0 +1,658 @@
+/*
+ * Case Inova+YQ — Figma: “Página com todos os projetos” › Project - Inova+YQ (node 141:56878).
+ * Cores e fontes da própria apresentação (não usam os tokens do portfólio).
+ */
+.page {
+  --blue: #004af7;
+  --navy: #001268;
+  --ink: #222222;
+  --bg: #f2f6ff;
+  container-type: inline-size;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: 'Satoshi', system-ui, sans-serif;
+  font-weight: 400;
+}
+
+/* Texto em unidades do palco: --fs (tamanho) e --lh (entrelinha) vêm do Figma */
+.t {
+  margin: 0;
+  font-size: calc(var(--fs) * var(--u));
+  line-height: var(--lh);
+}
+
+.t strong,
+.t b {
+  font-weight: 700;
+}
+
+.center {
+  text-align: center;
+}
+
+.title {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+/* Chips com contorno (“O que é o Inova+YQ?”, “Como agimos:”…) */
+.chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: calc(1.5 * var(--u)) solid var(--blue);
+  border-radius: calc(75 * var(--u));
+  color: var(--blue);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.chipLight {
+  border-color: #fafafa;
+  color: #ffffff;
+}
+
+/* —— Decoração —— */
+.glow {
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(191 240 255 / 0.7), rgb(191 240 255 / 0));
+  pointer-events: none;
+}
+
+.glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: #82cee5;
+  -webkit-mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -2.6 1.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(closest-side, rgb(0 0 0 / 0.55), transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -2.6 1.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(closest-side, rgb(0 0 0 / 0.55), transparent);
+  mask-composite: intersect;
+}
+
+.glass {
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgb(178 219 255 / 0.45), rgb(255 255 255 / 0));
+  -webkit-backdrop-filter: blur(calc(6 * var(--u)));
+  backdrop-filter: blur(calc(6 * var(--u)));
+  pointer-events: none;
+}
+
+.bubble {
+  border-radius: 50%;
+  background-color: rgb(96 178 255 / 0.35);
+  box-shadow:
+    inset 0 0 calc(21.2 * var(--u)) rgb(255 255 255 / 0.41),
+    0 0 calc(5 * var(--u)) #ffffff;
+  pointer-events: none;
+}
+
+/* —— Topo —— */
+.meta {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+}
+
+.metaValues {
+  display: flex;
+  gap: calc(24 * var(--u));
+  font-weight: 700;
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  gap: calc(16 * var(--u));
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.tools img {
+  width: calc(41 * var(--u));
+  height: calc(41 * var(--u));
+}
+
+.toolLogos {
+  display: flex;
+  gap: calc(10 * var(--u));
+}
+
+/* —— Design Process —— */
+.rotLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.rotLabel > span {
+  transform: rotate(-40deg);
+}
+
+.phaseList {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+/* —— Imersão —— */
+.vertical {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0 74 247 / 0.5);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.vertical > span {
+  transform: rotate(-90deg);
+}
+
+/* Diagramas dentro de seções de texto: no celular rolam na horizontal */
+.canvasWrap {
+  --du: var(--u);
+}
+
+.canvas {
+  position: relative;
+  width: calc(var(--cw) * var(--du));
+  height: calc(var(--ch) * var(--du));
+}
+
+.canvas > * {
+  position: absolute;
+  margin: 0;
+}
+
+.dlabel {
+  font-size: calc(12.33 * var(--du));
+  line-height: 1.04;
+  color: var(--blue);
+  white-space: nowrap;
+}
+
+.dlabelBlack {
+  color: #000000;
+}
+
+.fluxLabel {
+  font-size: calc(20.72 * var(--du));
+  line-height: 18px;
+  color: var(--blue);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* —— Matriz CSD —— */
+.csdColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.csdHeading {
+  font-weight: 500;
+  text-align: center;
+}
+
+.csdNotes {
+  display: grid;
+  grid-template-columns: repeat(2, calc(144 * var(--u)));
+  justify-content: space-between;
+  row-gap: calc(12 * var(--u));
+  margin-top: calc(35 * var(--u));
+  padding: 0;
+  list-style: none;
+}
+
+.note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(144 * var(--u));
+  padding: calc(6 * var(--u)) calc(9.75 * var(--u));
+  border-radius: calc(6 * var(--u));
+  box-shadow: 0 calc(0.75 * var(--u)) calc(14 * var(--u)) rgb(0 0 0 / 0.25);
+  font-size: calc(12 * var(--u));
+  line-height: 1.5;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* —— Necessidades —— */
+.persona {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(24.8 * var(--u));
+}
+
+.persona > img {
+  flex: none;
+  width: calc(80 * var(--u));
+  height: calc(80 * var(--u));
+}
+
+.personaText {
+  display: flex;
+  flex-direction: column;
+  gap: calc(6 * var(--u));
+  width: calc(366 * var(--u));
+  color: #000000;
+}
+
+.personaText > h3 {
+  margin: 0;
+  font-weight: 700;
+}
+
+.need {
+  color: var(--blue);
+}
+
+.dots {
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* —— Arquitetura da Informação —— */
+.iaBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: calc(1.6 * var(--u)) solid var(--blue);
+  border-radius: calc(6.5 * var(--u));
+  color: var(--blue);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: calc(7.3 * var(--u));
+  font-weight: 500;
+  line-height: 1.21;
+  text-align: center;
+}
+
+.iaBox > span {
+  display: block;
+}
+
+.iaLight {
+  background-color: #dae5ff;
+}
+
+.iaPrimary {
+  background-color: var(--blue);
+  color: #ffffff;
+}
+
+.trash {
+  display: inline-block;
+  width: calc(5 * var(--u));
+  height: calc(6 * var(--u));
+  vertical-align: baseline;
+}
+
+/* —— Fluxo do Usuário —— */
+.flowBox {
+  border: calc(1.5 * var(--u)) solid var(--blue);
+  border-radius: calc(9.2 * var(--u));
+}
+
+.flowCircle {
+  border-radius: 50%;
+  background-color: var(--blue);
+}
+
+.flowDiamond {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flowDiamond > span {
+  width: 70.7%;
+  height: 70.7%;
+  border-radius: calc(9.2 * var(--u));
+  background-color: var(--blue);
+  transform: rotate(45deg);
+}
+
+.flowText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  font-size: calc(12.31 * var(--u));
+  font-weight: 500;
+  line-height: calc(37.5 * var(--u));
+  text-align: center;
+  white-space: nowrap;
+}
+
+.flowTextLight {
+  color: #fafafa;
+}
+
+.flowTextDiamond {
+  line-height: calc(18.46 * var(--u));
+  white-space: normal;
+}
+
+/* —— UI Kit —— */
+.typeScale {
+  color: var(--navy);
+}
+
+.typeScale > p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.iconGrid {
+  display: grid;
+  grid-template-columns: repeat(8, calc(66 * var(--u)));
+  column-gap: calc(54 * var(--u));
+  row-gap: calc(11.95 * var(--u));
+  padding: 0;
+  list-style: none;
+}
+
+.iconTile {
+  position: relative;
+  height: calc(69.8 * var(--u));
+  border: calc(0.8 * var(--u)) solid rgb(0 0 0 / 0.08);
+  border-radius: calc(3 * var(--u));
+}
+
+.iconTile > img {
+  position: absolute;
+  top: calc(12 * var(--u));
+  left: 50%;
+  width: calc(18 * var(--u));
+  height: calc(18 * var(--u));
+  transform: translateX(-50%);
+}
+
+.iconTile > span {
+  position: absolute;
+  top: calc(33 * var(--u));
+  left: calc(9 * var(--u));
+  right: calc(9 * var(--u));
+  height: calc(33 * var(--u));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #818181;
+  font-size: calc(var(--fs) * var(--u));
+  line-height: calc(15.8 * var(--u));
+  text-align: center;
+}
+
+.palette {
+  display: flex;
+  flex-direction: column;
+}
+
+.palette > h3 {
+  margin: 0;
+  color: var(--navy);
+  font-weight: 900;
+}
+
+.swatches {
+  display: flex;
+  gap: calc(29.95 * var(--u));
+  padding: 0;
+  list-style: none;
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(69.8 * var(--u));
+}
+
+.swatch > span:first-child {
+  width: calc(69.8 * var(--u));
+  height: calc(69.8 * var(--u));
+  border-radius: 50%;
+}
+
+.swatchName {
+  margin-top: calc(6 * var(--u));
+  color: #000000;
+  font-size: calc(12 * var(--u));
+  line-height: 1.5;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.swatchHex {
+  color: #686868;
+  font-size: calc(10.5 * var(--u));
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+/* Galerias de telas (no celular rolam na horizontal) */
+.gallery {
+  display: block;
+}
+
+.gallery > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* —— Resultados —— */
+.stat {
+  color: var(--blue);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* —— Rodapé —— */
+.footerTitle {
+  color: #000000;
+  font-weight: 700;
+}
+
+.footer .footerButton {
+  --button-icon-size: calc(72 * var(--u));
+}
+
+@media (max-width: 767px) {
+  .t {
+    font-size: max(calc(var(--fs) * var(--u)), var(--min, 15px));
+    line-height: 1.45;
+  }
+
+  .title {
+    --min: 34px;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  /* Textos que no desktop ficam sobre a textura: no celular ficam sobre o fundo claro */
+  .onTexture,
+  .meta,
+  .tools {
+    color: var(--ink);
+  }
+
+  .chipLight {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  .chip {
+    align-self: flex-start;
+    padding: 6px 16px;
+    font-size: 16px;
+    line-height: 1.5;
+    border-width: 1.5px;
+  }
+
+  .topoHero {
+    order: -1;
+    width: calc(100% + 32px) !important;
+    max-width: none;
+    margin: -48px -16px 0;
+    aspect-ratio: 1440 / 945;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .tools img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .metaValues,
+  .tools {
+    gap: 16px;
+  }
+
+  .rotLabel {
+    justify-content: flex-start;
+    margin-top: 8px;
+  }
+
+  .rotLabel > span {
+    transform: none;
+  }
+
+  .phaseList {
+    margin-top: -16px;
+    text-align: left;
+  }
+
+  .vertical {
+    justify-content: flex-start;
+  }
+
+  .vertical > span {
+    transform: none;
+    font-size: 40px;
+    line-height: 1.1;
+  }
+
+  .canvasWrap {
+    --du: 0.8px;
+    overflow-x: auto;
+    margin-inline: -16px;
+    padding-inline: 16px;
+  }
+
+  .csdHeading {
+    font-size: 26px;
+  }
+
+  .csdNotes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 12px;
+    margin-top: 16px;
+  }
+
+  .note {
+    height: auto;
+    min-height: 150px;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    box-shadow: 0 1px 14px rgb(0 0 0 / 0.25);
+  }
+
+  .persona {
+    gap: 16px;
+  }
+
+  .persona > img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .personaText {
+    flex: 1;
+    width: auto;
+    gap: 4px;
+  }
+
+  .personaText > h3 {
+    min-height: 0 !important;
+  }
+
+  .typeCanvas {
+    --du: 1px;
+  }
+
+  .iconGrid {
+    --u: 1px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 10px;
+    row-gap: 10px;
+  }
+
+  .iconTile {
+    height: 72px;
+  }
+
+  .swatches {
+    --u: 0.8px;
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+
+  .palette > h3 {
+    font-size: 22px;
+  }
+
+  .gallery {
+    overflow-x: auto;
+    margin-inline: -16px;
+  }
+
+  .gallery > img {
+    width: 1100px;
+    max-width: none;
+  }
+
+  .stat {
+    font-size: 72px !important;
+    line-height: 1 !important;
+  }
+
+  /* Rodapé: textura cobrindo o bloco inteiro */
+  .footer {
+    padding: 120px 16px 72px !important;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer > .footerBg {
+    position: absolute !important;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    transform: none;
+  }
+
+  .footerTitle {
+    --min: 32px;
+  }
+
+  .footer .footerButton {
+    --button-icon-size: 56px;
+  }
+}

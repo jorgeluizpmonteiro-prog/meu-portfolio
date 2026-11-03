@@ -1,4 +1,5 @@
 import { useEffect, useState, type MouseEventHandler } from 'react'
+import { Link } from 'react-router-dom'
 import { Icon, type IconName } from '../Icon/Icon'
 import styles from './ButtonIcon.module.css'
 
@@ -14,17 +15,26 @@ type CommonProps = {
 
 type AsButton = CommonProps & {
   href?: undefined
+  to?: undefined
   onClick?: MouseEventHandler<HTMLButtonElement>
+}
+
+/** Rota interna do site (usa o roteador, sem recarregar a página). */
+type AsRoute = CommonProps & {
+  to: string
+  href?: undefined
+  onClick?: MouseEventHandler<HTMLAnchorElement>
 }
 
 type AsLink = CommonProps & {
   href: string
+  to?: undefined
   external?: boolean
   onClick?: MouseEventHandler<HTMLAnchorElement>
 }
 
 /** Button icon — Figma: Components › Button icon (Default, Hover com tooltip, Pressed, Focus). */
-export function ButtonIcon(props: AsButton | AsLink) {
+export function ButtonIcon(props: AsButton | AsLink | AsRoute) {
   const { icon, label, accessibleLabel, hasTooltip = true, className } = props
   // Esc esconde o tooltip até o ponteiro sair ou o foco mudar
   const [dismissed, setDismissed] = useState(false)
@@ -50,6 +60,21 @@ export function ButtonIcon(props: AsButton | AsLink) {
       )}
     </>
   )
+
+  if (props.to !== undefined) {
+    return (
+      <Link
+        className={classes}
+        to={props.to}
+        aria-label={accessibleLabel ?? label}
+        onClick={props.onClick}
+        onMouseLeave={reset}
+        onBlur={reset}
+      >
+        {content}
+      </Link>
+    )
+  }
 
   if (props.href !== undefined) {
     return (

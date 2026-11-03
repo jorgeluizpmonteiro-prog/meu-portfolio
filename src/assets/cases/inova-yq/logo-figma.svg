@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="41" height="41" viewBox="0 0 41 41" fill="none">
+<g id="PÃ¡gina com todos os projetos">
+<g id="Project - Inova+YQ" clip-path="url(#clip0_85_10914)">
+<g id="Inova+YQ">
+<g id="Frame 24017">
+<g id="Frame 24014">
+<g id="Frame 24013">
+<g id="Figma-Dark logo" clip-path="url(#clip1_85_10914)">
+<path id="Vector" d="M31.2774 0H9.57473C4.28675 0 0 4.28675 0 9.57473V31.2774C0 36.5654 4.28675 40.8522 9.57473 40.8522H31.2774C36.5654 40.8522 40.8522 36.5654 40.8522 31.2774V9.57473C40.8522 4.28675 36.5654 0 31.2774 0Z" fill="#242938" />
+<g id="Clip path group">
+<mask id="mask0_85_10914" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="9" y="4" width="23" height="33">
+<g id="clip0_4_180">
+<path id="Vector_2" d="M31.0148 4.46777H9.7334V36.3835H31.0148V4.46777Z" fill="white" />
+</g>
+</mask>
+<g mask="url(#mask0_85_10914)">
+<g id="Group">
+<path id="Vector_3" d="M15.0566 36.3828C17.9929 36.3828 20.3759 33.9998 20.3759 31.0635V25.7441H15.0566C12.1204 25.7441 9.7373 28.1273 9.7373 31.0635C9.7373 33.9998 12.1204 36.3828 15.0566 36.3828Z" fill="#0ACF83" />
+<path id="Vector_4" d="M9.7373 20.4248C9.7373 17.4885 12.1204 15.1055 15.0566 15.1055H20.3759V25.744H15.0566C12.1204 25.744 9.7373 23.361 9.7373 20.4248Z" fill="#A259FF" />
+<path id="Vector_5" d="M9.7373 9.78706C9.7373 6.85081 12.1204 4.46777 15.0566 4.46777H20.3759V15.1064H15.0566C12.1204 15.1064 9.7373 12.7233 9.7373 9.78706Z" fill="#F24E1E" />
+<path id="Vector_6" d="M20.375 4.46777H25.6942C28.6305 4.46777 31.0136 6.85081 31.0136 9.78706C31.0136 12.7233 28.6305 15.1064 25.6942 15.1064H20.375V4.46777Z" fill="#FF7262" />
+<path id="Vector_7" d="M31.0136 20.4248C31.0136 23.361 28.6305 25.744 25.6942 25.744C22.758 25.744 20.375 23.361 20.375 20.4248C20.375 17.4885 22.758 15.1055 25.6942 15.1055C28.6305 15.1055 31.0136 17.4885 31.0136 20.4248Z" fill="#1ABCFE" />
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_85_10914">
+<rect width="1440" height="14314" fill="white" transform="translate(-1320.85 -1015.57)" />
+</clipPath>
+<clipPath id="clip1_85_10914">
+<rect width="40.8522" height="40.8522" fill="white" />
+</clipPath>
+</defs>
+</svg>

@@ -1,6 +1,8 @@
+import { Suspense } from 'react'
 import { Route, Routes, useParams } from 'react-router-dom'
 import { Layout } from './components/Layout/Layout'
 import { projects } from './data/projects'
+import { casepages } from './pages/cases'
 import { Contact } from './pages/Contact/Contact'
 import { Home } from './pages/Home/Home'
 import { SimplePage } from './pages/SimplePage/SimplePage'
@@ -12,7 +14,13 @@ function ProjectRoute() {
   const { slug } = useParams()
   const project = projects.find((p) => p.slug === slug && p.status === 'published')
   if (!project) return <NotFound />
-  return <SimplePage title={project.title} text={IN_PROGRESS} />
+  const CasePage = casepages[project.slug]
+  if (!CasePage) return <SimplePage title={project.title} text={IN_PROGRESS} />
+  return (
+    <Suspense fallback={<main id="conteudo" style={{ minHeight: '100vh' }} />}>
+      <CasePage />
+    </Suspense>
+  )
 }
 
 function NotFound() {

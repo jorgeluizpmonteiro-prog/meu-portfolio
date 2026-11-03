@@ -175,8 +175,9 @@
   --letter-spacing-0: 0px;
 }
 
-/* Semânticos — modo light (padrão) */
-:root {
+/* Semânticos — modo light (padrão). .theme-light força o claro num trecho (ex.: páginas de case) */
+:root,
+.theme-light {
   color-scheme: light;
   --text-primary: var(--neutral-900);
   --text-secondary: var(--neutral-700);

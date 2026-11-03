@@ -21,8 +21,43 @@ function shouldAnimateEntrance() {
 
 const ANIMATE_ENTRANCE = shouldAnimateEntrance()
 
-/** Header — Figma: Components › Header, Type=Default (avatar + nome, menu, CV, LinkedIn e tema). */
-export function Header() {
+type ProjectHeader = {
+  title: string
+  logo: string
+  year?: string
+}
+
+type HeaderProps = {
+  /** Header Type=Project: voltar + logo do projeto + menu + ano. Sem ele, Type=Default. */
+  project?: ProjectHeader
+}
+
+/** Header — Figma: Components › Header (Type=Default e Type=Project). */
+export function Header({ project }: HeaderProps) {
+  if (project) return <ProjectTypeHeader project={project} />
+  return <DefaultHeader />
+}
+
+/** Type=Project — usado nas páginas de case (D-17: o voltar leva para a página inicial). */
+function ProjectTypeHeader({ project }: { project: ProjectHeader }) {
+  return (
+    <header className={`${styles.header} ${styles.project} ${ANIMATE_ENTRANCE ? styles.enter : ''}`}>
+      <div className={styles.profile}>
+        <ButtonIcon icon="keyboard-arrow-left" label="Voltar para projetos" to="/" />
+        <span className={styles.logoSlot}>
+          <img src={project.logo} alt={project.title} width={150} height={36} />
+        </span>
+      </div>
+
+      <NavBar className={styles.nav} />
+
+      <div className={styles.actions}>{project.year && <span className={styles.year}>{project.year}</span>}</div>
+    </header>
+  )
+}
+
+/** Type=Default — avatar + nome, menu, CV, LinkedIn e tema. */
+function DefaultHeader() {
   const { theme, toggle } = useTheme()
   const [avatarFailed, setAvatarFailed] = useState(false)
   const nextTheme = theme === 'dark' ? 'claro' : 'escuro'

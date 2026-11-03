@@ -1,8 +1,8 @@
 export const site = {
   name: 'Jorge Luiz',
   role: 'Product Designer',
-  /** Foto do header (provisória, 72 px). Trocar pela exportação 2× do Figma: Header › “Avatar — Jorge Luiz” (node 106:7580). */
-  avatar: '/images/avatar.png',
+  /** Foto do header (Figma: Header › “Avatar — Jorge Luiz”, node 106:7580). */
+  avatar: '/images/avatar.webp',
   linkedinUrl: 'https://www.linkedin.com/in/jorgeluizpmonteiro',
   /**
    * Currículo em PDF (D-02). Enquanto for null, o botão CV fica escondido.

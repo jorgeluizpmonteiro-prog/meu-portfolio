@@ -29,6 +29,10 @@
   background-color: var(--background-accent-1-strong);
 }
 
+:global(:root) :global(.theme-light) .thumb {
+  background-color: var(--background-accent-1-subtle);
+}
+
 .thumb:active {
   cursor: grabbing;
 }
