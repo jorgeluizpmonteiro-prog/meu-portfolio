@@ -1,0 +1,3611 @@
+{
+  "text": {
+    "primary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.3529411852359772,
+          0.250980406999588,
+          0.20392157137393951
+        ],
+        "alpha": 1,
+        "hex": "#5A4034"
+      },
+      "$description": "Uso: Texto principal\nNão usar: Sobre fundo forte ou invertido: use o on- desse fundo\nPar: background/canvas, background/surface, background/surface-raised\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/900 | neutral/50",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28921",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:f3eefe3a52a8731c1c3596fce328f8a0d8ea0fc1/-1:-1",
+          "targetVariableName": "neutral/900",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "secondary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.5333333611488342,
+          0.3686274588108063,
+          0.27450981736183167
+        ],
+        "alpha": 1,
+        "hex": "#885E46"
+      },
+      "$description": "Uso: Texto de apoio\nNão usar: Para texto que a pessoa precisa ler para agir; sobre fundo forte\nPar: background/canvas, background/surface, background/surface-raised\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/700 | neutral/300",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28922",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:1988724593c6b20309987f8deb808cc0bb4346f4/-1:-1",
+          "targetVariableName": "neutral/700",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "tertiary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.6392157077789307,
+          0.45490196347236633,
+          0.32549020648002625
+        ],
+        "alpha": 1,
+        "hex": "#A37453"
+      },
+      "$description": "Uso: Metadados e texto de menor destaque\nNão usar: Para texto essencial; para texto de exemplo dentro de um controle vazio: use text/placeholder\nPar: background/canvas, background/surface, background/surface-raised\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/600 | neutral/400",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28923",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:96ed3430458fc8d084639241f7f6fd063f923537/-1:-1",
+          "targetVariableName": "neutral/600",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "placeholder": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.6392157077789307,
+          0.45490196347236633,
+          0.32549020648002625
+        ],
+        "alpha": 1,
+        "hex": "#A37453"
+      },
+      "$description": "Uso: Texto de exemplo dentro de um controle vazio, antes do preenchimento\nNão usar: Para rótulo, valor preenchido ou texto desabilitado (desabilitado usa opacity/disabled)\nPar: border/strong (o contorno do controle)\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/600 | neutral/400",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28924",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:96ed3430458fc8d084639241f7f6fd063f923537/-1:-1",
+          "targetVariableName": "neutral/600",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "brand": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.09019608050584793,
+          0.5529412031173706,
+          0.9725490212440491
+        ],
+        "alpha": 1,
+        "hex": "#178DF8"
+      },
+      "$description": "Uso: Texto na cor da marca que chama atenção, sem ação nem status\nNão usar: Para link: use text/link; para texto de menor destaque: use text/tertiary; para status: use as paletas de feedback\nPar: background/canvas, background/surface, background/surface-raised\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/600 | brand-1/400",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28925",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:127620ec128bfb8def696c3fffe88554593859cd/-1:-1",
+          "targetVariableName": "brand-1/600",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "link": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.4588235318660736,
+          0.8196078538894653
+        ],
+        "alpha": 1,
+        "hex": "#0075D1"
+      },
+      "$description": "Uso: Link\nNão usar: Para texto que não navega; para rótulo de controle que executa uma ação\nPar: background/canvas, background/surface\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/700 | brand-1/400",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28926",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:53013dfc2f9a49fa62bc636975bf5cb49c6a3d07/-1:-1",
+          "targetVariableName": "brand-1/700",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "danger": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7568846940994263,
+          0,
+          0.028754347935318947
+        ],
+        "alpha": 1,
+        "hex": "#C10007"
+      },
+      "$description": "Uso: Mensagem de status\nNão usar: Sobre fundo forte de status: use text/on-danger-strong; como cor decorativa\nPar: background/danger/subtle ou background/canvas\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta danger.\nSituação: Em uso\nValor: danger/700 | danger/300",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28927",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:08e33f17eaeb5fa313e0112f1220d8492f9f7295/-1:-1",
+          "targetVariableName": "danger/700",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "success": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.5099976658821106,
+          0.20980960130691528
+        ],
+        "alpha": 1,
+        "hex": "#008236"
+      },
+      "$description": "Uso: Mensagem de status\nNão usar: Sobre fundo forte de status: use text/on-success-strong; como cor decorativa\nPar: background/success/subtle ou background/canvas\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta success.\nSituação: Em uso\nValor: success/700 | success/300",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28928",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:c92e8c2dce7ab80ad91293525f93393e9dfc2673/-1:-1",
+          "targetVariableName": "success/700",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "information": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.07790771126747131,
+          0.27913519740104675,
+          0.9017744064331055
+        ],
+        "alpha": 1,
+        "hex": "#1447E6"
+      },
+      "$description": "Uso: Mensagem de status\nNão usar: Sobre fundo forte de status: use text/on-information-strong; como cor decorativa\nPar: background/information/subtle ou background/canvas\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta information.\nSituação: Em uso\nValor: information/700 | information/300",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28929",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:34d4a5f893fdd9ee16b3945b3069931520f3d6ee/-1:-1",
+          "targetVariableName": "information/700",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "warning": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7317888140678406,
+          0.30102330446243286,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#BB4D00"
+      },
+      "$description": "Uso: Mensagem de atenção\nNão usar: Sobre background/warning/strong: use text/on-warning-strong; como cor decorativa\nPar: background/warning/subtle ou background/canvas\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta warning.\nSituação: Em uso\nValor: warning/700 | warning/300",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28930",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:bfda1f5de58237e1976c0407c362dd02d7a8be32/-1:-1",
+          "targetVariableName": "warning/700",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-inverse": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Texto sobre background/inverse\nNão usar: Sobre qualquer outro fundo\nPar: background/inverse\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/0 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28931",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-action-primary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Texto sobre a ação principal\nNão usar: Fora de background/action/primary\nPar: background/action/primary e seus estados\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/900 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28932",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-action-secondary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.3490196168422699,
+          0.6392157077789307
+        ],
+        "alpha": 1,
+        "hex": "#0059A3"
+      },
+      "$description": "Uso: Texto sobre a ação secundária\nNão usar: Fora de background/action/secondary\nPar: background/action/secondary e seus estados\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/800 | brand-1/100",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28933",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:effde98dc66b0835cc670394eaba0e7b62b7e7f9/-1:-1",
+          "targetVariableName": "brand-1/800",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-action-danger": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Texto sobre a ação destrutiva\nNão usar: Fora de background/action/danger\nPar: background/action/danger e seus estados\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/0 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28934",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-danger-strong": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Texto sobre fundo forte de status\nNão usar: Sobre o fundo suave (subtle): use text/primary\nPar: background/danger/strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/0 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28935",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-success-strong": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.3529411852359772,
+          0.250980406999588,
+          0.20392157137393951
+        ],
+        "alpha": 1,
+        "hex": "#5A4034"
+      },
+      "$description": "Uso: Texto sobre fundo forte de status\nNão usar: Sobre o fundo suave (subtle): use text/primary\nPar: background/success/strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/900 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28936",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:f3eefe3a52a8731c1c3596fce328f8a0d8ea0fc1/-1:-1",
+          "targetVariableName": "neutral/900",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-information-strong": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Texto sobre fundo forte de status\nNão usar: Sobre o fundo suave (subtle): use text/primary\nPar: background/information/strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/0 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28937",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-warning-strong": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.3529411852359772,
+          0.250980406999588,
+          0.20392157137393951
+        ],
+        "alpha": 1,
+        "hex": "#5A4034"
+      },
+      "$description": "Uso: Texto sobre fundo forte de atenção\nNão usar: Sobre outro fundo\nPar: background/warning/strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/900 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28938",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:f3eefe3a52a8731c1c3596fce328f8a0d8ea0fc1/-1:-1",
+          "targetVariableName": "neutral/900",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-accent-1-strong": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Texto sobre fundo forte de destaque\nNão usar: Sobre outro fundo\nPar: background/accent-1/strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/0 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28939",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-neutral-strong": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Texto sobre fundo neutro forte\nNão usar: Sobre outro fundo\nPar: background/neutral/strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/0 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28943",
+        "com.figma.scopes": [
+          "TEXT_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    }
+  },
+  "icon": {
+    "primary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.3529411852359772,
+          0.250980406999588,
+          0.20392157137393951
+        ],
+        "alpha": 1,
+        "hex": "#5A4034"
+      },
+      "$description": "Uso: Ícone principal\nNão usar: Sobre fundo forte ou invertido: use o on- desse fundo\nPar: background/canvas, background/surface, background/surface-raised\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/900 | neutral/50",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28944",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:f3eefe3a52a8731c1c3596fce328f8a0d8ea0fc1/-1:-1",
+          "targetVariableName": "neutral/900",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "secondary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.5333333611488342,
+          0.3686274588108063,
+          0.27450981736183167
+        ],
+        "alpha": 1,
+        "hex": "#885E46"
+      },
+      "$description": "Uso: Ícone de apoio\nNão usar: Para ícone que a pessoa precisa ler para agir; sobre fundo forte\nPar: background/canvas, background/surface, background/surface-raised\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/700 | neutral/300",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28945",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:1988724593c6b20309987f8deb808cc0bb4346f4/-1:-1",
+          "targetVariableName": "neutral/700",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "tertiary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.6392157077789307,
+          0.45490196347236633,
+          0.32549020648002625
+        ],
+        "alpha": 1,
+        "hex": "#A37453"
+      },
+      "$description": "Uso: Metadados e ícone de menor destaque\nNão usar: Para ícone essencial\nPar: background/canvas, background/surface, background/surface-raised\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/600 | neutral/400",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28946",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:96ed3430458fc8d084639241f7f6fd063f923537/-1:-1",
+          "targetVariableName": "neutral/600",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "placeholder": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.6392157077789307,
+          0.45490196347236633,
+          0.32549020648002625
+        ],
+        "alpha": 1,
+        "hex": "#A37453"
+      },
+      "$description": "Uso: Ícone dentro de um controle vazio, ao lado do texto de exemplo\nNão usar: Para ícone de ação, controle preenchido ou ícone desabilitado (desabilitado usa opacity/disabled)\nPar: border/strong (o contorno do controle)\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/600 | neutral/400",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28947",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:96ed3430458fc8d084639241f7f6fd063f923537/-1:-1",
+          "targetVariableName": "neutral/600",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "brand": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.09019608050584793,
+          0.5529412031173706,
+          0.9725490212440491
+        ],
+        "alpha": 1,
+        "hex": "#178DF8"
+      },
+      "$description": "Uso: Ícone na cor da marca que chama atenção, sem ação nem status\nNão usar: Para ícone de menor destaque: use icon/tertiary; para status: use as paletas de feedback\nPar: background/canvas, background/surface, background/surface-raised\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/600 | brand-1/400",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28948",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:127620ec128bfb8def696c3fffe88554593859cd/-1:-1",
+          "targetVariableName": "brand-1/600",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "danger": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7568846940994263,
+          0,
+          0.028754347935318947
+        ],
+        "alpha": 1,
+        "hex": "#C10007"
+      },
+      "$description": "Uso: Mensagem de status\nNão usar: Sobre fundo forte de status: use icon/on-danger-strong; como cor decorativa\nPar: background/danger/subtle ou background/canvas\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta danger.\nSituação: Em uso\nValor: danger/700 | danger/300",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28949",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:08e33f17eaeb5fa313e0112f1220d8492f9f7295/-1:-1",
+          "targetVariableName": "danger/700",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "success": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.5099976658821106,
+          0.20980960130691528
+        ],
+        "alpha": 1,
+        "hex": "#008236"
+      },
+      "$description": "Uso: Mensagem de status\nNão usar: Sobre fundo forte de status: use icon/on-success-strong; como cor decorativa\nPar: background/success/subtle ou background/canvas\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta success.\nSituação: Em uso\nValor: success/700 | success/300",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28950",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:c92e8c2dce7ab80ad91293525f93393e9dfc2673/-1:-1",
+          "targetVariableName": "success/700",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "information": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.07790771126747131,
+          0.27913519740104675,
+          0.9017744064331055
+        ],
+        "alpha": 1,
+        "hex": "#1447E6"
+      },
+      "$description": "Uso: Mensagem de status\nNão usar: Sobre fundo forte de status: use icon/on-information-strong; como cor decorativa\nPar: background/information/subtle ou background/canvas\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta information.\nSituação: Em uso\nValor: information/700 | information/300",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28951",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:34d4a5f893fdd9ee16b3945b3069931520f3d6ee/-1:-1",
+          "targetVariableName": "information/700",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "warning": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.7317888140678406,
+          0.30102330446243286,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#BB4D00"
+      },
+      "$description": "Uso: Mensagem de atenção\nNão usar: Sobre background/warning/strong: use icon/on-warning-strong; como cor decorativa\nPar: background/warning/subtle ou background/canvas\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta warning.\nSituação: Em uso\nValor: warning/700 | warning/300",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28952",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:bfda1f5de58237e1976c0407c362dd02d7a8be32/-1:-1",
+          "targetVariableName": "warning/700",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-inverse": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Ícone sobre background/inverse\nNão usar: Sobre qualquer outro fundo\nPar: background/inverse\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/0 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28953",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-action-primary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Ícone sobre a ação principal\nNão usar: Fora de background/action/primary\nPar: background/action/primary e seus estados\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/900 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28954",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-action-secondary": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.3490196168422699,
+          0.6392157077789307
+        ],
+        "alpha": 1,
+        "hex": "#0059A3"
+      },
+      "$description": "Uso: Ícone sobre a ação secundária\nNão usar: Fora de background/action/secondary\nPar: background/action/secondary e seus estados\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/800 | brand-1/100",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28955",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:effde98dc66b0835cc670394eaba0e7b62b7e7f9/-1:-1",
+          "targetVariableName": "brand-1/800",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-action-danger": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Ícone sobre a ação destrutiva\nNão usar: Fora de background/action/danger\nPar: background/action/danger e seus estados\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/0 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28956",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-danger-strong": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Ícone sobre fundo forte de status\nNão usar: Sobre o fundo suave (subtle): use icon/primary\nPar: background/danger/strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/0 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28957",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-success-strong": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.3529411852359772,
+          0.250980406999588,
+          0.20392157137393951
+        ],
+        "alpha": 1,
+        "hex": "#5A4034"
+      },
+      "$description": "Uso: Ícone sobre fundo forte de status\nNão usar: Sobre o fundo suave (subtle): use icon/primary\nPar: background/success/strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/900 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28958",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:f3eefe3a52a8731c1c3596fce328f8a0d8ea0fc1/-1:-1",
+          "targetVariableName": "neutral/900",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-information-strong": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Ícone sobre fundo forte de status\nNão usar: Sobre o fundo suave (subtle): use icon/primary\nPar: background/information/strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/0 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28959",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-warning-strong": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.3529411852359772,
+          0.250980406999588,
+          0.20392157137393951
+        ],
+        "alpha": 1,
+        "hex": "#5A4034"
+      },
+      "$description": "Uso: Ícone sobre fundo forte de atenção\nNão usar: Sobre outro fundo\nPar: background/warning/strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/900 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28960",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:f3eefe3a52a8731c1c3596fce328f8a0d8ea0fc1/-1:-1",
+          "targetVariableName": "neutral/900",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-accent-1-strong": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Ícone sobre fundo forte de destaque\nNão usar: Sobre outro fundo\nPar: background/accent-1/strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/0 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28961",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "on-neutral-strong": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Ícone sobre fundo neutro forte\nNão usar: Sobre outro fundo\nPar: background/neutral/strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/0 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28965",
+        "com.figma.scopes": [
+          "SHAPE_FILL",
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    }
+  },
+  "background": {
+    "canvas": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Fundo da página\nNão usar: Para cards e áreas sobre a página: use background/surface\nPar: text/primary, text/secondary, text/tertiary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/0 | neutral/950",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28966",
+        "com.figma.scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "surface": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9725490212440491,
+          0.9607843160629272,
+          0.9411764740943909
+        ],
+        "alpha": 1,
+        "hex": "#F8F5F0"
+      },
+      "$description": "Uso: Superfície que agrupa conteúdo sobre a página\nNão usar: Para superfície que flutua acima do conteúdo: use background/surface-raised\nPar: text/primary, text/secondary, text/tertiary; border/subtle\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/50 | neutral/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28967",
+        "com.figma.scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:07ccbc5c1e4f0be5b5139a95071c851d10d32ce9/-1:-1",
+          "targetVariableName": "neutral/50",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "surface-raised": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          1,
+          1,
+          1
+        ],
+        "alpha": 1,
+        "hex": "#FFFFFF"
+      },
+      "$description": "Uso: Superfície que flutua acima do conteúdo, com sombra\nNão usar: Para superfície que não flutua\nPar: shadow/raised\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/0 | neutral/800",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28968",
+        "com.figma.scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:7dd0b8136eea919999d3925012039f307650fa62/-1:-1",
+          "targetVariableName": "neutral/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "inverse": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.3529411852359772,
+          0.250980406999588,
+          0.20392157137393951
+        ],
+        "alpha": 1,
+        "hex": "#5A4034"
+      },
+      "$description": "Uso: Superfície com as cores invertidas em relação à página, para mensagem curta sobreposta\nNão usar: Para ação principal ou destaque\nPar: text/on-inverse, icon/on-inverse\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/900 | neutral/50",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28969",
+        "com.figma.scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:f3eefe3a52a8731c1c3596fce328f8a0d8ea0fc1/-1:-1",
+          "targetVariableName": "neutral/900",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "backdrop": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#000000"
+      },
+      "$description": "Uso: Camada que escurece a tela atrás de uma superfície sobreposta; a transparência vem de `opacity/backdrop`, aplicada na camada\nNão usar: Como fundo de elemento; para escurecer imagem\nPar: opacity/backdrop\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/1000 | neutral/1000",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28970",
+        "com.figma.scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:a37759a23918d17adb60112ba7c53d6907667ba6/-1:-1",
+          "targetVariableName": "neutral/1000",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "selected": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9411764740943909,
+          0.9725490212440491,
+          0.9882352948188782
+        ],
+        "alpha": 1,
+        "hex": "#F0F8FC"
+      },
+      "$description": "Uso: Item selecionado\nNão usar: Para hover; para ação principal\nPar: border/selected; text/primary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/50 | brand-1/900",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:28971",
+        "com.figma.scopes": [
+          "FRAME_FILL",
+          "SHAPE_FILL"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:c5b87e897a1f1d32d3f19bef8c80b125b7a615d6/-1:-1",
+          "targetVariableName": "brand-1/50",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "action": {
+      "primary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.09019608050584793,
+            0.5529412031173706,
+            0.9725490212440491
+          ],
+          "alpha": 1,
+          "hex": "#178DF8"
+        },
+        "$description": "Uso: Ação principal\nNão usar: Para mais de uma ação principal na mesma área; em elemento que não é clicável\nPar: text/on-action-primary, icon/on-action-primary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/600 | brand-1/400",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28972",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:127620ec128bfb8def696c3fffe88554593859cd/-1:-1",
+            "targetVariableName": "brand-1/600",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "primary-hover": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0.4588235318660736,
+            0.8196078538894653
+          ],
+          "alpha": 1,
+          "hex": "#0075D1"
+        },
+        "$description": "Uso: Ação principal\nNão usar: Para mais de uma ação principal na mesma área; em elemento que não é clicável\nPar: text/on-action-primary, icon/on-action-primary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/700 | brand-1/300",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28973",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:53013dfc2f9a49fa62bc636975bf5cb49c6a3d07/-1:-1",
+            "targetVariableName": "brand-1/700",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "primary-pressed": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0.3490196168422699,
+            0.6392157077789307
+          ],
+          "alpha": 1,
+          "hex": "#0059A3"
+        },
+        "$description": "Uso: Ação principal\nNão usar: Para mais de uma ação principal na mesma área; em elemento que não é clicável\nPar: text/on-action-primary, icon/on-action-primary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/800 | brand-1/200",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28974",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:effde98dc66b0835cc670394eaba0e7b62b7e7f9/-1:-1",
+            "targetVariableName": "brand-1/800",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9411764740943909,
+            0.9725490212440491,
+            0.9882352948188782
+          ],
+          "alpha": 1,
+          "hex": "#F0F8FC"
+        },
+        "$description": "Uso: Ação secundária\nNão usar: Em elemento que não é clicável\nPar: text/on-action-secondary, icon/on-action-secondary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/50 | brand-1/900",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28975",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:c5b87e897a1f1d32d3f19bef8c80b125b7a615d6/-1:-1",
+            "targetVariableName": "brand-1/50",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "secondary-hover": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8784313797950745,
+            0.9450980424880981,
+            0.9803921580314636
+          ],
+          "alpha": 1,
+          "hex": "#E0F1FA"
+        },
+        "$description": "Uso: Ação secundária\nNão usar: Em elemento que não é clicável\nPar: text/on-action-secondary, icon/on-action-secondary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/100 | brand-1/800",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28976",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:ff9dfbb80fe320e7c0bd4ade183827bf9fefdfe2/-1:-1",
+            "targetVariableName": "brand-1/100",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "secondary-pressed": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.7411764860153198,
+            0.886274516582489,
+            0.9607843160629272
+          ],
+          "alpha": 1,
+          "hex": "#BDE2F5"
+        },
+        "$description": "Uso: Ação secundária\nNão usar: Em elemento que não é clicável\nPar: text/on-action-secondary, icon/on-action-secondary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/200 | brand-1/700",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28977",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:c212cb9865a15b447740101a6ad305b125418b93/-1:-1",
+            "targetVariableName": "brand-1/200",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "tertiary-hover": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9490196108818054,
+            0.9254902005195618,
+            0.886274516582489
+          ],
+          "alpha": 1,
+          "hex": "#F2ECE2"
+        },
+        "$description": "Uso: Ação sem fundo, ao interagir\nNão usar: Em repouso: a ação terciária não tem fundo parado\nPar: text/primary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/100 | neutral/700",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28978",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:0881bd0452809eac053dcf9603840c59e24b41d3/-1:-1",
+            "targetVariableName": "neutral/100",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "tertiary-pressed": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8901960849761963,
+            0.843137264251709,
+            0.772549033164978
+          ],
+          "alpha": 1,
+          "hex": "#E3D7C5"
+        },
+        "$description": "Uso: Ação sem fundo, ao interagir\nNão usar: Em repouso: a ação terciária não tem fundo parado\nPar: text/primary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/200 | neutral/600",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28979",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:94fe4a93300de431c77be7dcd31a3b7832e0696c/-1:-1",
+            "targetVariableName": "neutral/200",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "danger": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9064575433731079,
+            0,
+            0.04221457988023758
+          ],
+          "alpha": 1,
+          "hex": "#E7000B"
+        },
+        "$description": "Uso: Ação destrutiva\nNão usar: Para mensagem de erro: use background/danger/subtle\nPar: text/on-action-danger, icon/on-action-danger\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta danger.\nSituação: Em uso\nValor: danger/600 | danger/400",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28980",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:e6328ef45b179556ba2619a7d18b81c984b10aa7/-1:-1",
+            "targetVariableName": "danger/600",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "danger-hover": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.7568846940994263,
+            0,
+            0.028754347935318947
+          ],
+          "alpha": 1,
+          "hex": "#C10007"
+        },
+        "$description": "Uso: Ação destrutiva\nNão usar: Para mensagem de erro: use background/danger/subtle\nPar: text/on-action-danger, icon/on-action-danger\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta danger.\nSituação: Em uso\nValor: danger/700 | danger/300",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28981",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:08e33f17eaeb5fa313e0112f1220d8492f9f7295/-1:-1",
+            "targetVariableName": "danger/700",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "danger-pressed": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.6222081780433655,
+            0.028790581971406937,
+            0.06893808394670486
+          ],
+          "alpha": 1,
+          "hex": "#9F0712"
+        },
+        "$description": "Uso: Ação destrutiva\nNão usar: Para mensagem de erro: use background/danger/subtle\nPar: text/on-action-danger, icon/on-action-danger\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta danger.\nSituação: Em uso\nValor: danger/800 | danger/200",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28982",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:15e5cddd11900f643879e6410b5c65bff97a5af3/-1:-1",
+            "targetVariableName": "danger/800",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      }
+    },
+    "danger": {
+      "subtle": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.996841311454773,
+            0.9495853781700134,
+            0.9495856165885925
+          ],
+          "alpha": 1,
+          "hex": "#FEF2F2"
+        },
+        "$description": "Uso: Fundo de status\nNão usar: Para ação destrutiva: use background/action/danger; como decoração\nPar: text/primary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta danger.\nSituação: Em uso\nValor: danger/50 | danger/900",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28983",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:541fc5de6132ca1679fdac98523dfc68f381cd5a/-1:-1",
+            "targetVariableName": "danger/50",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "strong": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9064575433731079,
+            0,
+            0.04221457988023758
+          ],
+          "alpha": 1,
+          "hex": "#E7000B"
+        },
+        "$description": "Uso: Fundo de status\nNão usar: Para ação destrutiva: use background/action/danger; como decoração\nPar: text/on-danger-strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta danger.\nSituação: Em uso\nValor: danger/600 | danger/400",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28984",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:e6328ef45b179556ba2619a7d18b81c984b10aa7/-1:-1",
+            "targetVariableName": "danger/600",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      }
+    },
+    "success": {
+      "subtle": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.941393256187439,
+            0.9922020435333252,
+            0.9570246338844299
+          ],
+          "alpha": 1,
+          "hex": "#F0FDF4"
+        },
+        "$description": "Uso: Fundo de status\nNão usar: Para ação destrutiva: use background/action/danger; como decoração\nPar: text/primary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta success.\nSituação: Em uso\nValor: success/50 | success/900",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28985",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:9132927f802929f7afe80f6b496e81bc9efe6e74/-1:-1",
+            "targetVariableName": "success/50",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "strong": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.019870584830641747,
+            0.8753122687339783,
+            0.44850969314575195
+          ],
+          "alpha": 1,
+          "hex": "#05DF72"
+        },
+        "$description": "Uso: Fundo de status\nNão usar: Para ação destrutiva: use background/action/danger; como decoração\nPar: text/on-success-strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta success.\nSituação: Em uso\nValor: success/400 | success/400",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28986",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:d66f450ed847741ebbd79257f1fca884df940664/-1:-1",
+            "targetVariableName": "success/400",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      }
+    },
+    "information": {
+      "subtle": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9369397759437561,
+            0.9640346169471741,
+            0.9988718628883362
+          ],
+          "alpha": 1,
+          "hex": "#EFF6FF"
+        },
+        "$description": "Uso: Fundo de status\nNão usar: Para ação destrutiva: use background/action/danger; como decoração\nPar: text/primary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta information.\nSituação: Em uso\nValor: information/50 | information/900",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28987",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:17a3ae7bbe763d5ebde32a4b33bea88a7948d854/-1:-1",
+            "targetVariableName": "information/50",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "strong": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.08361906558275223,
+            0.3644171357154846,
+            0.9863430261611938
+          ],
+          "alpha": 1,
+          "hex": "#155DFC"
+        },
+        "$description": "Uso: Fundo de status\nNão usar: Para ação destrutiva: use background/action/danger; como decoração\nPar: text/on-information-strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta information.\nSituação: Em uso\nValor: information/600 | information/400",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28988",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:ed5cb838d7e9d1d458d0c3691723dfece4c9ba8a/-1:-1",
+            "targetVariableName": "information/600",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      }
+    },
+    "warning": {
+      "subtle": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.9843137264251709,
+            0.9215686321258545
+          ],
+          "alpha": 1,
+          "hex": "#FFFBEB"
+        },
+        "$description": "Uso: Fundo suave de atenção\nNão usar: Como decoração\nPar: text/primary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta warning.\nSituação: Em uso\nValor: warning/50 | warning/900",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28989",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:dda098f42152d61a612aafc88d72a5f389e0be60/-1:-1",
+            "targetVariableName": "warning/50",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "strong": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.7272557020187378,
+            0
+          ],
+          "alpha": 1,
+          "hex": "#FFB900"
+        },
+        "$description": "Uso: Fundo forte de atenção\nNão usar: Como decoração\nPar: text/on-warning-strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta warning.\nSituação: Em uso\nValor: warning/400 | warning/400",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28990",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:1d556465900bf2ee57de3bf2923ed48caa9a81cc/-1:-1",
+            "targetVariableName": "warning/400",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      }
+    },
+    "accent-1": {
+      "subtle": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8784313797950745,
+            0.9450980424880981,
+            0.9803921580314636
+          ],
+          "alpha": 1,
+          "hex": "#E0F1FA"
+        },
+        "$description": "Uso: Destaque sem ação nem status: marca uma categoria ou agrupa itens por cor\nNão usar: Para ação: use background/action/primary e as outras ações; para status: use as paletas de feedback\nPar: text/primary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/50 | brand-1/900",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28991",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:ff9dfbb80fe320e7c0bd4ade183827bf9fefdfe2/-1:-1",
+            "targetVariableName": "brand-1/100",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "strong": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.09019608050584793,
+            0.5529412031173706,
+            0.9725490212440491
+          ],
+          "alpha": 1,
+          "hex": "#178DF8"
+        },
+        "$description": "Uso: Destaque sem ação nem status: marca uma categoria ou agrupa itens por cor\nNão usar: Para ação: use background/action/primary e as outras ações; para status: use as paletas de feedback\nPar: text/on-accent-1-strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/600 | brand-1/400",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28992",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:127620ec128bfb8def696c3fffe88554593859cd/-1:-1",
+            "targetVariableName": "brand-1/600",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      }
+    },
+    "neutral": {
+      "subtle": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.9490196108818054,
+            0.9254902005195618,
+            0.886274516582489
+          ],
+          "alpha": 1,
+          "hex": "#F2ECE2"
+        },
+        "$description": "Uso: Marcação curta sem significado de cor\nNão usar: Para status\nPar: text/primary\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/100 | neutral/800",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:28999",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:0881bd0452809eac053dcf9603840c59e24b41d3/-1:-1",
+            "targetVariableName": "neutral/100",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "strong": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5333333611488342,
+            0.3686274588108063,
+            0.27450981736183167
+          ],
+          "alpha": 1,
+          "hex": "#885E46"
+        },
+        "$description": "Uso: Marcação curta sem significado de cor\nNão usar: Para status\nPar: text/on-neutral-strong\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/700 | neutral/300",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29000",
+          "com.figma.scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:1988724593c6b20309987f8deb808cc0bb4346f4/-1:-1",
+            "targetVariableName": "neutral/700",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      }
+    }
+  },
+  "border": {
+    "subtle": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8901960849761963,
+          0.843137264251709,
+          0.772549033164978
+        ],
+        "alpha": 1,
+        "hex": "#E3D7C5"
+      },
+      "$description": "Uso: Divisor e contorno de superfície, sem exigência de contraste\nNão usar: Para contorno de controle (não passa 3:1): use border/strong\nPar: border-width/default\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/200 | neutral/700",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29001",
+        "com.figma.scopes": [
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:94fe4a93300de431c77be7dcd31a3b7832e0696c/-1:-1",
+          "targetVariableName": "neutral/200",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "strong": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.6941176652908325,
+          0.5254902243614197,
+          0.3686274588108063
+        ],
+        "alpha": 1,
+        "hex": "#B1865E"
+      },
+      "$description": "Uso: Contorno que delimita um controle (3:1)\nNão usar: Para divisor decorativo\nPar: border-width/default\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: neutral/500 | neutral/400",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29002",
+        "com.figma.scopes": [
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:0d6cb27abdd38e3293aa7ea195d74c1ffdf8db4d/-1:-1",
+          "targetVariableName": "neutral/500",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "focus": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.09019608050584793,
+          0.5529412031173706,
+          0.9725490212440491
+        ],
+        "alpha": 1,
+        "hex": "#178DF8"
+      },
+      "$description": "Uso: Anel de foco: traço que contorna o elemento por fora, separado dele por um vão (3:1 contra o fundo do vão)\nNão usar: Colado no elemento; para seleção ou erro. Nunca remova o foco\nPar: border-width/focus\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/600 | brand-1/400",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29003",
+        "com.figma.scopes": [
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:127620ec128bfb8def696c3fffe88554593859cd/-1:-1",
+          "targetVariableName": "brand-1/600",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "selected": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.09019608050584793,
+          0.5529412031173706,
+          0.9725490212440491
+        ],
+        "alpha": 1,
+        "hex": "#178DF8"
+      },
+      "$description": "Uso: Item selecionado\nNão usar: Para foco\nPar: border-width/selected, background/selected\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05).\nSituação: Em uso\nValor: brand-1/600 | brand-1/400",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29004",
+        "com.figma.scopes": [
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:127620ec128bfb8def696c3fffe88554593859cd/-1:-1",
+          "targetVariableName": "brand-1/600",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "danger": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.9064575433731079,
+          0,
+          0.04221457988023758
+        ],
+        "alpha": 1,
+        "hex": "#E7000B"
+      },
+      "$description": "Uso: Borda de status\nNão usar: Como decoração\nPar: background/danger/subtle\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta danger.\nSituação: Em uso\nValor: danger/600 | danger/400",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29005",
+        "com.figma.scopes": [
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:e6328ef45b179556ba2619a7d18b81c984b10aa7/-1:-1",
+          "targetVariableName": "danger/600",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "success": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0,
+          0.6513022780418396,
+          0.24199256300926208
+        ],
+        "alpha": 1,
+        "hex": "#00A63E"
+      },
+      "$description": "Uso: Borda de status\nNão usar: Como decoração\nPar: background/success/subtle\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta success.\nSituação: Em uso\nValor: success/600 | success/400",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29006",
+        "com.figma.scopes": [
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:3e93075991c8a246e670c9d8f7cde8a23464f172/-1:-1",
+          "targetVariableName": "success/600",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "information": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.08361906558275223,
+          0.3644171357154846,
+          0.9863430261611938
+        ],
+        "alpha": 1,
+        "hex": "#155DFC"
+      },
+      "$description": "Uso: Borda de status\nNão usar: Como decoração\nPar: background/information/subtle\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta information.\nSituação: Em uso\nValor: information/600 | information/400",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29007",
+        "com.figma.scopes": [
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ed5cb838d7e9d1d458d0c3691723dfece4c9ba8a/-1:-1",
+          "targetVariableName": "information/600",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "warning": {
+      "$type": "color",
+      "$value": {
+        "colorSpace": "srgb",
+        "components": [
+          0.8837689161300659,
+          0.4433509111404419,
+          0
+        ],
+        "alpha": 1,
+        "hex": "#E17100"
+      },
+      "$description": "Uso: Borda de atenção\nNão usar: Como decoração\nPar: background/warning/subtle\nFlexibilidade: Ajustável: a nova referência passa no contraste nos dois modos (tabela de contraste da seção 05). A cor continua na paleta warning.\nSituação: Em uso\nValor: warning/600 | warning/400",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29008",
+        "com.figma.scopes": [
+          "STROKE"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ef5fb165731dbf7d0a0de39f9d498a4b6c854ea9/-1:-1",
+          "targetVariableName": "warning/600",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    }
+  },
+  "typography": {
+    "display": {
+      "font-family": {
+        "$type": "string",
+        "$value": "Onest",
+        "$description": "Uso: Fonte de display: maior título da tela e títulos de destaque\nNão usar: Em outro papel de texto: cada papel tem a sua\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: font-family/primary",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29020",
+          "com.figma.scopes": [
+            "FONT_FAMILY"
+          ],
+          "com.figma.type": "string",
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:f6c225e513bbbaf5bf22ca5a1fedd1f378ac558f/-1:-1",
+            "targetVariableName": "font-family/primary",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "large": {
+        "font-size": {
+          "$type": "number",
+          "$value": 72,
+          "$description": "Uso: Maior título da tela, em abertura e página de destaque\nNão usar: Dentro de uma superfície ou de uma seção\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-size/72 (72 px · 4,5 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29021",
+            "com.figma.scopes": [
+              "FONT_SIZE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:f5c03ba8fa65810ba4f8f76a6becc82241528b11/-1:-1",
+              "targetVariableName": "font-size/72",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 92,
+          "$description": "Uso: Maior título da tela, em abertura e página de destaque\nNão usar: Dentro de uma superfície ou de uma seção\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: line-height/92 (92 px · 5,75 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29022",
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:95351d742a76c91cf9c3d20a5af0a2f5ab9cf32d/-1:-1",
+              "targetVariableName": "line-height/92",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": 700,
+          "$description": "Uso: Maior título da tela, em abertura e página de destaque\nNão usar: Dentro de uma superfície ou de uma seção\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-weight/700 (700 · Bold)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29023",
+            "com.figma.scopes": [
+              "FONT_STYLE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:d8b20b769be87963493efe92121d820be34bd4b5/-1:-1",
+              "targetVariableName": "font-weight/700",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Uso: Espaçamento entre letras de display/large\nNão usar: Em outro estilo: cada estilo tem o seu\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: letter-spacing/0 (0)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29024",
+            "com.figma.scopes": [
+              "LETTER_SPACING"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:7e6f32c4af26df38940454b165a8f1620b2db6f7/-1:-1",
+              "targetVariableName": "letter-spacing/0",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        }
+      },
+      "medium": {
+        "font-size": {
+          "$type": "number",
+          "$value": 56,
+          "$description": "Uso: Título de destaque em telas menores\nNão usar: Dentro de uma superfície ou de uma seção\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-size/56 (56 px · 3,5 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29025",
+            "com.figma.scopes": [
+              "FONT_SIZE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:d0aaa38b12156379f44a19a1ff64ea8e0ab39f99/-1:-1",
+              "targetVariableName": "font-size/56",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 72,
+          "$description": "Uso: Título de destaque em telas menores\nNão usar: Dentro de uma superfície ou de uma seção\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: line-height/72 (72 px · 4,5 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29026",
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:317069d2a980eebdcefc36cc708334e5d6243be9/-1:-1",
+              "targetVariableName": "line-height/72",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": 700,
+          "$description": "Uso: Título de destaque em telas menores\nNão usar: Dentro de uma superfície ou de uma seção\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-weight/700 (700 · Bold)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29027",
+            "com.figma.scopes": [
+              "FONT_STYLE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:d8b20b769be87963493efe92121d820be34bd4b5/-1:-1",
+              "targetVariableName": "font-weight/700",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Uso: Espaçamento entre letras de display/medium\nNão usar: Em outro estilo: cada estilo tem o seu\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: letter-spacing/0 (0)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29028",
+            "com.figma.scopes": [
+              "LETTER_SPACING"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:7e6f32c4af26df38940454b165a8f1620b2db6f7/-1:-1",
+              "targetVariableName": "letter-spacing/0",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        }
+      },
+      "small": {
+        "font-size": {
+          "$type": "number",
+          "$value": 48,
+          "$description": "Uso: Título de destaque no celular\nNão usar: Dentro de uma superfície ou de uma seção\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-size/48 (48 px · 3 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29029",
+            "com.figma.scopes": [
+              "FONT_SIZE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:71405e81ae860cb496868b74fdbc154e9e735e63/-1:-1",
+              "targetVariableName": "font-size/48",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 64,
+          "$description": "Uso: Título de destaque no celular\nNão usar: Dentro de uma superfície ou de uma seção\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: line-height/64 (64 px · 4 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29030",
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:74b94d63ea7bc229d8d0f00d2cdf63f1d6de5685/-1:-1",
+              "targetVariableName": "line-height/64",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": 700,
+          "$description": "Uso: Título de destaque no celular\nNão usar: Dentro de uma superfície ou de uma seção\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-weight/700 (700 · Bold)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29031",
+            "com.figma.scopes": [
+              "FONT_STYLE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:d8b20b769be87963493efe92121d820be34bd4b5/-1:-1",
+              "targetVariableName": "font-weight/700",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Uso: Espaçamento entre letras de display/small\nNão usar: Em outro estilo: cada estilo tem o seu\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: letter-spacing/0 (0)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29032",
+            "com.figma.scopes": [
+              "LETTER_SPACING"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:7e6f32c4af26df38940454b165a8f1620b2db6f7/-1:-1",
+              "targetVariableName": "letter-spacing/0",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        }
+      }
+    },
+    "heading": {
+      "font-family": {
+        "$type": "string",
+        "$value": "Onest",
+        "$description": "Uso: Fonte de heading: títulos de página, seção, superfície e grupo\nNão usar: Em outro papel de texto: cada papel tem a sua\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: font-family/primary",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29033",
+          "com.figma.scopes": [
+            "FONT_FAMILY"
+          ],
+          "com.figma.type": "string",
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:f6c225e513bbbaf5bf22ca5a1fedd1f378ac558f/-1:-1",
+            "targetVariableName": "font-family/primary",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "large": {
+        "font-size": {
+          "$type": "number",
+          "$value": 32,
+          "$description": "Uso: Título da página\nNão usar: Para texto corrido ou rótulo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-size/32 (32 px · 2 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29034",
+            "com.figma.scopes": [
+              "FONT_SIZE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:dcaf436542cc5f1f6c331512daceb1619c223dbf/-1:-1",
+              "targetVariableName": "font-size/32",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 40,
+          "$description": "Uso: Título da página\nNão usar: Para texto corrido ou rótulo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: line-height/40 (40 px · 2,5 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29035",
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:33500c4b2b6a39fc37754ad24ddd2c7fb84174bb/-1:-1",
+              "targetVariableName": "line-height/40",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": 700,
+          "$description": "Uso: Título da página\nNão usar: Para texto corrido ou rótulo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-weight/700 (700 · Bold)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29036",
+            "com.figma.scopes": [
+              "FONT_STYLE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:d8b20b769be87963493efe92121d820be34bd4b5/-1:-1",
+              "targetVariableName": "font-weight/700",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Uso: Espaçamento entre letras de heading/large\nNão usar: Em outro estilo: cada estilo tem o seu\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: letter-spacing/0 (0)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29037",
+            "com.figma.scopes": [
+              "LETTER_SPACING"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:7e6f32c4af26df38940454b165a8f1620b2db6f7/-1:-1",
+              "targetVariableName": "letter-spacing/0",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        }
+      },
+      "medium": {
+        "font-size": {
+          "$type": "number",
+          "$value": 24,
+          "$description": "Uso: Título de seção\nNão usar: Para texto corrido ou rótulo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-size/24 (24 px · 1,5 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29038",
+            "com.figma.scopes": [
+              "FONT_SIZE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:4625a8d77e19d30f289106925b1c6c874669bd28/-1:-1",
+              "targetVariableName": "font-size/24",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 32,
+          "$description": "Uso: Título de seção\nNão usar: Para texto corrido ou rótulo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: line-height/32 (32 px · 2 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29039",
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:edd84c51dfed61bb1c57f04e9097d289a1b928d5/-1:-1",
+              "targetVariableName": "line-height/32",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": 700,
+          "$description": "Uso: Título de seção\nNão usar: Para texto corrido ou rótulo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-weight/700 (700 · Bold)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29040",
+            "com.figma.scopes": [
+              "FONT_STYLE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:d8b20b769be87963493efe92121d820be34bd4b5/-1:-1",
+              "targetVariableName": "font-weight/700",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Uso: Espaçamento entre letras de heading/medium\nNão usar: Em outro estilo: cada estilo tem o seu\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: letter-spacing/0 (0)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29041",
+            "com.figma.scopes": [
+              "LETTER_SPACING"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:7e6f32c4af26df38940454b165a8f1620b2db6f7/-1:-1",
+              "targetVariableName": "letter-spacing/0",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        }
+      },
+      "small": {
+        "font-size": {
+          "$type": "number",
+          "$value": 20,
+          "$description": "Uso: Título de superfície e de grupo de conteúdo\nNão usar: Para texto corrido ou rótulo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-size/20 (20 px · 1,25 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29042",
+            "com.figma.scopes": [
+              "FONT_SIZE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:5c7b7ad06c6bee76f2617785530dc4f637944b07/-1:-1",
+              "targetVariableName": "font-size/20",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 28,
+          "$description": "Uso: Título de superfície e de grupo de conteúdo\nNão usar: Para texto corrido ou rótulo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: line-height/28 (28 px · 1,75 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29043",
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:33cea4c006604f5494e6dee5348c48233b8f8c70/-1:-1",
+              "targetVariableName": "line-height/28",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": 700,
+          "$description": "Uso: Título de superfície e de grupo de conteúdo\nNão usar: Para texto corrido ou rótulo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-weight/700 (700 · Bold)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29044",
+            "com.figma.scopes": [
+              "FONT_STYLE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:d8b20b769be87963493efe92121d820be34bd4b5/-1:-1",
+              "targetVariableName": "font-weight/700",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Uso: Espaçamento entre letras de heading/small\nNão usar: Em outro estilo: cada estilo tem o seu\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: letter-spacing/0 (0)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29045",
+            "com.figma.scopes": [
+              "LETTER_SPACING"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:7e6f32c4af26df38940454b165a8f1620b2db6f7/-1:-1",
+              "targetVariableName": "letter-spacing/0",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        }
+      }
+    },
+    "body": {
+      "font-family": {
+        "$type": "string",
+        "$value": "Outfit",
+        "$description": "Uso: Fonte de body: texto corrido e de apoio\nNão usar: Em outro papel de texto: cada papel tem a sua\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: font-family/secondary",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29046",
+          "com.figma.scopes": [
+            "FONT_FAMILY"
+          ],
+          "com.figma.type": "string",
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:246c6747fec9b470ebd8f11dd44ac0a499d4e4a6/-1:-1",
+            "targetVariableName": "font-family/secondary",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "large": {
+        "font-size": {
+          "$type": "number",
+          "$value": 18,
+          "$description": "Uso: Texto corrido de leitura longa\nNão usar: Para rótulo de controle: use label\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-size/18 (18 px · 1,125 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29047",
+            "com.figma.scopes": [
+              "FONT_SIZE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:52082edf42134a280d367fd88eacc05e73fa93eb/-1:-1",
+              "targetVariableName": "font-size/18",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 28,
+          "$description": "Uso: Texto corrido de leitura longa\nNão usar: Para rótulo de controle: use label\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: line-height/28 (28 px · 1,75 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29048",
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:33cea4c006604f5494e6dee5348c48233b8f8c70/-1:-1",
+              "targetVariableName": "line-height/28",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": 400,
+          "$description": "Uso: Texto corrido de leitura longa\nNão usar: Para rótulo de controle: use label\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-weight/400 (400 · Regular)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29049",
+            "com.figma.scopes": [
+              "FONT_STYLE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:4e8459c7f1413d122727eb53df5bc9a4348e3ffb/-1:-1",
+              "targetVariableName": "font-weight/400",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Uso: Espaçamento entre letras de body/large\nNão usar: Em outro estilo: cada estilo tem o seu\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: letter-spacing/0 (0)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29050",
+            "com.figma.scopes": [
+              "LETTER_SPACING"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:7e6f32c4af26df38940454b165a8f1620b2db6f7/-1:-1",
+              "targetVariableName": "letter-spacing/0",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        }
+      },
+      "medium": {
+        "font-size": {
+          "$type": "number",
+          "$value": 16,
+          "$description": "Uso: Texto corrido padrão\nNão usar: Para rótulo de controle: use label\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-size/16 (16 px · 1 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29051",
+            "com.figma.scopes": [
+              "FONT_SIZE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:580585aef6b6b89ce0dbe8f4110a9aeaf956cc94/-1:-1",
+              "targetVariableName": "font-size/16",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 24,
+          "$description": "Uso: Texto corrido padrão\nNão usar: Para rótulo de controle: use label\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: line-height/24 (24 px · 1,5 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29052",
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:b7447d4238f496417164faeac53800fb40996cbe/-1:-1",
+              "targetVariableName": "line-height/24",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": 400,
+          "$description": "Uso: Texto corrido padrão\nNão usar: Para rótulo de controle: use label\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-weight/400 (400 · Regular)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29053",
+            "com.figma.scopes": [
+              "FONT_STYLE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:4e8459c7f1413d122727eb53df5bc9a4348e3ffb/-1:-1",
+              "targetVariableName": "font-weight/400",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Uso: Espaçamento entre letras de body/medium\nNão usar: Em outro estilo: cada estilo tem o seu\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: letter-spacing/0 (0)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29054",
+            "com.figma.scopes": [
+              "LETTER_SPACING"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:7e6f32c4af26df38940454b165a8f1620b2db6f7/-1:-1",
+              "targetVariableName": "letter-spacing/0",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        }
+      },
+      "small": {
+        "font-size": {
+          "$type": "number",
+          "$value": 14,
+          "$description": "Uso: Texto de apoio, legenda\nNão usar: Para rótulo de controle: use label\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-size/14 (14 px · 0,875 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29055",
+            "com.figma.scopes": [
+              "FONT_SIZE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:f0af2515a251d8fa331a0fa081e45eae83ff2b6c/-1:-1",
+              "targetVariableName": "font-size/14",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 20,
+          "$description": "Uso: Texto de apoio, legenda\nNão usar: Para rótulo de controle: use label\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: line-height/20 (20 px · 1,25 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29056",
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:24feda86a2809122bcbddd93fcc68fa9f7375542/-1:-1",
+              "targetVariableName": "line-height/20",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": 400,
+          "$description": "Uso: Texto de apoio, legenda\nNão usar: Para rótulo de controle: use label\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-weight/400 (400 · Regular)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29057",
+            "com.figma.scopes": [
+              "FONT_STYLE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:4e8459c7f1413d122727eb53df5bc9a4348e3ffb/-1:-1",
+              "targetVariableName": "font-weight/400",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Uso: Espaçamento entre letras de body/small\nNão usar: Em outro estilo: cada estilo tem o seu\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: letter-spacing/0 (0)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29058",
+            "com.figma.scopes": [
+              "LETTER_SPACING"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:7e6f32c4af26df38940454b165a8f1620b2db6f7/-1:-1",
+              "targetVariableName": "letter-spacing/0",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        }
+      }
+    },
+    "label": {
+      "font-family": {
+        "$type": "string",
+        "$value": "Outfit",
+        "$description": "Uso: Fonte de label: rótulos de controle e de marcação curta\nNão usar: Em outro papel de texto: cada papel tem a sua\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: font-family/secondary",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29059",
+          "com.figma.scopes": [
+            "FONT_FAMILY"
+          ],
+          "com.figma.type": "string",
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:246c6747fec9b470ebd8f11dd44ac0a499d4e4a6/-1:-1",
+            "targetVariableName": "font-family/secondary",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "large": {
+        "font-size": {
+          "$type": "number",
+          "$value": 16,
+          "$description": "Uso: Rótulo de controle, tamanho grande\nNão usar: Para parágrafo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-size/16 (16 px · 1 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29060",
+            "com.figma.scopes": [
+              "FONT_SIZE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:580585aef6b6b89ce0dbe8f4110a9aeaf956cc94/-1:-1",
+              "targetVariableName": "font-size/16",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 24,
+          "$description": "Uso: Rótulo de controle, tamanho grande\nNão usar: Para parágrafo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: line-height/24 (24 px · 1,5 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29061",
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:b7447d4238f496417164faeac53800fb40996cbe/-1:-1",
+              "targetVariableName": "line-height/24",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": 500,
+          "$description": "Uso: Rótulo de controle, tamanho grande\nNão usar: Para parágrafo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-weight/500 (500 · Medium)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29062",
+            "com.figma.scopes": [
+              "FONT_STYLE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:036a4d1280e0db100d127e4ce828e1ce31aa1a4a/-1:-1",
+              "targetVariableName": "font-weight/500",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Uso: Espaçamento entre letras de label/large\nNão usar: Em outro estilo: cada estilo tem o seu\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: letter-spacing/0 (0)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29063",
+            "com.figma.scopes": [
+              "LETTER_SPACING"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:7e6f32c4af26df38940454b165a8f1620b2db6f7/-1:-1",
+              "targetVariableName": "letter-spacing/0",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        }
+      },
+      "medium": {
+        "font-size": {
+          "$type": "number",
+          "$value": 14,
+          "$description": "Uso: Rótulo de controle, tamanho padrão\nNão usar: Para parágrafo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-size/14 (14 px · 0,875 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29064",
+            "com.figma.scopes": [
+              "FONT_SIZE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:f0af2515a251d8fa331a0fa081e45eae83ff2b6c/-1:-1",
+              "targetVariableName": "font-size/14",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 20,
+          "$description": "Uso: Rótulo de controle, tamanho padrão\nNão usar: Para parágrafo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: line-height/20 (20 px · 1,25 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29065",
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:24feda86a2809122bcbddd93fcc68fa9f7375542/-1:-1",
+              "targetVariableName": "line-height/20",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": 500,
+          "$description": "Uso: Rótulo de controle, tamanho padrão\nNão usar: Para parágrafo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-weight/500 (500 · Medium)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29066",
+            "com.figma.scopes": [
+              "FONT_STYLE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:036a4d1280e0db100d127e4ce828e1ce31aa1a4a/-1:-1",
+              "targetVariableName": "font-weight/500",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Uso: Espaçamento entre letras de label/medium\nNão usar: Em outro estilo: cada estilo tem o seu\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: letter-spacing/0 (0)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29067",
+            "com.figma.scopes": [
+              "LETTER_SPACING"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:7e6f32c4af26df38940454b165a8f1620b2db6f7/-1:-1",
+              "targetVariableName": "letter-spacing/0",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        }
+      },
+      "small": {
+        "font-size": {
+          "$type": "number",
+          "$value": 12,
+          "$description": "Uso: Rótulo de controle pequeno e de marcação curta\nNão usar: Para parágrafo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-size/12 (12 px · 0,75 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29068",
+            "com.figma.scopes": [
+              "FONT_SIZE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:f2faa460da1fa2a521628707a0e529f1a0e8b03b/-1:-1",
+              "targetVariableName": "font-size/12",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 20,
+          "$description": "Uso: Rótulo de controle pequeno e de marcação curta\nNão usar: Para parágrafo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: line-height/20 (20 px · 1,25 rem)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29069",
+            "com.figma.scopes": [
+              "LINE_HEIGHT"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:24feda86a2809122bcbddd93fcc68fa9f7375542/-1:-1",
+              "targetVariableName": "line-height/20",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": 500,
+          "$description": "Uso: Rótulo de controle pequeno e de marcação curta\nNão usar: Para parágrafo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Altura de linha 1,3 vez o tamanho em display e heading e 1,5 vez em body e label, arredondada para o múltiplo de 4 mais próximo; no empate, para cima.\nSituação: Em uso\nValor: font-weight/500 (500 · Medium)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29070",
+            "com.figma.scopes": [
+              "FONT_STYLE"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:036a4d1280e0db100d127e4ce828e1ce31aa1a4a/-1:-1",
+              "targetVariableName": "font-weight/500",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "Uso: Espaçamento entre letras de label/small\nNão usar: Em outro estilo: cada estilo tem o seu\nPar: —\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: letter-spacing/0 (0)",
+          "$extensions": {
+            "com.figma.variableId": "VariableID:91:29071",
+            "com.figma.scopes": [
+              "LETTER_SPACING"
+            ],
+            "com.figma.aliasData": {
+              "targetVariableId": "VariableID:7e6f32c4af26df38940454b165a8f1620b2db6f7/-1:-1",
+              "targetVariableName": "letter-spacing/0",
+              "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+              "targetVariableSetName": "base"
+            }
+          }
+        }
+      }
+    }
+  },
+  "space": {
+    "none": {
+      "$type": "number",
+      "$value": 0,
+      "$description": "Uso: Elementos colados\nNão usar: Para separar conteúdo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: space/0 (0)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29072",
+        "com.figma.scopes": [
+          "GAP"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:add2472c7bede6ed4d2967f35a683e12d55272b3/-1:-1",
+          "targetVariableName": "space/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "xx-small": {
+      "$type": "number",
+      "$value": 8,
+      "$description": "Uso: Entre ícone e texto\nNão usar: Entre blocos\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: space/8 (8 px · 0,5 rem)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29073",
+        "com.figma.scopes": [
+          "GAP"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:974ff244a553cdce166757965c81cd843579b5d6/-1:-1",
+          "targetVariableName": "space/8",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "x-small": {
+      "$type": "number",
+      "$value": 12,
+      "$description": "Uso: Entre itens de um grupo pequeno, como um rótulo e o controle que ele nomeia\nNão usar: Entre grupos\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: space/12 (12 px · 0,75 rem)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29074",
+        "com.figma.scopes": [
+          "GAP"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:179d59ad36a86c3529af6323dc5eb5fae192b3d1/-1:-1",
+          "targetVariableName": "space/12",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "small": {
+      "$type": "number",
+      "$value": 16,
+      "$description": "Uso: Padding interno de componente pequeno\nNão usar: Entre seções\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: space/16 (16 px · 1 rem)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29075",
+        "com.figma.scopes": [
+          "GAP"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:e9485d2a1d20fb624730dae5814784afd494f5de/-1:-1",
+          "targetVariableName": "space/16",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "medium": {
+      "$type": "number",
+      "$value": 24,
+      "$description": "Uso: Espaço interno padrão de controles e superfícies; entre itens de uma lista\nNão usar: Entre seções\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: space/24 (24 px · 1,5 rem)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29076",
+        "com.figma.scopes": [
+          "GAP"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:48849dc822ad32496d1ea46065c5c80c051a7760/-1:-1",
+          "targetVariableName": "space/24",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "large": {
+      "$type": "number",
+      "$value": 32,
+      "$description": "Uso: Entre grupos de uma seção\nNão usar: Dentro de componente pequeno\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: space/32 (32 px · 2 rem)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29077",
+        "com.figma.scopes": [
+          "GAP"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:bda3333ef75a4e6d0c1bfac6ea8b4a9cf949093c/-1:-1",
+          "targetVariableName": "space/32",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "x-large": {
+      "$type": "number",
+      "$value": 48,
+      "$description": "Uso: Entre seções\nNão usar: Dentro de componente\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: space/48 (48 px · 3 rem)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29078",
+        "com.figma.scopes": [
+          "GAP"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:31cda6943227e65070d7f8dce4f42c61580fbb69/-1:-1",
+          "targetVariableName": "space/48",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "xx-large": {
+      "$type": "number",
+      "$value": 64,
+      "$description": "Uso: Entre blocos grandes da página; margem de página\nNão usar: Dentro de componente\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: space/64 (64 px · 4 rem)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29079",
+        "com.figma.scopes": [
+          "GAP"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:4a45a39977bbaea9a839e85da17ac0d6810ea9b7/-1:-1",
+          "targetVariableName": "space/64",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    }
+  },
+  "radius": {
+    "none": {
+      "$type": "number",
+      "$value": 0,
+      "$description": "Uso: Forma sem arredondamento: o que encosta em outra borda\nNão usar: —\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: radius/0 (0)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29080",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:8939a3d137bd523d959f25199a1f011f80a83ba8/-1:-1",
+          "targetVariableName": "radius/0",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "xx-small": {
+      "$type": "number",
+      "$value": 8,
+      "$description": "Uso: Controle ou marcação muito pequena\nNão usar: Em superfície que agrupa conteúdo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: radius/8 (8 px · 0,5 rem)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29081",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:d6abcfac5d7101d1e2f820d876c42419cc742719/-1:-1",
+          "targetVariableName": "radius/8",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "x-small": {
+      "$type": "number",
+      "$value": 12,
+      "$description": "Uso: Controle de tamanho padrão: o que a pessoa aciona ou preenche\nNão usar: Em superfície que agrupa conteúdo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: radius/12 (12 px · 0,75 rem)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29082",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:85fff1652b61586da219612dd72cfdfb69096fba/-1:-1",
+          "targetVariableName": "radius/12",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "small": {
+      "$type": "number",
+      "$value": 16,
+      "$description": "Uso: Superfície pequena, inclusive a que flutua\nNão usar: Em controle\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: radius/16 (16 px · 1 rem)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29083",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:ec4b1f884f72e56c1ab62fc7daabc7d0a93e1300/-1:-1",
+          "targetVariableName": "radius/16",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "medium": {
+      "$type": "number",
+      "$value": 24,
+      "$description": "Uso: Superfície que agrupa conteúdo\nNão usar: Em controle\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: radius/24 (24 px · 1,5 rem)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29084",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:d43c0c3a3972e871f1e0fe1cf4d08a70a9541126/-1:-1",
+          "targetVariableName": "radius/24",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "large": {
+      "$type": "number",
+      "$value": 32,
+      "$description": "Uso: Superfície grande sobreposta à tela\nNão usar: Em elemento pequeno\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: radius/32 (32 px · 2 rem)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29085",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:49c54b6fdf1f08eb83c15c204405376da52e6c91/-1:-1",
+          "targetVariableName": "radius/32",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "x-large": {
+      "$type": "number",
+      "$value": 40,
+      "$description": "Uso: Folha que sobe de baixo (bottom sheet)\nNão usar: Em elemento pequeno\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: radius/40 (40 px · 2,5 rem)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29086",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:5add2392b1803ff1d0f61fcc8580e0524f4084a6/-1:-1",
+          "targetVariableName": "radius/40",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "xx-large": {
+      "$type": "number",
+      "$value": 48,
+      "$description": "Uso: Superfície grande de destaque\nNão usar: Em elemento pequeno\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: radius/48 (48 px · 3 rem)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29087",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:702f4193386cab9cf12b28d459db84214932abc3/-1:-1",
+          "targetVariableName": "radius/48",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "full": {
+      "$type": "number",
+      "$value": 9999,
+      "$description": "Uso: Forma totalmente arredondada: círculo ou pílula\nNão usar: Em superfície que agrupa conteúdo\nPar: —\nFlexibilidade: Ajustável: só valores da Base. Um nome nunca fica maior que o seguinte.\nSituação: Em uso\nValor: radius/full (9999 px)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29088",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:153be9f96c3d7859c6a211ec591cdb231d8ad80e/-1:-1",
+          "targetVariableName": "radius/full",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    }
+  },
+  "border-width": {
+    "default": {
+      "$type": "number",
+      "$value": 1,
+      "$description": "Uso: Divisor e contorno de superfície e de controle\nNão usar: Para foco\nPar: border/subtle, border/strong\nFlexibilidade: Ajustável: qualquer valor da Base, de 0,5 a 8 px. O foco nunca fica abaixo de 2.\nSituação: Em uso\nValor: border-width/1 (1 px)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29089",
+        "com.figma.scopes": [
+          "STROKE_FLOAT"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:9818fc2633216902099c505c21e76967b9de7c96/-1:-1",
+          "targetVariableName": "border-width/1",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "strong": {
+      "$type": "number",
+      "$value": 2,
+      "$description": "Uso: Contorno que precisa de mais destaque\nNão usar: Para foco: use border-width/focus\nPar: border/strong\nFlexibilidade: Ajustável: qualquer valor da Base, de 0,5 a 8 px. O foco nunca fica abaixo de 2.\nSituação: Em uso\nValor: border-width/2 (2 px)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29090",
+        "com.figma.scopes": [
+          "STROKE_FLOAT"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:0aeb1c1c6060810f8b8b68b47254cf44a5f3c6ee/-1:-1",
+          "targetVariableName": "border-width/2",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "focus": {
+      "$type": "number",
+      "$value": 2,
+      "$description": "Uso: Espessura do anel de foco\nNão usar: Para outra borda\nPar: border/focus\nFlexibilidade: Ajustável: qualquer valor da Base, de 0,5 a 8 px. O foco nunca fica abaixo de 2.\nSituação: Em uso\nValor: border-width/2 (2 px)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29091",
+        "com.figma.scopes": [
+          "STROKE_FLOAT"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:0aeb1c1c6060810f8b8b68b47254cf44a5f3c6ee/-1:-1",
+          "targetVariableName": "border-width/2",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "selected": {
+      "$type": "number",
+      "$value": 2,
+      "$description": "Uso: Item selecionado\nNão usar: Para foco\nPar: border/selected\nFlexibilidade: Ajustável: qualquer valor da Base, de 0,5 a 8 px. O foco nunca fica abaixo de 2.\nSituação: Em uso\nValor: border-width/2 (2 px)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29092",
+        "com.figma.scopes": [
+          "STROKE_FLOAT"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:0aeb1c1c6060810f8b8b68b47254cf44a5f3c6ee/-1:-1",
+          "targetVariableName": "border-width/2",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    }
+  },
+  "opacity": {
+    "disabled": {
+      "$type": "number",
+      "$value": 40,
+      "$description": "Uso: Elemento desabilitado inteiro\nNão usar: Para texto de menor destaque (use text/tertiary); para esconder elemento\nPar: — (vale para o elemento inteiro)\nFlexibilidade: Ajustável: só valores da Base (múltiplos de 5, de 0 a 100).\nSituação: Em uso\nValor: opacity/40 (40%)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29093",
+        "com.figma.scopes": [
+          "OPACITY"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:1d7900cebb2f3d331379497b81f751fb8a848cbe/-1:-1",
+          "targetVariableName": "opacity/40",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "backdrop": {
+      "$type": "number",
+      "$value": 50,
+      "$description": "Uso: Transparência da camada que escurece a tela atrás de uma superfície sobreposta\nNão usar: Para desabilitado\nPar: background/backdrop\nFlexibilidade: Ajustável: só valores da Base (múltiplos de 5, de 0 a 100).\nSituação: Em uso\nValor: opacity/50 (50%)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:91:29094",
+        "com.figma.scopes": [
+          "OPACITY"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:59c8a7f05e0d5f8f8783eb7cd1b95dae25187759/-1:-1",
+          "targetVariableName": "opacity/50",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    },
+    "hover": {
+      "$type": "number",
+      "$value": 20,
+      "$description": "Uso: Transparência da camada que escurece a tela atrás de uma superfície sobreposta\nNão usar: Para desabilitado\nPar: background/backdrop\nFlexibilidade: Ajustável: só valores da Base (múltiplos de 5, de 0 a 100).\nSituação: Em uso\nValor: opacity/50 (50%)",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:106:7744",
+        "com.figma.scopes": [
+          "OPACITY"
+        ],
+        "com.figma.aliasData": {
+          "targetVariableId": "VariableID:4e671cb749cad213a5494ca638a0d043b3ae32d7/-1:-1",
+          "targetVariableName": "opacity/20",
+          "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+          "targetVariableSetName": "base"
+        }
+      }
+    }
+  },
+  "shadow": {
+    "raised": {
+      "offset-x": {
+        "$type": "number",
+        "$value": 0,
+        "$description": "Uso: Deslocamento horizontal da sombra raised (elevação baixa: o que flutua perto do conteúdo)\nNão usar: Fora do estilo shadow/raised\nPar: shadow/raised\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: space/0 (0 px)",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29095",
+          "com.figma.scopes": [
+            "EFFECT_FLOAT"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:add2472c7bede6ed4d2967f35a683e12d55272b3/-1:-1",
+            "targetVariableName": "space/0",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "offset-y": {
+        "$type": "number",
+        "$value": 4,
+        "$description": "Uso: Deslocamento vertical da sombra raised (elevação baixa: o que flutua perto do conteúdo)\nNão usar: Fora do estilo shadow/raised\nPar: shadow/raised\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: space/4 (4 px)",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29096",
+          "com.figma.scopes": [
+            "EFFECT_FLOAT"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:4095a32d43696a49f174944fc8ab57cf0b67a40b/-1:-1",
+            "targetVariableName": "space/4",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "blur": {
+        "$type": "number",
+        "$value": 12,
+        "$description": "Uso: Desfoque da sombra raised (elevação baixa: o que flutua perto do conteúdo)\nNão usar: Fora do estilo shadow/raised\nPar: shadow/raised\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: space/8 (8 px)",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29097",
+          "com.figma.scopes": [
+            "EFFECT_FLOAT"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:179d59ad36a86c3529af6323dc5eb5fae192b3d1/-1:-1",
+            "targetVariableName": "space/12",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "spread": {
+        "$type": "number",
+        "$value": 0,
+        "$description": "Uso: Espalhamento da sombra raised (elevação baixa: o que flutua perto do conteúdo)\nNão usar: Fora do estilo shadow/raised\nPar: shadow/raised\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: space/0 (0 px)",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29098",
+          "com.figma.scopes": [
+            "EFFECT_FLOAT"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:add2472c7bede6ed4d2967f35a683e12d55272b3/-1:-1",
+            "targetVariableName": "space/0",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.07058823853731155,
+            0.16862745583057404,
+            0.24705882370471954
+          ],
+          "alpha": 0.10000000149011612,
+          "hex": "#122B3F"
+        },
+        "$description": "Uso: Cor da sombra raised, com a opacidade junto\nNão usar: Como cor de fundo ou de texto\nPar: shadow/raised\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: neutral/1000 a opacity/10 (10%)",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29099",
+          "com.figma.scopes": [
+            "EFFECT_COLOR"
+          ],
+          "com.figma.composedColor": {
+            "colorArg": {
+              "type": "alias",
+              "alias": {
+                "targetVariableId": "VariableID:41c3f4a79580560ade9fd6da21abecf39f9d1746/-1:-1",
+                "targetVariableName": "brand-1/950",
+                "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+                "targetVariableSetName": "base"
+              }
+            },
+            "opacityArg": {
+              "type": "alias",
+              "alias": {
+                "targetVariableId": "VariableID:8b9a35e1f6ee2597bfefe94d40d1f849c7573d55/-1:-1",
+                "targetVariableName": "opacity/10",
+                "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+                "targetVariableSetName": "base"
+              }
+            }
+          }
+        }
+      }
+    },
+    "overlay": {
+      "offset-x": {
+        "$type": "number",
+        "$value": 0,
+        "$description": "Uso: Deslocamento horizontal da sombra overlay (elevação alta: o que se sobrepõe à tela inteira)\nNão usar: Fora do estilo shadow/overlay\nPar: shadow/overlay\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: space/0 (0 px)",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29100",
+          "com.figma.scopes": [
+            "EFFECT_FLOAT"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:add2472c7bede6ed4d2967f35a683e12d55272b3/-1:-1",
+            "targetVariableName": "space/0",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "offset-y": {
+        "$type": "number",
+        "$value": 12,
+        "$description": "Uso: Deslocamento vertical da sombra overlay (elevação alta: o que se sobrepõe à tela inteira)\nNão usar: Fora do estilo shadow/overlay\nPar: shadow/overlay\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: space/8 (8 px)",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29101",
+          "com.figma.scopes": [
+            "EFFECT_FLOAT"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:179d59ad36a86c3529af6323dc5eb5fae192b3d1/-1:-1",
+            "targetVariableName": "space/12",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "blur": {
+        "$type": "number",
+        "$value": 24,
+        "$description": "Uso: Desfoque da sombra overlay (elevação alta: o que se sobrepõe à tela inteira)\nNão usar: Fora do estilo shadow/overlay\nPar: shadow/overlay\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: space/24 (24 px)",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29102",
+          "com.figma.scopes": [
+            "EFFECT_FLOAT"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:48849dc822ad32496d1ea46065c5c80c051a7760/-1:-1",
+            "targetVariableName": "space/24",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "spread": {
+        "$type": "number",
+        "$value": 0,
+        "$description": "Uso: Espalhamento da sombra overlay (elevação alta: o que se sobrepõe à tela inteira)\nNão usar: Fora do estilo shadow/overlay\nPar: shadow/overlay\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: space/0 (0 px)",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29103",
+          "com.figma.scopes": [
+            "EFFECT_FLOAT"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:add2472c7bede6ed4d2967f35a683e12d55272b3/-1:-1",
+            "targetVariableName": "space/0",
+            "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+            "targetVariableSetName": "base"
+          }
+        }
+      },
+      "color": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.1882352977991104,
+            0.125490203499794,
+            0.10196078568696976
+          ],
+          "alpha": 0.15000000596046448,
+          "hex": "#30201A"
+        },
+        "$description": "Uso: Cor da sombra overlay, com a opacidade junto\nNão usar: Como cor de fundo ou de texto\nPar: shadow/overlay\nFlexibilidade: Ajustável: aponta só para valores da Base.\nSituação: Em uso\nValor: neutral/1000 a opacity/15 (15%)",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:91:29104",
+          "com.figma.scopes": [
+            "EFFECT_COLOR"
+          ],
+          "com.figma.composedColor": {
+            "colorArg": {
+              "type": "alias",
+              "alias": {
+                "targetVariableId": "VariableID:b2e83651307e3d8919a6ed2634ad7e2f8e2fba89/-1:-1",
+                "targetVariableName": "neutral/950",
+                "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+                "targetVariableSetName": "base"
+              }
+            },
+            "opacityArg": {
+              "type": "alias",
+              "alias": {
+                "targetVariableId": "VariableID:7bab17558750e9408ba69465117e6f77662c37b4/-1:-1",
+                "targetVariableName": "opacity/15",
+                "targetVariableSetId": "VariableCollectionId:bbb08381c447c8c106747d563a8f622a3cd14795/-1:-1",
+                "targetVariableSetName": "base"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "light"
+  }
+}

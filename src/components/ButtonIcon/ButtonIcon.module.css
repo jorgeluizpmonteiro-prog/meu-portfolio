@@ -1,0 +1,92 @@
+/* Button icon — 70 × 70, padding 16, ícone de 38 px */
+.root {
+  --button-icon-size: 70px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
+  padding: var(--space-small);
+  border-radius: var(--radius-full);
+  background-color: var(--background-action-primary);
+  color: var(--icon-on-action-primary);
+  transition:
+    background-color var(--motion-duration-fast) var(--motion-easing-out),
+    transform var(--motion-duration-fast) var(--motion-easing-out);
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+}
+
+.root:hover {
+  background-color: var(--background-action-primary-hover);
+}
+
+.root:active {
+  background-color: var(--background-action-primary-pressed);
+  transform: scale(0.96);
+}
+
+/* Anel de foco de 80 px em volta do botão de 70 */
+.root:focus-visible {
+  outline: var(--border-width-focus) solid var(--border-focus);
+  outline-offset: 3px;
+}
+
+/* Tooltip — 40 px acima, pílula background/inverse, label/small */
+.tooltip {
+  position: absolute;
+  /* top: −40 px com 36 px de altura → 4 px de folga acima do botão */
+  bottom: calc(100% + var(--space-4));
+  left: 50%;
+  z-index: 2;
+  padding: var(--space-xx-small);
+  border-radius: var(--radius-full);
+  background-color: var(--background-inverse);
+  color: var(--text-on-inverse);
+  font-family: var(--typography-label-font-family);
+  font-size: var(--typography-label-small-font-size);
+  font-weight: var(--typography-label-small-font-weight);
+  line-height: var(--typography-label-small-line-height);
+  letter-spacing: var(--typography-label-small-letter-spacing);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 4px);
+  transition:
+    opacity var(--motion-duration-fast) var(--motion-easing-out),
+    transform var(--motion-duration-fast) var(--motion-easing-out);
+}
+
+/* MOT-08: tooltip aparece após 300 ms no hover; some sem atraso */
+@media (hover: hover) {
+  .root:hover .tooltip {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    transition-delay: 300ms;
+  }
+}
+
+.root:focus-visible .tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.dismissed .tooltip {
+  opacity: 0 !important;
+  transition-delay: 0ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .tooltip {
+    transition: none;
+  }
+  .root:active {
+    transform: none;
+  }
+}

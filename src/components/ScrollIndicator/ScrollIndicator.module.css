@@ -1,0 +1,36 @@
+/* Trilho 16 px, background/canvas, a 16 px da borda direita; polegar 8 × 100, accent-1/subtle */
+.track {
+  position: fixed;
+  top: 58px;
+  bottom: 66px;
+  right: var(--space-small);
+  z-index: 30;
+  width: 16px;
+  overflow: hidden;
+  border-radius: var(--radius-full);
+  background-color: var(--background-canvas);
+}
+
+.thumb {
+  position: absolute;
+  /* folga de 8 px em cima e embaixo; percorre o trilho conforme a rolagem */
+  top: calc(var(--space-xx-small) + var(--progress, 0) * (100% - 2 * var(--space-xx-small) - 100px));
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 100px;
+  border-radius: var(--radius-full);
+  background-color: var(--background-accent-1-subtle);
+  cursor: grab;
+  touch-action: none;
+}
+
+.thumb:active {
+  cursor: grabbing;
+}
+
+@media (max-width: 1023px) {
+  .track {
+    display: none;
+  }
+}

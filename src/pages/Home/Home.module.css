@@ -1,0 +1,169 @@
+.main {
+  position: relative;
+  z-index: 1;
+  width: min(var(--layout-container), 100% - 2 * var(--layout-gutter));
+  margin-inline: auto;
+  padding-bottom: var(--space-96);
+}
+
+/* Hero — título em y = 179 (47 px abaixo do header), texto 14 px abaixo, cards 28 px abaixo */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding-top: 47px;
+  text-align: center;
+}
+
+.title {
+  max-width: 824px;
+  color: var(--text-primary);
+  font-family: var(--typography-display-font-family);
+  font-size: var(--hero-title-font-size);
+  font-weight: var(--typography-display-large-font-weight);
+  line-height: var(--hero-title-line-height);
+  letter-spacing: var(--hero-title-letter-spacing);
+  text-wrap: balance;
+}
+
+.titleLine {
+  display: block;
+  animation: rise var(--motion-duration-hero) var(--motion-easing-out) backwards;
+  animation-delay: 100ms;
+  --rise-distance: 24px;
+}
+
+/* MOT-02: linhas com intervalo de 80 ms */
+.titleLine + .titleLine {
+  animation-delay: 180ms;
+}
+
+.intro {
+  max-width: 704px;
+  color: var(--text-secondary);
+  font-family: var(--typography-body-font-family);
+  font-size: var(--typography-body-large-font-size);
+  font-weight: var(--typography-body-large-font-weight);
+  line-height: var(--typography-body-large-line-height);
+  letter-spacing: var(--typography-body-large-letter-spacing);
+  text-wrap: pretty;
+  /* MOT-03 */
+  animation: rise var(--motion-duration-slow) var(--motion-easing-out) backwards;
+  animation-delay: 300ms;
+  --rise-distance: 16px;
+}
+
+.projects {
+  padding-top: 28px;
+}
+
+/* 3 colunas de 384 com gap de 32 (space/large) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 384px));
+  justify-content: center;
+  gap: var(--space-large);
+}
+
+/* MOT-05: um card a cada 100 ms (o atraso vem do componente) */
+.gridItem {
+  animation: rise var(--motion-duration-slow) var(--motion-easing-out) backwards;
+  --rise-distance: 32px;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(var(--rise-distance));
+  }
+}
+
+/* “Ver mais projetos” — 72 px, centralizado, 48 px acima da base da tela */
+.more {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-48);
+  z-index: 15;
+  transform: translateX(-50%);
+  transition: opacity var(--motion-duration-medium) var(--motion-easing-out);
+}
+
+.moreHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.moreButton {
+  --button-icon-size: 72px;
+  /* MOT-09: desce 6 px e volta, 1600 ms por ciclo, depois de 2 s */
+  animation: nudge 1600ms var(--motion-easing-in-out) 2s infinite;
+}
+
+.moreButton:hover,
+.moreButton:focus-visible {
+  animation: none;
+}
+
+@keyframes nudge {
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .titleLine,
+  .intro,
+  .gridItem {
+    animation-name: fade;
+    animation-duration: var(--motion-duration-fast);
+  }
+  .moreButton {
+    animation: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* 768–1023 px: 2 colunas; um card sozinho na última linha ocupa a linha */
+@media (max-width: 1023px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gridItem:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* < 768 px: 1 coluna; espaço para a barra de menu fixa */
+@media (max-width: 767px) {
+  .main {
+    padding-bottom: calc(var(--space-128) + env(safe-area-inset-bottom));
+  }
+
+  .hero {
+    padding-top: var(--space-40);
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-medium);
+  }
+
+  .gridItem:last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+
+  .more {
+    bottom: calc(var(--space-96) + env(safe-area-inset-bottom));
+  }
+
+  .moreButton {
+    --button-icon-size: 56px;
+  }
+}

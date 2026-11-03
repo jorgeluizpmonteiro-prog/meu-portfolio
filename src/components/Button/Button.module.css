@@ -1,0 +1,111 @@
+/* Button — Figma: Components › Button (Type × State) */
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-x-small) var(--space-xx-small);
+  border-radius: var(--radius-full);
+  isolation: isolate;
+  font-family: var(--typography-heading-font-family);
+  font-size: var(--typography-heading-small-font-size);
+  font-weight: var(--typography-heading-small-font-weight);
+  line-height: var(--typography-heading-small-line-height);
+  letter-spacing: var(--typography-heading-small-letter-spacing);
+  text-align: center;
+  white-space: nowrap;
+  transition:
+    background-color var(--motion-duration-fast) var(--motion-easing-out),
+    color var(--motion-duration-fast) var(--motion-easing-out);
+}
+
+.label {
+  position: relative;
+  padding-inline: var(--space-xx-small);
+}
+
+/* Anel de foco: 2 px, afastado do botão (anel de 206 × 60 sobre 197 × 52) */
+.button:focus-visible {
+  outline: var(--border-width-focus) solid var(--border-focus);
+  outline-offset: var(--space-4);
+}
+
+/* Primary */
+.primary {
+  background-color: var(--background-action-primary);
+  color: var(--text-on-action-primary);
+}
+.primary:hover {
+  background-color: var(--background-action-primary-hover);
+}
+.primary:active {
+  background-color: var(--background-action-primary-pressed);
+}
+
+/* Secondary */
+.secondary {
+  background-color: var(--background-action-secondary);
+  color: var(--text-on-action-secondary);
+}
+.secondary:hover {
+  background-color: var(--background-action-secondary-hover);
+}
+.secondary:active {
+  background-color: var(--background-action-secondary-pressed);
+}
+
+/* Tertiary */
+.tertiary {
+  color: var(--text-primary);
+}
+.tertiary:hover {
+  background-color: var(--background-action-tertiary-hover);
+}
+.tertiary:active {
+  background-color: var(--background-action-tertiary-pressed);
+}
+
+/* Danger */
+.danger {
+  background-color: var(--background-action-danger);
+  color: var(--text-on-action-danger);
+}
+.danger:hover {
+  background-color: var(--background-action-danger-hover);
+}
+.danger:active {
+  background-color: var(--background-action-danger-pressed);
+}
+
+/* Text — usado sobre a pílula do menu (background/inverse) */
+.text {
+  color: var(--text-on-inverse);
+}
+/* Hover: camada background/backdrop com opacity/hover por cima do fundo */
+.text::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background-color: var(--background-backdrop);
+  opacity: 0;
+  transition: opacity var(--motion-duration-fast) var(--motion-easing-out);
+}
+.text:hover::before {
+  opacity: var(--opacity-hover);
+}
+.text:active {
+  background-color: var(--background-action-text-pressed);
+}
+.text:active::before {
+  opacity: 0;
+}
+
+/*
+ * D-05: no Figma, Text · Focus troca o rótulo para text/primary, que fica invisível
+ * sobre a pílula do menu. Aqui o rótulo mantém text/on-inverse no foco.
+ */
+.onInverse.text:focus-visible {
+  color: var(--text-on-inverse);
+}

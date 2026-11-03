@@ -1,0 +1,193 @@
+/* Project card — 384 × 455, padding 24, gap 16, radius/x-large, shadow/overlay */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: var(--space-small);
+  height: 455px;
+  padding: var(--space-medium);
+  overflow: hidden;
+  border-radius: var(--radius-x-large);
+  background-color: var(--background-canvas);
+  box-shadow: var(--shadow-overlay);
+  transition:
+    transform var(--motion-duration-medium) var(--motion-easing-out),
+    box-shadow var(--motion-duration-medium) var(--motion-easing-out);
+}
+
+/* Capa — 336 × 232, radius/small, imagem 379 × 252 recortada */
+.cover {
+  position: relative;
+  flex: 1 0 0;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: var(--radius-small);
+  /* Carregando ou imagem indisponível: área reservada com neutral/100 */
+  background-color: var(--background-neutral-subtle);
+}
+
+.image {
+  position: absolute;
+  top: calc(50% - 11.17px);
+  left: calc(50% - 0.5px);
+  width: calc(100% * 379 / 336);
+  height: calc(100% * 252 / 232);
+  transform: translate(-50%, -50%);
+  transition: transform var(--motion-duration-medium) var(--motion-easing-out);
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badges {
+  position: absolute;
+  top: var(--space-xx-small);
+  left: var(--space-xx-small);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xx-small);
+}
+
+/* Category badge — accent-1/subtle, label/small, shadow/raised */
+.badge {
+  padding: var(--space-xx-small);
+  border-radius: var(--radius-full);
+  background-color: var(--background-accent-1-subtle);
+  box-shadow: var(--shadow-raised);
+  color: var(--text-brand);
+  font-family: var(--typography-label-font-family);
+  font-size: var(--typography-label-small-font-size);
+  font-weight: var(--typography-label-small-font-weight);
+  line-height: var(--typography-label-small-line-height);
+  letter-spacing: var(--typography-label-small-letter-spacing);
+  white-space: nowrap;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xx-small);
+}
+
+.title {
+  color: var(--text-primary);
+  font-family: var(--typography-heading-font-family);
+  font-size: var(--typography-heading-large-font-size);
+  font-weight: var(--typography-heading-large-font-weight);
+  line-height: var(--typography-heading-large-line-height);
+  letter-spacing: var(--typography-heading-large-letter-spacing);
+}
+
+.description {
+  color: var(--text-secondary);
+  font-size: var(--typography-body-medium-font-size);
+  font-weight: var(--typography-body-medium-font-weight);
+  line-height: var(--typography-body-medium-line-height);
+  letter-spacing: var(--typography-body-medium-letter-spacing);
+}
+
+/* Project action — Button icon 47 px (ícone 25) + “Ver projeto” */
+.action {
+  display: flex;
+  align-items: center;
+  gap: var(--space-small);
+  min-height: 47px;
+  font-size: var(--typography-body-medium-font-size);
+  font-weight: var(--typography-body-medium-font-weight);
+  line-height: var(--typography-body-medium-line-height);
+  letter-spacing: var(--typography-body-medium-letter-spacing);
+}
+
+/* O link cobre o card inteiro */
+.action::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.action:focus-visible {
+  outline: none;
+}
+
+.action:focus-visible::after {
+  outline: var(--border-width-focus) solid var(--border-focus);
+  outline-offset: calc(-1 * var(--border-width-focus));
+  border-radius: var(--radius-x-large);
+}
+
+.actionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 46.667px;
+  height: 46.667px;
+  padding: 10.667px;
+  border-radius: var(--radius-full);
+  background-color: var(--background-action-primary);
+  color: var(--icon-on-action-primary);
+  transition: background-color var(--motion-duration-fast) var(--motion-easing-out);
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+}
+
+.actionLabel {
+  color: var(--text-link);
+  white-space: nowrap;
+}
+
+.soon {
+  color: var(--text-tertiary);
+}
+
+/* MOT-06 — hover e foco: card sobe 4 px, capa amplia 1,04, sombra mais forte */
+@media (hover: hover) {
+  .interactive:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      var(--shadow-overlay),
+      0 20px 40px 0 var(--shadow-overlay-color);
+  }
+  .interactive:hover .image {
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+  .interactive:hover .actionIcon {
+    background-color: var(--background-action-primary-hover);
+  }
+}
+
+.interactive:has(.action:focus-visible) {
+  transform: translateY(-4px);
+}
+
+.interactive:has(.action:focus-visible) .image {
+  transform: translate(-50%, -50%) scale(1.04);
+}
+
+.interactive:active .actionIcon {
+  background-color: var(--background-action-primary-pressed);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .image {
+    transition: box-shadow var(--motion-duration-fast) linear;
+  }
+  .interactive:hover,
+  .interactive:has(.action:focus-visible) {
+    transform: none;
+  }
+  .interactive:hover .image,
+  .interactive:has(.action:focus-visible) .image {
+    transform: translate(-50%, -50%);
+  }
+}

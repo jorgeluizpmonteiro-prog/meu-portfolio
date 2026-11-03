@@ -1,0 +1,45 @@
+/* Layout de P.03: título em y = 223, texto logo abaixo */
+.main {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-small);
+  width: min(var(--layout-container), 100% - 2 * var(--layout-gutter));
+  margin-inline: auto;
+  padding-top: 91px;
+  padding-bottom: var(--space-96);
+  text-align: center;
+}
+
+.title {
+  max-width: 848px;
+  color: var(--text-primary);
+  font-family: var(--typography-display-font-family);
+  font-size: var(--hero-title-font-size);
+  font-weight: var(--typography-display-large-font-weight);
+  line-height: var(--hero-title-line-height);
+  letter-spacing: var(--hero-title-letter-spacing);
+  text-wrap: balance;
+}
+
+.text {
+  max-width: 704px;
+  color: var(--text-secondary);
+  font-size: var(--typography-body-large-font-size);
+  line-height: var(--typography-body-large-line-height);
+  text-wrap: pretty;
+}
+
+.button {
+  margin-top: var(--space-medium);
+  padding-inline: var(--space-medium);
+}
+
+@media (max-width: 767px) {
+  .main {
+    padding-top: var(--space-40);
+    padding-bottom: var(--space-128);
+  }
+}

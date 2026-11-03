@@ -1,0 +1,36 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+/* Primeiro elemento focável, visível só ao receber foco */
+.skipLink {
+  position: absolute;
+  top: var(--space-small);
+  left: var(--space-small);
+  z-index: 100;
+  padding: var(--space-x-small) var(--space-medium);
+  border-radius: var(--radius-full);
+  background-color: var(--background-inverse);
+  color: var(--text-on-inverse);
+  font-family: var(--typography-label-font-family);
+  font-size: var(--typography-label-large-font-size);
+  font-weight: var(--typography-label-large-font-weight);
+  line-height: var(--typography-label-large-line-height);
+  transform: translateY(-200%);
+}
+
+.skipLink:focus-visible {
+  transform: none;
+}
+
+/* A barra à direita substitui a barra de rolagem nativa a partir de 1024 px */
+@media (min-width: 1024px) {
+  :global(html) {
+    scrollbar-width: none;
+  }
+  :global(html::-webkit-scrollbar) {
+    display: none;
+  }
+}

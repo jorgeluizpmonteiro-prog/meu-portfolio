@@ -1,0 +1,47 @@
+.nav {
+  flex: none;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xx-small);
+  padding: var(--space-x-small);
+  border-radius: 100px;
+  background-color: var(--background-inverse);
+}
+
+.listItem {
+  display: flex;
+}
+
+/* No Figma cada item tem 197 px (rótulo de 181 + padding 8) */
+.item {
+  min-width: 197px;
+}
+
+@media (max-width: 1199px) {
+  .item {
+    min-width: 0;
+  }
+}
+
+/* Menu compacto (< 768 px): barra fixa na base da tela (D-29) */
+@media (max-width: 767px) {
+  .list {
+    gap: var(--space-4);
+    padding: var(--space-xx-small);
+    box-shadow: var(--shadow-overlay);
+  }
+
+  .listItem {
+    flex: 1 1 auto;
+  }
+
+  .item {
+    width: 100%;
+    padding-inline: var(--space-4);
+    font-size: var(--font-size-14);
+    line-height: var(--line-height-20);
+  }
+}

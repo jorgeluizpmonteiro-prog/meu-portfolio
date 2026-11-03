@@ -1,0 +1,62 @@
+/* Posição no Figma (frame de 1440): x = −436, y = −427 → centro horizontal da página, 387 px acima do topo */
+.background {
+  position: absolute;
+  top: -427px;
+  left: 50%;
+  z-index: 0;
+  width: max(2318px, 161vw);
+  height: 774px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  /*
+   * O Figma interpola cor e transparência separadamente (azul → #efefef enquanto some);
+   * as paradas intermediárias reproduzem isso.
+   */
+  --bg-from: var(--background-accent-1-strong);
+  --bg-to: #efefef;
+  background-image:
+    radial-gradient(
+      closest-side,
+      var(--bg-from) 0%,
+      color-mix(in srgb, color-mix(in srgb, var(--bg-from) 80%, var(--bg-to)) 80%, transparent) 20%,
+      color-mix(in srgb, color-mix(in srgb, var(--bg-from) 60%, var(--bg-to)) 60%, transparent) 40%,
+      color-mix(in srgb, color-mix(in srgb, var(--bg-from) 40%, var(--bg-to)) 40%, transparent) 60%,
+      color-mix(in srgb, color-mix(in srgb, var(--bg-from) 20%, var(--bg-to)) 20%, transparent) 80%,
+      transparent 100%
+    );
+  animation: background-enter var(--motion-duration-hero) var(--motion-easing-out) backwards;
+}
+
+/* Ruído branco monocromático (efeito Noise do Figma), só dentro da elipse */
+.background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -2.2 1.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+  -webkit-mask-image: radial-gradient(closest-side, #000, transparent);
+  mask-image: radial-gradient(closest-side, #000, transparent);
+}
+
+/* Tema escuro (sem tela desenhada, D-01): o gradiente se dissolve no fundo da página e o ruído fica mais suave */
+:global(:root[data-theme='dark']) .background {
+  --bg-to: var(--background-canvas);
+}
+
+:global(:root[data-theme='dark']) .background::after {
+  opacity: 0.5;
+}
+
+/* MOT-01 — fade do fundo no carregamento */
+@keyframes background-enter {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .background {
+    animation: none;
+  }
+}
