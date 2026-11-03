@@ -55,7 +55,8 @@ As apresentações dos projetos (cases) usam as cores e fontes próprias de cada
 Cada case é uma página própria em `src/pages/cases/<slug>/` e é registrada em
 `src/pages/cases/index.ts`. As apresentações do Figma têm 1440 px de largura e são composições livres;
 cada seção vira um palco (`Stage`) em que os elementos usam as coordenadas do Figma numa unidade que
-escala com a tela. No celular, as seções de texto empilham em uma coluna e os diagramas rolam na horizontal.
+escala com a tela. No celular a composição é a mesma do desktop, só que reduzida.
+Nas páginas de case, um botão fixo no centro da base da tela leva de volta ao topo.
 
 Textos, títulos, cards, diagramas e paletas são código. Ficam como imagem só os assets: mockups,
 telas do app, fotos, ilustrações, ícones e texturas de fundo.

@@ -1,0 +1,39 @@
+/* Button icon de 72 px, centralizado, 48 px acima da base da tela */
+.wrap {
+  position: fixed;
+  left: 50%;
+  bottom: var(--space-48);
+  z-index: 15;
+  transform: translateX(-50%);
+  transition:
+    opacity var(--motion-duration-medium) var(--motion-easing-out),
+    transform var(--motion-duration-medium) var(--motion-easing-out);
+}
+
+.hidden {
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  pointer-events: none;
+}
+
+.wrap .button {
+  --button-icon-size: 72px;
+}
+
+/* No celular fica acima da barra do menu */
+@media (max-width: 767px) {
+  .wrap {
+    bottom: calc(var(--space-96) + env(safe-area-inset-bottom));
+  }
+
+  .wrap .button {
+    --button-icon-size: 56px;
+    padding: var(--space-x-small);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wrap {
+    transition: none;
+  }
+}

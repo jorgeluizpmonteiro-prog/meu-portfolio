@@ -16,6 +16,11 @@
   font-weight: 400;
 }
 
+/* Recebe o foco ao voltar para o topo, sem contorno */
+.page:focus {
+  outline: none;
+}
+
 /* Texto em unidades do palco: --fs (tamanho) e --lh (entrelinha) vêm do Figma */
 .t {
   margin: 0;
@@ -159,7 +164,7 @@
   transform: rotate(-90deg);
 }
 
-/* Diagramas dentro de seções de texto: no celular rolam na horizontal */
+/* Diagramas e blocos com desenho próprio (coordenadas relativas ao bloco) */
 .canvasWrap {
   --du: var(--u);
 }
@@ -443,7 +448,7 @@
   white-space: nowrap;
 }
 
-/* Galerias de telas (no celular rolam na horizontal) */
+/* Galerias de telas */
 .gallery {
   display: block;
 }
@@ -465,194 +470,4 @@
 .footerTitle {
   color: #000000;
   font-weight: 700;
-}
-
-.footer .footerButton {
-  --button-icon-size: calc(72 * var(--u));
-}
-
-@media (max-width: 767px) {
-  .t {
-    font-size: max(calc(var(--fs) * var(--u)), var(--min, 15px));
-    line-height: 1.45;
-  }
-
-  .title {
-    --min: 34px;
-    line-height: 1.15;
-    text-align: center;
-  }
-
-  /* Textos que no desktop ficam sobre a textura: no celular ficam sobre o fundo claro */
-  .onTexture,
-  .meta,
-  .tools {
-    color: var(--ink);
-  }
-
-  .chipLight {
-    border-color: var(--blue);
-    color: var(--blue);
-  }
-
-  .chip {
-    align-self: flex-start;
-    padding: 6px 16px;
-    font-size: 16px;
-    line-height: 1.5;
-    border-width: 1.5px;
-  }
-
-  .topoHero {
-    order: -1;
-    width: calc(100% + 32px) !important;
-    max-width: none;
-    margin: -48px -16px 0;
-    aspect-ratio: 1440 / 945;
-    object-fit: cover;
-    object-position: center top;
-  }
-
-  .tools img {
-    width: 32px;
-    height: 32px;
-  }
-
-  .metaValues,
-  .tools {
-    gap: 16px;
-  }
-
-  .rotLabel {
-    justify-content: flex-start;
-    margin-top: 8px;
-  }
-
-  .rotLabel > span {
-    transform: none;
-  }
-
-  .phaseList {
-    margin-top: -16px;
-    text-align: left;
-  }
-
-  .vertical {
-    justify-content: flex-start;
-  }
-
-  .vertical > span {
-    transform: none;
-    font-size: 40px;
-    line-height: 1.1;
-  }
-
-  .canvasWrap {
-    --du: 0.8px;
-    overflow-x: auto;
-    margin-inline: -16px;
-    padding-inline: 16px;
-  }
-
-  .csdHeading {
-    font-size: 26px;
-  }
-
-  .csdNotes {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 12px;
-    margin-top: 16px;
-  }
-
-  .note {
-    height: auto;
-    min-height: 150px;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 13px;
-    box-shadow: 0 1px 14px rgb(0 0 0 / 0.25);
-  }
-
-  .persona {
-    gap: 16px;
-  }
-
-  .persona > img {
-    width: 56px;
-    height: 56px;
-  }
-
-  .personaText {
-    flex: 1;
-    width: auto;
-    gap: 4px;
-  }
-
-  .personaText > h3 {
-    min-height: 0 !important;
-  }
-
-  .typeCanvas {
-    --du: 1px;
-  }
-
-  .iconGrid {
-    --u: 1px;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    column-gap: 10px;
-    row-gap: 10px;
-  }
-
-  .iconTile {
-    height: 72px;
-  }
-
-  .swatches {
-    --u: 0.8px;
-    flex-wrap: wrap;
-    row-gap: 12px;
-  }
-
-  .palette > h3 {
-    font-size: 22px;
-  }
-
-  .gallery {
-    overflow-x: auto;
-    margin-inline: -16px;
-  }
-
-  .gallery > img {
-    width: 1100px;
-    max-width: none;
-  }
-
-  .stat {
-    font-size: 72px !important;
-    line-height: 1 !important;
-  }
-
-  /* Rodapé: textura cobrindo o bloco inteiro */
-  .footer {
-    padding: 120px 16px 72px !important;
-    text-align: center;
-    align-items: center;
-  }
-
-  .footer > .footerBg {
-    position: absolute !important;
-    inset: 0;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover;
-    transform: none;
-  }
-
-  .footerTitle {
-    --min: 32px;
-  }
-
-  .footer .footerButton {
-    --button-icon-size: 56px;
-  }
 }

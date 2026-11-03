@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { projects } from '../../data/projects'
+import { BackToTop } from '../BackToTop/BackToTop'
 import { DecorativeBackground } from '../DecorativeBackground/DecorativeBackground'
 import { Header } from '../Header/Header'
 import { ScrollIndicator } from '../ScrollIndicator/ScrollIndicator'
@@ -35,6 +36,7 @@ export function Layout() {
         </>
       )}
       <Outlet />
+      {caseProject && <BackToTop />}
       <ScrollIndicator />
     </div>
   )

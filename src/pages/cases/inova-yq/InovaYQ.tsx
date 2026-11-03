@@ -1,10 +1,8 @@
-import { useRef, type CSSProperties, type ElementType, type ReactNode } from 'react'
+import type { CSSProperties, ElementType, ReactNode } from 'react'
 import '@fontsource/inter/500.css'
 import '../../../styles/satoshi.css'
-import { ButtonIcon } from '../../../components/ButtonIcon/ButtonIcon'
 import { Abs, AbsImg, Stage } from '../Stage'
 import { u } from '../units'
-import { useCenterScroll } from '../useCenterScroll'
 import { IA_BOX_HEIGHT, iaBoxes, iaLines } from './arquitetura'
 import { flowBoxes, flowCircles, flowDiamonds, flowLines, flowTexts } from './fluxo'
 import s from './InovaYQ.module.css'
@@ -65,12 +63,10 @@ type TProps = {
   center?: boolean
   as?: ElementType
   className?: string
-  /** Tamanho mínimo no celular (px) */
-  min?: number
   children: ReactNode
 }
 
-function T({ x, y, w, h, fs, lh, weight, color, center, as = 'p', className, min, children }: TProps) {
+function T({ x, y, w, h, fs, lh, weight, color, center, as = 'p', className, children }: TProps) {
   return (
     <Abs
       as={as}
@@ -79,7 +75,7 @@ function T({ x, y, w, h, fs, lh, weight, color, center, as = 'p', className, min
       w={w}
       h={h}
       className={cx(s.t, center && s.center, className)}
-      style={font(fs, lh, { fontWeight: weight, color, ...(min ? { '--min': `${min}px` } : {}) } as CSSProperties)}
+      style={font(fs, lh, { fontWeight: weight, color })}
     >
       {children}
     </Abs>
@@ -103,12 +99,12 @@ function Chip({ x, y, w, light, children }: { x: number; y: number; w: number; l
   )
 }
 
-const Glow = ({ x, y }: { x: number; y: number }) => <Abs desktopOnly x={x} y={y} w={859} h={859} className={s.glow} />
+const Glow = ({ x, y }: { x: number; y: number }) => <Abs x={x} y={y} w={859} h={859} className={s.glow} />
 const Glass = ({ x, y, size }: { x: number; y: number; size: number }) => (
-  <Abs desktopOnly x={x} y={y} w={size} h={size} className={s.glass} />
+  <Abs x={x} y={y} w={size} h={size} className={s.glass} />
 )
 const Bubble = ({ x, y, size }: { x: number; y: number; size: number }) => (
-  <Abs desktopOnly x={x} y={y} w={size} h={size} className={s.bubble} />
+  <Abs x={x} y={y} w={size} h={size} className={s.bubble} />
 )
 
 /** Linha pontilhada azul com bolinha numa das pontas (Necessidades e Funcionalidades) */
@@ -120,7 +116,7 @@ function DottedLine({ x1, y1, x2, y2, dot }: { x1: number; y1: number; x2: numbe
   const h = Math.abs(y2 - y1) + pad * 2
   const d = dot === 'start' ? [x1, y1] : dot === 'end' ? [x2, y2] : null
   return (
-    <Abs as="svg" desktopOnly x={minX} y={minY} w={w} h={h} className={s.dots} aria-hidden="true" viewBox={`${minX} ${minY} ${w} ${h}`}>
+    <Abs as="svg" x={minX} y={minY} w={w} h={h} className={s.dots} aria-hidden="true" viewBox={`${minX} ${minY} ${w} ${h}`}>
       <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#004af7" strokeWidth={5.25} strokeDasharray="4.5 4.5" />
       {d && <circle cx={d[0]} cy={d[1]} r={14} fill="#004af7" />}
     </Abs>
@@ -220,10 +216,8 @@ const PALETTES = [
 
 /** P.02 — Case Inova+YQ. Figma: node 141:56878. */
 export default function InovaYQ() {
-  const ref = useRef<HTMLElement>(null)
-  useCenterScroll(ref)
   return (
-    <main ref={ref} id="conteudo" className={s.page}>
+    <main id="conteudo" tabIndex={-1} className={s.page}>
       <h1 className="visually-hidden">Inova+YQ</h1>
       <Topo />
       <DesignProcess />
@@ -244,7 +238,7 @@ export default function InovaYQ() {
 function Topo() {
   return (
     <Stage h={2250} aria-label="Apresentação">
-      <AbsImg bleed eager x={0} y={0} w={1440} h={1632} src={topoFundo} className={s.topoHero}
+      <AbsImg bleed eager x={0} y={0} w={1440} h={1632} src={topoFundo}
         alt="Telas do Inova+YQ em um notebook e um celular" />
       <Glow x={1156} y={1762} />
       <Abs x={79} y={999} w={260} className={cx(s.t, s.meta)} style={font(20.07, 36.1)}>
@@ -284,7 +278,7 @@ function DesignProcess() {
       <SectionTitle y={9}>
         <span id="inova-design-process">Design Process</span>
       </SectionTitle>
-      <Abs as="svg" desktopOnly x={74} y={2382 - Y} w={1292} h={623} viewBox="74 2382 1292 623" aria-hidden="true">
+      <Abs as="svg" x={74} y={2382 - Y} w={1292} h={623} viewBox="74 2382 1292 623" aria-hidden="true">
         {[
           [74, 389.75], [720, 404.25], [720, 1035.75], [1366, 1050.25],
         ].map(([apex, base]) => (
@@ -293,7 +287,7 @@ function DesignProcess() {
         ))}
       </Abs>
       {DESIGN_PROCESS.map((p) => [
-        <T key={p.label} as="h3" x={p.box[0]} y={p.box[1] - Y} w={p.box[2]} h={p.box[3]} fs={20.07} lh={36.1} className={s.rotLabel} min={20}>
+        <T key={p.label} as="h3" x={p.box[0]} y={p.box[1] - Y} w={p.box[2]} h={p.box[3]} fs={20.07} lh={36.1} className={s.rotLabel}>
           <span>{p.label}</span>
         </T>,
         <Abs key={p.label + '-lista'} as="ul" x={p.list[0]} y={p.list[1] - Y} w={p.list[2]} className={cx(s.t, s.phaseList)} style={font(20.07, 36.1)}>
@@ -333,7 +327,7 @@ function Imersao() {
         Identificamos um cenário <strong>crítico na comunicação</strong> entre gestão, professores e mais de 500 famílias. O
         fluxo informacional estava fragmentado entre canais desconexos (Google Drive, WhatsApp e Canvas).
       </T>
-      <Abs x={dx} y={dy - Y} className={s.canvasWrap} data-center-scroll="" role="img"
+      <Abs x={dx} y={dy - Y} className={s.canvasWrap} role="img"
         aria-label="Diagrama dos fluxos de comunicação: no Fluxo 01, o plano de ensino circula pelo Drive entre a secretaria e as professoras A e B; no Fluxo 02, a agenda vai da secretaria para os pais pelo WhatsApp e volta como feedback presencial.">
         <div className={s.canvas} style={{ '--cw': 694, '--ch': 387 } as CSSProperties} aria-hidden="true">
           <img src={fluxoSetas1} alt="" style={{ left: `calc(${692.4 - dx} * var(--du))`, top: `calc(${3195.75 - dy} * var(--du))`, width: `calc(331 * var(--du))`, height: `calc(314 * var(--du))` }} />
@@ -432,9 +426,9 @@ function Necessidades() {
       <AbsImg x={65} y={6129 - Y} w={591} h={394} src={telaMensagensAlerta} alt="Tela de mensagens com alerta de emergência para os responsáveis" />
       {persona(PERSONAS[4])}
       {persona(PERSONAS[5])}
-      <AbsImg desktopOnly x={960} y={6528 - Y} w={190} h={188} src={iconeSom} alt="" />
+      <AbsImg x={960} y={6528 - Y} w={190} h={188} src={iconeSom} alt="" />
       <AbsImg x={734} y={6594 - Y} w={706} h={682} src={celularNaMao} alt="Mão segurando um celular com o app do Inova+YQ para responsáveis" />
-      <AbsImg desktopOnly x={568} y={7277 - Y} w={872} h={69} src={barraTextura} alt="" />
+      <AbsImg x={568} y={7277 - Y} w={872} h={69} src={barraTextura} alt="" />
     </Stage>
   )
 }
@@ -449,7 +443,7 @@ function Arquitetura() {
           <span id="inova-ia">Arquitetura da Informação</span>
         </SectionTitle>
       </Stage>
-      <Stage h={740} mobile="scroll" role="img"
+      <Stage h={740} role="img"
         aria-label="Mapa do site: a Home leva a Agenda Escolar, Plano de Aula, Conteúdo, Avaliações, Arquivos Complementares, Configurações, Caixa de Entrada, Cronograma e Buscar; o Plano de Aula se desdobra no preenchimento do plano e seus campos.">
         <Glass x={-194} y={8104 - Y} size={575} />
         <Bubble x={-89} y={8529 - Y} size={191} />
@@ -486,7 +480,7 @@ function Fluxo() {
           <span id="inova-fluxo">Fluxo do Usuário</span>
         </SectionTitle>
       </Stage>
-      <Stage h={1010} mobile="scroll" role="img"
+      <Stage h={1010} role="img"
         aria-label="Fluxo do usuário: do acesso e login até a página inicial, com os caminhos de criação do plano de aula, atualização de habilidades das turmas e saída do sistema.">
         <Glow x={1027} y={8870 - Y} />
         <Abs as="svg" x={0} y={0} w={1440} h={1010} viewBox={`0 ${Y} 1440 1010`} aria-hidden="true">
@@ -533,7 +527,7 @@ function UIKit() {
       <Chip x={78.8} y={9729 - Y} w={307.5}>
         Escalas Tipográficas
       </Chip>
-      <Abs x={99} y={9816 - Y} className={cx(s.canvasWrap, s.typeCanvas)}>
+      <Abs x={99} y={9816 - Y} className={s.canvasWrap}>
         <div className={cx(s.canvas, s.typeScale)} style={{ '--cw': 260, '--ch': 392 } as CSSProperties}>
           {TYPE_SCALE.map(([x, y, text, st]) => {
             const [fs, lh, wt, color] = TYPE_STYLES[st]
@@ -602,7 +596,7 @@ function Resultados() {
   const Y = 12100
   return (
     <Stage h={1497} aria-labelledby="inova-resultados">
-      <Abs x={0} y={12130 - Y} w={1440} className={s.gallery} data-center-scroll="">
+      <Abs x={0} y={12130 - Y} w={1440} className={s.gallery}>
         <img src={telasCelular} alt="Telas do app para responsáveis: página inicial, mensagens, perfil do aluno e agenda escolar" width={1440} height={1357} loading="lazy" />
       </Abs>
       <SectionTitle y={13092 - Y} left={{ x: 78, w: 338 }}>
@@ -630,17 +624,14 @@ function Resultados() {
 function Rodape() {
   const Y = 13597
   return (
-    <Stage h={717} className={s.footer} aria-labelledby="inova-fim">
-      <AbsImg bleed x={0} y={0} w={1440} h={717} src={rodapeFundo} alt="" className={s.footerBg} />
+    <Stage h={717} aria-labelledby="inova-fim">
+      <AbsImg bleed x={0} y={0} w={1440} h={717} src={rodapeFundo} alt="" />
       <T as="h2" x={391} y={13956 - Y} w={659} fs={66.77} lh={45} center className={s.footerTitle}>
         <span id="inova-fim">Gostou do processo?</span>
       </T>
       <T x={391} y={14073 - Y} w={659} fs={30} lh={45} center>
         Obrigado por ter visto até aqui, espero que tenha gostado do projeto!
       </T>
-      <Abs x={684} y={14194 - Y} w={72} h={72}>
-        <ButtonIcon icon="keyboard-arrow-down" label="Ver outros projetos" to="/" className={s.footerButton} />
-      </Abs>
     </Stage>
   )
 }
