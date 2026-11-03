@@ -14,6 +14,7 @@
    */
   --bg-from: var(--background-accent-1-strong);
   --bg-to: #efefef;
+  --noise-color: var(--neutral-0);
   background-image:
     radial-gradient(
       closest-side,
@@ -27,25 +28,39 @@
   animation: background-enter var(--motion-duration-hero) var(--motion-easing-out) backwards;
 }
 
-/* Ruído branco monocromático (efeito Noise do Figma), só dentro da elipse */
+/*
+ * Ruído monocromático (efeito Noise do Figma), só dentro da elipse.
+ * A textura vira máscara sobre uma cor sólida, para trocar a cor do ruído por tema.
+ */
 .background::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -2.2 1.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 240px 240px;
-  -webkit-mask-image: radial-gradient(closest-side, #000, transparent);
-  mask-image: radial-gradient(closest-side, #000, transparent);
+  background-color: var(--noise-color);
+  -webkit-mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -2.2 1.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(closest-side, #000, transparent);
+  -webkit-mask-size:
+    240px 240px,
+    100% 100%;
+  -webkit-mask-composite: source-in;
+  mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 -2.2 1.6'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(closest-side, #000, transparent);
+  mask-size:
+    240px 240px,
+    100% 100%;
+  mask-composite: intersect;
 }
 
-/* Tema escuro (sem tela desenhada, D-01): o gradiente se dissolve no fundo da página e o ruído fica mais suave */
+/*
+ * Tema escuro — Figma: Página inicial (dark), node 152:35068.
+ * Gradiente background/accent-1/subtle → transparente; ruído na cor do fundo (neutral/950).
+ */
 :global(:root[data-theme='dark']) .background {
-  --bg-to: var(--background-canvas);
-}
-
-:global(:root[data-theme='dark']) .background::after {
-  opacity: 0.5;
+  --bg-from: var(--background-accent-1-subtle);
+  --bg-to: var(--background-accent-1-subtle);
+  --noise-color: var(--neutral-950);
 }
 
 /* MOT-01 — fade do fundo no carregamento */

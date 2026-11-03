@@ -25,6 +25,10 @@
   touch-action: none;
 }
 
+:global(:root[data-theme='dark']) .thumb {
+  background-color: var(--background-accent-1-strong);
+}
+
 .thumb:active {
   cursor: grabbing;
 }
