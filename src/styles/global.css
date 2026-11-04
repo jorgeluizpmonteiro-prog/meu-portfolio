@@ -124,3 +124,10 @@ html.theme-transition *::after {
     transition: none !important;
   }
 }
+
+/* < 1200 px o menu fica fixo na base da tela: reserva espaço para ele no fim da página */
+@media (max-width: 1199px) {
+  body {
+    padding-bottom: 104px;
+  }
+}

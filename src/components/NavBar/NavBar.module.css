@@ -24,6 +24,10 @@
   .item {
     min-width: 0;
   }
+
+  .list {
+    box-shadow: var(--shadow-overlay);
+  }
 }
 
 /* Menu compacto (< 768 px): barra fixa na base da tela (D-29) */

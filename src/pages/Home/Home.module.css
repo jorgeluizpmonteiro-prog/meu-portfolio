@@ -129,6 +129,12 @@
   }
 }
 
+@media (max-width: 1199px) {
+  .more {
+    bottom: calc(var(--space-96) + 16px + env(safe-area-inset-bottom));
+  }
+}
+
 /* 768–1023 px: 2 colunas; um card sozinho na última linha ocupa a linha */
 @media (max-width: 1023px) {
   .grid {

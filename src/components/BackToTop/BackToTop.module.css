@@ -20,7 +20,13 @@
   --button-icon-size: 72px;
 }
 
-/* No celular fica acima da barra do menu */
+/* Abaixo de 1200 px fica acima da barra do menu */
+@media (max-width: 1199px) {
+  .wrap {
+    bottom: calc(var(--space-96) + 16px + env(safe-area-inset-bottom));
+  }
+}
+
 @media (max-width: 767px) {
   .wrap {
     bottom: calc(var(--space-96) + env(safe-area-inset-bottom));
