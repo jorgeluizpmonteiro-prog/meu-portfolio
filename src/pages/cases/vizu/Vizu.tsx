@@ -279,7 +279,13 @@ export default function Vizu() {
   return (
     <main id="conteudo" tabIndex={-1} className={s.page}>
       <h1 className="visually-hidden">Vizu</h1>
-      <Stage h={20655} as="div">
+      {/* Telas maiores que 1440 px: o fundo continua até a borda da tela */}
+      <div className={s.sides} aria-hidden="true">
+        <div className={s.sideGlass} style={{ top: 818, height: 1100 }} />
+        <div className={s.sideDark} />
+        <div className={s.sideGlass} style={{ top: 20066, bottom: 0 }} />
+      </div>
+      <Stage h={20655} as="div" className={s.stage}>
         {/* Capa: texturas metálicas, vidro, fundo escuro do corpo e brilhos */}
         <div aria-hidden="true">
           <AbsImg x={914} y={397} w={527} h={687} src={texturaDireita} alt="" eager />

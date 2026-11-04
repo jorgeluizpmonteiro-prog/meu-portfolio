@@ -85,8 +85,12 @@
   max-height: 100%;
 }
 
+/* Pílula escura como a do menu: o ano fica legível sobre qualquer fundo do case */
 .year {
-  color: var(--text-primary);
+  padding: var(--space-xx-small) var(--space-small);
+  border-radius: 100px;
+  background-color: var(--background-inverse);
+  color: var(--text-on-inverse);
   font-family: var(--typography-heading-font-family);
   font-size: var(--typography-heading-medium-font-size);
   font-weight: var(--typography-heading-medium-font-weight);

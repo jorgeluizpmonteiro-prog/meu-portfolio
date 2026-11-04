@@ -12,6 +12,45 @@
   font-weight: 400;
 }
 
+/* —— Telas maiores que 1440 px ——
+ * A apresentação fica no tamanho do Figma, centralizada. As bordas somem suavemente (o que passa
+ * de 1440 no Figma não aparece) e o fundo continua dos lados: claro no topo e no rodapé, escuro no corpo. */
+.sides {
+  display: none;
+}
+
+@media (min-width: 1441px) {
+  .sides {
+    display: block;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .stage {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  }
+}
+
+/* Mesma cor do vidro sobre o fundo claro */
+.sideGlass {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: rgb(217 217 217 / 0.2);
+}
+
+/* Corpo escuro: começa e termina onde as faixas de luz cruzam a borda do palco */
+.sideDark {
+  position: absolute;
+  top: 1860px;
+  left: 0;
+  right: 0;
+  height: calc(19660px - 1860px);
+  background: linear-gradient(to bottom, rgb(15 10 38 / 0), #0f0a26 40px, #0f0a26 calc(100% - 40px), rgb(15 10 38 / 0));
+}
+
 /* Recebe o foco ao voltar para o topo, sem contorno */
 .page:focus {
   outline: none;
