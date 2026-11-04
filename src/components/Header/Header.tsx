@@ -45,7 +45,7 @@ function ProjectTypeHeader({ project }: { project: ProjectHeader }) {
       <div className={styles.profile}>
         <ButtonIcon icon="keyboard-arrow-left" label="Voltar para projetos" to="/" />
         <span className={styles.logoSlot}>
-          <img src={project.logo} alt={project.title} width={150} height={36} />
+          <img src={project.logo} alt={project.title} />
         </span>
       </div>
 

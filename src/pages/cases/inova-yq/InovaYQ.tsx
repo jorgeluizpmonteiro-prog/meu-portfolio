@@ -1,8 +1,8 @@
-import type { CSSProperties, ElementType, ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import '@fontsource/inter/500.css'
 import '../../../styles/satoshi.css'
-import { Abs, AbsImg, Stage } from '../Stage'
-import { u } from '../units'
+import { Abs, AbsImg, Stage, T } from '../Stage'
+import { font, u } from '../units'
 import { IA_BOX_HEIGHT, iaBoxes, iaLines } from './arquitetura'
 import { flowBoxes, flowCircles, flowDiamonds, flowLines, flowTexts } from './fluxo'
 import s from './InovaYQ.module.css'
@@ -46,41 +46,6 @@ const uiIcons = import.meta.glob<string>('../../../assets/cases/inova-yq/icones/
 const uiIcon = (slug: string) => uiIcons[`../../../assets/cases/inova-yq/icones/${slug}.webp`]
 
 const cx = (...c: (string | false | undefined)[]) => c.filter(Boolean).join(' ')
-
-/** Estilo de texto do Figma: tamanho e entrelinha em px (escalam com o palco). */
-const font = (fs: number, lh: number, extra?: CSSProperties) =>
-  ({ '--fs': fs, '--lh': lh / fs, ...extra }) as CSSProperties
-
-type TProps = {
-  x: number
-  y: number
-  w?: number
-  h?: number
-  fs: number
-  lh: number
-  weight?: number
-  color?: string
-  center?: boolean
-  as?: ElementType
-  className?: string
-  children: ReactNode
-}
-
-function T({ x, y, w, h, fs, lh, weight, color, center, as = 'p', className, children }: TProps) {
-  return (
-    <Abs
-      as={as}
-      x={x}
-      y={y}
-      w={w}
-      h={h}
-      className={cx(s.t, center && s.center, className)}
-      style={font(fs, lh, { fontWeight: weight, color })}
-    >
-      {children}
-    </Abs>
-  )
-}
 
 /** Título de seção: Bold 66,77/120,2, azul, centralizado na página */
 function SectionTitle({ y, children, left }: { y: number; children: ReactNode; left?: { x: number; w: number } }) {

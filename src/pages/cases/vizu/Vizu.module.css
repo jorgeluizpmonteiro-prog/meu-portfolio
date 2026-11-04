@@ -1,0 +1,316 @@
+/*
+ * Case Vizu — Figma: “Página com todos os projetos” › Projeto / Vizu — Estudo de caso (node 141:32033).
+ * Cores e fontes da própria apresentação (não usam os tokens do portfólio).
+ */
+.page {
+  container-type: inline-size;
+  position: relative;
+  overflow: hidden;
+  background-color: #f1effc;
+  color: #222222;
+  font-family: 'Satoshi', system-ui, sans-serif;
+  font-weight: 400;
+}
+
+/* Recebe o foco ao voltar para o topo, sem contorno */
+.page:focus {
+  outline: none;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* —— Decoração —— */
+.flipY {
+  transform: scaleY(-1);
+}
+
+/* Retângulos de vidro (“Fundo / Introdução” e “Fundo / Rodapé”) */
+.glass {
+  background-color: rgb(217 217 217 / 0.2);
+  -webkit-backdrop-filter: blur(calc(13.4 * var(--u)));
+  backdrop-filter: blur(calc(13.4 * var(--u)));
+}
+
+/* Círculo #1a1047 com desfoque de 525: vira um brilho radial suave */
+.darkGlow {
+  background: radial-gradient(
+    closest-side,
+    rgb(26 16 71 / 0.34),
+    rgb(26 16 71 / 0.3) 25%,
+    rgb(26 16 71 / 0.17) 50%,
+    rgb(26 16 71 / 0.05) 75%,
+    rgb(26 16 71 / 0)
+  );
+  pointer-events: none;
+}
+
+.lightEllipse {
+  transform-origin: 0 0;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--c), transparent);
+  pointer-events: none;
+}
+
+/* A mão do início fica dentro do círculo da composição */
+.introHand {
+  clip-path: ellipse(74.19% 84.14% at 49.89% 21.06%);
+}
+
+/* Degradê escuro sobre a base da mão da landing page */
+.handFade {
+  background: linear-gradient(to bottom, rgb(15 10 38 / 0), #0f0a26);
+  pointer-events: none;
+}
+
+.rule {
+  background-color: #a39aed;
+}
+
+/* —— Títulos com degradê —— */
+.title {
+  white-space: nowrap;
+  font-weight: 700;
+  background-image: linear-gradient(90deg, #1f114b, #f1effc 35%, #f1effc 65%, #1f114b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.fadeStart {
+  background-image: linear-gradient(90deg, #1f114b, #f1effc 48%);
+}
+
+.fadeEnd {
+  background-image: linear-gradient(90deg, #f1effc 52%, #1f114b);
+}
+
+/* —— Cartões de vidro (processo e requisitos) —— */
+.glassCard {
+  border-radius: calc(24 * var(--u));
+  background: linear-gradient(90deg, rgb(35 21 96 / 0.3), rgb(95 42 142 / 0.3));
+  box-shadow: inset 0 0 0 calc(1 * var(--u)) rgb(241 239 252 / 0.14);
+  -webkit-backdrop-filter: blur(calc(21.8 * var(--u)));
+  backdrop-filter: blur(calc(21.8 * var(--u)));
+}
+
+.processCard {
+  display: flex;
+  flex-direction: column;
+  gap: calc(12 * var(--u));
+  padding: calc(12 * var(--u)) calc(24 * var(--u));
+}
+
+.processTitle,
+.processList li {
+  height: calc(72 * var(--u));
+  margin: 0;
+  line-height: calc(54 * var(--u));
+  white-space: nowrap;
+}
+
+.processTitle {
+  color: #f1effc;
+  font-size: calc(36 * var(--u));
+  font-weight: 700;
+}
+
+.processList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #a39aed;
+  font-size: calc(30 * var(--u));
+}
+
+.reqCard {
+  display: flex;
+  flex-direction: column;
+  gap: calc(24 * var(--u));
+  padding: calc(18 * var(--u));
+  border-radius: calc(30 * var(--u));
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.reqHead {
+  display: flex;
+  align-items: center;
+  gap: calc(18 * var(--u));
+  height: calc(61.3 * var(--u));
+}
+
+.reqIllus {
+  flex: none;
+  height: calc(61.3 * var(--u));
+}
+
+.reqHead > h3 {
+  margin: 0;
+  color: #f1effc;
+  font-size: calc(24 * var(--u));
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.022em;
+  white-space: nowrap;
+}
+
+.reqCard > p {
+  margin: 0;
+  color: #a39aed;
+  font-size: calc(18 * var(--u));
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.019em;
+}
+
+/* —— Personas —— */
+.personaName {
+  letter-spacing: -0.019em;
+  white-space: nowrap;
+}
+
+.personaLabel {
+  letter-spacing: -0.022em;
+  white-space: nowrap;
+}
+
+/* —— Diagramas (sitemap e fluxo) —— */
+.lines {
+  overflow: visible;
+  fill: none;
+  stroke-width: 4;
+  pointer-events: none;
+}
+
+.arrow {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.diamonds {
+  overflow: visible;
+  fill: #a39aed;
+  stroke: #a39aed;
+  stroke-width: 8;
+  stroke-linejoin: round;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 calc(6 * var(--u));
+  font-size: calc(var(--fs, 24) * var(--u));
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.box > span {
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home {
+  background-color: #dcd9f8;
+  color: #100738;
+}
+
+.primary {
+  background-color: #a39aed;
+  color: rgb(0 0 0 / 0.8);
+}
+
+.dark {
+  background-color: #281966;
+  color: #dcd9f8;
+}
+
+.outline {
+  border: calc(4 * var(--u)) solid #2d1b7b;
+  color: #a39aed;
+}
+
+.circle {
+  border-radius: 50%;
+  background-color: #dcd9f8;
+  color: rgb(0 0 0 / 0.8);
+}
+
+.diamondText {
+  padding: 0;
+  color: rgb(0 0 0 / 0.8);
+  line-height: 1.5;
+}
+
+.diamondText > span {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--lines);
+  line-clamp: var(--lines);
+  white-space: normal;
+}
+
+/* —— UI Kit —— */
+.swatch {
+  border-radius: 50%;
+}
+
+/* —— Aplicação das telas —— */
+.callouts {
+  overflow: visible;
+  fill: none;
+  stroke: #492eba;
+  stroke-width: 2.25;
+  pointer-events: none;
+}
+
+.callouts circle {
+  fill: #492eba;
+  stroke: none;
+}
+
+/* —— Rodapé —— */
+.bigThanks {
+  color: #dcd9f8;
+  white-space: nowrap;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  user-select: none;
+}
+
+.mailWrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mail {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: calc(13.5 * var(--u));
+  color: #5e45d8;
+  font-size: calc(16.73 * var(--u));
+  font-weight: 500;
+  line-height: 1.8;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.mail:hover > span {
+  text-decoration: underline;
+}
+
+.mail:focus-visible {
+  outline: 2px solid #5e45d8;
+  outline-offset: 4px;
+}
+
+.mail > img {
+  flex: none;
+  width: calc(33.8 * var(--u));
+  height: calc(33.8 * var(--u));
+}

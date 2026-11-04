@@ -22,3 +22,15 @@
   pointer-events: none;
   user-select: none;
 }
+
+/* Texto em unidades do palco: --fs (tamanho) e --lh (entrelinha) vêm do Figma */
+.text {
+  margin: 0;
+  font-size: calc(var(--fs) * var(--u));
+  line-height: var(--lh);
+}
+
+.text strong,
+.text b {
+  font-weight: 700;
+}

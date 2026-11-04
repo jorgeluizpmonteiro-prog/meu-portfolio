@@ -11,6 +11,7 @@
  * “Ver mais projetos” passa a ser exibido automaticamente.
  */
 import inovaLogo from '../assets/cases/inova-yq/logo.svg'
+import vizuLogo from '../assets/cases/vizu/logo.svg'
 
 export type ProjectStatus = 'published' | 'soon'
 
@@ -31,7 +32,37 @@ export type Project = {
 const PROVISIONAL_DESCRIPTION =
   'Do desafio à solução: conheça o processo e as decisões de design deste projeto.'
 
+// Ordem de exibição na página inicial: do mais importante para o menos.
 export const projects: Project[] = [
+  {
+    slug: 'design-tokens',
+    title: 'Design Tokens',
+    description: PROVISIONAL_DESCRIPTION,
+    category: 'Design System',
+    cover: '/images/projects/design-tokens/cover.webp',
+    coverAlt: 'Documentação de Design Tokens: valor hexadecimal, token base e token semântico ligados por setas',
+    status: 'soon',
+  },
+  {
+    slug: 'tiddo',
+    title: 'Tiddo',
+    description: PROVISIONAL_DESCRIPTION,
+    category: 'Product Design',
+    cover: '/images/projects/tiddo/cover.webp',
+    coverAlt: 'Mãos segurando um celular com o aplicativo Tiddo',
+    status: 'soon',
+  },
+  {
+    slug: 'vizu',
+    title: 'Vizu',
+    description: PROVISIONAL_DESCRIPTION,
+    category: 'Product Design',
+    cover: '/images/projects/vizu/cover.webp',
+    coverAlt: 'Telas do aplicativo Vizu em celulares',
+    status: 'published',
+    logo: vizuLogo,
+    year: '2025',
+  },
   {
     slug: 'inova-yq',
     title: 'Inova+YQ',
@@ -42,24 +73,6 @@ export const projects: Project[] = [
     status: 'published',
     logo: inovaLogo,
     year: '2025',
-  },
-  {
-    slug: 'vizu',
-    title: 'Vizu',
-    description: PROVISIONAL_DESCRIPTION,
-    category: 'Product Design',
-    cover: '/images/projects/vizu/cover.webp',
-    coverAlt: 'Telas do aplicativo Vizu em celulares',
-    status: 'published',
-  },
-  {
-    slug: 'tiddo',
-    title: 'Tiddo',
-    description: PROVISIONAL_DESCRIPTION,
-    category: 'Product Design',
-    cover: '/images/projects/tiddo/cover.webp',
-    coverAlt: 'Mãos segurando um celular com o aplicativo Tiddo',
-    status: 'soon',
   },
 ]
 

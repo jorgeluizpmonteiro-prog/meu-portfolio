@@ -10,7 +10,7 @@ import styles from './Stage.module.css'
  * é a mesma, só que reduzida. Fundos de textura têm 2560 de largura para cobrir telas grandes.
  */
 
-import { u } from './units'
+import { font, u } from './units'
 
 type StageProps = HTMLAttributes<HTMLElement> & {
   /** Altura da seção no Figma */
@@ -79,5 +79,43 @@ export function AbsImg({ x, y, w, h, src, alt, eager, className }: ImgProps) {
       className={[styles.abs, styles.img, className].filter(Boolean).join(' ')}
       style={{ left: u(x), top: u(y), width: u(w), height: u(h) }}
     />
+  )
+}
+
+
+type TProps = {
+  x: number
+  y: number
+  w?: number
+  h?: number
+  fs: number
+  lh: number
+  weight?: number
+  color?: string
+  center?: boolean
+  right?: boolean
+  as?: ElementType
+  className?: string
+  style?: CSSProperties
+  id?: string
+  children: ReactNode
+}
+
+/** Texto posicionado nas coordenadas do Figma. */
+export function T({ x, y, w, h, fs, lh, weight, color, center, right, as = 'p', className, style, id, children }: TProps) {
+  const textAlign = center ? 'center' : right ? 'right' : undefined
+  return (
+    <Abs
+      as={as}
+      id={id}
+      x={x}
+      y={y}
+      w={w}
+      h={h}
+      className={[styles.text, className].filter(Boolean).join(' ')}
+      style={font(fs, lh, { fontWeight: weight, color, textAlign, ...style })}
+    >
+      {children}
+    </Abs>
   )
 }
