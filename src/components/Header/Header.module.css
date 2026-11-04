@@ -162,6 +162,13 @@
     max-width: 108px;
   }
 
+  /* Pílula do ano menor no celular */
+  .year {
+    padding: var(--space-4) var(--space-x-small);
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-24);
+  }
+
   .name {
     font-size: var(--typography-heading-medium-font-size);
     line-height: var(--typography-heading-medium-line-height);
