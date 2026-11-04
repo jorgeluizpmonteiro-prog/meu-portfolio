@@ -41,7 +41,7 @@ export const projects: Project[] = [
     description: PROVISIONAL_DESCRIPTION,
     category: 'Design System',
     cover: '/images/projects/design-tokens/cover.webp',
-    coverAlt: 'Documentação de Design Tokens: valor hexadecimal, token base e token semântico ligados por setas',
+    coverAlt: 'Cartões de token ligados por setas: valor hexadecimal #F88717, token base brand-1/500 e token semântico background/action/primary',
     status: 'soon',
   },
   {
