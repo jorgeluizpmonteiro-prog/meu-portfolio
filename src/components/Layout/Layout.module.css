@@ -4,9 +4,10 @@
   overflow-x: clip;
 }
 
-/* Páginas de case: o header fica por cima do topo da apresentação */
+/* Páginas de case: o header fica fixo por cima da apresentação ao rolar */
 .casePage > header {
-  position: absolute;
+  position: fixed;
+  z-index: 40;
   top: 0;
   left: 0;
   right: 0;
