@@ -35,7 +35,7 @@ src/
   data/projects.ts      Lista de projetos da página inicial
   components/           Header, NavBar, Button, ButtonIcon, ProjectCard, Icon…
   pages/                Home (P.01), Contato (P.04) e páginas provisórias
-  pages/cases/          Páginas de case (Inova+YQ, Vizu) e o “palco” que posiciona tudo nas medidas do Figma
+  pages/cases/          Páginas de case (Inova+YQ, Vizu, Tiddo) e o “palco” que posiciona tudo nas medidas do Figma
   assets/cases/<slug>/  Imagens, ícones e fundos exportados do Figma para cada case
 api/contact.ts          Função da Vercel que envia o e-mail do formulário
 shared/contact.ts       Validação do formulário (usada no site e na função)
@@ -56,8 +56,9 @@ Cada case é uma página própria em `src/pages/cases/<slug>/` e é registrada e
 `src/pages/cases/index.ts`. As apresentações do Figma têm 1440 px de largura e são composições livres;
 cada seção vira um palco (`Stage`) em que os elementos usam as coordenadas do Figma numa unidade que
 escala com a tela. No celular a composição é a mesma do desktop, só que reduzida.
-O Vizu é uma composição única (um só palco de 1440 × 20655), porque o fundo e as decorações passam
-de uma seção para outra.
+O Vizu e o Tiddo são composições únicas (um só palco), porque o fundo e as decorações passam
+de uma seção para outra. Em telas maiores que 1440 px, faixas e fundos que no Figma passam da borda
+continuam até a borda da tela, e imagens cortadas na borda somem suavemente.
 Para aparecer com o header do case, o projeto em `src/data/projects.ts` precisa de `logo` e `year`.
 Nas páginas de case, um botão fixo no centro da base da tela leva de volta ao topo.
 

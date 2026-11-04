@@ -12,6 +12,7 @@
  */
 import inovaLogo from '../assets/cases/inova-yq/logo.svg'
 import vizuLogo from '../assets/cases/vizu/logo.svg'
+import tiddoLogo from '../assets/cases/tiddo/logo.svg'
 
 export type ProjectStatus = 'published' | 'soon'
 
@@ -50,7 +51,9 @@ export const projects: Project[] = [
     category: 'Product Design',
     cover: '/images/projects/tiddo/cover.webp',
     coverAlt: 'Mãos segurando um celular com o aplicativo Tiddo',
-    status: 'soon',
+    status: 'published',
+    logo: tiddoLogo,
+    year: '2026',
   },
   {
     slug: 'vizu',

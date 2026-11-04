@@ -39,8 +39,8 @@ import telaCamera from '../../../assets/cases/vizu/tela-camera.webp'
 import telaResultado from '../../../assets/cases/vizu/tela-resultado.webp'
 import landingPage from '../../../assets/cases/vizu/landing-page.webp'
 import maoLanding from '../../../assets/cases/vizu/mao-landing.webp'
-import logoFigma from '../../../assets/cases/vizu/logo-figma.svg'
-import logoGmail from '../../../assets/cases/vizu/logo-gmail.svg'
+import logoFigma from '../../../assets/cases/comum/logo-figma.svg'
+import logoGmail from '../../../assets/cases/comum/logo-gmail.svg'
 
 /*
  * Case Vizu — Figma: “Página com todos os projetos” › Projeto / Vizu — Estudo de caso (node 141:32033).

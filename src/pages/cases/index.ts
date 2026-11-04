@@ -7,4 +7,5 @@ import { lazy, type LazyExoticComponent, type ComponentType } from 'react'
 export const casepages: Record<string, LazyExoticComponent<ComponentType>> = {
   'inova-yq': lazy(() => import('./inova-yq/InovaYQ')),
   vizu: lazy(() => import('./vizu/Vizu')),
+  tiddo: lazy(() => import('./tiddo/Tiddo')),
 }
