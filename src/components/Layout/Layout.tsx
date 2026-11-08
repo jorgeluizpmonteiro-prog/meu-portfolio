@@ -9,8 +9,8 @@ import styles from './Layout.module.css'
 
 /**
  * Estrutura comum a todas as páginas: link de pular, fundo decorativo, header e indicador de rolagem.
- * Nas páginas de case, o header vira Type=Project, o fundo decorativo sai e o tema fica claro
- * (os cases usam as cores da própria apresentação).
+ * Nas páginas de case, o header vira Type=Project e o fundo decorativo sai. O header, o menu e
+ * a seção “Próximo case” seguem o tema escolhido; a apresentação usa as cores do próprio Figma.
  */
 export function Layout() {
   const { pathname } = useLocation()
@@ -23,7 +23,7 @@ export function Layout() {
   }, [pathname])
 
   return (
-    <div className={`${styles.page} ${caseProject ? `theme-light ${styles.casePage}` : ''}`}>
+    <div className={`${styles.page} ${caseProject ? styles.casePage : ''}`}>
       <a href="#conteudo" className={styles.skipLink}>
         Pular para o conteúdo
       </a>
