@@ -42,16 +42,15 @@
   opacity: 1;
 }
 
-/* Hover e Filled: border/strong */
+/* Hover, Filled e campo selecionado para digitar: border/strong (Figma: State=Filled) */
 .field:hover,
+.field:focus,
 .field:not(:placeholder-shown) {
   border-color: var(--border-strong);
 }
 
-/* Focus: border/strong + anel de 2 px border/focus afastado do campo */
-.field:focus-visible,
-.field:focus {
-  border-color: var(--border-strong);
+/* Focus: anel de 2 px border/focus afastado do campo, só ao chegar pelo teclado (Tab) */
+:global(html[data-focus-source='keyboard']) .field:focus-visible {
   box-shadow:
     0 0 0 2px var(--background-surface-raised),
     0 0 0 calc(2px + var(--border-width-focus)) var(--border-focus);

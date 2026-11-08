@@ -110,9 +110,38 @@
   }
 }
 
+/* Header dos cases: some subindo ao rolar para baixo (o menu na base da tela desce) */
+.project .profile,
+.project .actions,
+.project .nav {
+  transition:
+    translate var(--motion-duration-medium) var(--motion-easing-out),
+    opacity var(--motion-duration-medium) var(--motion-easing-out);
+}
+
+.hidden .profile,
+.hidden .actions,
+.hidden .nav {
+  translate: 0 calc(-100% - var(--layout-header-top));
+  opacity: 0;
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .enter {
     animation: none;
+  }
+
+  .project .profile,
+  .project .actions,
+  .project .nav {
+    transition: opacity var(--motion-duration-fast) linear;
+  }
+
+  .hidden .profile,
+  .hidden .actions,
+  .hidden .nav {
+    translate: none;
   }
 }
 
@@ -138,6 +167,10 @@
     bottom: max(var(--space-medium), env(safe-area-inset-bottom));
     z-index: 20;
     transform: translateX(-50%);
+  }
+
+  .hidden .nav {
+    translate: 0 calc(100% + var(--space-medium) + env(safe-area-inset-bottom));
   }
 }
 

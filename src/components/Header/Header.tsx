@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { site } from '../../config/site'
 import { useTheme } from '../../theme/useTheme'
@@ -40,8 +40,12 @@ export function Header({ project }: HeaderProps) {
 
 /** Type=Project — usado nas páginas de case (D-17: o voltar leva para a página inicial). */
 function ProjectTypeHeader({ project }: { project: ProjectHeader }) {
+  const { hidden, headerRef } = useHideOnScroll()
   return (
-    <header className={`${styles.header} ${styles.project} ${ANIMATE_ENTRANCE ? styles.enter : ''}`}>
+    <header
+      ref={headerRef}
+      className={`${styles.header} ${styles.project} ${ANIMATE_ENTRANCE ? styles.enter : ''} ${hidden ? styles.hidden : ''}`}
+    >
       <div className={styles.profile}>
         <ButtonIcon icon="keyboard-arrow-left" label="Voltar para projetos" to="/" />
         <span className={styles.logoSlot}>
@@ -103,4 +107,40 @@ function DefaultHeader() {
       </div>
     </header>
   )
+}
+
+/**
+ * Header dos cases: some (subindo) ao rolar para baixo e volta ao rolar para cima.
+ * Perto do topo fica sempre visível, e volta quando algo dentro dele recebe foco pelo teclado.
+ */
+function useHideOnScroll() {
+  const [hidden, setHidden] = useState(false)
+  const headerRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const scroll = { last: window.scrollY, frame: 0 }
+    const update = () => {
+      scroll.frame = 0
+      const y = window.scrollY
+      if (y < 120) setHidden(false)
+      else if (y > scroll.last + 6) setHidden(true)
+      else if (y < scroll.last - 6) setHidden(false)
+      else return
+      scroll.last = y
+    }
+    const onScroll = () => {
+      if (!scroll.frame) scroll.frame = requestAnimationFrame(update)
+    }
+    const onFocusIn = () => setHidden(false)
+    const header = headerRef.current
+    window.addEventListener('scroll', onScroll, { passive: true })
+    header?.addEventListener('focusin', onFocusIn)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      header?.removeEventListener('focusin', onFocusIn)
+      cancelAnimationFrame(scroll.frame)
+    }
+  }, [])
+
+  return { hidden, headerRef }
 }

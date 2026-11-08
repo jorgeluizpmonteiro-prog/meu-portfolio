@@ -81,18 +81,50 @@
 .glass {
   border-radius: 50%;
   background: linear-gradient(135deg, rgb(178 219 255 / 0.45), rgb(255 255 255 / 0));
-  -webkit-backdrop-filter: blur(calc(6 * var(--u)));
-  backdrop-filter: blur(calc(6 * var(--u)));
+  /* Vidro líquido: luz a -45° (brilho na borda inferior direita), reflexo suave na superior esquerda e contorno claro */
+  box-shadow:
+    inset calc(-14 * var(--u)) calc(-14 * var(--u)) calc(28 * var(--u)) calc(-8 * var(--u)) rgb(255 255 255 / 0.85),
+    inset calc(8 * var(--u)) calc(8 * var(--u)) calc(20 * var(--u)) calc(-10 * var(--u)) rgb(255 255 255 / 0.6),
+    inset 0 0 0 calc(1 * var(--u)) rgb(255 255 255 / 0.5);
+  -webkit-backdrop-filter: blur(calc(12 * var(--u)));
+  backdrop-filter: blur(calc(12 * var(--u)));
+  pointer-events: none;
+}
+
+.bubbleWrap {
   pointer-events: none;
 }
 
 .bubble {
+  position: absolute;
+  inset: var(--pad);
   border-radius: 50%;
   background-color: rgb(96 178 255 / 0.35);
+  /* Figma: sombra interna branca (6, 3; 21) e contorno branco deslocado para baixo (-1,5, 4,5; 5; 6,75) */
   box-shadow:
-    inset 0 0 calc(21.2 * var(--u)) rgb(255 255 255 / 0.41),
-    0 0 calc(5 * var(--u)) #ffffff;
-  pointer-events: none;
+    inset calc(6 * var(--u)) calc(3 * var(--u)) calc(21.2 * var(--u)) rgb(255 255 255 / 0.41),
+    calc(-1.5 * var(--u)) calc(4.5 * var(--u)) calc(5 * var(--u)) calc(6.75 * var(--u)) #ffffff;
+}
+
+/* Desfoque progressivo: 27 no alto à esquerda → 0 embaixo à direita */
+.bubbleBlur,
+.bubbleSharp {
+  position: absolute;
+  inset: 0;
+}
+
+.bubbleBlur {
+  -webkit-mask-image: linear-gradient(var(--blur-angle), #000 var(--blur-a), transparent var(--blur-b));
+  mask-image: linear-gradient(var(--blur-angle), #000 var(--blur-a), transparent var(--blur-b));
+}
+
+.bubbleBlur > .bubble {
+  filter: blur(calc(27 * var(--u)));
+}
+
+.bubbleSharp {
+  -webkit-mask-image: linear-gradient(var(--blur-angle), transparent var(--blur-a), #000 var(--blur-b));
+  mask-image: linear-gradient(var(--blur-angle), transparent var(--blur-a), #000 var(--blur-b));
 }
 
 /* —— Topo —— */

@@ -62,12 +62,11 @@
     transform var(--motion-duration-fast) var(--motion-easing-out);
 }
 
-/* MOT-08: tooltip aparece após 300 ms no hover; some sem atraso */
+/* Tooltip aparece na hora no hover (sem atraso) e some sem atraso */
 @media (hover: hover) {
   .root:hover .tooltip {
     opacity: 1;
     transform: translate(-50%, 0);
-    transition-delay: 300ms;
   }
 }
 

@@ -165,7 +165,9 @@
   --dd-line: #fefefe;
   --dd-text: #fefefe;
   --dd-panel: #031942;
-  --dd-shadow: rgb(0 23 65 / 0.75);
+  /* No Figma a sombra #001741 (75%) usa Multiply: escurece bem o entorno do painel */
+  --dd-shadow: rgb(0 6 22 / 0.6);
+  --dd-shadow-blur: calc(54.6 * var(--u));
   --dd-item: #031941;
   --dd-box: #74d3fd;
   --dd-selected: #74d3fd;
@@ -204,7 +206,7 @@
   padding: calc(21.2 * var(--u)) calc(14.15 * var(--u));
   border-radius: calc(14.15 * var(--u));
   background-color: var(--dd-panel);
-  box-shadow: 0 0 calc(60.8 * var(--u)) var(--dd-shadow);
+  box-shadow: 0 0 var(--dd-shadow-blur, calc(60.8 * var(--u))) var(--dd-shadow);
   list-style: none;
 }
 

@@ -65,12 +65,31 @@ function Chip({ x, y, w, light, children }: { x: number; y: number; w: number; l
 }
 
 const Glow = ({ x, y }: { x: number; y: number }) => <Abs x={x} y={y} w={859} h={859} className={s.glow} />
+/** Círculo de vidro líquido (efeito GLASS do Figma). x, y e size são do círculo em si: no Figma alguns estão girados e a caixa delimitadora fica maior que o diâmetro. */
 const Glass = ({ x, y, size }: { x: number; y: number; size: number }) => (
   <Abs x={x} y={y} w={size} h={size} className={s.glass} />
 )
-const Bubble = ({ x, y, size }: { x: number; y: number; size: number }) => (
-  <Abs x={x} y={y} w={size} h={size} className={s.bubble} />
-)
+/**
+ * Bolha azul com desfoque progressivo (Figma: borrada no alto à esquerda, nítida embaixo à direita).
+ * Nas bolhas giradas no Figma (rot), só a direção do desfoque gira; as sombras não.
+ * As camadas têm uma margem (PAD) para o desfoque e a borda branca não serem cortados pela máscara.
+ */
+function Bubble({ x, y, size, rot = 0 }: { x: number; y: number; size: number; rot?: number }) {
+  const PAD = 40
+  const full = size + PAD * 2
+  const stop = (t: number) => `${(((t * size + PAD) / full) * 100).toFixed(1)}%`
+  const vars = { '--blur-angle': `${117 + rot}deg`, '--blur-a': stop(0.13), '--blur-b': stop(0.87), '--pad': u(PAD) } as CSSProperties
+  return (
+    <Abs x={x - PAD} y={y - PAD} w={full} h={full} className={s.bubbleWrap} style={vars} aria-hidden="true">
+      <span className={s.bubbleBlur}>
+        <span className={s.bubble} />
+      </span>
+      <span className={s.bubbleSharp}>
+        <span className={s.bubble} />
+      </span>
+    </Abs>
+  )
+}
 
 /** Linha pontilhada azul com bolinha numa das pontas (Necessidades e Funcionalidades) */
 function DottedLine({ x1, y1, x2, y2, dot }: { x1: number; y1: number; x2: number; y2: number; dot?: 'start' | 'end' }) {
@@ -367,10 +386,11 @@ function Necessidades() {
   )
   return (
     <Stage h={2920} aria-labelledby="inova-necessidades">
-      <Glass x={1050} y={4523 - Y} size={518} />
+      {/* A bolha fica atrás do vidro e aparece desfocada através dele */}
       <Bubble x={1324} y={4948 - Y} size={185} />
+      <Glass x={1050} y={4523 - Y} size={518.25} />
       <Glow x={-570} y={5393 - Y} />
-      <Bubble x={-65} y={6449 - Y} size={227} />
+      <Bubble x={-44.1} y={6469.9 - Y} size={185.25} rot={105} />
       <DottedLine x1={451} y1={5279 - Y} x2={854} y2={5279 - Y} dot="start" />
       <DottedLine x1={386} y1={6116 - Y} x2={854} y2={6116 - Y} dot="end" />
       <DottedLine x1={383} y1={6084 - Y} x2={383} y2={6149 - Y} />
@@ -410,8 +430,8 @@ function Arquitetura() {
       </Stage>
       <Stage h={740} role="img"
         aria-label="Mapa do site: a Home leva a Agenda Escolar, Plano de Aula, Conteúdo, Avaliações, Arquivos Complementares, Configurações, Caixa de Entrada, Cronograma e Buscar; o Plano de Aula se desdobra no preenchimento do plano e seus campos.">
-        <Glass x={-194} y={8104 - Y} size={575} />
-        <Bubble x={-89} y={8529 - Y} size={191} />
+        <Bubble x={-71.6} y={8546.4 - Y} size={156.2} rot={105} />
+        <Glass x={-141.1} y={8156.9 - Y} size={469.2} />
         <Abs as="svg" x={0} y={0} w={1440} h={740} viewBox={`0 ${Y} 1440 740`} aria-hidden="true">
           {iaLines.map(([x1, y1, x2, y2]) => (
             <line key={`${x1}-${y1}-${x2}-${y2}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#87b7fe" strokeWidth={0.8} />

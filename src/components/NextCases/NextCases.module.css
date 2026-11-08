@@ -1,0 +1,79 @@
+/* Próximo case — no fim das páginas de case, com os tokens do portfólio */
+.section {
+  position: relative;
+  z-index: 1;
+  /* Embaixo, espaço extra para o botão de voltar ao topo (72 px) não cobrir os cards */
+  padding-block: var(--space-96) calc(var(--space-96) + 72px);
+  background-color: var(--background-canvas);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-x-large);
+  width: min(var(--layout-container), 100% - 2 * var(--layout-gutter));
+  margin-inline: auto;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-x-small);
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--typography-display-font-family);
+  font-size: var(--typography-display-small-font-size);
+  font-weight: var(--typography-display-small-font-weight);
+  line-height: var(--typography-display-small-line-height);
+  letter-spacing: var(--typography-display-small-letter-spacing);
+}
+
+.intro {
+  max-width: 560px;
+  margin: 0;
+  color: var(--text-secondary);
+  font-family: var(--typography-body-font-family);
+  font-size: var(--typography-body-large-font-size);
+  font-weight: var(--typography-body-large-font-weight);
+  line-height: var(--typography-body-large-line-height);
+  letter-spacing: var(--typography-body-large-letter-spacing);
+  text-wrap: pretty;
+}
+
+/* Cards com a mesma largura da página inicial (384, gap de 32) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 384px));
+  justify-content: center;
+  gap: var(--space-large);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding-block: var(--space-x-large) calc(var(--space-x-large) + 72px);
+  }
+
+  .title {
+    font-size: var(--typography-heading-large-font-size);
+    line-height: var(--typography-heading-large-line-height);
+  }
+
+  .intro {
+    font-size: var(--typography-body-medium-font-size);
+    line-height: var(--typography-body-medium-line-height);
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

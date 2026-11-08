@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import { Route, Routes, useParams } from 'react-router-dom'
 import { Layout } from './components/Layout/Layout'
+import { NextCases } from './components/NextCases/NextCases'
 import { projects } from './data/projects'
 import { casepages } from './pages/cases'
 import { Contact } from './pages/Contact/Contact'
@@ -19,6 +20,7 @@ function ProjectRoute() {
   return (
     <Suspense fallback={<main id="conteudo" style={{ minHeight: '100vh' }} />}>
       <CasePage />
+      <NextCases current={project.slug} />
     </Suspense>
   )
 }
