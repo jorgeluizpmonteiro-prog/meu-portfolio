@@ -5,6 +5,8 @@
  */
 .stage {
   --u: calc(min(100cqw, 1440px) / 1440);
+  /* Sobra de cada lado em telas maiores que 1440 px (0 até 1440) */
+  --bleed: calc((100cqw - 1440 * var(--u)) / 2);
   position: relative;
   width: calc(1440 * var(--u));
   margin-inline: auto;

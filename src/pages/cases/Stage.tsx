@@ -64,10 +64,11 @@ type ImgProps = {
   alt: string
   eager?: boolean
   className?: string
+  style?: CSSProperties
 }
 
 /** Asset do Figma (mockup, foto, ilustração) posicionado no palco. */
-export function AbsImg({ x, y, w, h, src, alt, eager, className }: ImgProps) {
+export function AbsImg({ x, y, w, h, src, alt, eager, className, style }: ImgProps) {
   return (
     <img
       src={src}
@@ -77,7 +78,7 @@ export function AbsImg({ x, y, w, h, src, alt, eager, className }: ImgProps) {
       loading={eager ? 'eager' : 'lazy'}
       decoding="async"
       className={[styles.abs, styles.img, className].filter(Boolean).join(' ')}
-      style={{ left: u(x), top: u(y), width: u(w), height: u(h) }}
+      style={{ left: u(x), top: u(y), width: u(w), height: u(h), ...style }}
     />
   )
 }

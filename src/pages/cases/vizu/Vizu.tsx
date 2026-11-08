@@ -3,7 +3,7 @@ import '@fontsource/inter/500.css'
 import '@fontsource/inter/700.css'
 import '../../../styles/satoshi.css'
 import { Abs, AbsImg, Stage, T } from '../Stage'
-import { u } from '../units'
+import { bleed, u } from '../units'
 import {
   arrowPath,
   flowBoxes,
@@ -279,26 +279,20 @@ export default function Vizu() {
   return (
     <main id="conteudo" tabIndex={-1} className={s.page}>
       <h1 className="visually-hidden">Vizu</h1>
-      {/* Telas maiores que 1440 px: o fundo continua até a borda da tela */}
-      <div className={s.sides} aria-hidden="true">
-        <div className={s.sideGlass} style={{ top: 818, height: 1100 }} />
-        <div className={s.sideDark} />
-        <div className={s.sideGlass} style={{ top: 20066, bottom: 0 }} />
-      </div>
-      <Stage h={20655} as="div" className={s.stage}>
+      <Stage h={20655} as="div">
         {/* Capa: texturas metálicas, vidro, fundo escuro do corpo e brilhos */}
         <div aria-hidden="true">
-          <AbsImg x={914} y={397} w={527} h={687} src={texturaDireita} alt="" eager />
-          <AbsImg x={914} y={884.4} w={527} h={687} src={texturaDireita} alt="" eager className={s.flipY} />
-          <Abs x={0} y={818} w={1440} h={1383} className={s.glass} />
-          <AbsImg x={-6} y={1896} w={1452} h={17843.88} src={fundoEscuro} alt="" eager />
+          <AbsImg x={914} y={397} w={527} h={687} src={texturaDireita} alt="" eager className={s.fadeRight} />
+          <AbsImg x={914} y={884.4} w={527} h={687} src={texturaDireita} alt="" eager className={cx(s.flipY, s.fadeRight)} />
+          <Abs x={0} y={818} w={1440} h={1383} className={s.glass} style={bleed(0, 1440, 'both')} />
+          <AbsImg x={-6} y={1896} w={1452} h={17843.88} src={fundoEscuro} alt="" eager style={bleed(-6, 1452, 'both')} />
           <DarkGlow x={1440} y={15700} />
           <DarkGlow x={0} y={7198} />
           <DarkGlow x={1440} y={9643} />
           <DarkGlow x={1} y={11240} />
           <LightEllipse x={-752.75} y={1238.46} color="#d4f7ff" />
           <LightEllipse x={453} y={155.72} color="#eae5ff" />
-          <AbsImg x={0} y={0} w={570} h={536} src={texturaCapa} alt="" eager />
+          <AbsImg x={0} y={0} w={570} h={536} src={texturaCapa} alt="" eager className={s.fadeLeft} />
         </div>
 
         <section aria-labelledby="vizu-intro">
@@ -342,14 +336,14 @@ export default function Vizu() {
             alt="Mão segurando um iPhone com a câmera do Vizu apontada para uma flor amarela"
             className={s.introHand}
           />
-          <AbsImg x={0} y={1004.66} w={1440} h={1295} src={faixasTopo} alt="" />
+          <AbsImg x={0} y={1004.66} w={1440} h={1295} src={faixasTopo} alt="" style={bleed(0, 1440, 'both')} />
 
           <T as="h2" id="vizu-intro" x={79.5} y={1045} fs={20.07} lh={36.13} weight={700} color={PURPLE} className={s.nowrap}>
             O que é o Vizu?
           </T>
         </section>
 
-        <AbsImg x={-184.7} y={2530.25} w={1885.39} h={783.48} src={faixaProcesso} alt="" />
+        <AbsImg x={0} y={2530.25} w={1440} h={783.48} src={faixaProcesso} alt="" style={bleed(0, 1440, 'both')} />
 
         <section aria-labelledby="vizu-processo">
           <Title id="vizu-processo" x={378} y={2410.5} w={684}>
@@ -372,6 +366,7 @@ export default function Vizu() {
             h={1688.67}
             src={mosaicoTelas}
             alt="Mosaico com as telas finais do Vizu: coleções, histórico, referências, perfil, câmera, onboarding e segmentação"
+          className={s.fadeX}
           />
         </section>
 
@@ -400,13 +395,13 @@ export default function Vizu() {
         </section>
 
         <section aria-labelledby="vizu-personas">
-          <AbsImg x={930} y={4918} w={510} h={889} src={texturaPersonas} alt="" />
+          <AbsImg x={930} y={4918} w={510} h={889} src={texturaPersonas} alt="" className={s.fadeRight} />
           <Title id="vizu-personas" x={72.8} y={5362.5} w={406} fade="start">
             Personas
           </Title>
           {PERSONAS.map((p) => (
             <div key={p.name}>
-              <AbsImg x={0} y={p.imgY} w={455} h={459} src={p.img} alt={p.alt} />
+              <AbsImg x={0} y={p.imgY} w={455} h={459} src={p.img} alt={p.alt} className={s.fadeLeftEdge} />
               <T as="h3" x={410.3} y={p.y} w={342.8} fs={48} lh={72} weight={700} color={LIGHT} className={s.personaName}>
                 {p.name}
               </T>
@@ -606,6 +601,7 @@ export default function Vizu() {
             h={1688.67}
             src={mosaicoWireframes}
             alt="Mosaico com os wireframes de média fidelidade em tons de cinza"
+          className={s.fadeX}
           />
         </section>
 
@@ -660,6 +656,7 @@ export default function Vizu() {
             h={794.67}
             src={telaResultado}
             alt="Tela de resultado: Sphagneticola trilobata com 91,2% de certeza, descrição e botões Concluir e Adicionar à coleção"
+          className={s.fadeRightEdge}
           />
 
           <Abs as="svg" x={380} y={15300} w={860} h={2320} viewBox="380 15300 860 2320" className={s.callouts} aria-hidden="true">
@@ -686,6 +683,7 @@ export default function Vizu() {
             h={676.67}
             src={maoLanding}
             alt="Mão segurando um iPhone com a coleção Botânica aberta no Vizu"
+          className={s.fadeRight}
           />
           <Abs x={951} y={18564} w={489} h={243} className={s.handFade} />
         </section>
@@ -695,7 +693,7 @@ export default function Vizu() {
             OBRIGADO
           </T>
           <LightEllipse x={-816.75} y={20292.96} color="#d4f7ff" />
-          <Abs x={0} y={20066} w={1440} h={600} className={s.glass} />
+          <Abs x={0} y={20066} w={1440} h={600} className={s.glass} style={bleed(0, 1440, 'both')} />
 
           <T x={78} y={20130.5} w={190.1} fs={16.73} lh={30.11} color={PURPLE}>
             Participação:
@@ -726,7 +724,7 @@ export default function Vizu() {
             de um projeto que gostei muito de desenvolver! Estou ansioso para trabalhar com você!
           </T>
 
-          <AbsImg x={0} y={19330.5} w={1440} h={1325} src={faixasRodape} alt="" />
+          <AbsImg x={0} y={19330.5} w={1440} h={1325} src={faixasRodape} alt="" style={bleed(0, 1440, 'both')} />
         </section>
       </Stage>
     </main>

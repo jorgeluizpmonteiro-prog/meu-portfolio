@@ -5,7 +5,7 @@ import '@fontsource/open-sans/700.css'
 import '@fontsource/open-sans/800.css'
 import '../../../styles/satoshi.css'
 import { Abs, AbsImg, Stage, T } from '../Stage'
-import { u } from '../units'
+import { bleed, u } from '../units'
 import { notes } from './canvas'
 import s from './Tiddo.module.css'
 
@@ -48,16 +48,6 @@ const CYAN = '#74d3fd'
 const WHITE = '#fefefe'
 
 const cx = (...c: (string | false | undefined)[]) => c.filter(Boolean).join(' ')
-
-/**
- * Faixas e fundos que no Figma passam da borda da apresentação: em telas maiores que 1440 px
- * eles continuam até a borda da tela (--bleed é a sobra de cada lado; 0 até 1440 px).
- */
-function bleed(x: number, w: number, side: 'left' | 'right' | 'both'): CSSProperties {
-  const left = side === 'right' ? u(x) : `calc(${u(x)} - var(--bleed))`
-  const extra = side === 'both' ? '2 * var(--bleed)' : 'var(--bleed)'
-  return { left, width: `calc(${u(w)} + ${extra})` }
-}
 
 /** Faixa azul-clara arredondada com o título da seção (Open Sans ExtraBold 66,77, caixa alta) */
 function TitleBand({
@@ -310,7 +300,7 @@ export default function Tiddo() {
   return (
     <main id="conteudo" tabIndex={-1} className={s.page}>
       <h1 className="visually-hidden">Tiddo</h1>
-      <Stage h={15657} as="div" className={s.stage}>
+      <Stage h={15657} as="div">
         {/* —— Capa —— */}
         <section aria-labelledby="tiddo-contexto">
           <Abs x={0} y={0} w={1440} h={942} className={s.coverBg} style={bleed(0, 1440, 'both')} aria-hidden="true" />

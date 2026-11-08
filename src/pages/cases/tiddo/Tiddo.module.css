@@ -17,11 +17,6 @@
   outline: none;
 }
 
-/* Sobra de cada lado em telas maiores que 1440 px (0 até 1440) */
-.stage {
-  --bleed: calc((100cqw - 1440 * var(--u)) / 2);
-}
-
 .nowrap {
   white-space: nowrap;
 }
