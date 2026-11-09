@@ -23,7 +23,9 @@ const ANIMATE_ENTRANCE = shouldAnimateEntrance()
 
 type ProjectHeader = {
   title: string
-  logo: string
+  logo?: string
+  /** Identificação em texto, uma linha por item (segue o tema claro/escuro) */
+  logoText?: string[]
   year?: string
 }
 
@@ -49,7 +51,15 @@ function ProjectTypeHeader({ project }: { project: ProjectHeader }) {
       <div className={styles.profile}>
         <ButtonIcon icon="keyboard-arrow-left" label="Voltar para projetos" to="/" />
         <span className={styles.logoSlot}>
-          <img src={project.logo} alt={project.title} />
+          {project.logo ? (
+            <img src={project.logo} alt={project.title} />
+          ) : (
+            <span className={styles.logoText}>
+              {project.logoText?.map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </span>
+          )}
         </span>
       </div>
 

@@ -86,6 +86,19 @@
 }
 
 /* Pílula escura como a do menu: o ano fica legível sobre qualquer fundo do case */
+/* Identificação em texto (ex.: Documentação / Design Tokens) */
+.logoText {
+  display: flex;
+  flex-direction: column;
+  color: var(--text-primary);
+  font-family: var(--typography-heading-font-family);
+  font-size: var(--typography-heading-small-font-size);
+  font-weight: var(--typography-heading-small-font-weight);
+  line-height: var(--typography-heading-small-line-height);
+  letter-spacing: var(--typography-heading-small-letter-spacing);
+  white-space: nowrap;
+}
+
 .year {
   padding: var(--space-xx-small) var(--space-small);
   border-radius: 100px;
@@ -193,6 +206,11 @@
 
   .logoSlot img {
     max-width: 108px;
+  }
+
+  .logoText {
+    font-size: var(--font-size-16);
+    line-height: var(--line-height-20);
   }
 
   /* Pílula do ano menor no celular */

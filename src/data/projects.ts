@@ -27,6 +27,13 @@ export type Project = {
   status: ProjectStatus
   /** Logo e ano mostrados no header da página do case (Header Type=Project). */
   logo?: string
+  /** Identificação em texto no header do case (quando o projeto não tem logo em imagem); uma linha por item. */
+  logoText?: string[]
+  /**
+   * Página do case em construção: abre pelo endereço (/projetos/<slug>) para acompanhar o progresso,
+   * mas o card continua “Em breve” e o projeto não entra em “Próximo case”.
+   */
+  preview?: boolean
   year?: string
 }
 
@@ -43,6 +50,9 @@ export const projects: Project[] = [
     cover: '/images/projects/design-tokens/cover.webp',
     coverAlt: 'Cartões de token ligados por setas: valor hexadecimal #F88717, token base brand-1/500 e token semântico background/action/primary',
     status: 'soon',
+    preview: true,
+    logoText: ['Documentação', 'Design Tokens'],
+    year: '2026',
   },
   {
     slug: 'tiddo',
@@ -78,5 +88,8 @@ export const projects: Project[] = [
     year: '2025',
   },
 ]
+
+/** O case tem página própria: publicado ou em construção (preview). */
+export const hasCasePage = (p: Project) => p.status === 'published' || Boolean(p.preview)
 
 export const FEATURED_COUNT = 3

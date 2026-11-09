@@ -1,0 +1,270 @@
+/*
+ * Case Documentação de Design Tokens — Figma: “Projeto — Documentação de design tokens” (node 180:29914).
+ * Cores e fontes da própria apresentação (não usam os tokens do portfólio).
+ */
+.page {
+  container-type: inline-size;
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #533e26;
+  font-family: 'Albert Sans', system-ui, sans-serif;
+  font-weight: 400;
+}
+
+/* Recebe o foco ao voltar para o topo, sem contorno */
+.page:focus {
+  outline: none;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.titleFont,
+.title {
+  font-family: 'Roboto', system-ui, sans-serif;
+}
+
+.title {
+  white-space: nowrap;
+}
+
+/* —— Fundos —— */
+.brown {
+  background-color: #533e26;
+}
+
+/* Elipses concêntricas: esticam junto com a largura em telas maiores que 1440 px */
+.arcs > span {
+  position: absolute;
+  border-radius: 50%;
+}
+
+/* Vidro (“Fundo de seção / 03”) */
+.glass {
+  background-color: rgb(255 246 238 / 0.1);
+  -webkit-backdrop-filter: blur(calc(6.5 * var(--u)));
+  backdrop-filter: blur(calc(6.5 * var(--u)));
+}
+
+/* Anéis concêntricos (shader do Figma): 100 anéis do centro à borda, somem perto da borda */
+.rings {
+  border-radius: 50%;
+  background-color: var(--fill);
+  pointer-events: none;
+}
+
+.rings::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle at center,
+    var(--ring) 0,
+    var(--ring) calc(var(--period) * 0.5),
+    transparent calc(var(--period) * 0.5),
+    transparent var(--period)
+  );
+  -webkit-mask-image: radial-gradient(closest-side, #000, rgb(0 0 0 / 0.5) calc(var(--fade) * 0.5), transparent var(--fade));
+  mask-image: radial-gradient(closest-side, #000, rgb(0 0 0 / 0.5) calc(var(--fade) * 0.5), transparent var(--fade));
+}
+
+/* Foto que ocupa a largura toda: em telas largas preenche até a borda, recortando em cima e embaixo */
+.cover {
+  object-fit: cover;
+}
+
+/* —— Capa —— */
+.cardWrap {
+  filter: drop-shadow(calc(9 * var(--u)) calc(17 * var(--u)) calc(27 * var(--u)) rgb(89 75 61 / 0.15));
+  pointer-events: none;
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  max-width: none;
+  transform-origin: 0 0;
+}
+
+/* —— Contexto —— */
+.bar {
+  background-color: #f88717;
+}
+
+.highlight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(24 * var(--u)) calc(16 * var(--u));
+  border-radius: calc(24 * var(--u));
+  background-color: #ffd0a1;
+}
+
+.highlight > p {
+  margin: 0;
+  font-size: calc(32 * var(--u));
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* —— Como eu iniciei: resumo da auditoria —— */
+.summary {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.summaryCard {
+  display: flex;
+  flex-direction: column;
+  gap: calc(4 * var(--u));
+  padding: calc(24 * var(--u)) calc(28 * var(--u));
+  border-radius: calc(24 * var(--u));
+}
+
+.summaryNumber {
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-size: calc(72 * var(--u));
+  font-weight: 300;
+  line-height: calc(80 * var(--u));
+}
+
+.summaryLabel {
+  font-size: calc(18 * var(--u));
+  font-weight: 700;
+  line-height: calc(24 * var(--u));
+}
+
+.summaryOf {
+  color: #533e26;
+  font-size: calc(15 * var(--u));
+  line-height: calc(20 * var(--u));
+}
+
+.summaryDecision {
+  gap: calc(12 * var(--u));
+  background-color: #533e26;
+  color: #ffffff;
+}
+
+.decisionLabel {
+  color: #ffd0a1;
+  font-size: calc(18 * var(--u));
+  font-weight: 700;
+  line-height: calc(24 * var(--u));
+}
+
+.decisionRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.decisionRow > span {
+  display: flex;
+  flex-direction: column;
+}
+
+.decisionNumber {
+  font-family: 'Roboto', system-ui, sans-serif;
+  font-size: calc(72 * var(--u));
+  font-weight: 300;
+  line-height: calc(64 * var(--u));
+}
+
+.decisionText {
+  font-size: calc(16 * var(--u));
+  font-weight: 600;
+  line-height: calc(22 * var(--u));
+}
+
+/* —— Achados da auditoria —— */
+.finding {
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--u));
+  padding: calc(24 * var(--u));
+  border-radius: calc(24 * var(--u));
+  background-color: #ffffff;
+  box-shadow: 0 calc(12 * var(--u)) calc(24 * var(--u)) rgb(48 32 26 / 0.15);
+}
+
+.findHead {
+  display: flex;
+  align-items: center;
+  gap: calc(16 * var(--u));
+}
+
+.findHead h4 {
+  margin: 0 0 calc(4 * var(--u));
+  font-size: calc(24 * var(--u));
+  font-weight: 700;
+  line-height: calc(28 * var(--u));
+}
+
+.findSub {
+  margin: 0;
+  color: #7d6650;
+  font-size: calc(16 * var(--u));
+  line-height: calc(22 * var(--u));
+}
+
+.findIcon {
+  flex: none;
+  width: calc(54 * var(--u));
+  height: calc(54 * var(--u));
+  border-radius: 50%;
+}
+
+/* Amostra de medida: retângulo com tracejado laranja nas laterais */
+.iconDimension {
+  border-radius: 0;
+  background-color: #fff7ef;
+  background-image:
+    repeating-linear-gradient(to bottom, #f88717 0 4px, transparent 4px 8px),
+    repeating-linear-gradient(to bottom, #f88717 0 4px, transparent 4px 8px);
+  background-position: left, right;
+  background-size: calc(2 * var(--u)) 100%;
+  background-repeat: no-repeat;
+}
+
+/* Opacidade: metade cheia, metade a 60% */
+.iconOpacity {
+  background: linear-gradient(to right, #533e26 50%, rgb(83 62 38 / 0.6) 50%);
+}
+
+.findText {
+  margin: 0;
+  font-size: calc(18 * var(--u));
+  line-height: calc(27 * var(--u));
+}
+
+.finding > hr {
+  width: 100%;
+  margin: calc(8 * var(--u)) 0;
+  border: 0;
+  border-top: 1px solid #dadada;
+}
+
+.finding > h5 {
+  margin: 0;
+  color: #1f8fff;
+  font-size: calc(24 * var(--u));
+  font-weight: 700;
+  line-height: calc(28 * var(--u));
+}
+
+.findDecision {
+  margin: 0;
+  color: #1f1f1f;
+  font-size: calc(17 * var(--u));
+  line-height: 1.4;
+}
+
+.tk {
+  color: #b55a00;
+}

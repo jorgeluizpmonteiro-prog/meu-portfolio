@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import { projects } from '../../data/projects'
+import { hasCasePage, projects } from '../../data/projects'
 import { BackToTop } from '../BackToTop/BackToTop'
 import { DecorativeBackground } from '../DecorativeBackground/DecorativeBackground'
 import { Header } from '../Header/Header'
@@ -15,7 +15,7 @@ import styles from './Layout.module.css'
 export function Layout() {
   const { pathname } = useLocation()
   const slug = pathname.match(/^\/projetos\/([^/]+)\/?$/)?.[1]
-  const caseProject = projects.find((p) => p.slug === slug && p.status === 'published' && p.logo)
+  const caseProject = projects.find((p) => p.slug === slug && hasCasePage(p) && (p.logo || p.logoText))
 
   // Ao trocar de página, volta ao topo
   useEffect(() => {
@@ -28,7 +28,7 @@ export function Layout() {
         Pular para o conteúdo
       </a>
       {caseProject ? (
-        <Header project={{ title: caseProject.title, logo: caseProject.logo!, year: caseProject.year }} />
+        <Header project={{ title: caseProject.title, logo: caseProject.logo, logoText: caseProject.logoText, year: caseProject.year }} />
       ) : (
         <>
           <DecorativeBackground />

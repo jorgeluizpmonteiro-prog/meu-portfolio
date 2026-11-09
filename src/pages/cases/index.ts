@@ -8,4 +8,5 @@ export const casepages: Record<string, LazyExoticComponent<ComponentType>> = {
   'inova-yq': lazy(() => import('./inova-yq/InovaYQ')),
   vizu: lazy(() => import('./vizu/Vizu')),
   tiddo: lazy(() => import('./tiddo/Tiddo')),
+  'design-tokens': lazy(() => import('./design-tokens/DesignTokens')),
 }

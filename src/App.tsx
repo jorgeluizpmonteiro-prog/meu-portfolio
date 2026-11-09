@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { Route, Routes, useParams } from 'react-router-dom'
 import { Layout } from './components/Layout/Layout'
 import { NextCases } from './components/NextCases/NextCases'
-import { projects } from './data/projects'
+import { hasCasePage, projects } from './data/projects'
 import { casepages } from './pages/cases'
 import { Contact } from './pages/Contact/Contact'
 import { Home } from './pages/Home/Home'
@@ -13,7 +13,7 @@ const IN_PROGRESS = 'Esta página está sendo construída e chega em breve.'
 
 function ProjectRoute() {
   const { slug } = useParams()
-  const project = projects.find((p) => p.slug === slug && p.status === 'published')
+  const project = projects.find((p) => p.slug === slug && hasCasePage(p))
   if (!project) return <NotFound />
   const CasePage = casepages[project.slug]
   if (!CasePage) return <SimplePage title={project.title} text={IN_PROGRESS} />
