@@ -1,11 +1,20 @@
-import type { CSSProperties, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import '@fontsource/roboto/300.css'
+import '@fontsource/albert-sans/300.css'
 import '@fontsource/albert-sans/400.css'
 import '@fontsource/albert-sans/500.css'
 import '@fontsource/albert-sans/600.css'
 import '@fontsource/albert-sans/700.css'
 import { Abs, AbsImg, Stage, T } from '../Stage'
 import { bleed, u } from '../units'
+import { Arcs, Bar, Body, Rings, Title, Tk } from './shared'
+import { ARCS_A, BROWN, ORANGE, cx } from './constants'
+import Fundos from './Fundos'
+import Estrutura from './Estrutura'
+import Decisoes from './Decisoes'
+import Marcas from './Marcas'
+import Automacao from './Automacao'
+import Resultados from './Resultados'
 import s from './DesignTokens.module.css'
 
 import cartaoHex from '../../../assets/cases/design-tokens/cartao-hex.webp'
@@ -21,32 +30,8 @@ import logoN8n from '../../../assets/cases/comum/logo-n8n.svg'
  * Case Documentação de Design Tokens — Figma: “Projeto — Documentação de design tokens” (node 180:29914).
  * Composição única de 1440 de largura, com os elementos na ordem das camadas do Figma.
  * Cores e fontes (Roboto Light e Albert Sans) da própria apresentação.
- * Em construção por partes: esta é a parte 1 (capa, introdução, Contexto e Como eu iniciei).
+ * Este arquivo traz a capa, o Contexto e Como eu iniciei; as outras seções ficam nos arquivos ao lado.
  */
-
-const BROWN = '#533e26'
-const ORANGE = '#f88717'
-
-const cx = (...c: (string | false | undefined)[]) => c.filter(Boolean).join(' ')
-
-/**
- * Círculo com anéis concêntricos (efeito de shader do Figma): r = raio, ring = cor dos anéis,
- * fill = cor do círculo, fade = onde os anéis somem (fração do raio).
- */
-function Rings({ x, y, size, fill, ring, fade = 0.88 }: { x: number; y: number; size: number; fill: string; ring: string; fade?: number }) {
-  const period = size / 2 / 100 // 100 anéis do centro à borda
-  return (
-    <Abs
-      x={x}
-      y={y}
-      w={size}
-      h={size}
-      className={s.rings}
-      style={{ '--fill': fill, '--ring': ring, '--period': u(period), '--fade': `${fade * 100}%` } as CSSProperties}
-      aria-hidden="true"
-    />
-  )
-}
 
 /** Cartão de token da capa: imagem em perspectiva isométrica (matriz do Figma) com sombra */
 function TokenCard({ src, w, h, m, alt }: { src: string; w: number; h: number; m: [number, number, number, number, number, number]; alt: string }) {
@@ -66,31 +51,11 @@ function TokenCard({ src, w, h, m, alt }: { src: string; w: number; h: number; m
   )
 }
 
-/** Texto corrido marrom (Albert Sans 32/130%) */
-const Body = ({ x, y, w, color = BROWN, center, right, children }: { x: number; y: number; w: number; color?: string; center?: boolean; right?: boolean; children: ReactNode }) => (
-  <T x={x} y={y} w={w} fs={32} lh={41.6} color={color} center={center} right={right}>
-    {children}
-  </T>
-)
-
-/** Título de seção (Roboto Light 96/130%) */
-const Title = ({ x, y, w, id, children }: { x: number; y: number; w: number; id: string; children: ReactNode }) => (
-  <T as="h2" id={id} x={x} y={y} w={w} fs={96} lh={124.8} weight={300} color={BROWN} className={s.title}>
-    {children}
-  </T>
-)
-
-/** Barra laranja ao lado dos textos do Contexto */
-const Bar = ({ x, y, h }: { x: number; y: number; h: number }) => <Abs x={x} y={y} w={16} h={h} className={s.bar} />
-
 const SUMMARY = [
   { n: '5', label: 'funcionam', bg: '#d0ffe1', color: '#1e6b43' },
   { n: '11', label: 'com ressalva', bg: '#ffe5ca', color: '#8a4a00' },
   { n: '4', label: 'não funcionam', bg: '#ffd8d0', color: '#a3321f' },
 ]
-
-/** Trecho de código/token dentro das descrições */
-const Tk = ({ children }: { children: ReactNode }) => <span className={s.tk}>{children}</span>
 
 type Finding = {
   x: number
@@ -168,36 +133,20 @@ const FINDINGS: Finding[] = [
   },
 ]
 
-/** Elipses concêntricas da transição para “Como eu iniciei” (posições dentro do grupo de 1811 × 1783) */
-const ARCS = [
-  { x: 0, y: 0, w: 1811, h: 1783, c: '#f88717' },
-  { x: 46, y: 42, w: 1719, h: 1691, c: '#ffbc79' },
-  { x: 94, y: 87, w: 1623, h: 1597, c: '#ffd0a1' },
-  { x: 139, y: 131, w: 1533, h: 1508, c: '#ffebd7' },
-  { x: 180, y: 179, w: 1451, h: 1427, c: '#ffffff' },
-]
-const pct = (v: number, total: number) => `${((v / total) * 100).toFixed(3)}%`
-
 /* ——————————————————————————————————————————————————————————————————————— */
 
 export default function DesignTokens() {
   return (
     <main id="conteudo" tabIndex={-1} className={s.page}>
       <h1 className="visually-hidden">Documentação de Design Tokens</h1>
-      <Stage h={6000} as="div">
+      <Stage h={29197} as="div">
+        <Fundos />
         {/* Fundo marrom do Contexto e elipses da transição para “Como eu iniciei” */}
         <Abs x={-4} y={2832} w={1449} h={1479} className={s.brown} style={bleed(-4, 1449, 'both')} aria-hidden="true" />
-        <Abs x={-185} y={3930} w={1811} h={1783} className={s.arcs} style={bleed(-185, 1811, 'both')} aria-hidden="true">
-          {ARCS.map((a) => (
-            <span
-              key={a.c}
-              style={{ left: pct(a.x, 1811), top: pct(a.y, 1783), width: pct(a.w, 1811), height: pct(a.h, 1783), backgroundColor: a.c }}
-            />
-          ))}
-        </Abs>
+        <Arcs x={-185} y={3930} arcs={ARCS_A} half="top" />
 
-        <Rings x={549} y={-48} size={1782} fill="#ffffff" ring={ORANGE} />
-        <Rings x={-170} y={4520} size={1782} fill="#ffffff" ring="#ffd0a1" />
+        <Rings x={549} y={-48} fill="#ffffff" ring={ORANGE} />
+        <Rings x={-170} y={4520} fill="#ffffff" ring="#ffd0a1" />
         <Rings x={-30} y={2082} size={1500} fill={BROWN} ring="rgb(248 135 23 / 0.52)" fade={0.85} />
 
         {/* Capa: cartões de token ligados por setas pontilhadas */}
@@ -359,6 +308,12 @@ export default function DesignTokens() {
             Mas o achado que <strong>mudou a direção</strong> foi uma pergunta simples.
           </T>
         </section>
+
+        <Estrutura />
+        <Decisoes />
+        <Marcas />
+        <Automacao />
+        <Resultados />
       </Stage>
     </main>
   )

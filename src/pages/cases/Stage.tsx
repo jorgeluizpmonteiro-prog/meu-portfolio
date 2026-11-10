@@ -99,16 +99,18 @@ type TProps = {
   className?: string
   style?: CSSProperties
   id?: string
+  'aria-hidden'?: boolean | 'true'
   children: ReactNode
 }
 
 /** Texto posicionado nas coordenadas do Figma. */
-export function T({ x, y, w, h, fs, lh, weight, color, center, right, as = 'p', className, style, id, children }: TProps) {
+export function T({ x, y, w, h, fs, lh, weight, color, center, right, as = 'p', className, style, id, children, ...rest }: TProps) {
   const textAlign = center ? 'center' : right ? 'right' : undefined
   return (
     <Abs
       as={as}
       id={id}
+      {...rest}
       x={x}
       y={y}
       w={w}
