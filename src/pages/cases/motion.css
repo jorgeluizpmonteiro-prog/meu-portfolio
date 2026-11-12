@@ -92,6 +92,21 @@
     transform: scaleY(0);
   }
 
+  /* Tela que sai de dentro do aparelho, de cima para baixo (o aparelho fica parado) */
+  [data-motion] [data-reveal='drop']:not([data-revealed]) {
+    opacity: 1;
+    transform: none;
+  }
+
+  [data-motion] [data-reveal='drop'] [data-drop] {
+    transition: transform 1.5s var(--reveal-ease);
+    transition-delay: calc(var(--reveal-delay, 0ms) + 150ms);
+  }
+
+  [data-motion] [data-reveal='drop']:not([data-revealed]) [data-drop] {
+    transform: translateY(-100%);
+  }
+
   /* Título linha a linha: cada linha sobe de dentro da própria máscara */
   [data-motion] [data-reveal='lines']:not([data-revealed]) {
     opacity: 1;

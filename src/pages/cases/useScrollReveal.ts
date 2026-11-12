@@ -12,6 +12,7 @@ import './motion.css'
  *   mask  — revelado por uma máscara que se abre (fotos e mockups)
  *   wipe  — revelado da esquerda para a direita (faixas, paletas); wipe-r, da direita
  *   grow  — cresce de cima para baixo (barras de destaque)
+ *   drop  — a tela ([data-drop]) sai de dentro do aparelho, de cima para baixo
  *   lines — título revelado linha a linha (use <Lines>)
  * Elementos que entram juntos na tela aparecem em sequência (de cima para baixo, da esquerda para a
  * direita). data-count="N" num filho faz o número contar até N quando o bloco aparece.

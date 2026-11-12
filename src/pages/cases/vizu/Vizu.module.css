@@ -36,11 +36,6 @@
     -webkit-mask-image: linear-gradient(to right, transparent, #000 calc(48 * var(--u)));
     mask-image: linear-gradient(to right, transparent, #000 calc(48 * var(--u)));
   }
-
-  .fadeRightEdge {
-    -webkit-mask-image: linear-gradient(to left, transparent, #000 calc(48 * var(--u)));
-    mask-image: linear-gradient(to left, transparent, #000 calc(48 * var(--u)));
-  }
 }
 
 /* Recebe o foco ao voltar para o topo, sem contorno */
@@ -344,4 +339,63 @@
   flex: none;
   width: calc(33.8 * var(--u));
   height: calc(33.8 * var(--u));
+}
+
+/* —— Mosaicos em carrossel (mesmo movimento do carrossel de telas do Tiddo) —— */
+.mosaic {
+  overflow: hidden;
+}
+
+.mosaicStrip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: calc(2000 * var(--u));
+  height: 100%;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mosaicStrip {
+    animation: mosaic-slide 20s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate;
+    will-change: transform;
+  }
+}
+
+/* A faixa tem 560 de telas extras à direita do quadro do Figma */
+@keyframes mosaic-slide {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-560 * var(--u)));
+  }
+}
+
+/* —— Mockups com o aparelho escuro: a tela sai de dentro dele —— */
+.phone {
+  /* Sombra do Figma: DROP_SHADOW r 75, #231560 */
+  filter: drop-shadow(0 0 calc(62.5 * var(--u)) #231560);
+}
+
+.phoneSurface {
+  position: absolute;
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: #492eba;
+  background-color: #0f0a26;
+}
+
+.phoneScreen {
+  position: absolute;
+}
+
+.phoneScreen img {
+  display: block;
+  width: 100%;
+  height: 100%;
 }

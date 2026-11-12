@@ -36,10 +36,10 @@ import personaEduardo from '../../../assets/cases/vizu/persona-eduardo.webp'
 import personaSofia from '../../../assets/cases/vizu/persona-sofia.webp'
 import ilustracaoUsuario from '../../../assets/cases/vizu/ilustracao-usuario.webp'
 import ilustracaoFuncional from '../../../assets/cases/vizu/ilustracao-funcional.webp'
-import telaColecoes from '../../../assets/cases/vizu/tela-colecoes.webp'
-import telaCamera from '../../../assets/cases/vizu/tela-camera.webp'
-import telaResultado from '../../../assets/cases/vizu/tela-resultado.webp'
-import landingPage from '../../../assets/cases/vizu/landing-page.webp'
+import telaColecoes from '../../../assets/cases/vizu/tela-colecoes-tela.webp'
+import telaCamera from '../../../assets/cases/vizu/tela-camera-tela.webp'
+import telaResultado from '../../../assets/cases/vizu/tela-resultado-tela.webp'
+import landingPage from '../../../assets/cases/vizu/landing-page-tela.webp'
 import maoLanding from '../../../assets/cases/vizu/mao-landing.webp'
 import logoFigma from '../../../assets/cases/comum/logo-figma.svg'
 import logoGmail from '../../../assets/cases/comum/logo-gmail.svg'
@@ -228,6 +228,79 @@ const CALLOUTS: { d: string; dot: [number, number] }[] = [
 
 /* ——————————————————————————————————————————————————————————————————————— */
 
+/*
+ * Mosaico diagonal em carrossel (como o das telas do Tiddo): a faixa é o mosaico do Figma seguido das
+ * telas que continuam a grade à direita; ela desliza para a esquerda e volta, sem parar.
+ * Sem animação (reduzir movimento), fica parada na posição do Figma.
+ */
+function MosaicCarousel({ y, src, label }: { y: number; src: string; label: string }) {
+  return (
+    <Abs x={0} y={y} w={1440} h={1688.67} className={cx(s.mosaic, s.fadeX)} role="img" aria-label={label} data-reveal="mask">
+      <img src={src} alt="" width={3000} height={2533} loading="lazy" decoding="async" className={s.mosaicStrip} />
+    </Abs>
+  )
+}
+
+type Phone = {
+  /** Caixa do mockup no palco (com a margem da sombra), como no export do Figma */
+  box: [number, number, number, number]
+  /** Superfície escura (relativa à caixa): x, y, largura, altura, raio, borda */
+  surface: [number, number, number, number, number, number]
+  /** Tela (relativa à caixa): x, y, largura, altura, raio */
+  screen: [number, number, number, number, number]
+  src: string
+  alt: string
+}
+
+/*
+ * Mockup com o quadrado escuro do aparelho: a tela sai de dentro dele, de cima para baixo.
+ * A superfície é desenhada em CSS; só a tela é imagem. A sombra é a do Figma (r 75 → drop-shadow 62,5).
+ */
+function PhoneMock({ p, className, style, ...rest }: { p: Phone; className?: string; style?: CSSProperties; [data: `data-${string}`]: string | undefined }) {
+  const [sx, sy, sw, sh, sr, sb] = p.surface
+  const [tx, ty, tw, th, tr] = p.screen
+  return (
+    <Abs x={p.box[0]} y={p.box[1]} w={p.box[2]} h={p.box[3]} className={cx(s.phone, className)} style={style} data-reveal="drop" {...rest}>
+      <div className={s.phoneSurface} style={{ left: u(sx), top: u(sy), width: u(sw), height: u(sh), borderRadius: u(sr), borderWidth: u(sb) }} />
+      <div className={s.phoneScreen} style={{ left: u(tx), top: u(ty), width: u(tw), height: u(th), clipPath: `inset(0 0 -100% 0 round ${u(tr)} ${u(tr)} 0 0)` }}>
+        <img src={p.src} alt={p.alt} width={Math.round(tw)} height={Math.round(th)} loading="lazy" decoding="async" data-drop="" />
+      </div>
+    </Abs>
+  )
+}
+
+const PHONE_SURFACE: Phone['surface'] = [75, 75, 319.5, 644.25, 45, 2.25]
+const PHONES: Record<'colecoes' | 'camera' | 'resultado' | 'landing', Phone> = {
+  colecoes: {
+    box: [485, 15104, 470, 1226],
+    surface: PHONE_SURFACE,
+    screen: [90, 90, 290, 1062, 39],
+    src: telaColecoes,
+    alt: 'Tela inicial do Vizu com coleções, histórico das últimas classificações e referências',
+  },
+  camera: {
+    box: [6, 16268, 470, 794.67],
+    surface: PHONE_SURFACE,
+    screen: [90, 90, 290, 616, 39],
+    src: telaCamera,
+    alt: 'Tela da câmera com a foto de uma flor amarela entre folhas',
+  },
+  resultado: {
+    box: [971, 16268, 469.33, 794.67],
+    surface: PHONE_SURFACE,
+    screen: [90, 90, 290, 616, 39],
+    src: telaResultado,
+    alt: 'Tela de resultado: Sphagneticola trilobata com 91,2% de certeza, descrição e botões Concluir e Adicionar à coleção',
+  },
+  landing: {
+    box: [8, 17273, 785.33, 2000.67],
+    surface: [75, 75, 634.88, 490.92, 34.5, 1.99],
+    screen: [88, 86, 610, 1840, 34.5],
+    src: landingPage,
+    alt: 'Landing page do Vizu: A Plataforma de Classificação por Imagem do Vortex, com seções de modularidade, classificação ágil, coleções e formulário de contato',
+  },
+}
+
 function Swatch({ x, y, color, name }: { x: number; y: number; color: string; name: string }) {
   return (
     <>
@@ -368,15 +441,11 @@ export default function Vizu() {
               </ul>
             </Abs>
           ))}
-          <AbsImg
-            x={0}
+          <MosaicCarousel
             y={3142}
-            w={1440}
-            h={1688.67}
             src={mosaicoTelas}
-            alt="Mosaico com as telas finais do Vizu: coleções, histórico, referências, perfil, câmera, onboarding e segmentação"
-          className={s.fadeX}
-          data-reveal="mask" />
+            label="Mosaico com as telas finais do Vizu: coleções, histórico, referências, perfil, câmera, onboarding e segmentação"
+          />
         </section>
 
         <section aria-label="Cenário e fluxos">
@@ -603,15 +672,7 @@ export default function Vizu() {
           ))}
 
           {/* No Figma o mosaico de wireframes fica por cima do início do UI Kit */}
-          <AbsImg
-            x={0}
-            y={12096}
-            w={1440}
-            h={1688.67}
-            src={mosaicoWireframes}
-            alt="Mosaico com os wireframes de média fidelidade em tons de cinza"
-          className={s.fadeX}
-          data-reveal="mask" />
+          <MosaicCarousel y={12096} src={mosaicoWireframes} label="Mosaico com os wireframes de média fidelidade em tons de cinza" />
         </section>
 
         <section aria-labelledby="vizu-aplicacao">
@@ -642,31 +703,9 @@ export default function Vizu() {
             objetivo era converter visitantes em usuários cadastrados.
           </Body>
 
-          <AbsImg
-            x={485}
-            y={15104}
-            w={470}
-            h={1226}
-            src={telaColecoes}
-            alt="Tela inicial do Vizu com coleções, histórico das últimas classificações e referências"
-          data-reveal="up" data-parallax="view" style={{ '--parallax': u(30) } as CSSProperties} />
-          <AbsImg
-            x={6}
-            y={16268}
-            w={470}
-            h={794.67}
-            src={telaCamera}
-            alt="Tela da câmera com a foto de uma flor amarela entre folhas"
-          data-reveal="left" />
-          <AbsImg
-            x={971}
-            y={16268}
-            w={469.33}
-            h={794.67}
-            src={telaResultado}
-            alt="Tela de resultado: Sphagneticola trilobata com 91,2% de certeza, descrição e botões Concluir e Adicionar à coleção"
-          className={s.fadeRightEdge}
-          data-reveal="up" />
+          <PhoneMock p={PHONES.colecoes} data-parallax="view" style={{ '--parallax': u(30) } as CSSProperties} />
+          <PhoneMock p={PHONES.camera} />
+          <PhoneMock p={PHONES.resultado} />
 
           <Abs as="svg" x={380} y={15300} w={860} h={2320} viewBox="380 15300 860 2320" className={s.callouts} aria-hidden="true" data-reveal="fade">
             {CALLOUTS.map((c) => (
@@ -677,14 +716,7 @@ export default function Vizu() {
             ))}
           </Abs>
 
-          <AbsImg
-            x={8}
-            y={17273}
-            w={785.33}
-            h={2000.67}
-            src={landingPage}
-            alt="Landing page do Vizu: A Plataforma de Classificação por Imagem do Vortex, com seções de modularidade, classificação ágil, coleções e formulário de contato"
-          data-reveal="up" />
+          <PhoneMock p={PHONES.landing} />
           <AbsImg
             x={895}
             y={18128}
