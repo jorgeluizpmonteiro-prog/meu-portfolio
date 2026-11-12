@@ -87,25 +87,30 @@
   rotate: 180deg;
 }
 
-/* Carrossel das telas (Rive): começa por baixo do painel azul e some nas pontas em telas largas */
-.carousel {
-  -webkit-mask-image: linear-gradient(to bottom, transparent calc(98 * var(--u)), #000 calc(200 * var(--u)));
-  mask-image: linear-gradient(to bottom, transparent calc(98 * var(--u)), #000 calc(200 * var(--u)));
-}
-
+/* Carrossel das telas (Rive): em telas largas, as pontas se fundem ao fundo da página.
+ * Feito com camadas por cima (e não com máscara), para o canvas animado redesenhar em todos os navegadores. */
 @media (min-width: 1441px) {
-  .carousel {
-    -webkit-mask-image:
-      linear-gradient(to bottom, transparent calc(98 * var(--u)), #000 calc(200 * var(--u))),
-      linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
-    -webkit-mask-composite: source-in;
-    mask-image:
-      linear-gradient(to bottom, transparent calc(98 * var(--u)), #000 calc(200 * var(--u))),
-      linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
-    mask-composite: intersect;
+  .carousel::before,
+  .carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 6%;
+    pointer-events: none;
+  }
+
+  .carousel::before {
+    left: 0;
+    background: linear-gradient(to right, #fefefe, rgb(254 254 254 / 0));
+  }
+
+  .carousel::after {
+    right: 0;
+    background: linear-gradient(to left, #fefefe, rgb(254 254 254 / 0));
   }
 }
-
 /* Telas maiores que 1440 px: imagens cortadas na borda do Figma somem suavemente */
 @media (min-width: 1441px) {
   .fadeX {
@@ -424,6 +429,47 @@
   display: block;
   width: 100%;
   height: 100%;
+}
+
+/* Carrossel das fotos do hackathon (faixa contínua) */
+.photoCarousel {
+  overflow: hidden;
+}
+
+.photoTrack {
+  position: absolute;
+  top: calc(50 * var(--u));
+  display: flex;
+  gap: calc(14.3 * var(--u));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.photoTrack > .photo {
+  flex: none;
+  width: calc(360.5 * var(--u));
+  height: calc(360.5 * var(--u));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .photoTrack {
+    animation: photo-marquee 40s linear infinite;
+  }
+
+  .photoCarousel:hover .photoTrack {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes photo-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(var(--set) * -1));
+  }
 }
 
 /* —— Piloto —— */

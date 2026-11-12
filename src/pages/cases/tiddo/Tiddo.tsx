@@ -291,6 +291,33 @@ const PHOTOS = [
   { x: 1101.8, src: foto4, alt: 'Troféu e certificado de segundo lugar no hackathon' },
 ] as const
 
+/**
+ * Carrossel das fotos do hackathon: faixa contínua que passa devagar para a esquerda e se repete sem
+ * emenda. Começa com as fotos na posição do Figma, pausa com o mouse em cima e fica parada com
+ * “reduzir movimento”. Em telas largas, as cópias preenchem até as bordas.
+ */
+const PHOTO_STEP = 374.8 // 360,5 da foto + 14,3 de espaço
+const PHOTO_SETS = 5 // 2 cópias antes (borda esquerda em telas largas), a do Figma e 2 depois
+
+function PhotoCarousel() {
+  return (
+    <Abs x={0} y={10151.6} w={1440} h={460.5} className={s.photoCarousel} style={bleed(0, 1440, 'both')} data-reveal="up">
+      <ul
+        className={s.photoTrack}
+        style={{ left: `calc(var(--bleed) + ${u(-22.5 - 2 * 4 * PHOTO_STEP)})`, '--set': u(4 * PHOTO_STEP) } as CSSProperties}
+      >
+        {Array.from({ length: PHOTO_SETS }, (_, set) =>
+          PHOTOS.map((p, i) => (
+            <li key={`${set}-${i}`} className={s.photo} aria-hidden={set === 2 ? undefined : true}>
+              <img src={p.src} alt={set === 2 ? p.alt : ''} width={721} height={721} loading="lazy" decoding="async" />
+            </li>
+          )),
+        )}
+      </ul>
+    </Abs>
+  )
+}
+
 const IMPACTS = [
   { value: '50%', x: 80.9, y: 14250.8, w: 176.3, textX: 275.2, textW: 134.3, text: <>De <strong>redução</strong> do tempo de preenchimento</> },
   { value: '100%', x: 513, y: 14250.8, w: 226.7, textX: 757.7, textW: 166.5, text: <>De <strong>rastreabilidade</strong> dos registros</> },
@@ -518,6 +545,19 @@ export default function Tiddo() {
 
         {/* —— Prototipação —— */}
         <section aria-labelledby="tiddo-prototipacao">
+          {/* Carrossel das telas finais (animação do Rive, node 208:32800), por baixo do painel azul */}
+          <RiveScene
+            x={0}
+            y={7863}
+            w={1440}
+            h={1597.5}
+            src={telasPrototipo}
+            poster={telasPrototipoPoster}
+            animation="Timeline 1"
+            duration={20}
+            alt="Carrossel com as telas finais do Tiddo: login, dashboard, checklists feitas, componente, preenchimento e revisão"
+            className={s.carousel}
+          />
           <DarkPanel y={6841.5} h={1119.8} />
           <Glow x={1592.5} y={7475.5} r={365.3} color="#04235d" noise />
           <TitleBand id="tiddo-prototipacao" band={[-141, 6841.5, 1243.5]} side="left" text={[453.8, 532, 'prototipação']} />
@@ -552,19 +592,6 @@ export default function Tiddo() {
               </Abs>
             </div>
           ))}
-          {/* Carrossel das telas finais (animação do Rive, node 208:32800) */}
-          <RiveScene
-            x={0}
-            y={7863}
-            w={1440}
-            h={1597.5}
-            src={telasPrototipo}
-            poster={telasPrototipoPoster}
-            animation="Timeline 1"
-            duration={20}
-            alt="Carrossel com as telas finais do Tiddo: login, dashboard, checklists feitas, componente, preenchimento e revisão"
-            className={s.carousel}
-          />
         </section>
 
         {/* —— Resultado no hackathon —— */}
@@ -582,11 +609,7 @@ export default function Tiddo() {
               lugar no hackathon
             </T>
           </p>
-          {PHOTOS.map((p) => (
-            <Abs key={p.x} x={p.x} y={10201.6} w={360.5} h={360.5} className={s.photo} data-reveal="up">
-              <img src={p.src} alt={p.alt} width={721} height={721} loading="lazy" decoding="async" />
-            </Abs>
-          ))}
+          <PhotoCarousel />
         </section>
 
         {/* —— Projeto piloto —— */}

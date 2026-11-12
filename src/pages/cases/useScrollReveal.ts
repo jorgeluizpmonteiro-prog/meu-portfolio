@@ -48,26 +48,48 @@ export function useScrollReveal(ref: RefObject<HTMLElement | null>) {
     if (!root || typeof IntersectionObserver === 'undefined') return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    const targets = Array.from(root.querySelectorAll<HTMLElement>('[data-reveal]'))
+    const pending = new Set(root.querySelectorAll<HTMLElement>('[data-reveal]'))
+
+    const reveal = (el: HTMLElement, delay: number) => {
+      if (!pending.delete(el)) return
+      el.style.setProperty('--reveal-delay', `${delay}ms`)
+      el.dataset.revealed = ''
+      el.querySelectorAll<HTMLElement>('[data-count]').forEach(countUp)
+      observer.unobserve(el)
+    }
+
+    // Aparece assim que qualquer parte entra na tela; os que entram juntos aparecem em sequência
     const observer = new IntersectionObserver(
       (entries) => {
-        const entering = entries
+        entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left)
-        entering.forEach((entry, i) => {
-          const el = entry.target as HTMLElement
-          el.style.setProperty('--reveal-delay', `${Math.min(i, MAX_STEPS) * STEP_MS}ms`)
-          el.dataset.revealed = ''
-          el.querySelectorAll<HTMLElement>('[data-count]').forEach(countUp)
-          observer.unobserve(el)
-        })
+          .forEach((entry, i) => reveal(entry.target as HTMLElement, Math.min(i, MAX_STEPS) * STEP_MS))
       },
-      { rootMargin: '0px 0px -8% 0px', threshold: 0 },
+      { threshold: 0 },
     )
+
+    // Rede de segurança: numa rolagem muito rápida (ou com End, âncoras, saltos) o observador pode não
+    // ver um elemento passar. A cada parada da rolagem, revela tudo o que está na tela ou já passou.
+    const sweep = { timer: 0 }
+    const check = () => {
+      sweep.timer = 0
+      const bottom = window.innerHeight
+      pending.forEach((el) => {
+        if (el.getBoundingClientRect().top < bottom) reveal(el, 0)
+      })
+    }
+    const onScroll = () => {
+      if (!sweep.timer) sweep.timer = window.setTimeout(check, 150)
+    }
+
     root.dataset.motion = ''
-    targets.forEach((el) => observer.observe(el))
+    pending.forEach((el) => observer.observe(el))
+    window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
       observer.disconnect()
+      window.removeEventListener('scroll', onScroll)
+      window.clearTimeout(sweep.timer)
       delete root.dataset.motion
     }
   }, [ref])

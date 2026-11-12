@@ -98,8 +98,9 @@
     transform: none;
   }
 
+  /* Corta só embaixo (de onde a linha sobe), com folga para acentos e letras que passam da linha */
   [data-motion] [data-reveal='lines'] .reveal-line {
-    overflow: hidden;
+    clip-path: inset(-0.6em -0.6em -0.18em -0.6em);
   }
 
   [data-motion] [data-reveal='lines'] .reveal-line > span {
@@ -108,7 +109,7 @@
   }
 
   [data-motion] [data-reveal='lines']:not([data-revealed]) .reveal-line > span {
-    transform: translateY(105%);
+    transform: translateY(125%);
   }
 
   /* Parallax sutil, ligado ao scroll (só onde o navegador tem suporte) */

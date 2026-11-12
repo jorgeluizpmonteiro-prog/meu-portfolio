@@ -101,7 +101,7 @@ export function RiveScene({ x, y, w, h, src, poster, alt, animation, duration, c
           void load()
         }
       },
-      { rootMargin: '1200px 0px' },
+      { rootMargin: '3000px 0px' },
     )
     const onScreen = new IntersectionObserver((entries) => {
       st.visible = entries.some((e) => e.isIntersecting)
