@@ -5,7 +5,6 @@ import '@fontsource/open-sans/700.css'
 import '@fontsource/open-sans/800.css'
 import '../../../styles/satoshi.css'
 import { Abs, AbsImg, Stage, T } from '../Stage'
-import { RiveScene } from '../RiveScene'
 import { ScrollProgress } from '../motion'
 import { useScrollReveal } from '../useScrollReveal'
 import { bleed, u } from '../units'
@@ -16,8 +15,7 @@ import mockupCapa from '../../../assets/cases/tiddo/mockup-capa.webp'
 import mockupContexto from '../../../assets/cases/tiddo/mockup-contexto.webp'
 import operadora from '../../../assets/cases/tiddo/operadora.webp'
 import wireframes from '../../../assets/cases/tiddo/wireframes.webp'
-import telasPrototipo from '../../../assets/cases/tiddo/telas-prototipo.riv?url'
-import telasPrototipoPoster from '../../../assets/cases/tiddo/telas-prototipo-poster.webp'
+import telasPrototipo from '../../../assets/cases/tiddo/telas-prototipo.webp'
 import mockupPiloto from '../../../assets/cases/tiddo/mockup-piloto.webp'
 import cartilha from '../../../assets/cases/tiddo/cartilha.webp'
 import simbolo from '../../../assets/cases/tiddo/simbolo.svg'
@@ -136,7 +134,11 @@ function Connectors({ lines, color }: { lines: [number, number, number][]; color
   )
 }
 
-/** Menu suspenso aberto com etapas (Processo de Design / Validação e melhorias) */
+/**
+ * Menu suspenso aberto com etapas (Processo de Design / Validação e melhorias).
+ * Ao aparecer na tela, abre como um menu de verdade: a seta gira, a lista desce, os itens entram
+ * um a um e o item escolhido é marcado (ver .dropdown no CSS).
+ */
 function Dropdown({ x, y, title, items, selected, dark }: { x: number; y: number; title: string; items: string[]; selected: number; dark?: boolean }) {
   return (
     <Abs x={x} y={y} w={633} className={cx(s.dropdown, dark && s.dropdownDark)} data-reveal="up">
@@ -148,12 +150,12 @@ function Dropdown({ x, y, title, items, selected, dark }: { x: number; y: number
       </div>
       <ul className={s.ddList}>
         {items.map((item, i) => (
-          <li key={item} className={cx(i === selected && s.ddSelected)}>
+          <li key={item} className={cx(i === selected && s.ddSelected)} style={{ '--i': i } as CSSProperties}>
             <span>{item}</span>
             <span className={s.ddBox} aria-hidden="true">
               {i === selected && (
                 <svg viewBox="0 0 34 25">
-                  <path d="M30.943 2.652 9.844 22.102 2.652 15.472" />
+                  <path d="M30.943 2.652 9.844 22.102 2.652 15.472" pathLength={1} />
                 </svg>
               )}
             </span>
@@ -290,6 +292,39 @@ const PHOTOS = [
   { x: 727, src: foto3, alt: 'Equipe recebendo o prêmio de segundo lugar no palco' },
   { x: 1101.8, src: foto4, alt: 'Troféu e certificado de segundo lugar no hackathon' },
 ] as const
+
+/**
+ * Carrossel das telas da prototipação: o mesmo movimento da animação feita no Rive (a imagem do mosaico
+ * desliza para a esquerda e volta, 20 s em cada sentido), com a imagem do arquivo .riv em WebP e
+ * animação só em CSS — sem baixar o runtime do Rive nem os 7,4 MB do arquivo.
+ * Quadro do Rive (1920 × 2130) = 1440 × 1597,5 no palco (fator 0,75). A imagem começa 271 à esquerda
+ * do quadro e anda 1449 em 20 s. Com “reduzir movimento”, fica parada no primeiro quadro.
+ */
+function ScreensCarousel() {
+  return (
+    <Abs
+      x={0}
+      y={7863}
+      w={1440}
+      h={1597.5}
+      className={s.screens}
+      style={bleed(0, 1440, 'both')}
+      role="img"
+      aria-label="Carrossel com as telas finais do Tiddo: login, dashboard, checklists feitas, componente, preenchimento e revisão"
+    >
+      <img
+        src={telasPrototipo}
+        alt=""
+        width={4383}
+        height={2130}
+        loading="lazy"
+        decoding="async"
+        className={s.screensStrip}
+        style={{ left: `calc(var(--bleed) + ${u(-271 * 0.75)})`, width: u(4383 * 0.75), height: u(1597.5) }}
+      />
+    </Abs>
+  )
+}
 
 /**
  * Carrossel das fotos do hackathon: faixa contínua que passa devagar para a esquerda e se repete sem
@@ -545,19 +580,8 @@ export default function Tiddo() {
 
         {/* —— Prototipação —— */}
         <section aria-labelledby="tiddo-prototipacao">
-          {/* Carrossel das telas finais (animação do Rive, node 208:32800), por baixo do painel azul */}
-          <RiveScene
-            x={0}
-            y={7863}
-            w={1440}
-            h={1597.5}
-            src={telasPrototipo}
-            poster={telasPrototipoPoster}
-            animation="Timeline 1"
-            duration={20}
-            alt="Carrossel com as telas finais do Tiddo: login, dashboard, checklists feitas, componente, preenchimento e revisão"
-            className={s.carousel}
-          />
+          {/* Carrossel das telas finais (node 208:32800), por baixo do painel azul */}
+          <ScreensCarousel />
           <DarkPanel y={6841.5} h={1119.8} />
           <Glow x={1592.5} y={7475.5} r={365.3} color="#04235d" noise />
           <TitleBand id="tiddo-prototipacao" band={[-141, 6841.5, 1243.5]} side="left" text={[453.8, 532, 'prototipação']} />
