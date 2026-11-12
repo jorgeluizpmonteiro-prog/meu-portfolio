@@ -183,7 +183,7 @@ export default function Automacao() {
       <Arrows x0={170} y0={24480} w={1100} h={130} width={2} arrows={[...flow1Arrows, [720.5, 24573, 720.5, 24600]]} />
 
       {/* Fluxo 2 */}
-      <AbsImg x={0} y={24700} w={479.5} h={679.5} src={maoTelefone} alt="Mão segurando um celular com o e-mail de aprovação de um token específico" />
+      <AbsImg x={0} y={24700} w={479.5} h={679.5} src={maoTelefone} className={s.fadeLeft} alt="Mão segurando um celular com o e-mail de aprovação de um token específico" />
       <Title id="dt-fluxo-2" x={414} y={24846} w={922} color={PEACH} right>
         Fluxo 2 - Validar
         <br />

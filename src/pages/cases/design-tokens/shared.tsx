@@ -26,19 +26,62 @@ export function Rings({ x, y, size = 1782, fill, ring, fade = 0.88 }: { x: numbe
 }
 
 /**
- * Meias-elipses concêntricas de transição entre seções (grupo de 1811 × 1783), esticam em telas largas.
- * half: metade de cima (abóbada) ou de baixo (bacia), como os arcos do Figma.
+ * Meias-elipses concêntricas de transição entre seções (grupo de 1811 × 1783), como os arcos do Figma.
+ * half: metade de cima (abóbada) ou de baixo (bacia). Todas são cortadas na mesma linha (o centro do
+ * grupo), por um contêiner com overflow oculto que encaixa no pixel e não deixa linha entre as faixas.
+ * Até 1440 px têm o tamanho do Figma. Em telas largas alargam só o necessário para a elipse branca
+ * de dentro cobrir a tela toda na linha de corte: assim o corte nunca aparece e as faixas chegam às
+ * bordas da tela por cima do fundo marrom, sem deixar cantos.
  */
+/** Metade da altura do grupo de elipses: a linha de corte */
+const HALF = 1783 / 2
+
 export function Arcs({ x, y, arcs, half }: { x: number; y: number; arcs: Arc[]; half: 'top' | 'bottom' }) {
-  const pct = (v: number, total: number) => `${((v / total) * 100).toFixed(3)}%`
+  const pct = (v: number) => `${((v / 1811) * 100).toFixed(4)}%`
   return (
-    <Abs x={x} y={y} w={1811} h={1783} className={s.arcs} style={bleed(x, 1811, 'both')} aria-hidden="true">
+    <Abs
+      x={x}
+      y={half === 'top' ? y : y + HALF}
+      h={HALF}
+      className={s.arcs}
+      style={
+        {
+          '--aw': 'max(calc(1811 * var(--u)), calc(100cqw * 1811 / 1440))',
+          left: `calc(${u(x + 905.5)} - var(--aw) / 2)`,
+          width: 'var(--aw)',
+        } as CSSProperties
+      }
+      aria-hidden="true"
+    >
       {arcs.map((a) => (
         <span
           key={a.c}
-          style={{ left: pct(a.x, 1811), top: pct(a.y, 1783), width: pct(a.w, 1811), height: pct(a.h, 1783), backgroundColor: a.c, clipPath: half === 'top' ? 'inset(0 0 50% 0)' : 'inset(50% 0 0 0)' }}
+          style={{ left: pct(a.x), top: u(half === 'top' ? a.y : a.y - HALF), width: pct(a.w), height: u(a.h), backgroundColor: a.c }}
         />
       ))}
+    </Abs>
+  )
+}
+
+/**
+ * Foto de largura total. Até 1440 px ocupa a largura toda, como no Figma. Em telas largas a foto
+ * mantém o tamanho e o enquadramento do Figma, e as laterais são completadas por uma versão
+ * desfocada da mesma imagem, que se funde com as bordas da foto (sem cortar em cima e embaixo).
+ */
+export function WidePhoto({ x, y, w, h, src, alt, eager }: { x: number; y: number; w: number; h: number; src: string; alt: string; eager?: boolean }) {
+  return (
+    <Abs x={x} y={y} w={w} h={h} className={s.widePhoto} style={bleed(x, w, 'both')}>
+      <img src={src} alt="" aria-hidden="true" className={s.widePhotoBlur} loading="lazy" decoding="async" />
+      <img
+        src={src}
+        alt={alt}
+        width={Math.round(w)}
+        height={Math.round(h)}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        className={s.widePhotoMain}
+        style={{ width: u(w) }}
+      />
     </Abs>
   )
 }
@@ -58,8 +101,8 @@ export const Title = ({ x, y, w, id, color = BROWN, center, right, children }: {
 )
 
 /** Barra laranja de destaque ao lado dos textos */
-export const Bar = ({ x, y, h, round }: { x: number; y: number; h: number; round?: boolean }) => (
-  <Abs x={x} y={y} w={16} h={h} className={cx(s.bar, round && s.barRound)} aria-hidden="true" />
+export const Bar = ({ x, y, h }: { x: number; y: number; h: number }) => (
+  <Abs x={x} y={y} w={16} h={h} className={s.bar} aria-hidden="true" />
 )
 
 /** Trecho de código/token dentro dos textos */
@@ -91,7 +134,7 @@ export const Num = ({ n, inverse }: { n: number; inverse?: boolean }) => (
 export function Decision({ n, x, y, w, textW, barX, right, children }: { n: number; x: number; y: number; w: number; textW?: number; barX: number; right?: boolean; children: ReactNode }) {
   return (
     <>
-      <Bar x={barX} y={y} h={130} round />
+      <Bar x={barX} y={y} h={130} />
       <Abs x={x} y={y} w={w} className={cx(s.decision, right && s.decisionRight)}>
         <h3>Decisão {n}</h3>
         <p style={textW ? { width: u(textW) } : undefined}>{children}</p>

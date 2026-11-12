@@ -3,15 +3,13 @@ import '@fontsource/space-grotesk/400.css'
 import '@fontsource/space-grotesk/700.css'
 import '@fontsource/dm-sans/400.css'
 import '@fontsource/dm-sans/500.css'
-import '@fontsource/fraunces/400.css'
-import '@fontsource/fraunces/600.css'
-import '@fontsource/fraunces/700.css'
+import '@fontsource-variable/fraunces/opsz.css'
 import '@fontsource/source-sans-3/400.css'
 import '@fontsource/source-sans-3/500.css'
 import '../../../styles/satoshi.css'
-import { Abs, AbsImg, T } from '../Stage'
+import { Abs, T } from '../Stage'
 import { bleed, u } from '../units'
-import { Bar, Body, Title } from './shared'
+import { Bar, Body, Title, WidePhoto } from './shared'
 import { cx } from './constants'
 import s from './DesignTokens.module.css'
 import m from './Marcas.module.css'
@@ -188,7 +186,7 @@ const BRANDS: Brand[] = [
     checkCols: [0, 85, 170],
     radioCols: [0, 85.5, 171],
     vars: brandVars({
-      head: "'Fraunces', Georgia, serif",
+      head: "'Fraunces Variable', Georgia, serif",
       body: "'Source Sans 3', system-ui, sans-serif",
       title: '#607538',
       cardTitleWeight: 600,
@@ -494,15 +492,13 @@ export default function Marcas() {
   return (
     <>
       {/* Transição: foto e destaque laranja */}
-      <AbsImg
+      <WidePhoto
         x={-2}
         y={14244}
         w={1444}
         h={863}
         src={fotoMonitor}
         alt="Designer trabalhando em um monitor com a lista de variáveis do sistema de design aberta no Figma"
-        className={s.cover}
-        style={bleed(-2, 1444, 'both')}
       />
       <Abs x={0} y={14907} w={798} h={200} className={s.orangePill} style={bleed(0, 798, 'left')} aria-hidden="true" />
       <T x={104} y={14950} w={600} fs={32} lh={38} color="#ffffff">
@@ -555,7 +551,7 @@ export default function Marcas() {
         const spec = SPECIMEN[i]
         return (
           <section key={brand.key} aria-labelledby={`dt-projeto-${brand.key}`}>
-            <Bar x={104} y={intro.y} h={209} round />
+            <Bar x={104} y={intro.y} h={209} />
             <Abs x={intro.tx} y={intro.y + 9} w={intro.tw} className={s.projectIntro}>
               <h3 id={`dt-projeto-${brand.key}`}>{intro.title}</h3>
               <p>{intro.text}</p>

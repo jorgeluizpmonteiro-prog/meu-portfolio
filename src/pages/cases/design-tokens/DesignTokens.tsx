@@ -7,7 +7,7 @@ import '@fontsource/albert-sans/600.css'
 import '@fontsource/albert-sans/700.css'
 import { Abs, AbsImg, Stage, T } from '../Stage'
 import { bleed, u } from '../units'
-import { Arcs, Bar, Body, Rings, Title, Tk } from './shared'
+import { Arcs, Bar, Body, Rings, Title, Tk, WidePhoto } from './shared'
 import { ARCS_A, BROWN, ORANGE, cx } from './constants'
 import Fundos from './Fundos'
 import Estrutura from './Estrutura'
@@ -239,15 +239,13 @@ export default function DesignTokens() {
               <strong>construídos com a mesma linguagem</strong>.
             </p>
           </Abs>
-          <AbsImg
+          <WidePhoto
             x={0}
             y={1970}
             w={1440}
             h={861}
             src={fotoContexto}
             alt="Jovem de boné trabalhando em um computador com um sistema de design aberto na tela"
-            className={s.cover}
-            style={bleed(0, 1440, 'both')}
           />
         </section>
 

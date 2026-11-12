@@ -58,13 +58,13 @@ export default function Resultados() {
           <br />e o primeiro uso real confirma.
         </T>
 
-        <Bar x={104} y={26713} h={105} round />
+        <Bar x={104} y={26713} h={105} />
         <T as="h3" x={144} y={26722} w={1192} fs={64} lh={96} weight={700} color={BROWN}>
           Fluxo 1
         </T>
         <Results y={26860} items={FLOW_1} label="Resultados do fluxo 1" />
 
-        <Bar x={1320} y={27184} h={105} round />
+        <Bar x={1320} y={27184} h={105} />
         <T as="h3" x={104} y={27193} w={1192} fs={64} lh={96} weight={700} color={BROWN} right>
           Fluxo 2
         </T>
@@ -88,7 +88,7 @@ export default function Resultados() {
       </section>
 
       <section aria-labelledby="dt-fim">
-        <T x={-12} y={28691} w={1464} fs={302.8} lh={393.6} weight={300} color="#ffebd7" className={s.thanks} aria-hidden="true">
+        <T x={-12} y={28691} w={1464} fs={302.8} lh={393.6} weight={300} color="#ffebd7" className={`${s.titleFont} ${s.thanks}`} aria-hidden="true">
           OBRIGADO
         </T>
         <T as="h2" id="dt-fim" x={378} y={28377} w={683.3} fs={66.8} lh={100.2} weight={400} color={BROWN} center>

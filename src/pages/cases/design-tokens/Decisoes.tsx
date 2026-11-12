@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
 import { Abs, AbsImg, T } from '../Stage'
-import { bleed } from '../units'
 import { Decision, Num, Title, Tk } from './shared'
 import { PEACH, cx } from './constants'
 import s from './DesignTokens.module.css'
@@ -203,8 +202,7 @@ export default function Decisoes() {
         h={971}
         src={mockupPapel}
         alt="Folha da documentação impressa: Seção 01 — Comece aqui"
-        className={s.fadeX}
-        style={{ ...bleed(-19, 1464, 'both'), objectFit: 'cover' }}
+        className={s.fadePaper}
       />
       <Decision n={4} x={916} y={13230} w={372} barX={1320} right>
         Escrito para o estagiário no primeiro dia

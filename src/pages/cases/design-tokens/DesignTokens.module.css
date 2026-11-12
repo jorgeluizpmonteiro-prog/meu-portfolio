@@ -36,6 +36,10 @@
 }
 
 /* Elipses concêntricas: esticam junto com a largura em telas maiores que 1440 px */
+.arcs {
+  overflow: hidden;
+}
+
 .arcs > span {
   position: absolute;
   border-radius: 50%;
@@ -93,6 +97,7 @@
 
 /* —— Contexto —— */
 .bar {
+  border-radius: 100px;
   background-color: #f88717;
 }
 
@@ -271,10 +276,6 @@
 
 /* ——————————————— Parte 2 em diante ——————————————— */
 
-.barRound {
-  border-radius: 100px;
-}
-
 .tkLight {
   color: #ffd0a1;
 }
@@ -284,14 +285,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-/* Imagens cortadas nas bordas do Figma: em telas largas esmaecem só nas pontas */
-@media (min-width: 1441px) {
-  .fadeX {
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
-    mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
-  }
 }
 
 /* —— Padronizar a estrutura —— */
@@ -799,4 +792,57 @@
   white-space: nowrap;
   user-select: none;
   pointer-events: none;
+}
+
+/* —— Telas maiores que 1440 px —— */
+
+/* Foto de largura total: a foto fica no tamanho do Figma e as laterais recebem a mesma imagem desfocada */
+.widePhoto {
+  overflow: hidden;
+}
+
+.widePhotoMain {
+  position: absolute;
+  top: 0;
+  left: var(--bleed);
+  display: block;
+  max-width: none;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
+.widePhotoBlur {
+  display: none;
+}
+
+@media (min-width: 1441px) {
+  .widePhotoBlur {
+    position: absolute;
+    inset: calc(-48 * var(--u));
+    display: block;
+    width: calc(100% + 96 * var(--u));
+    max-width: none;
+    height: calc(100% + 96 * var(--u));
+    object-fit: cover;
+    filter: blur(calc(36 * var(--u)));
+    pointer-events: none;
+  }
+
+  .widePhotoMain {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 calc(160 * var(--u)), #000 calc(100% - 160 * var(--u)), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 calc(160 * var(--u)), #000 calc(100% - 160 * var(--u)), transparent);
+  }
+
+  /* Folha A4: a luz e a sombra da cena se fundem ao marrom sem marcar o retângulo da imagem */
+  .fadePaper {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 24%, #000 89%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 24%, #000 89%, transparent);
+  }
+
+  /* Imagem cortada na borda esquerda do Figma (a mão do fluxo 2): some suavemente nessa ponta */
+  .fadeLeft {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 30%);
+    mask-image: linear-gradient(to right, transparent, #000 30%);
+  }
 }
