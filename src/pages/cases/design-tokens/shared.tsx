@@ -10,8 +10,9 @@ import s from './DesignTokens.module.css'
 /**
  * Círculo com anéis concêntricos (efeito de shader do Figma): ring = cor dos anéis,
  * fill = cor do círculo, fade = onde os anéis somem (fração do raio).
+ * cut = quanto do topo do círculo fica escondido (para não escapar acima da seção marrom).
  */
-export function Rings({ x, y, size = 1782, fill, ring, fade = 0.88 }: { x: number; y: number; size?: number; fill: string; ring: string; fade?: number }) {
+export function Rings({ x, y, size = 1782, fill, ring, fade = 0.88, cut }: { x: number; y: number; size?: number; fill: string; ring: string; fade?: number; cut?: number }) {
   const period = size / 2 / 100 // 100 anéis do centro à borda
   return (
     <Abs
@@ -20,7 +21,15 @@ export function Rings({ x, y, size = 1782, fill, ring, fade = 0.88 }: { x: numbe
       w={size}
       h={size}
       className={s.rings}
-      style={{ '--fill': fill, '--ring': ring, '--period': u(period), '--fade': `${fade * 100}%` } as CSSProperties}
+      style={
+        {
+          '--fill': fill,
+          '--ring': ring,
+          '--period': u(period),
+          '--fade': `${fade * 100}%`,
+          clipPath: cut ? `inset(${u(cut)} 0 0 0)` : undefined,
+        } as CSSProperties
+      }
       aria-hidden="true"
     />
   )

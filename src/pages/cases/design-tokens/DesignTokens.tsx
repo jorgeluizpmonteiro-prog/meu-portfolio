@@ -152,7 +152,7 @@ export default function DesignTokens() {
 
         <Rings x={549} y={-48} fill="#ffffff" ring={ORANGE} />
         <Rings x={-170} y={4520} fill="#ffffff" ring="#ffd0a1" />
-        <Rings x={-30} y={2082} size={1500} fill={BROWN} ring="rgb(248 135 23 / 0.52)" fade={0.85} />
+        <Rings x={-30} y={2082} size={1500} fill={BROWN} ring="rgb(248 135 23 / 0.52)" fade={0.85} cut={750} />
 
         {/* Capa: cartões de token ligados por setas pontilhadas */}
         <section aria-labelledby="dt-titulo">
