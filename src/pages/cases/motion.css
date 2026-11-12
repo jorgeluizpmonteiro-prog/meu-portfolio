@@ -72,6 +72,17 @@
     clip-path: inset(0 100% 0 0);
   }
 
+  /* Igual ao wipe, mas revelado da direita para a esquerda (faixas presas à borda direita) */
+  [data-motion] [data-reveal='wipe-r'] {
+    clip-path: inset(0 0 0 0);
+  }
+
+  [data-motion] [data-reveal='wipe-r']:not([data-revealed]) {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 0 100%);
+  }
+
   [data-motion] [data-reveal='grow'] {
     transform-origin: 50% 0;
   }

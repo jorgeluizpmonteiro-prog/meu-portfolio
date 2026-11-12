@@ -84,7 +84,26 @@
 }
 
 .rotate180 {
-  transform: rotate(180deg);
+  rotate: 180deg;
+}
+
+/* Carrossel das telas (Rive): começa por baixo do painel azul e some nas pontas em telas largas */
+.carousel {
+  -webkit-mask-image: linear-gradient(to bottom, transparent calc(98 * var(--u)), #000 calc(200 * var(--u)));
+  mask-image: linear-gradient(to bottom, transparent calc(98 * var(--u)), #000 calc(200 * var(--u)));
+}
+
+@media (min-width: 1441px) {
+  .carousel {
+    -webkit-mask-image:
+      linear-gradient(to bottom, transparent calc(98 * var(--u)), #000 calc(200 * var(--u))),
+      linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to bottom, transparent calc(98 * var(--u)), #000 calc(200 * var(--u))),
+      linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+    mask-composite: intersect;
+  }
 }
 
 /* Telas maiores que 1440 px: imagens cortadas na borda do Figma somem suavemente */

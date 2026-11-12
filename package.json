@@ -21,6 +21,7 @@
     "@fontsource/roboto": "^5.3.0",
     "@fontsource/source-sans-3": "^5.3.1",
     "@fontsource/space-grotesk": "^5.3.0",
+    "@rive-app/canvas-lite": "^2.50.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-router-dom": "^7.18.5"

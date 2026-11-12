@@ -1,10 +1,13 @@
-import type { CSSProperties, ReactNode } from 'react'
+import { useRef, type CSSProperties, type ReactNode } from 'react'
 import '@fontsource/open-sans/400.css'
 import '@fontsource/open-sans/600.css'
 import '@fontsource/open-sans/700.css'
 import '@fontsource/open-sans/800.css'
 import '../../../styles/satoshi.css'
 import { Abs, AbsImg, Stage, T } from '../Stage'
+import { RiveScene } from '../RiveScene'
+import { ScrollProgress } from '../motion'
+import { useScrollReveal } from '../useScrollReveal'
 import { bleed, u } from '../units'
 import { notes } from './canvas'
 import s from './Tiddo.module.css'
@@ -13,7 +16,8 @@ import mockupCapa from '../../../assets/cases/tiddo/mockup-capa.webp'
 import mockupContexto from '../../../assets/cases/tiddo/mockup-contexto.webp'
 import operadora from '../../../assets/cases/tiddo/operadora.webp'
 import wireframes from '../../../assets/cases/tiddo/wireframes.webp'
-import painelTelas from '../../../assets/cases/tiddo/painel-telas.webp'
+import telasPrototipo from '../../../assets/cases/tiddo/telas-prototipo.riv?url'
+import telasPrototipoPoster from '../../../assets/cases/tiddo/telas-prototipo-poster.webp'
 import mockupPiloto from '../../../assets/cases/tiddo/mockup-piloto.webp'
 import cartilha from '../../../assets/cases/tiddo/cartilha.webp'
 import simbolo from '../../../assets/cases/tiddo/simbolo.svg'
@@ -64,8 +68,8 @@ function TitleBand({
   const [x, y, w] = band
   return (
     <>
-      <Abs x={x} y={y} w={w} h={126.8} className={s.band} style={bleed(x, w, side)} />
-      <T as="h2" id={id} x={text[0]} y={y} w={text[1]} fs={66.77} lh={120.19} weight={800} color={WHITE} className={s.title}>
+      <Abs x={x} y={y} w={w} h={126.8} className={s.band} style={bleed(x, w, side)} data-reveal={side === 'left' ? 'wipe' : 'wipe-r'} />
+      <T as="h2" id={id} x={text[0]} y={y} w={text[1]} fs={66.77} lh={120.19} weight={800} color={WHITE} className={s.title} data-reveal="up">
         {text[2]}
       </T>
     </>
@@ -100,7 +104,7 @@ function Glow({ x, y, r, color, noise }: { x: number; y: number; r: number; colo
 /** Etiqueta com contorno (Satoshi Bold 20,07) */
 function Chip({ x, y, w, children }: { x: number; y: number; w: number; children: ReactNode }) {
   return (
-    <Abs x={x} y={y} w={w} h={49} className={s.chip}>
+    <Abs x={x} y={y} w={w} h={49} className={s.chip} data-reveal="up">
       {children}
     </Abs>
   )
@@ -109,7 +113,7 @@ function Chip({ x, y, w, children }: { x: number; y: number; w: number; children
 /** Texto ao lado do processo, ligado por uma linha com bolinha */
 function SideNote({ x, y, w, right, color, children }: { x: number; y: number; w: number; right?: boolean; color: string; children: ReactNode }) {
   return (
-    <T x={x} y={y} w={w} fs={18} lh={27} color={color} right={right}>
+    <T x={x} y={y} w={w} fs={18} lh={27} color={color} right={right} data-reveal="fade">
       {children}
     </T>
   )
@@ -121,7 +125,7 @@ function Connectors({ lines, color }: { lines: [number, number, number][]; color
   const top = Math.min(...ys) - 20
   const h = Math.max(...ys) - top + 20
   return (
-    <Abs as="svg" x={300} y={top} w={850} h={h} viewBox={`300 ${top} 850 ${h}`} className={s.connectors} aria-hidden="true" style={{ color }}>
+    <Abs as="svg" x={300} y={top} w={850} h={h} viewBox={`300 ${top} 850 ${h}`} className={s.connectors} aria-hidden="true" style={{ color }} data-reveal="wipe">
       {lines.map(([a, b, y]) => (
         <g key={`${a}-${y}`}>
           <path d={`M${a} ${y}H${b}`} />
@@ -135,7 +139,7 @@ function Connectors({ lines, color }: { lines: [number, number, number][]; color
 /** Menu suspenso aberto com etapas (Processo de Design / Validação e melhorias) */
 function Dropdown({ x, y, title, items, selected, dark }: { x: number; y: number; title: string; items: string[]; selected: number; dark?: boolean }) {
   return (
-    <Abs x={x} y={y} w={633} className={cx(s.dropdown, dark && s.dropdownDark)}>
+    <Abs x={x} y={y} w={633} className={cx(s.dropdown, dark && s.dropdownDark)} data-reveal="up">
       <div className={s.ddHead}>
         <span>{title}</span>
         <svg viewBox="0 0 27 17" aria-hidden="true">
@@ -297,9 +301,12 @@ const IMPACTS = [
 /* ——————————————————————————————————————————————————————————————————————— */
 
 export default function Tiddo() {
+  const main = useRef<HTMLElement>(null)
+  useScrollReveal(main)
   return (
-    <main id="conteudo" tabIndex={-1} className={s.page}>
+    <main ref={main} id="conteudo" tabIndex={-1} className={s.page}>
       <h1 className="visually-hidden">Tiddo</h1>
+      <ScrollProgress color={BLUE} />
       <Stage h={15657} as="div">
         {/* —— Capa —— */}
         <section aria-labelledby="tiddo-contexto">
@@ -313,27 +320,27 @@ export default function Tiddo() {
             src={mockupCapa}
             alt="Mãos segurando um iPhone com o dashboard do Tiddo: checklists feitas, assinaturas e pendentes"
             eager
-          />
+          data-reveal="up" data-parallax="top" style={{ '--parallax': u(70) } as CSSProperties} />
           <Abs x={0} y={787.5} w={1440} h={154.5} className={s.glass} style={bleed(0, 1440, 'both')} aria-hidden="true" />
-          <T x={78} y={832.5} fs={16.73} lh={30.11} color={BLUE} className={s.satoshi}>
+          <T x={78} y={832.5} fs={16.73} lh={30.11} color={BLUE} className={s.satoshi} data-reveal="fade">
             Participação:
           </T>
-          <T x={78} y={863.5} fs={16.73} lh={30.11} weight={700} color={BLUE} className={s.satoshi}>
+          <T x={78} y={863.5} fs={16.73} lh={30.11} weight={700} color={BLUE} className={s.satoshi} data-reveal="fade">
             Product Design
           </T>
-          <T x={218.1} y={863.5} fs={16.73} lh={30.11} weight={700} color={BLUE} className={s.satoshi}>
+          <T x={218.1} y={863.5} fs={16.73} lh={30.11} weight={700} color={BLUE} className={s.satoshi} data-reveal="fade">
             UX/UI Design
           </T>
-          <T x={1223.6} y={848} fs={16.73} lh={30.11} weight={500} color="#ffffff" className={s.satoshi}>
+          <T x={1223.6} y={848} fs={16.73} lh={30.11} weight={500} color="#ffffff" className={s.satoshi} data-reveal="fade">
             Ferramenta:
           </T>
-          <AbsImg x={1328} y={846.5} w={34} h={34} src={logoFigma} alt="Figma" eager />
+          <AbsImg x={1328} y={846.5} w={34} h={34} src={logoFigma} alt="Figma" eager data-reveal="scale" />
           <Abs x={-54} y={942} w={1635} h={62.3} className={s.band} style={bleed(-54, 1635, 'both')} aria-hidden="true" />
 
           <Chip x={78} y={1082.3} w={229.5}>
             <h2 id="tiddo-contexto">Contexto</h2>
           </Chip>
-          <T x={403.5} y={1216.5} w={633} fs={24} lh={38.4} color={NAVY}>
+          <T x={403.5} y={1216.5} w={633} fs={24} lh={38.4} color={NAVY} data-reveal="up">
             O Tiddo é uma aplicação desenvolvida e premiada durante o 2° Hackathon promovido pela fábrica de alimentos M.
             Dias Branco. O desafio era <strong className={s.semibold}>digitalizar o preenchimento de checklists de limpeza</strong>{' '}
             industrial. O processo manual levava cerca de 1 hora por tarefa, custava R$ 19.000 anuais em papel e era
@@ -348,13 +355,13 @@ export default function Tiddo() {
             src={mockupContexto}
             alt="Mão segurando um iPhone com a tela de preenchimento da checklist"
             className={s.fadeRight}
-          />
+          data-reveal="up" />
         </section>
 
         {/* —— Entendimento do problema —— */}
         <section aria-labelledby="tiddo-entendimento">
           <TitleBand id="tiddo-entendimento" band={[121.5, 1723.5, 1394.3]} side="right" text={[191.3, 1058, 'entendimento do problema']} />
-          <T x={395.3} y={1919.3} w={650.3} fs={24} lh={36} color={NAVY} center>
+          <T x={395.3} y={1919.3} w={650.3} fs={24} lh={36} color={NAVY} center data-reveal="up">
             Para <strong>compreender o cenário real</strong> e as dificuldades da operação, realizamos uma imersão profunda
             focada na fase de Descoberta. Nossa investigação incluiu:
           </T>
@@ -410,22 +417,22 @@ export default function Tiddo() {
             src={operadora}
             alt="Operadora segurando uma checklist de limpeza impressa"
             className={s.fadeLeft}
-          />
+          data-reveal="left" />
           <TitleBand id="tiddo-definicao" band={[-69, 2776.5, 1346.3]} side="left" text={[279.8, 881, 'definição do problema']} />
-          <Abs x={-100.5} y={3450} w={648.8} h={188.3} className={s.band} style={bleed(-100.5, 648.8, 'left')} />
-          <Abs x={891.8} y={4448.3} w={712.5} h={233.3} className={s.band} style={bleed(891.8, 712.5, 'right')} />
-          <T as="h3" x={882.8} y={2995.5} w={479.3} fs={27} lh={40.5} weight={700} color="#fdfefe" right>
+          <Abs x={-100.5} y={3450} w={648.8} h={188.3} className={s.band} style={bleed(-100.5, 648.8, 'left')} data-reveal="wipe" />
+          <Abs x={891.8} y={4448.3} w={712.5} h={233.3} className={s.band} style={bleed(891.8, 712.5, 'right')} data-reveal="wipe-r" />
+          <T as="h3" x={882.8} y={2995.5} w={479.3} fs={27} lh={40.5} weight={700} color="#fdfefe" right data-reveal="up">
             Consolidamos os aprendizados para definir nosso direcionamento:
           </T>
-          <T x={915} y={3095.3} w={447} fs={18} lh={30.11} color="#fdfefe" right>
+          <T x={915} y={3095.3} w={447} fs={18} lh={30.11} color="#fdfefe" right data-reveal="up">
             Como manter a conformidade com as exigências de qualidade e certificações, eliminando o desperdício de tempo e
             recursos do processo manual?
           </T>
-          <T x={79.5} y={3483.8} w={307.5} fs={18} lh={30.11} color={NAVY}>
+          <T x={79.5} y={3483.8} w={307.5} fs={18} lh={30.11} color={NAVY} data-reveal="up">
             Para garantir que a solução atacasse as reais necessidades, construímos o{' '}
             <strong>Value Proposition (Canvas de Proposta de Valor):</strong>
           </T>
-          <T x={1005.8} y={4473.8} w={356.3} fs={18} lh={30.11} color={NAVY} right>
+          <T x={1005.8} y={4473.8} w={356.3} fs={18} lh={30.11} color={NAVY} right data-reveal="up">
             Ao mapear o Perfil do Cliente e conectá-lo ao Mapa de Valor, a oportunidade ficou clara: transformar a tarefa
             exaustiva em um processo digital, <strong>otimizando a mão de obra</strong> e alinhando a operação à agenda ESG
             (redução de papel/plástico).
@@ -435,22 +442,22 @@ export default function Tiddo() {
           {/* Canvas de Proposta de Valor: Perfil do Cliente (esquerda) e Mapa de Valor (direita) */}
           <div role="img" aria-label="Canvas de Proposta de Valor: perfil do cliente com ganhos, dores e tarefas, ligado ao mapa de valor com criadores de ganhos, aliviadores de dores e produtos e serviços">
             {CANVAS_CIRCLES.map((c) => (
-              <Abs key={c.x} x={c.x} y={3754.5} w={568.5} h={568.5} className={s.canvasCircle} />
+              <Abs key={c.x} x={c.x} y={3754.5} w={568.5} h={568.5} className={s.canvasCircle} data-reveal="scale" />
             ))}
-            <Abs as="svg" x={100} y={3700} w={1240} h={640} viewBox="100 3700 1240 640" className={s.canvasLines} aria-hidden="true">
+            <Abs as="svg" x={100} y={3700} w={1240} h={640} viewBox="100 3700 1240 640" className={s.canvasLines} aria-hidden="true" data-reveal="fade">
               {CANVAS_CIRCLES.map(({ center: [ccx, ccy] }) => (
                 <path key={ccx} d={`M${ccx} ${ccy}V4323M${ccx} ${ccy}L${ccx + 200.1} 3838.7M${ccx} ${ccy}L${ccx - 200.1} 3838.7`} />
               ))}
             </Abs>
             <Abs x={1018.3} y={4023.9} w={50.5} h={8.1} className={s.canvasPatch} />
-            <AbsImg x={363} y={4011} w={58} h={55} src={iconePerfil} alt="" />
-            <AbsImg x={1017} y={4007} w={54} h={59} src={iconeProposta} alt="" />
+            <AbsImg x={363} y={4011} w={58} h={55} src={iconePerfil} alt="" data-reveal="scale" />
+            <AbsImg x={1017} y={4007} w={54} h={59} src={iconeProposta} alt="" data-reveal="scale" />
             {notes.map((n) => (
-              <Abs key={n.text} x={n.x} y={n.y} w={70} h={75} className={s.note} style={{ backgroundColor: n.color }}>
+              <Abs key={n.text} x={n.x} y={n.y} w={70} h={75} className={s.note} style={{ backgroundColor: n.color }} data-reveal="scale">
                 {n.text}
               </Abs>
             ))}
-            <Abs as="svg" x={0} y={3700} w={1440} h={500} viewBox="0 3700 1440 500" className={s.curved} aria-hidden="true">
+            <Abs as="svg" x={0} y={3700} w={1440} h={500} viewBox="0 3700 1440 500" className={s.curved} aria-hidden="true" data-reveal="fade">
               <CurvedLabel id="tiddo-arco-ganhos" d={ARC_H} matrix="1 0 0 1 274.5 3744.75">
                 Ganhos
               </CurvedLabel>
@@ -470,8 +477,8 @@ export default function Tiddo() {
                 Aliviadores de dores
               </CurvedLabel>
             </Abs>
-            <AbsImg x={659} y={4226} w={122} h={24} src={setaCurva} alt="" />
-            <AbsImg x={658} y={3827} w={122} h={24} src={setaCurva} alt="" className={s.rotate180} />
+            <AbsImg x={659} y={4226} w={122} h={24} src={setaCurva} alt="" data-reveal="fade" />
+            <AbsImg x={658} y={3827} w={122} h={24} src={setaCurva} alt="" className={s.rotate180} data-reveal="fade" />
           </div>
         </section>
 
@@ -486,14 +493,14 @@ export default function Tiddo() {
             src={wireframes}
             alt="Wireframes das telas do Tiddo: login, início, componente, preenchimento e revisão"
             className={s.fadeX}
-          />
-          <T x={395.3} y={5744.3} w={650.3} fs={24} lh={38.4} color={NAVY} center>
+          data-reveal="mask" />
+          <T x={395.3} y={5744.3} w={650.3} fs={24} lh={38.4} color={NAVY} center data-reveal="up">
             A proposta central foi a criação de uma plataforma digital responsiva (Tiddo){' '}
             <strong>focada na experiência</strong> do operador. As <strong>principais decisões</strong> de produto e design
             incluíram:
           </T>
           {DECISIONS.map((d) => (
-            <Abs key={d.x + '-' + d.y} x={d.x} y={d.y} w={420} h={313} className={s.decision}>
+            <Abs key={d.x + '-' + d.y} x={d.x} y={d.y} w={420} h={313} className={s.decision} data-reveal="up">
               {d.icons.map((icon, i) => (
                 <span key={i} className={s.decisionIcon} style={{ left: u(30 + i * 216), backgroundColor: icon.bg }}>
                   <img src={icon.src} alt="" width={icon.w} height={icon.h} style={{ width: u(icon.w), height: u(icon.h) }} />
@@ -514,65 +521,69 @@ export default function Tiddo() {
           <DarkPanel y={6841.5} h={1119.8} />
           <Glow x={1592.5} y={7475.5} r={365.3} color="#04235d" noise />
           <TitleBand id="tiddo-prototipacao" band={[-141, 6841.5, 1243.5]} side="left" text={[453.8, 532, 'prototipação']} />
-          <T as="h3" x={78} y={7050} w={603} fs={27} lh={40.5} weight={700} color="#fdfefe">
+          <T as="h3" x={78} y={7050} w={603} fs={27} lh={40.5} weight={700} color="#fdfefe" data-reveal="up">
             Desenhamos os fluxos priorizando a facilidade de uso no chão de fábrica.
           </T>
-          <T x={78} y={7149.8} w={307.5} fs={18} lh={30.11} color="#fdfefe">
+          <T x={78} y={7149.8} w={307.5} fs={18} lh={30.11} color="#fdfefe" data-reveal="up">
             A arquitetura foi dividida em dois task-flows principais:
           </T>
           {FLOWS.map((f) => (
             <div key={f.label}>
-              <Abs as="h4" x={f.chip[0]} y={f.chip[1]} w={f.chip[2]} h={65} className={s.flowChip}>
+              <Abs as="h4" x={f.chip[0]} y={f.chip[1]} w={f.chip[2]} h={65} className={s.flowChip} data-reveal="up">
                 {f.label}
               </Abs>
               <ol className={s.flowList} aria-label={`Fluxo do ${f.label.toLowerCase()}`}>
-                <Abs as="li" x={78} y={f.y} w={96} h={96} className={s.flowCircle}>
+                <Abs as="li" x={78} y={f.y} w={96} h={96} className={s.flowCircle} data-reveal="scale">
                   {f.start}
                 </Abs>
                 {f.boxes.map((b) => (
-                  <Abs as="li" key={b.text} x={b.x} y={f.y + (96 - b.h) / 2} w={b.w} h={b.h} className={s.flowBox}>
+                  <Abs as="li" key={b.text} x={b.x} y={f.y + (96 - b.h) / 2} w={b.w} h={b.h} className={s.flowBox} data-reveal="scale">
                     {b.text}
                   </Abs>
                 ))}
-                <Abs as="li" x={f.end.x} y={f.y} w={96} h={96} className={s.flowCircle}>
+                <Abs as="li" x={f.end.x} y={f.y} w={96} h={96} className={s.flowCircle} data-reveal="scale">
                   {f.end.text}
                 </Abs>
               </ol>
-              <Abs as="svg" x={170} y={f.y + 38} w={980} h={20} viewBox={`170 ${f.y + 38} 980 20`} className={s.flowArrows} aria-hidden="true">
+              <Abs as="svg" x={170} y={f.y + 38} w={980} h={20} viewBox={`170 ${f.y + 38} 980 20`} className={s.flowArrows} aria-hidden="true" data-reveal="wipe">
                 {f.arrows.map((ax) => (
                   <path key={ax} d={`M${ax} ${f.y + 48}h24m-5-5 5 5-5 5`} />
                 ))}
               </Abs>
             </div>
           ))}
-          <AbsImg
+          {/* Carrossel das telas finais (animação do Rive, node 208:32800) */}
+          <RiveScene
             x={0}
-            y={7716}
+            y={7863}
             w={1440}
-            h={1847.3}
-            src={painelTelas}
-            alt="Painel com as telas finais do Tiddo: login, dashboard, checklists feitas, componente, preenchimento e revisão"
-            className={s.fadeX}
+            h={1597.5}
+            src={telasPrototipo}
+            poster={telasPrototipoPoster}
+            animation="Timeline 1"
+            duration={20}
+            alt="Carrossel com as telas finais do Tiddo: login, dashboard, checklists feitas, componente, preenchimento e revisão"
+            className={s.carousel}
           />
         </section>
 
         {/* —— Resultado no hackathon —— */}
         <section aria-labelledby="tiddo-hackathon">
           <TitleBand id="tiddo-hackathon" band={[112, 9491, 1445]} side="right" text={[229.5, 981, 'resultado no hackathon']} />
-          <T x={480} y={9716} w={480} fs={24} lh={38.4} color={NAVY} center>
+          <T x={480} y={9716} w={480} fs={24} lh={38.4} color={NAVY} center data-reveal="up">
             A solução digital demonstrou <strong>alto valor estratégico</strong> e{' '}
             <strong>viabilidade de implementação</strong>, conquistando o
           </T>
           <p className={s.secondPlace}>
-            <T as="span" x={576} y={9838} fs={270} lh={270} weight={700} color={CYAN} className={s.nowrap}>
+            <T as="span" x={576} y={9838} fs={270} lh={270} weight={700} color={CYAN} className={s.nowrap} data-reveal="scale">
               2º
             </T>
-            <T as="span" x={746} y={10019} w={140} fs={18} lh={25} color={NAVY}>
+            <T as="span" x={746} y={10019} w={140} fs={18} lh={25} color={NAVY} data-reveal="fade">
               lugar no hackathon
             </T>
           </p>
           {PHOTOS.map((p) => (
-            <Abs key={p.x} x={p.x} y={10201.6} w={360.5} h={360.5} className={s.photo}>
+            <Abs key={p.x} x={p.x} y={10201.6} w={360.5} h={360.5} className={s.photo} data-reveal="up">
               <img src={p.src} alt={p.alt} width={721} height={721} loading="lazy" decoding="async" />
             </Abs>
           ))}
@@ -583,7 +594,7 @@ export default function Tiddo() {
           <DarkPanel y={10673.3} h={3131.3} />
           <Glow x={720} y={11498.3} r={365.3} color="#04235d" noise />
           <TitleBand id="tiddo-piloto" band={[-106, 10673, 1212]} side="left" text={[440, 561, 'projeto piloto']} />
-          <AbsImg x={162} y={10926} w={1135} h={1125} src={simbolo} alt="" className={s.symbol} />
+          <AbsImg x={162} y={10926} w={1135} h={1125} src={simbolo} alt="" className={s.symbol} data-reveal="fade" data-parallax="view" style={{ '--parallax': u(60) } as CSSProperties} />
           <AbsImg
             x={402}
             y={11075}
@@ -591,16 +602,16 @@ export default function Tiddo() {
             h={829}
             src={mockupPiloto}
             alt="Dois iPhones com as telas de checklists feitas e de revisão do Tiddo"
-          />
-          <T x={78} y={10939.5} w={432} fs={27} lh={43.2} weight={700} color={WHITE}>
+          data-reveal="up" data-parallax="view" style={{ '--parallax': u(30) } as CSSProperties} />
+          <T x={78} y={10939.5} w={432} fs={27} lh={43.2} weight={700} color={WHITE} data-reveal="up">
             O sucesso chamou a atenção da indústria parceira, e o conceito evoluiu para um projeto piloto.
           </T>
-          <Abs x={829.5} y={11959.5} w={713.3} h={171.8} className={s.band} style={bleed(829.5, 713.3, 'right')} />
-          <T x={918} y={11988.8} w={444} fs={18} lh={28.8} color={DARK} right>
+          <Abs x={829.5} y={11959.5} w={713.3} h={171.8} className={s.band} style={bleed(829.5, 713.3, 'right')} data-reveal="wipe-r" />
+          <T x={918} y={11988.8} w={444} fs={18} lh={28.8} color={DARK} right data-reveal="up">
             Descobrimos que a empresa já possuía uma iniciativa interna de digitalização operando em outra unidade, mas a
             fábrica local <strong>necessitava de adaptações</strong> estruturais e de usabilidade.
           </T>
-          <T x={404.3} y={12291.8} w={632.3} fs={24} lh={38.4} color={WHITE} center>
+          <T x={404.3} y={12291.8} w={632.3} fs={24} lh={38.4} color={WHITE} center data-reveal="up">
             Nosso <strong>desafio como designers evoluiu</strong>: integrar nossa visão para avaliar, refinar e testar a
             solução real que estava sendo desenvolvida.
           </T>
@@ -652,7 +663,7 @@ export default function Tiddo() {
             h={473}
             src={cartilha}
             alt="Cartilha de uso impressa: Melhorando a experiência — Checklists de Limpeza"
-          />
+          data-reveal="up" />
         </section>
 
         {/* —— Impactos —— */}
@@ -669,10 +680,10 @@ export default function Tiddo() {
           </Chip>
           {IMPACTS.map((i) => (
             <p key={i.textX + '-' + i.y} className={s.impact}>
-              <T as="span" x={i.x - 4} y={i.y - 22.5} w={i.w + 8} fs={92.3} lh={110} weight={800} color="#2ca94d" className={s.nowrap}>
-                {i.value}
+              <T as="span" x={i.x - 4} y={i.y - 22.5} w={i.w + 8} fs={92.3} lh={110} weight={800} color="#2ca94d" className={s.nowrap} data-reveal="up">
+                <span data-count={parseInt(i.value)}>{parseInt(i.value)}</span>%
               </T>
-              <T as="span" x={i.textX} y={i.y} w={i.textW} fs={18} lh={23.4} color={NAVY}>
+              <T as="span" x={i.textX} y={i.y} w={i.textW} fs={18} lh={23.4} color={NAVY} data-reveal="fade">
                 {' '}
                 {i.text}
               </T>
@@ -682,13 +693,13 @@ export default function Tiddo() {
 
         {/* —— Encerramento —— */}
         <section aria-labelledby="tiddo-fim">
-          <T as="h2" id="tiddo-fim" x={378.8} y={14688.8} w={683.3} fs={66.77} lh={45} weight={700} color={DARK} className={s.nowrap}>
+          <T as="h2" id="tiddo-fim" x={378.8} y={14688.8} w={683.3} fs={66.77} lh={45} weight={700} color={DARK} className={s.nowrap} data-reveal="up">
             Gostou do processo?
           </T>
-          <T x={412.5} y={14778.8} w={615.8} fs={30} lh={45} color={DARK} center>
+          <T x={412.5} y={14778.8} w={615.8} fs={30} lh={45} color={DARK} center data-reveal="up">
             Obrigado por ter visto até aqui, espero que tenha gostado do projeto!
           </T>
-          <T x={-66.8} y={15165.8} w={1574} fs={286.38} lh={515.49} weight={800} color={CYAN} className={s.bigThanks} aria-hidden="true">
+          <T x={-66.8} y={15165.8} w={1574} fs={286.38} lh={515.49} weight={800} color={CYAN} className={s.bigThanks} aria-hidden="true" data-reveal="fade" data-parallax="drift" style={{ '--parallax': u(160) } as CSSProperties}>
             OBRIGADO
           </T>
           <Abs x={-97.5} y={14971.5} w={1635} h={62.3} className={s.band} style={bleed(-97.5, 1635, 'both')} aria-hidden="true" />

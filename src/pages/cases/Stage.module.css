@@ -36,3 +36,22 @@
 .text b {
   font-weight: 700;
 }
+
+/* Cena do Rive: poster (primeiro quadro) por baixo e o canvas animado por cima */
+.riveScene {
+  position: absolute;
+  inset: 0;
+}
+
+.riveScene > img,
+.riveScene > canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.riveScene > canvas {
+  transition: opacity 0.4s ease;
+}
