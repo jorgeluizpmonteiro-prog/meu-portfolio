@@ -1,8 +1,10 @@
-import type { CSSProperties, ReactNode } from 'react'
+import { useRef, type CSSProperties, type ReactNode } from 'react'
 import '@fontsource/inter/500.css'
 import '@fontsource/inter/700.css'
 import '../../../styles/satoshi.css'
 import { Abs, AbsImg, Stage, T } from '../Stage'
+import { ScrollProgress } from '../motion'
+import { useScrollReveal } from '../useScrollReveal'
 import { bleed, u } from '../units'
 import {
   arrowPath,
@@ -71,7 +73,7 @@ function Title({
   children: ReactNode
 }) {
   return (
-    <T as="h2" id={id} x={x} y={y} w={w} fs={96} lh={108} className={cx(s.title, fade === 'start' && s.fadeStart, fade === 'end' && s.fadeEnd)}>
+    <T as="h2" id={id} x={x} y={y} w={w} fs={96} lh={108} className={cx(s.title, fade === 'start' && s.fadeStart, fade === 'end' && s.fadeEnd)} data-reveal="up">
       {children}
     </T>
   )
@@ -79,7 +81,7 @@ function Title({
 
 /** Texto corrido lilás 30/45 */
 const Body = ({ x, y, w, right, children }: { x: number; y: number; w: number; right?: boolean; children: ReactNode }) => (
-  <T x={x} y={y} w={w} fs={30} lh={45} color={LILAC} right={right}>
+  <T x={x} y={y} w={w} fs={30} lh={45} color={LILAC} right={right} data-reveal="up">
     {children}
   </T>
 )
@@ -229,11 +231,11 @@ const CALLOUTS: { d: string; dot: [number, number] }[] = [
 function Swatch({ x, y, color, name }: { x: number; y: number; color: string; name: string }) {
   return (
     <>
-      <Abs x={x} y={y} w={69.8} h={69.8} className={s.swatch} style={{ backgroundColor: color }} />
-      <T x={x - 8.25} y={y + 75.7} w={86.3} fs={12} lh={18} weight={500} color={LIGHT} center>
+      <Abs x={x} y={y} w={69.8} h={69.8} className={s.swatch} style={{ backgroundColor: color }} data-reveal="scale" />
+      <T data-reveal="fade" x={x - 8.25} y={y + 75.7} w={86.3} fs={12} lh={18} weight={500} color={LIGHT} center>
         {name}
       </T>
-      <T x={x - 8.25} y={y + 99.7} w={86.3} fs={10.5} lh={15.75} color={LILAC} center>
+      <T data-reveal="fade" x={x - 8.25} y={y + 99.7} w={86.3} fs={10.5} lh={15.75} color={LILAC} center>
         {color}
       </T>
     </>
@@ -252,6 +254,7 @@ function DiagramBox({ b }: { b: Box }) {
       h={b.h + pad * 2}
       className={cx(s.box, s[b.kind])}
       style={{ '--fs': b.fs ?? 24, borderRadius: u((b.r ?? 6) + pad) } as CSSProperties}
+      data-reveal="scale"
     >
       {/* Uma linha só; quando o rótulo do Figma tem quebra, mostra a 1ª linha com reticências */}
       <span title={b.label.replace('\n', ' ')}>{b.label.includes('\n') ? `${b.label.split('\n')[0]}...` : b.label}</span>
@@ -262,7 +265,7 @@ function DiagramBox({ b }: { b: Box }) {
 /** Linhas de um diagrama, desenhadas num SVG em coordenadas da página */
 function Lines({ lines, x, y, w, h, color }: { lines: Line[]; x: number; y: number; w: number; h: number; color: string }) {
   return (
-    <Abs as="svg" x={x} y={y} w={w} h={h} viewBox={`${x} ${y} ${w} ${h}`} className={s.lines} aria-hidden="true">
+    <Abs as="svg" x={x} y={y} w={w} h={h} viewBox={`${x} ${y} ${w} ${h}`} className={s.lines} aria-hidden="true" data-reveal="fade">
       {lines.map((l, i) => (
         <g key={i} stroke={l.color ?? color}>
           <path d={linePath(l)} />
@@ -276,9 +279,12 @@ function Lines({ lines, x, y, w, h, color }: { lines: Line[]; x: number; y: numb
 /* ——————————————————————————————————————————————————————————————————————— */
 
 export default function Vizu() {
+  const main = useRef<HTMLElement>(null)
+  useScrollReveal(main)
   return (
-    <main id="conteudo" tabIndex={-1} className={s.page}>
+    <main ref={main} id="conteudo" tabIndex={-1} className={s.page}>
       <h1 className="visually-hidden">Vizu</h1>
+      <ScrollProgress color={PURPLE} />
       <Stage h={20655} as="div">
         {/* Capa: texturas metálicas, vidro, fundo escuro do corpo e brilhos */}
         <div aria-hidden="true">
@@ -296,32 +302,35 @@ export default function Vizu() {
         </div>
 
         <section aria-labelledby="vizu-intro">
-          <AbsImg
-            x={453}
-            y={168}
-            w={570}
-            h={593}
-            src={iphoneCapa}
-            alt="iPhone com a tela inicial do Vizu: saudação, coleções e histórico de classificações"
-            eager
-          />
-          <AbsImg x={475} y={174} w={540} h={559} src={telaCapa} alt="" eager />
+          {/* Celular e tela juntos: entram e se movem como uma peça só */}
+          <Abs x={0} y={0} data-reveal="up" data-parallax="top" style={{ '--parallax': u(70) } as CSSProperties}>
+            <AbsImg
+              x={453}
+              y={168}
+              w={570}
+              h={593}
+              src={iphoneCapa}
+              alt="iPhone com a tela inicial do Vizu: saudação, coleções e histórico de classificações"
+              eager
+            />
+            <AbsImg x={475} y={174} w={540} h={559} src={telaCapa} alt="" eager />
+          </Abs>
 
-          <T x={78} y={892.5} w={190.1} fs={16.73} lh={30.11} color={PURPLE}>
+          <T x={78} y={892.5} w={190.1} fs={16.73} lh={30.11} color={PURPLE} data-reveal="fade">
             Participação:
           </T>
-          <T x={78} y={923.5} fs={16.73} lh={30.11} weight={700} color={PURPLE} className={s.nowrap}>
+          <T x={78} y={923.5} fs={16.73} lh={30.11} weight={700} color={PURPLE} className={s.nowrap} data-reveal="fade">
             UX/UI Design
           </T>
-          <T x={204.1} y={923.5} fs={16.73} lh={30.11} weight={700} color={PURPLE} className={s.nowrap}>
+          <T x={204.1} y={923.5} fs={16.73} lh={30.11} weight={700} color={PURPLE} className={s.nowrap} data-reveal="fade">
             Sitemap
           </T>
-          <T x={1223.6} y={908} fs={16.73} lh={30.11} weight={500} color={PURPLE} className={s.nowrap}>
+          <T x={1223.6} y={908} fs={16.73} lh={30.11} weight={500} color={PURPLE} className={s.nowrap} data-reveal="fade">
             Ferramenta:
           </T>
-          <AbsImg x={1328} y={906.5} w={34} h={34} src={logoFigma} alt="Figma" eager />
+          <AbsImg x={1328} y={906.5} w={34} h={34} src={logoFigma} alt="Figma" eager data-reveal="scale" />
 
-          <T x={390.8} y={1047.8} w={659.3} fs={30} lh={45} color="#222222">
+          <T x={390.8} y={1047.8} w={659.3} fs={30} lh={45} color="#222222" data-reveal="up">
             O Vizu é um aplicativo de classificação de imagem através de Inteligência Artificial proposto em um desafio{' '}
             <strong>pensado de forma modular</strong>, de modo que em futuros projetos seja usado como base de referência.
           </T>
@@ -335,10 +344,10 @@ export default function Vizu() {
             src={maoIntro}
             alt="Mão segurando um iPhone com a câmera do Vizu apontada para uma flor amarela"
             className={s.introHand}
-          />
+          data-reveal="up" />
           <AbsImg x={0} y={1004.66} w={1440} h={1295} src={faixasTopo} alt="" style={bleed(0, 1440, 'both')} />
 
-          <T as="h2" id="vizu-intro" x={79.5} y={1045} fs={20.07} lh={36.13} weight={700} color={PURPLE} className={s.nowrap}>
+          <T as="h2" id="vizu-intro" x={79.5} y={1045} fs={20.07} lh={36.13} weight={700} color={PURPLE} className={s.nowrap} data-reveal="up">
             O que é o Vizu?
           </T>
         </section>
@@ -350,7 +359,7 @@ export default function Vizu() {
             Design Process
           </Title>
           {PROCESS.map((p) => (
-            <Abs key={p.title} x={p.x} y={p.y} w={p.w} className={cx(s.glassCard, s.processCard)}>
+            <Abs key={p.title} x={p.x} y={p.y} w={p.w} className={cx(s.glassCard, s.processCard)} data-reveal="up">
               <h3 className={s.processTitle}>{p.title}</h3>
               <ul className={s.processList}>
                 {p.items.map((item) => (
@@ -367,20 +376,20 @@ export default function Vizu() {
             src={mosaicoTelas}
             alt="Mosaico com as telas finais do Vizu: coleções, histórico, referências, perfil, câmera, onboarding e segmentação"
           className={s.fadeX}
-          />
+          data-reveal="mask" />
         </section>
 
         <section aria-label="Cenário e fluxos">
-          <T as="h3" x={78} y={4757.3} w={475.5} fs={27} lh={45} weight={400} color={LIGHT}>
+          <T as="h3" x={78} y={4757.3} w={475.5} fs={27} lh={45} weight={400} color={LIGHT} data-reveal="up">
             Cenário
           </T>
-          <T as="h3" x={729} y={4757.3} w={308.3} fs={27} lh={45} weight={400} color={LIGHT}>
+          <T as="h3" x={729} y={4757.3} w={308.3} fs={27} lh={45} weight={400} color={LIGHT} data-reveal="up">
             Fluxo com perfil
           </T>
-          <T as="h3" x={1054.5} y={4757.3} w={307.5} fs={27} lh={45} weight={400} color={LIGHT}>
+          <T as="h3" x={1054.5} y={4757.3} w={307.5} fs={27} lh={45} weight={400} color={LIGHT} data-reveal="up">
             Fluxo anônimo
           </T>
-          <Abs x={78} y={4824.75} w={1284} h={1.5} className={s.rule} />
+          <Abs x={78} y={4824.75} w={1284} h={1.5} className={s.rule} data-reveal="wipe" />
           <Body x={78} y={4850.3} w={475.5}>
             O Laboratório Vortex precisava de uma solução base para projetos de Inteligência Artificial focados em visão
             computacional. O objetivo não era apenas criar um app, mas <strong>definir um padrão de design modular</strong>{' '}
@@ -401,21 +410,21 @@ export default function Vizu() {
           </Title>
           {PERSONAS.map((p) => (
             <div key={p.name}>
-              <AbsImg x={0} y={p.imgY} w={455} h={459} src={p.img} alt={p.alt} className={s.fadeLeftEdge} />
-              <T as="h3" x={410.3} y={p.y} w={342.8} fs={48} lh={72} weight={700} color={LIGHT} className={s.personaName}>
+              <AbsImg x={0} y={p.imgY} w={455} h={459} src={p.img} alt={p.alt} className={s.fadeLeftEdge} data-reveal="left" />
+              <T as="h3" x={410.3} y={p.y} w={342.8} fs={48} lh={72} weight={700} color={LIGHT} className={s.personaName} data-reveal="up">
                 {p.name}
               </T>
-              <Abs x={410.3} y={p.y + 87} w={946.5} h={1.5} className={s.rule} />
-              <T as="h4" x={410.3} y={p.y + 110.2} fs={30} lh={45} weight={700} color="#66d575" className={s.personaLabel}>
+              <Abs x={410.3} y={p.y + 87} w={946.5} h={1.5} className={s.rule} data-reveal="wipe" />
+              <T as="h4" x={410.3} y={p.y + 110.2} fs={30} lh={45} weight={700} color="#66d575" className={s.personaLabel} data-reveal="up">
                 Metas
               </T>
-              <T x={410.3} y={p.y + 167.2} w={p.goalW} fs={27} lh={40.5} color={LILAC}>
+              <T x={410.3} y={p.y + 167.2} w={p.goalW} fs={27} lh={40.5} color={LILAC} data-reveal="up">
                 {p.goal}
               </T>
-              <T as="h4" x={p.painX} y={p.y + 110.2} fs={30} lh={45} weight={700} color="#e73e3e" className={s.personaLabel}>
+              <T as="h4" x={p.painX} y={p.y + 110.2} fs={30} lh={45} weight={700} color="#e73e3e" className={s.personaLabel} data-reveal="up">
                 Frustrações
               </T>
-              <T x={p.painX} y={p.y + 166.5} w={p.painW} fs={27} lh={40.5} color={LILAC}>
+              <T x={p.painX} y={p.y + 166.5} w={p.painW} fs={27} lh={40.5} color={LILAC} data-reveal="up">
                 {p.pain}
               </T>
             </div>
@@ -428,14 +437,14 @@ export default function Vizu() {
           </Title>
           {REQUIREMENTS.map((r) => (
             <div key={r.y} className={s.reqRow}>
-              <Abs x={r.ux} y={r.y} w={343.5} h={202.3} className={cx(s.glassCard, s.reqCard)}>
+              <Abs x={r.ux} y={r.y} w={343.5} h={202.3} className={cx(s.glassCard, s.reqCard)} data-reveal="up">
                 <div className={s.reqHead}>
                   <img src={ilustracaoUsuario} alt="" width={56} height={61} className={s.reqIllus} style={{ width: u(55.7) }} />
                   <h3>Requisito do Usuário</h3>
                 </div>
                 <p>{r.user}</p>
               </Abs>
-              <Abs x={r.fx} y={r.y} w={341} h={202.3} className={cx(s.glassCard, s.reqCard)}>
+              <Abs x={r.fx} y={r.y} w={341} h={202.3} className={cx(s.glassCard, s.reqCard)} data-reveal="up">
                 <div className={s.reqHead}>
                   <img src={ilustracaoFuncional} alt="" width={66} height={61} className={s.reqIllus} style={{ width: u(66) }} />
                   <h3>Requisito Funcional</h3>
@@ -484,7 +493,7 @@ export default function Vizu() {
             <strong>Classificação Rápida</strong> ou pelo <strong>Modo Coleção</strong>.
           </Body>
           <Lines lines={flowLines} x={100} y={10200} w={1240} h={1530} color="#2d1b7b" />
-          <Abs as="svg" x={230} y={10340} w={650} h={850} viewBox="230 10340 650 850" className={s.diamonds} aria-hidden="true">
+          <Abs as="svg" x={230} y={10340} w={650} h={850} viewBox="230 10340 650 850" className={s.diamonds} aria-hidden="true" data-reveal="fade">
             {flowDiamonds.map((d) => (
               <polygon
                 key={d.label}
@@ -494,7 +503,7 @@ export default function Vizu() {
           </Abs>
           <div role="list" aria-label="Etapas do fluxo do usuário">
             {flowCircles.map((c, i) => (
-              <Abs role="listitem" key={i} x={c.x} y={c.y} w={c.size} h={c.size} className={cx(s.box, s.circle)}>
+              <Abs role="listitem" key={i} x={c.x} y={c.y} w={c.size} h={c.size} className={cx(s.box, s.circle)} data-reveal="scale">
                 <span>{c.label}</span>
               </Abs>
             ))}
@@ -508,7 +517,7 @@ export default function Vizu() {
                 h={d.h}
                 className={cx(s.box, s.diamondText)}
                 style={{ '--fs': d.fs, '--lines': d.lines } as CSSProperties}
-              >
+              data-reveal="scale" >
                 <span title={d.label}>{d.label}</span>
               </Abs>
             ))}
@@ -535,12 +544,12 @@ export default function Vizu() {
             UI Kit
           </Title>
 
-          <T as="h3" x={77.3} y={13938} w={270.8} fs={27} lh={45} weight={400} color="#ffffff">
+          <T as="h3" x={77.3} y={13938} w={270.8} fs={27} lh={45} weight={400} color="#ffffff" data-reveal="up">
             Escala Tipográfica
           </T>
           {TYPE_SCALE.map((t) => (
             <div key={t.label}>
-              <T x={t.x} y={t.y} fs={t.fs} lh={t.lh} weight={t.weight} color={LIGHT} className={s.nowrap}>
+              <T x={t.x} y={t.y} fs={t.fs} lh={t.lh} weight={t.weight} color={LIGHT} className={s.nowrap} data-reveal="up">
                 {t.label}
               </T>
               {t.sub.map((sub, i) => (
@@ -552,19 +561,19 @@ export default function Vizu() {
                   lh={t.subLh ?? 30}
                   color={LILAC}
                   className={s.nowrap}
-                >
+                data-reveal="fade" >
                   {sub}
                 </T>
               ))}
             </div>
           ))}
 
-          <T as="h3" x={403.5} y={13938} w={633} fs={27} lh={45} weight={400} color="#ffffff">
+          <T as="h3" x={403.5} y={13938} w={633} fs={27} lh={45} weight={400} color="#ffffff" data-reveal="up">
             Cores Principais
           </T>
           {PALETTES.map((p) => (
             <div key={p.title}>
-              <T as="h4" x={403.5} y={p.y} fs={24} lh={36} weight={900} color={LIGHT}>
+              <T as="h4" x={403.5} y={p.y} fs={24} lh={36} weight={900} color={LIGHT} data-reveal="up">
                 {p.title}
               </T>
               {p.colors.map((c, i) => (
@@ -573,12 +582,12 @@ export default function Vizu() {
             </div>
           ))}
 
-          <T as="h3" x={1054.5} y={13938} w={261} fs={27} lh={45} weight={400} color="#ffffff">
+          <T as="h3" x={1054.5} y={13938} w={261} fs={27} lh={45} weight={400} color="#ffffff" data-reveal="up">
             Cores de Feedback
           </T>
           {FEEDBACK.map((p) => (
             <div key={p.title}>
-              <T as="h4" x={1054.5} y={p.y} fs={24} lh={p.title === 'Erro' ? 30 : 36} weight={900} color={LIGHT}>
+              <T as="h4" x={1054.5} y={p.y} fs={24} lh={p.title === 'Erro' ? 30 : 36} weight={900} color={LIGHT} data-reveal="up">
                 {p.title}
               </T>
               {p.colors.map((c, i) => (
@@ -602,7 +611,7 @@ export default function Vizu() {
             src={mosaicoWireframes}
             alt="Mosaico com os wireframes de média fidelidade em tons de cinza"
           className={s.fadeX}
-          />
+          data-reveal="mask" />
         </section>
 
         <section aria-labelledby="vizu-aplicacao">
@@ -640,7 +649,7 @@ export default function Vizu() {
             h={1226}
             src={telaColecoes}
             alt="Tela inicial do Vizu com coleções, histórico das últimas classificações e referências"
-          />
+          data-reveal="up" data-parallax="view" style={{ '--parallax': u(30) } as CSSProperties} />
           <AbsImg
             x={6}
             y={16268}
@@ -648,7 +657,7 @@ export default function Vizu() {
             h={794.67}
             src={telaCamera}
             alt="Tela da câmera com a foto de uma flor amarela entre folhas"
-          />
+          data-reveal="left" />
           <AbsImg
             x={971}
             y={16268}
@@ -657,9 +666,9 @@ export default function Vizu() {
             src={telaResultado}
             alt="Tela de resultado: Sphagneticola trilobata com 91,2% de certeza, descrição e botões Concluir e Adicionar à coleção"
           className={s.fadeRightEdge}
-          />
+          data-reveal="up" />
 
-          <Abs as="svg" x={380} y={15300} w={860} h={2320} viewBox="380 15300 860 2320" className={s.callouts} aria-hidden="true">
+          <Abs as="svg" x={380} y={15300} w={860} h={2320} viewBox="380 15300 860 2320" className={s.callouts} aria-hidden="true" data-reveal="fade">
             {CALLOUTS.map((c) => (
               <g key={c.d}>
                 <path d={c.d} />
@@ -675,7 +684,7 @@ export default function Vizu() {
             h={2000.67}
             src={landingPage}
             alt="Landing page do Vizu: A Plataforma de Classificação por Imagem do Vortex, com seções de modularidade, classificação ágil, coleções e formulário de contato"
-          />
+          data-reveal="up" />
           <AbsImg
             x={895}
             y={18128}
@@ -684,43 +693,43 @@ export default function Vizu() {
             src={maoLanding}
             alt="Mão segurando um iPhone com a coleção Botânica aberta no Vizu"
           className={s.fadeRight}
-          />
+          data-reveal="fade" />
           <Abs x={951} y={18564} w={489} h={243} className={s.handFade} />
         </section>
 
         <section aria-labelledby="vizu-fim">
-          <T x={-87} y={20156.3} w={1615} fs={299.82} lh={449.73} weight={700} right className={s.bigThanks} aria-hidden="true">
+          <T x={-87} y={20156.3} w={1615} fs={299.82} lh={449.73} weight={700} right className={s.bigThanks} aria-hidden="true" data-reveal="fade" data-parallax="drift" style={{ '--parallax': u(-160) } as CSSProperties}>
             OBRIGADO
           </T>
           <LightEllipse x={-816.75} y={20292.96} color="#d4f7ff" />
           <Abs x={0} y={20066} w={1440} h={600} className={s.glass} style={bleed(0, 1440, 'both')} />
 
-          <T x={78} y={20130.5} w={190.1} fs={16.73} lh={30.11} color={PURPLE}>
+          <T x={78} y={20130.5} w={190.1} fs={16.73} lh={30.11} color={PURPLE} data-reveal="fade">
             Participação:
           </T>
-          <T x={78} y={20161.5} fs={16.73} lh={30.11} weight={700} color={PURPLE} className={s.nowrap}>
+          <T x={78} y={20161.5} fs={16.73} lh={30.11} weight={700} color={PURPLE} className={s.nowrap} data-reveal="fade">
             UX/UI Design
           </T>
-          <T x={204.1} y={20161.5} fs={16.73} lh={30.11} weight={700} color={PURPLE} className={s.nowrap}>
+          <T x={204.1} y={20161.5} fs={16.73} lh={30.11} weight={700} color={PURPLE} className={s.nowrap} data-reveal="fade">
             Sitemap
           </T>
-          <T x={1172.4} y={20129.1} w={189.6} fs={16.73} lh={30.11} color={PURPLE} right>
+          <T x={1172.4} y={20129.1} w={189.6} fs={16.73} lh={30.11} color={PURPLE} right data-reveal="fade">
             Entre em contato:
           </T>
-          <Abs x={1079.8} y={20160.1} w={282.3} h={33.8} className={s.mailWrap}>
+          <Abs x={1079.8} y={20160.1} w={282.3} h={33.8} className={s.mailWrap} data-reveal="fade">
             <a href="mailto:jorgeluizpmonteiro@gmail.com" className={s.mail}>
               <span>jorgeluizpmonteiro@gmail.com</span>
               <img src={logoGmail} alt="" width={34} height={34} />
             </a>
           </Abs>
 
-          <T as="p" x={597} y={19678.5} w={247} fs={30} lh={45} color="#222222" className={s.nowrap}>
+          <T as="p" x={597} y={19678.5} w={247} fs={30} lh={45} color="#222222" className={s.nowrap} data-reveal="up">
             Obrigado por rolar
           </T>
-          <T as="h2" id="vizu-fim" x={505.5} y={19755} w={430} fs={72} lh={45} weight={700} color="#222222" className={s.nowrap}>
-            27540 pixels
+          <T as="h2" id="vizu-fim" x={505.5} y={19755} w={430} fs={72} lh={45} weight={700} color="#222222" className={s.nowrap} data-reveal="up">
+            <span data-count="27540">27540</span> pixels
           </T>
-          <T x={387} y={19831.5} w={666.8} fs={30} lh={45} color="#222222" center>
+          <T x={387} y={19831.5} w={666.8} fs={30} lh={45} color="#222222" center data-reveal="up">
             de um projeto que gostei muito de desenvolver! Estou ansioso para trabalhar com você!
           </T>
 

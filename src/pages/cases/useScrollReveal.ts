@@ -31,11 +31,17 @@ function countUp(el: HTMLElement) {
   if (!Number.isFinite(target)) return
   const start = performance.now()
   const duration = 900
+  // Enquanto conta, o número ocupa a largura final (alinhado à direita): o texto ao lado não “anda”
+  const range = document.createRange()
+  range.selectNodeContents(el)
+  const width = range.getBoundingClientRect().width
+  Object.assign(el.style, { display: 'inline-block', minWidth: `${width}px`, textAlign: 'right', alignSelf: 'flex-start' })
   const tick = (now: number) => {
     const t = Math.min(1, (now - start) / duration)
     const eased = 1 - Math.pow(1 - t, 3)
     el.textContent = String(Math.round(target * eased))
     if (t < 1) requestAnimationFrame(tick)
+    else Object.assign(el.style, { display: '', minWidth: '', textAlign: '', alignSelf: '' })
   }
   el.textContent = '0'
   requestAnimationFrame(tick)
