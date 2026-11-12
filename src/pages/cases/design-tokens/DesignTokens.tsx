@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useRef, type CSSProperties, type ReactNode } from 'react'
 import '@fontsource/roboto/300.css'
 import '@fontsource/albert-sans/300.css'
 import '@fontsource/albert-sans/400.css'
@@ -6,6 +6,8 @@ import '@fontsource/albert-sans/500.css'
 import '@fontsource/albert-sans/600.css'
 import '@fontsource/albert-sans/700.css'
 import { Abs, AbsImg, Stage, T } from '../Stage'
+import { Lines, ScrollProgress } from '../motion'
+import { useScrollReveal } from '../useScrollReveal'
 import { bleed, u } from '../units'
 import { Arcs, Bar, Body, Rings, Title, Tk, WidePhoto } from './shared'
 import { ARCS_A, BROWN, ORANGE, cx } from './constants'
@@ -34,10 +36,10 @@ import logoN8n from '../../../assets/cases/comum/logo-n8n.svg'
  */
 
 /** Cartão de token da capa: imagem em perspectiva isométrica (matriz do Figma) com sombra */
-function TokenCard({ src, w, h, m, alt }: { src: string; w: number; h: number; m: [number, number, number, number, number, number]; alt: string }) {
+function TokenCard({ src, w, h, m, alt, depth }: { src: string; w: number; h: number; m: [number, number, number, number, number, number]; alt: string; depth: number }) {
   const [a, b, c, d, tx, ty] = m
   return (
-    <Abs x={0} y={0} className={s.cardWrap}>
+    <Abs x={0} y={0} className={s.cardWrap} data-reveal="up" data-parallax="top" style={{ '--parallax': u(depth) } as CSSProperties}>
       <img
         src={src}
         alt={alt}
@@ -136,9 +138,12 @@ const FINDINGS: Finding[] = [
 /* ——————————————————————————————————————————————————————————————————————— */
 
 export default function DesignTokens() {
+  const main = useRef<HTMLElement>(null)
+  useScrollReveal(main)
   return (
-    <main id="conteudo" tabIndex={-1} className={s.page}>
+    <main ref={main} id="conteudo" tabIndex={-1} className={s.page}>
       <h1 className="visually-hidden">Documentação de Design Tokens</h1>
+      <ScrollProgress color={ORANGE} />
       <Stage h={29197} as="div">
         <Fundos />
         {/* Fundo marrom do Contexto e elipses da transição para “Como eu iniciei” */}
@@ -151,22 +156,24 @@ export default function DesignTokens() {
 
         {/* Capa: cartões de token ligados por setas pontilhadas */}
         <section aria-labelledby="dt-titulo">
-          <AbsImg x={694} y={423.2} w={141} h={170} src={seta1} alt="" eager />
+          <AbsImg x={694} y={423.2} w={141} h={170} src={seta1} alt="" eager data-reveal="fade" data-parallax="top" style={{ '--parallax': u(45) } as CSSProperties} />
           <TokenCard
             src={cartaoHex}
             w={447.69}
             h={155.62}
             m={[0.8467, 0.5321, -0.7331, 0.6802, 820.96, 534.04]}
             alt="Cartão do valor hexadecimal #F88717"
+            depth={30}
           />
           <Abs x={0} y={786} w={1440} h={2045} className={s.glass} style={bleed(0, 1440, 'both')} aria-hidden="true" />
-          <AbsImg x={778.4} y={242.5} w={161} h={190} src={seta2} alt="" eager />
+          <AbsImg x={778.4} y={242.5} w={161} h={190} src={seta2} alt="" eager data-reveal="fade" data-parallax="top" style={{ '--parallax': u(78) } as CSSProperties} />
           <TokenCard
             src={cartaoBase}
             w={542.16}
             h={188.46}
             m={[0.8467, 0.5321, -0.7331, 0.6802, 910.46, 379.44]}
             alt="Cartão do token base brand-1/500"
+            depth={60}
           />
           <TokenCard
             src={cartaoSemantico}
@@ -174,32 +181,37 @@ export default function DesignTokens() {
             h={223.19}
             m={[0.8467, 0.5321, -0.7331, 0.6802, 1026.44, 201]}
             alt="Cartão do token semântico background/action/primary"
+            depth={95}
           />
 
-          <T as="h2" id="dt-titulo" x={104} y={224} w={613.7} fs={75.82} lh={90.98} weight={300} color={BROWN} className={s.titleFont}>
-            Documentação de Design Tokens
+          <T as="h2" id="dt-titulo" x={104} y={224} w={613.7} fs={75.82} lh={90.98} weight={300} color={BROWN} className={s.titleFont} data-reveal="lines">
+            <Lines>
+              Documentação de
+              <br />
+              Design Tokens
+            </Lines>
           </T>
-          <T x={104} y={432} w={495} fs={24} lh={33.6} color={BROWN}>
+          <T x={104} y={432} w={495} fs={24} lh={33.6} color={BROWN} data-reveal="up">
             De cada projeto do seu jeito a uma linguagem que se confere sozinha e de forma automatizada
           </T>
 
-          <T x={78} y={832} fs={16.73} lh={30.11} color={BROWN} className={s.nowrap}>
+          <T x={78} y={832} fs={16.73} lh={30.11} color={BROWN} className={s.nowrap} data-reveal="fade">
             Participação:
           </T>
-          <T x={78} y={863} fs={16.73} lh={30.11} weight={700} color={BROWN} className={s.nowrap}>
+          <T x={78} y={863} fs={16.73} lh={30.11} weight={700} color={BROWN} className={s.nowrap} data-reveal="fade">
             Product Designer
           </T>
-          <T x={234.1} y={863} fs={16.73} lh={30.11} weight={700} color={BROWN} className={s.nowrap}>
+          <T x={234.1} y={863} fs={16.73} lh={30.11} weight={700} color={BROWN} className={s.nowrap} data-reveal="fade">
             Governança e supervisão
           </T>
-          <T x={450.1} y={863} fs={16.73} lh={30.11} weight={700} color={BROWN} className={s.nowrap}>
+          <T x={450.1} y={863} fs={16.73} lh={30.11} weight={700} color={BROWN} className={s.nowrap} data-reveal="fade">
             Automação
           </T>
-          <T x={1163.3} y={847.5} fs={16.73} lh={30.11} weight={500} color={BROWN} className={s.nowrap}>
+          <T x={1163.3} y={847.5} fs={16.73} lh={30.11} weight={500} color={BROWN} className={s.nowrap} data-reveal="fade">
             Ferramenta:
           </T>
-          <AbsImg x={1268.7} y={843} w={40} h={40} src={logoFigma} alt="Figma" eager />
-          <AbsImg x={1322.1} y={843} w={40} h={40} src={logoN8n} alt="n8n" eager />
+          <AbsImg x={1268.7} y={843} w={40} h={40} src={logoFigma} alt="Figma" eager data-reveal="scale" />
+          <AbsImg x={1322.1} y={843} w={40} h={40} src={logoN8n} alt="n8n" eager data-reveal="scale" />
 
           <Body x={209} y={1139} w={1022}>
             No Vortex, laboratório de formação e inovação vinculado à Vice Reitoria de Pesquisa da UNIFOR, cada projeto
@@ -233,7 +245,7 @@ export default function DesignTokens() {
             Quem continua o projeto após o estagiário responsável sair, <strong>precisa aprender tudo de novo</strong>, e o
             que foi decidido se perde quando a pessoa sai.
           </Body>
-          <Abs x={263} y={3692} w={914} h={132} className={s.highlight}>
+          <Abs x={263} y={3692} w={914} h={132} className={s.highlight} data-reveal="scale">
             <p>
               O objetivo central não era deixar os produtos iguais, e sim fazer todos serem{' '}
               <strong>construídos com a mesma linguagem</strong>.
@@ -261,8 +273,8 @@ export default function DesignTokens() {
 
           <ul className={s.summary} aria-label="Resultado da auditoria dos 20 grupos de tokens">
             {SUMMARY.map((c, i) => (
-              <Abs as="li" key={c.label} x={104 + i * 310} y={4649} w={286} h={180} className={s.summaryCard} style={{ backgroundColor: c.bg }}>
-                <span className={s.summaryNumber} style={{ color: c.color }}>
+              <Abs as="li" key={c.label} x={104 + i * 310} y={4649} w={286} h={180} className={s.summaryCard} style={{ backgroundColor: c.bg }} data-reveal="up">
+                <span className={s.summaryNumber} style={{ color: c.color }} data-count={c.n}>
                   {c.n}
                 </span>
                 <span className={s.summaryLabel} style={{ color: c.color }}>
@@ -271,15 +283,15 @@ export default function DesignTokens() {
                 <span className={s.summaryOf}>de 20 grupos de tokens</span>
               </Abs>
             ))}
-            <Abs as="li" x={1034} y={4649} w={286} h={180} className={cx(s.summaryCard, s.summaryDecision)}>
+            <Abs as="li" x={1034} y={4649} w={286} h={180} className={cx(s.summaryCard, s.summaryDecision)} data-reveal="up">
               <span className={s.decisionLabel}>Decisão</span>
               <span className={s.decisionRow}>
                 <span>
-                  <span className={s.decisionNumber}>9</span>
+                  <span className={s.decisionNumber} data-count="9">9</span>
                   <span className={s.decisionText}>manter</span>
                 </span>
                 <span>
-                  <span className={s.decisionNumber}>11</span>
+                  <span className={s.decisionNumber} data-count="11">11</span>
                   <span className={s.decisionText}>mudar</span>
                 </span>
               </span>
@@ -287,7 +299,7 @@ export default function DesignTokens() {
           </ul>
 
           {FINDINGS.map((f) => (
-            <Abs as="article" key={f.title} x={f.x} y={f.y} w={483} h={f.h} className={s.finding}>
+            <Abs as="article" key={f.title} x={f.x} y={f.y} w={483} h={f.h} className={s.finding} data-reveal="up">
               <div className={s.findHead}>
                 {f.icon}
                 <div>
@@ -302,7 +314,7 @@ export default function DesignTokens() {
             </Abs>
           ))}
 
-          <T x={377} y={5902} w={686} fs={24} lh={31.2} color={BROWN} center>
+          <T x={377} y={5902} w={686} fs={24} lh={31.2} color={BROWN} center data-reveal="up">
             Mas o achado que <strong>mudou a direção</strong> foi uma pergunta simples.
           </T>
         </section>

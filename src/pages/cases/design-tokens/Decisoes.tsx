@@ -1,5 +1,6 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { Abs, AbsImg, T } from '../Stage'
+import { u } from '../units'
 import { Decision, Num, Title, Tk } from './shared'
 import { PEACH, cx } from './constants'
 import s from './DesignTokens.module.css'
@@ -75,7 +76,7 @@ function Connectors() {
   const oy = 11040
   const p = (d: string) => d.replace(/(-?\d+(\.\d+)?) (-?\d+(\.\d+)?)/g, (_m, a, _b, c) => `${+a - ox} ${+c - oy}`)
   return (
-    <Abs as="svg" x={ox} y={oy} w={670} h={240} viewBox="0 0 670 240" className={s.connectors} aria-hidden="true">
+    <Abs as="svg" x={ox} y={oy} w={670} h={240} viewBox="0 0 670 240" className={s.connectors} aria-hidden="true" data-reveal="wipe">
       <path d={p('M392 11159.5 L415 11159.5')} />
       <path d={p(head(415, 11159.5))} />
       <path d={p('M708 11159.5 L1047 11159.5')} />
@@ -101,7 +102,7 @@ export default function Decisoes() {
       <Decision n={1} x={152} y={10696} w={495} barX={104}>
         A tela usa o papel (token semântico). O valor fica na Base
       </Decision>
-      <Abs as="article" x={104} y={10911} w={284} h={498} className={s.layer}>
+      <Abs as="article" x={104} y={10911} w={284} h={498} className={s.layer} data-reveal="up">
         <h3>Base</h3>
         <p>
           Os valores desses tokens que devem alimentar a camada semântica, sem modo:
@@ -121,7 +122,7 @@ export default function Decisoes() {
           de <L>brand-n</L>, <L>neutral</L> e fontes
         </p>
       </Abs>
-      <Abs as="article" x={420} y={10911} w={284} h={498} className={s.layer}>
+      <Abs as="article" x={420} y={10911} w={284} h={498} className={s.layer} data-reveal="up">
         <h3>Semântica</h3>
         <p>
           Essa camada consome os tokens da camada Base e diz para que serve cada valor em dois modos: Light e Dark.
@@ -136,7 +137,7 @@ export default function Decisoes() {
         </p>
         <p>O projeto troca a referência</p>
       </Abs>
-      <Abs as="article" x={736} y={10911} w={284} h={241} className={s.layer}>
+      <Abs as="article" x={736} y={10911} w={284} h={241} className={s.layer} data-reveal="up">
         <h3>Estilos</h3>
         <p>
           Juntam vários tokens da camada Semântica num só token composto:
@@ -145,11 +146,11 @@ export default function Decisoes() {
           <L>body/medium · shadow/raised</L>
         </p>
       </Abs>
-      <Abs as="article" x={736} y={11168} w={284} h={241} className={s.layer}>
+      <Abs as="article" x={736} y={11168} w={284} h={241} className={s.layer} data-reveal="up">
         <h3>Específicos</h3>
         <p>Só o que um projeto necessita e nenhum token já existente supre. O designer responsável pelo projeto cria e a lead aprova</p>
       </Abs>
-      <Abs as="article" x={1052} y={10911} w={285} h={498} className={cx(s.layer, s.layerSplit)}>
+      <Abs as="article" x={1052} y={10911} w={285} h={498} className={cx(s.layer, s.layerSplit)} data-reveal="up">
         <div>
           <h3>Tela / Componentes</h3>
           <p>Usa só Semântica, Estilos e Específicos, nunca a Base.</p>
@@ -163,7 +164,7 @@ export default function Decisoes() {
         Todo token diz quanto pode mudar
       </Decision>
       {PERMISSIONS.map((p) => (
-        <Abs as="article" key={p.title} x={p.x} y={11716} w={p.w} h={419} className={s.permission}>
+        <Abs as="article" key={p.title} x={p.x} y={11716} w={p.w} h={419} className={s.permission} data-reveal="up">
           <img src={p.icon} alt="" width={96} height={96} loading="lazy" />
           <h3>{p.title}</h3>
           <p>{p.text}</p>
@@ -176,7 +177,7 @@ export default function Decisoes() {
       </Decision>
       <ol className={s.plainList} aria-label="Perguntas antes de criar um token">
         {QUESTIONS.map((q) => (
-          <Abs as="li" key={q.n} x={q.x} y={q.y} w={600} h={q.h} className={s.question}>
+          <Abs as="li" key={q.n} x={q.x} y={q.y} w={600} h={q.h} className={s.question} data-reveal="up">
             <div className={s.cardHead}>
               <Num n={q.n} inverse />
               <h3>{q.q}</h3>
@@ -203,11 +204,14 @@ export default function Decisoes() {
         src={mockupPapel}
         alt="Folha da documentação impressa: Seção 01 — Comece aqui"
         className={s.fadePaper}
+        data-reveal="up"
+        data-parallax="view"
+        style={{ '--parallax': u(36) } as CSSProperties}
       />
       <Decision n={4} x={916} y={13230} w={372} barX={1320} right>
         Escrito para o estagiário no primeiro dia
       </Decision>
-      <T x={104} y={13463} w={495} fs={24} lh={36} color="#ffffff">
+      <T x={104} y={13463} w={495} fs={24} lh={36} color="#ffffff" data-reveal="up">
         Criei uma documentação em dez seções organizadas por pergunta, casos de Certo/<wbr />Errado, lista do que evitar e um
         questionário de 13 perguntas para o estagiário configurar o projeto por meio de um plugin no Figma criado por mim.
       </T>

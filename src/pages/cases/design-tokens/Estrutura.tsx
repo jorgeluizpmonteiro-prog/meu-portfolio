@@ -130,9 +130,9 @@ export default function Estrutura() {
           estrutura, não
           <br />a aparência.
         </Title>
-        <Abs x={841} y={6100} w={179} h={179} className={s.shapeCircle} aria-hidden="true" />
-        <Abs x={999} y={6100} w={179} h={179} className={s.shapeSquare} aria-hidden="true" />
-        <AbsImg x={1133} y={6100} w={203} h={179} src={triangulo} alt="" />
+        <Abs x={841} y={6100} w={179} h={179} className={s.shapeCircle} aria-hidden="true" data-reveal="scale" />
+        <Abs x={999} y={6100} w={179} h={179} className={s.shapeSquare} aria-hidden="true" data-reveal="scale" />
+        <AbsImg x={1133} y={6100} w={203} h={179} src={triangulo} alt="" data-reveal="scale" />
         <Body x={841} y={6302} w={495}>
           Na pesquisa de mercado, percebi que um token primitivo chamado <Tk>blue</Tk> não serve a um projeto rosa.
         </Body>
@@ -152,7 +152,7 @@ export default function Estrutura() {
         </Title>
         <ol className={s.steps}>
           {STEPS.map((st) => (
-            <Abs as="li" key={st.title} x={st.x} y={7097} w={282} h={547} className={s.step}>
+            <Abs as="li" key={st.title} x={st.x} y={7097} w={282} h={547} className={s.step} data-reveal="up">
               <div className={s.stepHead}>
                 <h3>{st.title}</h3>
                 <p>{st.q}</p>
@@ -173,18 +173,18 @@ export default function Estrutura() {
           ))}
         </ol>
         {[388.3, 705, 1021.7].map((x) => (
-          <T key={x} x={x} y={7121} w={30} fs={30} lh={36} color="#533f26" center aria-hidden="true">
+          <T key={x} x={x} y={7121} w={30} fs={30} lh={36} color="#533f26" center aria-hidden="true" data-reveal="fade">
             →
           </T>
         ))}
         <p className="visually-hidden">Exemplo: background/action/primary/hover</p>
         {EXAMPLE.map((t, i) => (
-          <Abs key={t} x={[104, 420.7, 737.3, 1054][i]} y={7682} w={282} h={54} className={s.exampleBox} aria-hidden="true">
+          <Abs key={t} x={[104, 420.7, 737.3, 1054][i]} y={7682} w={282} h={54} className={s.exampleBox} aria-hidden="true" data-reveal="up">
             {t}
           </Abs>
         ))}
         {[399.3, 716, 1032.7].map((x) => (
-          <T key={x} x={x} y={7696} w={8} fs={22} lh={26} color="#b55a00" aria-hidden="true">
+          <T key={x} x={x} y={7696} w={8} fs={22} lh={26} color="#b55a00" aria-hidden="true" data-reveal="fade">
             /
           </T>
         ))}
@@ -198,7 +198,7 @@ export default function Estrutura() {
           para decidir
         </Title>
         {PRINCIPLES.map((p) => (
-          <Abs as="article" key={p.n} x={p.x} y={p.y} w={p.w ?? 389} h={p.wide ? 356 : 494} className={cx(s.principle, p.wide && s.principleWide)}>
+          <Abs as="article" key={p.n} x={p.x} y={p.y} w={p.w ?? 389} h={p.wide ? 356 : 494} className={cx(s.principle, p.wide && s.principleWide)} data-reveal="up">
             <div className={s.cardTop}>
               <div className={s.cardHead}>
                 <Num n={p.n} />
@@ -217,7 +217,7 @@ export default function Estrutura() {
             </div>
           </Abs>
         ))}
-        <T x={947} y={9457} w={389} fs={40} lh={52} weight={300} color={BROWN} right>
+        <T x={947} y={9457} w={389} fs={40} lh={52} weight={300} color={BROWN} right data-reveal="up">
           Com eles, as decisões deixaram de ser <strong>opinião</strong>.
         </T>
       </section>

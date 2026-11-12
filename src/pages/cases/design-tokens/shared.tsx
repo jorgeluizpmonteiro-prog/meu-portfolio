@@ -1,5 +1,6 @@
 import { Fragment, type CSSProperties, type ReactNode } from 'react'
 import { Abs, T } from '../Stage'
+import { Lines } from '../motion'
 import { bleed, u } from '../units'
 import { BROWN, cx, type Arc } from './constants'
 import s from './DesignTokens.module.css'
@@ -70,7 +71,7 @@ export function Arcs({ x, y, arcs, half }: { x: number; y: number; arcs: Arc[]; 
  */
 export function WidePhoto({ x, y, w, h, src, alt, eager }: { x: number; y: number; w: number; h: number; src: string; alt: string; eager?: boolean }) {
   return (
-    <Abs x={x} y={y} w={w} h={h} className={s.widePhoto} style={bleed(x, w, 'both')}>
+    <Abs x={x} y={y} w={w} h={h} className={s.widePhoto} style={bleed(x, w, 'both')} data-reveal="mask">
       <img src={src} alt="" aria-hidden="true" className={s.widePhotoBlur} loading="lazy" decoding="async" />
       <img
         src={src}
@@ -88,21 +89,21 @@ export function WidePhoto({ x, y, w, h, src, alt, eager }: { x: number; y: numbe
 
 /** Texto corrido (Albert Sans 32/130%) */
 export const Body = ({ x, y, w, color = BROWN, center, right, lh = 41.6, weight, children }: { x: number; y: number; w: number; color?: string; center?: boolean; right?: boolean; lh?: number; weight?: number; children: ReactNode }) => (
-  <T x={x} y={y} w={w} fs={32} lh={lh} weight={weight} color={color} center={center} right={right}>
+  <T x={x} y={y} w={w} fs={32} lh={lh} weight={weight} color={color} center={center} right={right} data-reveal="up">
     {children}
   </T>
 )
 
 /** Título de seção (Roboto Light 96/130%); quebras de linha como no Figma */
 export const Title = ({ x, y, w, id, color = BROWN, center, right, children }: { x: number; y: number; w: number; id: string; color?: string; center?: boolean; right?: boolean; children: ReactNode }) => (
-  <T as="h2" id={id} x={x} y={y} w={w} fs={96} lh={124.8} weight={300} color={color} center={center} right={right} className={s.title}>
-    {children}
+  <T as="h2" id={id} x={x} y={y} w={w} fs={96} lh={124.8} weight={300} color={color} center={center} right={right} className={s.title} data-reveal="lines">
+    <Lines>{children}</Lines>
   </T>
 )
 
 /** Barra laranja de destaque ao lado dos textos */
 export const Bar = ({ x, y, h }: { x: number; y: number; h: number }) => (
-  <Abs x={x} y={y} w={16} h={h} className={s.bar} aria-hidden="true" />
+  <Abs x={x} y={y} w={16} h={h} className={s.bar} aria-hidden="true" data-reveal="grow" />
 )
 
 /** Trecho de código/token dentro dos textos */
@@ -135,7 +136,7 @@ export function Decision({ n, x, y, w, textW, barX, right, children }: { n: numb
   return (
     <>
       <Bar x={barX} y={y} h={130} />
-      <Abs x={x} y={y} w={w} className={cx(s.decision, right && s.decisionRight)}>
+      <Abs x={x} y={y} w={w} className={cx(s.decision, right && s.decisionRight)} data-reveal="up">
         <h3>Decisão {n}</h3>
         <p style={textW ? { width: u(textW) } : undefined}>{children}</p>
       </Abs>

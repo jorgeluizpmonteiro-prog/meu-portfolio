@@ -343,7 +343,7 @@ const SPECIMEN = [
 /** Cartão do mostruário: título na fonte de títulos da marca, divisor e conteúdo */
 function Panel({ x, y, w, h, title, children, className }: { x: number; y: number; w: number; h: number; title: string; children: ReactNode; className?: string }) {
   return (
-    <Abs x={x} y={y} w={w} h={h} className={m.panel}>
+    <Abs x={x} y={y} w={w} h={h} className={m.panel} data-reveal="up">
       <h4>{title}</h4>
       <hr />
       <div className={cx(m.panelBody, className)}>{children}</div>
@@ -500,8 +500,8 @@ export default function Marcas() {
         src={fotoMonitor}
         alt="Designer trabalhando em um monitor com a lista de variáveis do sistema de design aberta no Figma"
       />
-      <Abs x={0} y={14907} w={798} h={200} className={s.orangePill} style={bleed(0, 798, 'left')} aria-hidden="true" />
-      <T x={104} y={14950} w={600} fs={32} lh={38} color="#ffffff">
+      <Abs x={0} y={14907} w={798} h={200} className={s.orangePill} style={bleed(0, 798, 'left')} aria-hidden="true" data-reveal="left" />
+      <T x={104} y={14950} w={600} fs={32} lh={38} color="#ffffff" data-reveal="up">
         Uma arquitetura no papel ainda não prova nada. Eu precisava ver se ela aguentava <strong>marcas diferentes</strong>.
       </T>
 
@@ -515,7 +515,7 @@ export default function Marcas() {
           MCP. Depois, auditei os três arquivos variável por variável.
         </Body>
 
-        <Abs as="article" x={104} y={15713} w={600} h={349} className={s.verdict}>
+        <Abs as="article" x={104} y={15713} w={600} h={349} className={s.verdict} data-reveal="up">
           <img src={icFuncionou} alt="" width={96} height={96} loading="lazy" />
           <h3>O que funcionou</h3>
           <p style={{ maxWidth: u(399) }}>
@@ -523,7 +523,7 @@ export default function Marcas() {
             certa em 514 de 514 descrições.
           </p>
         </Abs>
-        <Abs as="article" x={736} y={15713} w={600} h={349} className={s.verdict}>
+        <Abs as="article" x={736} y={15713} w={600} h={349} className={s.verdict} data-reveal="up">
           <img src={icFalhou} alt="" width={96} height={96} loading="lazy" />
           <h3>O que falhou</h3>
           <p>
@@ -536,7 +536,7 @@ export default function Marcas() {
             contraditas pelos arquivos.
           </p>
         </Abs>
-        <Abs as="article" x={104} y={16086} w={1232} h={253} className={s.verdict}>
+        <Abs as="article" x={104} y={16086} w={1232} h={253} className={s.verdict} data-reveal="up">
           <img src={icAjustamos} alt="" width={96} height={96} loading="lazy" />
           <h3>O que ajustamos</h3>
           <p style={{ maxWidth: u(730) }}>
@@ -552,7 +552,7 @@ export default function Marcas() {
         return (
           <section key={brand.key} aria-labelledby={`dt-projeto-${brand.key}`}>
             <Bar x={104} y={intro.y} h={209} />
-            <Abs x={intro.tx} y={intro.y + 9} w={intro.tw} className={s.projectIntro}>
+            <Abs x={intro.tx} y={intro.y + 9} w={intro.tw} className={s.projectIntro} data-reveal="up">
               <h3 id={`dt-projeto-${brand.key}`}>{intro.title}</h3>
               <p>{intro.text}</p>
             </Abs>
@@ -562,16 +562,16 @@ export default function Marcas() {
                 Tipografia: {spec.names.map((n) => n.label).join(' e ')}. Paletas de cores, escala tipográfica e componentes
                 (botão, checkbox, radio, switch, campo de texto, card e badge) do Projeto {brand.key}.
               </p>
-              <T x={104} y={spec.aa.y} w={spec.aa.w} fs={225.1} lh={spec.aa.h} weight={spec.aa.weight} className={m.aa} aria-hidden="true">
+              <T x={104} y={spec.aa.y} w={spec.aa.w} fs={225.1} lh={spec.aa.h} weight={spec.aa.weight} className={m.aa} aria-hidden="true" data-reveal="up">
                 Aa
               </T>
               {spec.names.map((n) => (
-                <T key={n.label} x={418} y={n.y} fs={48} lh={n.h} className={cx(m.fontName, 'head' in n && n.head && m.headFont)} aria-hidden="true">
+                <T key={n.label} x={418} y={n.y} fs={48} lh={n.h} className={cx(m.fontName, 'head' in n && n.head && m.headFont)} aria-hidden="true" data-reveal="up">
                   {n.text}
                 </T>
               ))}
               {PALETTES[i].map((row, r) => (
-                <Abs key={r} x={104} y={PALETTE_Y[i] + r * 64} w={705} h={56} className={m.palette} aria-hidden="true">
+                <Abs key={r} x={104} y={PALETTE_Y[i] + r * 64} w={705} h={56} className={m.palette} aria-hidden="true" data-reveal="wipe">
                   {row.map((c) => (
                     <span key={c} style={{ backgroundColor: c }} />
                   ))}
@@ -589,6 +589,7 @@ export default function Marcas() {
                     lh={lh}
                     right
                     className={cx(m.scale, kind === 'body' && m.scaleBody, kind === 'label' && m.scaleLabel)}
+                    data-reveal="up"
                     aria-hidden="true"
                   >
                     {name}

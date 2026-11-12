@@ -65,12 +65,15 @@ type ImgProps = {
   eager?: boolean
   className?: string
   style?: CSSProperties
+  /** Atributos data-* (animações de scroll: data-reveal, data-parallax) */
+  [data: `data-${string}`]: string | undefined
 }
 
 /** Asset do Figma (mockup, foto, ilustração) posicionado no palco. */
-export function AbsImg({ x, y, w, h, src, alt, eager, className, style }: ImgProps) {
+export function AbsImg({ x, y, w, h, src, alt, eager, className, style, ...rest }: ImgProps) {
   return (
     <img
+      {...rest}
       src={src}
       alt={alt}
       width={Math.round(w)}
@@ -100,6 +103,8 @@ type TProps = {
   style?: CSSProperties
   id?: string
   'aria-hidden'?: boolean | 'true'
+  /** Atributos data-* (animações de scroll: data-reveal, data-parallax) */
+  [data: `data-${string}`]: string | undefined
   children: ReactNode
 }
 

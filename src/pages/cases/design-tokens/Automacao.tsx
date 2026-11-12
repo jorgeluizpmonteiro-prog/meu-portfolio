@@ -1,4 +1,4 @@
-import { Fragment, type ReactNode } from 'react'
+import { Fragment, type CSSProperties, type ReactNode } from 'react'
 import { Abs, AbsImg, T } from '../Stage'
 import { u } from '../units'
 import { Title } from './shared'
@@ -84,7 +84,7 @@ const GEMINI = st('gemini', 'Google Gemini', 'Chat Model')
 function Node({ x, y, step }: { x: number; y: number; step: Step }) {
   const ic = IC[step.icon]
   return (
-    <Abs as="li" x={x} y={y} w={64} h={64} className={s.node}>
+    <Abs as="li" x={x} y={y} w={64} h={64} className={s.node} data-reveal="scale">
       <img src={ic.src} alt="" width={Math.round(ic.w)} height={Math.round(ic.h)} loading="lazy" style={{ width: u(ic.w), height: u(ic.h) }} />
       <span className={s.nodeLabel}>{step.label}</span>
     </Abs>
@@ -95,7 +95,7 @@ function Node({ x, y, step }: { x: number; y: number; step: Step }) {
 function Arrows({ x0, y0, w, h, arrows, width }: { x0: number; y0: number; w: number; h: number; arrows: [number, number, number, number][]; width: number }) {
   const hd = 6 * (width / 2)
   return (
-    <Abs as="svg" x={x0} y={y0} w={w} h={h} viewBox={`0 0 ${w} ${h}`} className={s.flowArrows} style={{ strokeWidth: width }} aria-hidden="true">
+    <Abs as="svg" x={x0} y={y0} w={w} h={h} viewBox={`0 0 ${w} ${h}`} className={s.flowArrows} style={{ strokeWidth: width }} aria-hidden="true" data-reveal="wipe">
       {arrows.map(([x1, y1, x2, y2]) => {
         const [a, b, c, d] = [x1 - x0, y1 - y0, x2 - x0, y2 - y0]
         const down = a === c
@@ -121,15 +121,15 @@ export default function Automacao() {
         <br />
         conferem sozinhas
       </Title>
-      <T x={115} y={23058} w={1232} fs={32} lh={48} color="#ffffff">
+      <T x={115} y={23058} w={1232} fs={32} lh={48} color="#ffffff" data-reveal="up">
         Para a documentação não depender de quem lembra, pensei a governança como dois fluxos:{' '}
         <strong>personalizar um projeto</strong> e <strong>validar um token específico</strong>, cada um dividindo o
         trabalho entre código, IA e humano.
       </T>
 
       {/* Plugin no Figma */}
-      <Abs x={105} y={23266} w={500} h={627} className={s.pluginFrame} aria-hidden="true" />
-      <Abs as="figure" x={129} y={23290} w={452} h={579} className={s.plugin}>
+      <Abs x={105} y={23266} w={500} h={627} className={s.pluginFrame} aria-hidden="true" data-reveal="up" />
+      <Abs as="figure" x={129} y={23290} w={452} h={579} className={s.plugin} data-reveal="up">
         <figcaption className="visually-hidden">Plugin Tokens do Laboratório: questionário de identidade do projeto</figcaption>
         <div className={s.pluginBrand}>
           <img src={vortex} alt="Vortex" width={83} height={19} loading="lazy" />
@@ -156,7 +156,7 @@ export default function Automacao() {
         </div>
         <span className={s.pluginFade} />
       </Abs>
-      <T x={716} y={23290} w={621} fs={32} lh={48} weight={300} color="#ffffff" right>
+      <T x={716} y={23290} w={621} fs={32} lh={48} weight={300} color="#ffffff" right data-reveal="up">
         Para rodá-los, montei um plugin que é os <strong>olhos e as mãos dentro do Figma</strong>, e deixei as{' '}
         <strong>regras e a IA no n8n</strong>. O plugin existe porque, no plano Education (restrição que temos), o n8n não
         chega às variáveis.
@@ -168,7 +168,7 @@ export default function Automacao() {
         <br />
         um projeto
       </Title>
-      <T x={105} y={24252} w={851} fs={24} lh={36} weight={300} color="#ffffff">
+      <T x={105} y={24252} w={851} fs={24} lh={36} weight={300} color="#ffffff" data-reveal="up">
         O estagiário responde as 13 perguntas;
         <br />O código calcula o que é conta (trocas na Base, grupos a apagar, contraste);
         <br />A IA propõe as trocas na Semântica seguindo a documentação;
@@ -183,13 +183,13 @@ export default function Automacao() {
       <Arrows x0={170} y0={24480} w={1100} h={130} width={2} arrows={[...flow1Arrows, [720.5, 24573, 720.5, 24600]]} />
 
       {/* Fluxo 2 */}
-      <AbsImg x={0} y={24700} w={479.5} h={679.5} src={maoTelefone} className={s.fadeLeft} alt="Mão segurando um celular com o e-mail de aprovação de um token específico" />
+      <AbsImg x={0} y={24700} w={479.5} h={679.5} src={maoTelefone} className={s.fadeLeft} alt="Mão segurando um celular com o e-mail de aprovação de um token específico" data-reveal="left" data-parallax="view" style={{ '--parallax': u(40) } as CSSProperties} />
       <Title id="dt-fluxo-2" x={414} y={24846} w={922} color={PEACH} right>
         Fluxo 2 - Validar
         <br />
         token específico
       </Title>
-      <T x={415} y={25132} w={921} fs={24} lh={36} weight={300} color="#ffffff" right>
+      <T x={415} y={25132} w={921} fs={24} lh={36} weight={300} color="#ffffff" right data-reveal="up">
         Doze checagens em código (nome, propriedade, referência para a Base, contraste nos dois modos, escopo, seis
         rótulos…);
         <br />A IA responde só o que pede julgamento: algum token já serve? A necessidade já apareceu em 3 ou mais
@@ -205,7 +205,7 @@ export default function Automacao() {
       </ol>
       <Arrows x0={165} y0={25440} w={1110} h={120} width={1.5} arrows={[...flow2Arrows, [636.1, 25525, 636.1, 25552]]} />
 
-      <T x={317} y={25734} w={828} fs={32} lh={48} color="#ffffff" center>
+      <T x={317} y={25734} w={828} fs={32} lh={48} color="#ffffff" center data-reveal="up">
         A parte técnica funcionou cedo.
         <br />O que mais mudou foi a <strong>experiência de quem decide</strong>.
       </T>

@@ -1,0 +1,154 @@
+/*
+ * Animações de scroll dos cases — ver motion.tsx.
+ * Só valem com [data-motion] no <main> (posto pelo JavaScript) e sem “reduzir movimento”:
+ * sem isso, todo o conteúdo aparece parado, no lugar do Figma.
+ */
+
+.reveal-line {
+  display: block;
+}
+
+.reveal-line > span {
+  display: block;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 120;
+  width: 100%;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-motion] [data-reveal] {
+    --reveal-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition:
+      opacity 0.8s var(--reveal-ease),
+      transform 0.9s var(--reveal-ease),
+      clip-path 1.1s var(--reveal-ease);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  [data-motion] [data-reveal]:not([data-revealed]) {
+    opacity: 0;
+    transform: translateY(calc(32 * var(--u, 1px)));
+  }
+
+  [data-motion] [data-reveal='fade']:not([data-revealed]) {
+    transform: none;
+  }
+
+  [data-motion] [data-reveal='scale']:not([data-revealed]) {
+    transform: scale(0.85);
+  }
+
+  [data-motion] [data-reveal='left']:not([data-revealed]) {
+    transform: translateX(calc(-64 * var(--u, 1px)));
+  }
+
+  /* Máscara que se abre do centro: a foto aparece inteira, sem esmaecer */
+  [data-motion] [data-reveal='mask'] {
+    clip-path: inset(0 0 0 0);
+  }
+
+  [data-motion] [data-reveal='mask']:not([data-revealed]) {
+    opacity: 1;
+    transform: scale(1.04);
+    clip-path: inset(12% 8% 12% 8%);
+  }
+
+  [data-motion] [data-reveal='wipe'] {
+    clip-path: inset(0 0 0 0);
+  }
+
+  [data-motion] [data-reveal='wipe']:not([data-revealed]) {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 100% 0 0);
+  }
+
+  [data-motion] [data-reveal='grow'] {
+    transform-origin: 50% 0;
+  }
+
+  [data-motion] [data-reveal='grow']:not([data-revealed]) {
+    opacity: 1;
+    transform: scaleY(0);
+  }
+
+  /* Título linha a linha: cada linha sobe de dentro da própria máscara */
+  [data-motion] [data-reveal='lines']:not([data-revealed]) {
+    opacity: 1;
+    transform: none;
+  }
+
+  [data-motion] [data-reveal='lines'] .reveal-line {
+    overflow: hidden;
+  }
+
+  [data-motion] [data-reveal='lines'] .reveal-line > span {
+    transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--reveal-delay, 0ms) + var(--line) * 110ms);
+  }
+
+  [data-motion] [data-reveal='lines']:not([data-revealed]) .reveal-line > span {
+    transform: translateY(105%);
+  }
+
+  /* Parallax sutil, ligado ao scroll (só onde o navegador tem suporte) */
+  @supports (animation-timeline: view()) {
+    [data-parallax='view'] {
+      animation: case-parallax linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+
+    [data-parallax='top'] {
+      animation: case-parallax-top linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 100vh;
+    }
+
+    [data-parallax='drift'] {
+      animation: case-drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+  }
+}
+
+@keyframes case-parallax {
+  from {
+    translate: 0 var(--parallax, 0px);
+  }
+
+  to {
+    translate: 0 calc(var(--parallax, 0px) * -1);
+  }
+}
+
+@keyframes case-parallax-top {
+  from {
+    translate: 0 0;
+  }
+
+  to {
+    translate: 0 calc(var(--parallax, 0px) * -1);
+  }
+}
+
+/* Desliza na horizontal enquanto entra e para na posição do Figma */
+@keyframes case-drift {
+  from {
+    translate: var(--parallax, 0px) 0;
+  }
+
+  to {
+    translate: 0 0;
+  }
+}
