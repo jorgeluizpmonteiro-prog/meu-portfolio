@@ -33,7 +33,6 @@
   /* MOT-13 */
   transition:
     border-color var(--motion-duration-fast) var(--motion-easing-out),
-    box-shadow var(--motion-duration-fast) var(--motion-easing-out),
     border-radius var(--motion-duration-fast) var(--motion-easing-out);
 }
 
@@ -49,11 +48,20 @@
   border-color: var(--border-strong);
 }
 
-/* Focus: anel de 2 px border/focus afastado do campo, só ao chegar pelo teclado (Tab) */
+/*
+ * Foco ao clicar ou digitar: só a borda border/strong (Figma: State=Filled, 106:8230), sem anel.
+ * O contorno global de :focus-visible é desligado aqui porque, em campos de texto, o navegador
+ * considera :focus-visible verdadeiro mesmo com o mouse.
+ */
+.field:focus,
+.field:focus-visible {
+  outline: none;
+}
+
+/* Navegação por Tab: anel de 2 px border/focus a 2 px do campo (Figma: State=Focus, 106:8234) */
 :global(html[data-focus-source='keyboard']) .field:focus-visible {
-  box-shadow:
-    0 0 0 2px var(--background-surface-raised),
-    0 0 0 calc(2px + var(--border-width-focus)) var(--border-focus);
+  outline: var(--border-width-focus) solid var(--border-focus);
+  outline-offset: 2px;
 }
 
 /* Várias linhas: começa igual ao Input e, ao crescer, troca a pílula por cantos arredondados */
