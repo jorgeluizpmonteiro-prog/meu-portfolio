@@ -770,17 +770,13 @@
   top: calc(73 * var(--u));
   left: 50%;
   color: #ffffff;
-  font-size: calc(14 * var(--u));
+  /* Mesmo tamanho nos dois fluxos: o 2 tem os nós mais próximos e “documentação” precisa caber sem encostar no vizinho */
+  font-size: calc(11.5 * var(--u));
   font-weight: 300;
   line-height: 1.5;
   text-align: center;
   white-space: nowrap;
   transform: translateX(-50%);
-}
-
-/* Fluxo 2: os nós ficam mais perto (83 em vez de 117); com a fonte menor, “documentação” não encosta no vizinho */
-.nodeLabelTight {
-  font-size: calc(11.5 * var(--u));
 }
 
 .flowArrows {

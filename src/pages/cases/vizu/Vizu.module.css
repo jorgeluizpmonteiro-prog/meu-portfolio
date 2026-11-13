@@ -227,8 +227,8 @@
   align-items: center;
   justify-content: center;
   padding: 0 calc(6 * var(--u));
-  /* --fit reduz a fonte só nos rótulos que não cabem inteiros na caixa (medido e guardado em diagramas.ts) */
-  font-size: calc(var(--fs, 24) * var(--fit, 1) * var(--u));
+  /* Um só tamanho em todos os rótulos dos diagramas: o maior em que todos cabem inteiros */
+  font-size: calc(16 * var(--u));
   font-weight: 500;
   line-height: 1.15;
   text-align: center;
@@ -270,7 +270,6 @@
 .diamondText {
   padding: 0;
   color: rgb(0 0 0 / 0.8);
-  line-height: 1.5;
 }
 
 .diamondText > span {

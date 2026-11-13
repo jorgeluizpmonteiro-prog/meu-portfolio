@@ -21,12 +21,10 @@ export type Box = {
   fs?: number
   /** Raio da borda (padrão 6) */
   r?: number
-  /** Redução da fonte para o rótulo caber inteiro na caixa (medida no navegador) */
-  fit?: number
 }
 
 export type Circle = { x: number; y: number; size: number; label: string }
-export type Diamond = { x: number; y: number; w: number; h: number; label: string; fs: number; lines: number; fit?: number }
+export type Diamond = { x: number; y: number; w: number; h: number; label: string; fs: number; lines: number }
 
 /** Linha: lista de pontos; `arrow` desenha a seta no último ponto */
 export type Line = { points: [number, number][]; arrow?: boolean; color?: string; round?: number }
@@ -35,19 +33,19 @@ const W = 150.2
 
 export const sitemapBoxes: Box[] = [
   { x: 619.6, y: 8396.3, w: W, h: 56.3, label: 'Home', kind: 'home' },
-  { x: 78, y: 8532.1, w: W, h: 56.3, label: 'Novo Registro', kind: 'primary', fit: 0.91 },
+  { x: 78, y: 8532.1, w: W, h: 56.3, label: 'Novo Registro', kind: 'primary' },
   { x: 434.2, y: 8532.1, w: W, h: 71.1, label: 'Coleções', kind: 'primary' },
   { x: 793, y: 8532.1, w: W, h: 71.1, label: 'Histórico', kind: 'primary' },
   { x: 1151.1, y: 8532.1, w: W, h: 56.4, label: 'Perfil', kind: 'primary' },
   { x: 142, y: 8649.8, w: W, h: 56.3, label: 'Câmera', kind: 'dark' },
   { x: 142, y: 9155.4, w: W, h: 70.7, label: 'Resultado', kind: 'dark' },
-  { x: 498.2, y: 8649.8, w: W, h: 56.3, label: 'Coleções Criadas', kind: 'dark', fit: 0.87 },
-  { x: 498.2, y: 9084.7, w: W, h: 56.3, label: 'Criar Coleção', kind: 'dark', fit: 0.91 },
-  { x: 857, y: 8649.8, w: W, h: 70.6, label: 'Histórico de Classificações', kind: 'dark', fit: 0.9 },
-  { x: 1211.8, y: 8649.8, w: W, h: 56.3, label: 'Configurações', kind: 'dark', fit: 0.87 },
+  { x: 498.2, y: 8649.8, w: W, h: 56.3, label: 'Coleções Criadas', kind: 'dark' },
+  { x: 498.2, y: 9084.7, w: W, h: 56.3, label: 'Criar Coleção', kind: 'dark' },
+  { x: 857, y: 8649.8, w: W, h: 70.6, label: 'Histórico de Classificações', kind: 'dark' },
+  { x: 1211.8, y: 8649.8, w: W, h: 56.3, label: 'Configurações', kind: 'dark' },
   // Novo Registro › Câmera
   { x: 198.7, y: 8745.9, w: W, h: 56.3, label: 'Galeria', kind: 'outline' },
-  { x: 198.7, y: 8841.9, w: W, h: 56.3, label: 'Rotacionar câmera', kind: 'outline', fit: 0.8 },
+  { x: 198.7, y: 8841.9, w: W, h: 56.3, label: 'Rotacionar câmera', kind: 'outline' },
   { x: 198.7, y: 8938, w: W, h: 56.3, label: 'Flash', kind: 'outline' },
   { x: 198.7, y: 9034, w: W, h: 56.3, label: 'Cancelar', kind: 'outline' },
   // Novo Registro › Resultado
@@ -63,14 +61,14 @@ export const sitemapBoxes: Box[] = [
   { x: 554.9, y: 9188.7, w: W, h: 70.7, label: 'Nome da Coleção', kind: 'outline' },
   { x: 554.9, y: 9306.8, w: W, h: 70.7, label: 'Segmento', kind: 'outline' },
   // Histórico
-  { x: 913.7, y: 8745.7, w: W, h: 70.7, label: 'Última classificação', kind: 'outline', fit: 0.98 },
-  { x: 913.7, y: 8856.4, w: W, h: 70.7, label: 'Filtro (semanal, Quinzenal...)', kind: 'outline', fit: 0.81 },
+  { x: 913.7, y: 8745.7, w: W, h: 70.7, label: 'Última classificação', kind: 'outline' },
+  { x: 913.7, y: 8856.4, w: W, h: 70.7, label: 'Filtro (semanal, Quinzenal...)', kind: 'outline' },
   { x: 913.7, y: 8967.4, w: W, h: 70.7, label: 'Resultado', kind: 'outline' },
   // Perfil › Configurações
   { x: 1211.8, y: 8745.9, w: W, h: 56.3, label: 'Privacidade', kind: 'outline' },
-  { x: 1211.8, y: 8841.9, w: W, h: 56.3, label: 'Acessibilidade', kind: 'outline', fit: 0.87 },
+  { x: 1211.8, y: 8841.9, w: W, h: 56.3, label: 'Acessibilidade', kind: 'outline' },
   { x: 1211.8, y: 8938, w: W, h: 56.3, label: 'Sobre', kind: 'outline' },
-  { x: 1211.8, y: 9034, w: W, h: 56.3, label: 'Métricas da IA', kind: 'outline', fit: 0.86 },
+  { x: 1211.8, y: 9034, w: W, h: 56.3, label: 'Métricas da IA', kind: 'outline' },
   { x: 1211.8, y: 9130.1, w: W, h: 56.3, label: 'Sair', kind: 'outline' },
 ]
 
@@ -131,28 +129,28 @@ export const sitemapLines: Line[] = [
 const F = 121
 
 export const flowBoxes: Box[] = [
-  { x: 214.7, y: 10255.6, w: 194.6, h: 45.4, label: 'Tela de carregamento', kind: 'outline', r: 3, fit: 0.75 },
+  { x: 214.7, y: 10255.6, w: 194.6, h: 45.4, label: 'Tela de carregamento', kind: 'outline', r: 3 },
   { x: 78, y: 10391.8, w: F, h: 45.4, label: 'Login', kind: 'outline', r: 3 },
   { x: 78, y: 10482, w: F, h: 45.4, label: 'Email', kind: 'outline', r: 3 },
   { x: 78, y: 10572.3, w: F, h: 45.4, label: 'Senha', kind: 'outline', r: 3 },
   { x: 424.9, y: 10391.8, w: F, h: 45.4, label: 'Cadastro', kind: 'outline', r: 3 },
-  { x: 424.9, y: 10467.3, w: F, h: 73.6, label: 'Registro de Informações', kind: 'outline', fit: 0.78 },
+  { x: 424.9, y: 10467.3, w: F, h: 73.6, label: 'Registro de Informações', kind: 'outline' },
   { x: 424.9, y: 10572.3, w: F, h: 45.4, label: 'Login', kind: 'outline', r: 3 },
-  { x: 250.8, y: 10738.1, w: F, h: 45.4, label: 'Onboarding', kind: 'outline', r: 3, fit: 0.81 },
+  { x: 250.8, y: 10738.1, w: F, h: 45.4, label: 'Onboarding', kind: 'outline', r: 3 },
   { x: 250.8, y: 10821.9, w: F, h: 45.4, label: 'Home', kind: 'outline', r: 3 },
-  { x: 250.8, y: 10905.8, w: F, h: 45.4, label: 'Novo Registro', kind: 'outline', fs: 20, r: 3, fit: 0.83 },
-  { x: 424.9, y: 10905.8, w: F, h: 45.4, label: 'Abrir câmera', kind: 'outline', r: 3, fit: 0.74 },
+  { x: 250.8, y: 10905.8, w: F, h: 45.4, label: 'Novo Registro', kind: 'outline', fs: 20, r: 3 },
+  { x: 424.9, y: 10905.8, w: F, h: 45.4, label: 'Abrir câmera', kind: 'outline', r: 3 },
   { x: 581.1, y: 10898.7, w: F, h: 59.5, label: 'Registra\nimagem', kind: 'outline', fs: 20 },
   { x: 737.3, y: 10898.7, w: F, h: 59.5, label: 'Confirma registro', kind: 'outline', fs: 20 },
-  { x: 893.5, y: 10899.4, w: F, h: 58.9, label: 'Segmentação de imagem', kind: 'outline', fs: 20, fit: 0.85 },
-  { x: 1067.2, y: 10899.4, w: F, h: 58.9, label: 'Tela de carregamento', kind: 'outline', fs: 20, fit: 0.83 },
+  { x: 893.5, y: 10899.4, w: F, h: 58.9, label: 'Segmentação de imagem', kind: 'outline', fs: 20 },
+  { x: 1067.2, y: 10899.4, w: F, h: 58.9, label: 'Tela de carregamento', kind: 'outline', fs: 20 },
   { x: 1241, y: 10899.4, w: F, h: 59.5, label: 'Recebe o resultado', kind: 'outline', fs: 20 },
   { x: 544.6, y: 11259.1, w: F, h: 45.4, label: 'Discordar', kind: 'outline', r: 3 },
   { x: 737.9, y: 11259.1, w: F, h: 45.4, label: 'Concluir', kind: 'outline', r: 3 },
   { x: 931.2, y: 11259.1, w: F, h: 58.9, label: 'Adicionar a coleção', kind: 'outline', fs: 20 },
-  { x: 544, y: 11343.5, w: F, h: 45.4, label: 'Referências', kind: 'outline', r: 3, fit: 0.84 },
+  { x: 544, y: 11343.5, w: F, h: 45.4, label: 'Referências', kind: 'outline', r: 3 },
   { x: 544, y: 11427.9, w: F, h: 58.9, label: 'Seleciona imagem', kind: 'outline', fs: 20 },
-  { x: 544, y: 11525.8, w: F, h: 58.9, label: 'Observações', kind: 'outline', fit: 0.74 },
+  { x: 544, y: 11525.8, w: F, h: 58.9, label: 'Observações', kind: 'outline' },
   { x: 544, y: 11623.8, w: F, h: 58.9, label: 'Conclui', kind: 'outline' },
   { x: 930.6, y: 11343.5, w: F, h: 58.9, label: 'Seleciona coleção', kind: 'outline', fs: 20 },
 ]
@@ -166,7 +164,7 @@ export const flowCircles: Circle[] = [
 
 export const flowDiamonds: Diamond[] = [
   { x: 238.7, y: 10345.7, w: 146.6, h: 136.3, label: 'Login/Cadastro', fs: 22, lines: 1 },
-  { x: 724.5, y: 11042.7, w: 146.6, h: 136.3, label: 'Discordar/ Adicionar a coleção/ Concluir', fs: 13, lines: 3, fit: 0.9 },
+  { x: 697.5, y: 11042.7, w: 200.6, h: 136.3, label: 'Discordar/ Adicionar a coleção/ Concluir', fs: 13, lines: 3 },
 ]
 
 const a = (line: Line): Line => ({ ...line, arrow: true })

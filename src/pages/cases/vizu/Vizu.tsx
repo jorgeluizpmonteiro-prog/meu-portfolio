@@ -326,9 +326,8 @@ function DiagramBox({ b }: { b: Box }) {
       w={b.w + pad * 2}
       h={b.h + pad * 2}
       className={cx(s.box, s[b.kind])}
-      style={{ '--fs': b.fs ?? 24, '--fit': b.fit, borderRadius: u((b.r ?? 6) + pad) } as CSSProperties}
+      style={{ borderRadius: u((b.r ?? 6) + pad) } as CSSProperties}
       data-reveal="scale"
-      data-fit=""
     >
       {/* Rótulo inteiro (no Figma alguns aparecem cortados com reticências) */}
       <span>{b.label}</span>
@@ -572,7 +571,7 @@ export default function Vizu() {
           </Abs>
           <div role="list" aria-label="Etapas do fluxo do usuário">
             {flowCircles.map((c, i) => (
-              <Abs role="listitem" key={i} x={c.x} y={c.y} w={c.size} h={c.size} className={cx(s.box, s.circle)} data-reveal="scale" data-fit="">
+              <Abs role="listitem" key={i} x={c.x} y={c.y} w={c.size} h={c.size} className={cx(s.box, s.circle)} data-reveal="scale">
                 <span>{c.label}</span>
               </Abs>
             ))}
@@ -585,8 +584,7 @@ export default function Vizu() {
                 w={d.w * 0.64}
                 h={d.h}
                 className={cx(s.box, s.diamondText)}
-                style={{ '--fs': d.fs, '--fit': d.fit } as CSSProperties}
-              data-reveal="scale" data-fit="">
+              data-reveal="scale">
                 {/* Permite quebrar a linha depois da barra */}
                 <span>{d.label.replaceAll('/', '/\u200b')}</span>
               </Abs>
