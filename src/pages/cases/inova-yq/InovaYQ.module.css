@@ -158,7 +158,7 @@
   gap: calc(10 * var(--u));
 }
 
-/* —— Design Process —— */
+/* —— Processo de design —— */
 .rotLabel {
   display: flex;
   align-items: center;

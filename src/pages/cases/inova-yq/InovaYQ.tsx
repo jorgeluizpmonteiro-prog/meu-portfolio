@@ -260,13 +260,13 @@ function Topo() {
   )
 }
 
-/* Design Process (y 2250–3010) */
+/* Processo de design (y 2250–3010) */
 function DesignProcess() {
   const Y = 2250
   return (
     <Stage h={760} aria-labelledby="inova-design-process">
       <SectionTitle y={9}>
-        <span id="inova-design-process">Design Process</span>
+        <span id="inova-design-process">Processo de design</span>
       </SectionTitle>
       <Abs as="svg" x={74} y={2382 - Y} w={1292} h={623} viewBox="74 2382 1292 623" aria-hidden="true" data-reveal="wipe">
         {[
