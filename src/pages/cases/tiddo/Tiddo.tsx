@@ -135,7 +135,7 @@ function Connectors({ lines, color }: { lines: [number, number, number][]; color
 }
 
 /**
- * Menu suspenso aberto com etapas (Processo de Design / Validação e melhorias).
+ * Menu suspenso aberto com etapas (O que cada etapa revelou / Validação e melhorias).
  * Ao aparecer na tela, abre como um menu de verdade: a seta gira, a lista desce, os itens entram
  * um a um e o item escolhido é marcado (ver .dropdown no CSS).
  */
@@ -193,6 +193,7 @@ const DECISIONS = [
   {
     x: 240.8,
     y: 5964,
+    h: 373,
     icons: [
       { src: iconeSemPapel, w: 58, h: 61, bg: '#ffc2c2' },
       { src: iconeDispositivos, w: 55, h: 44, bg: '#c4ffd4' },
@@ -201,13 +202,15 @@ const DECISIONS = [
     textW: 348,
     text: (
       <>
-        Substituição das pranchetas e cadernos por uma <strong>interface dinâmica</strong> e baseada em etapas.
+        Preenchimento guiado em etapas: primeiro a linha de produção, depois o componente. O excesso de informação fazia
+        as pessoas se perderem no documento.
       </>
     ),
   },
   {
     x: 779.3,
     y: 5964,
+    h: 373,
     icons: [
       { src: iconeNavegacao, w: 61, h: 61, bg: '#ffc2c2' },
       { src: iconeTabela, w: 65, h: 65, bg: '#c4ffd4' },
@@ -216,13 +219,15 @@ const DECISIONS = [
     textW: 360,
     text: (
       <>
-        Padronização de dados e termos para <strong>reduzir a carga cognitiva</strong> durante o uso.
+        Termos e campos padronizados (listas, validações, frequência diária, semanal, quinzenal ou mensal) para reduzir a
+        carga cognitiva de quem preenche.
       </>
     ),
   },
   {
     x: 240.8,
-    y: 6381.9,
+    y: 6396.9,
+    h: 313,
     icons: [
       { src: iconeContrato, w: 72, h: 72, bg: '#ffc2c2' },
       { src: iconeSeguranca, w: 72, h: 72, bg: '#c4ffd4' },
@@ -231,13 +236,15 @@ const DECISIONS = [
     textW: 348,
     text: (
       <>
-        Implementação de coleta de assinaturas de forma <strong>segura e digital</strong> para garantir validade legal.
+        Assinatura digital, com revisão antes do envio: o supervisor atesta a limpeza, e o documento precisa valer em
+        auditoria.
       </>
     ),
   },
   {
     x: 779.3,
     y: 6381.8,
+    h: 343,
     icons: [
       { src: iconeOperador, w: 72, h: 72, bg: '#d0f0fe' },
       { src: iconeGrafico, w: 67, h: 67, bg: '#d0f0fe' },
@@ -246,8 +253,8 @@ const DECISIONS = [
     textW: 360,
     text: (
       <>
-        Criação de <strong>visões distintas</strong>: uma focada na execução ágil para o operador e outra com dashboards
-        para os supervisores.
+        Visões distintas: execução ágil para o colaborador e dashboards para o supervisor, porque cada um tem um papel
+        diferente no fluxo.
       </>
     ),
   },
@@ -355,10 +362,10 @@ function PhotoCarousel() {
 }
 
 const IMPACTS = [
-  { value: '50%', x: 80.9, y: 14250.8, w: 176.3, textX: 275.2, textW: 134.3, text: <>De <strong>redução</strong> do tempo de preenchimento</> },
-  { value: '100%', x: 513, y: 14250.8, w: 226.7, textX: 757.7, textW: 166.5, text: <>De <strong>rastreabilidade</strong> dos registros</> },
-  { value: '90%', x: 512.3, y: 14376.8, w: 177.8, textX: 757.5, textW: 166.5, text: <>De <strong>redução nos erros</strong> de preenchimento</> },
-  { value: '90%', x: 1028.3, y: 14248.5, w: 177.8, textX: 1216.5, textW: 147.8, text: <>De <strong>redução no volume</strong> anual de uso de papel</> },
+  { value: '50%', x: 80.9, y: 14250.8, w: 176.3, textX: 275.2, textW: 134.3, text: <>Meta de redução do tempo de preenchimento</> },
+  { value: '100%', x: 513, y: 14250.8, w: 226.7, textX: 757.7, textW: 166.5, text: <>Meta de rastreabilidade dos registros</> },
+  { value: '90%', x: 512.3, y: 14376.8, w: 177.8, textX: 757.5, textW: 166.5, text: <>Meta de redução dos erros</> },
+  { value: '90%', x: 1028.3, y: 14248.5, w: 177.8, textX: 1216.5, textW: 147.8, text: <>Meta de redução do uso de papel por ano</> },
 ]
 
 /* ——————————————————————————————————————————————————————————————————————— */
@@ -403,12 +410,11 @@ export default function Tiddo() {
           <Chip x={78} y={1082.3} w={229.5}>
             <h2 id="tiddo-contexto">Contexto</h2>
           </Chip>
-          <T x={403.5} y={1216.5} w={633} fs={24} lh={38.4} color={NAVY} data-reveal="up">
-            O Tiddo é uma aplicação desenvolvida e premiada durante o 2° Hackathon promovido pela fábrica de alimentos M.
-            Dias Branco. O desafio era <strong className={s.semibold}>digitalizar o preenchimento de checklists de limpeza</strong>{' '}
-            industrial. O processo manual levava cerca de 1 hora por tarefa, custava R$ 19.000 anuais em papel e era
-            suscetível a erros, o que comprometia a rastreabilidade e elevava os riscos de falhas em auditorias,
-            contaminações e multas.
+          <T x={382} y={1216} w={676} fs={24} lh={38.4} color={NAVY} data-reveal="up">
+            No 2º O-Hacka-Tá-On da M. Dias Branco, nossa equipe desenhou o Tiddo, um app para digitalizar o checklist de
+            limpeza das linhas de produção, e <strong>ficou em 2º lugar</strong>. No projeto piloto, em Maracanaú,
+            descobrimos que a empresa já tinha uma solução interna. O desafio passou a ser outro: avaliar, adaptar e ajudar
+            essa solução a ser usada.
           </T>
           <AbsImg
             x={1124}
@@ -425,23 +431,23 @@ export default function Tiddo() {
         <section aria-labelledby="tiddo-entendimento">
           <TitleBand id="tiddo-entendimento" band={[121.5, 1723.5, 1394.3]} side="right" text={[191.3, 1058, 'entendimento do problema']} />
           <T x={395.3} y={1919.3} w={650.3} fs={24} lh={36} color={NAVY} center data-reveal="up">
-            Para <strong>compreender o cenário real</strong> e as dificuldades da operação, realizamos uma imersão profunda
-            focada na fase de Descoberta. Nossa investigação incluiu:
+            Mais do que um formulário longo, a descoberta mostrou um fluxo entre pessoas: quem limpa, quem preenche e o
+            supervisor que atesta. Cada etapa revelou uma parte disso:
           </T>
           <SideNote x={104.3} y={2223} w={204} right color={NAVY}>
             Para vivenciar o ambiente e as condições de trabalho.
           </SideNote>
           <SideNote x={70.5} y={2403} w={237.8} right color={NAVY}>
-            Para organizar as hipóteses iniciais e guiar as perguntas da nossa pesquisa.
+            Organizou as perguntas para a área: quem preenche, quem revisa, como assinar, que certificações atender.
           </SideNote>
           <SideNote x={76.5} y={2584.5} w={231.8} right color={NAVY}>
-            Identificando a sobrecarga e dificuldades associado à responsabilidade dos documentos.
+            Até 1h30 de preenchimento, vários checklists no mesmo dia e ~R$ 19 mil/ano com a produção de cadernos.
           </SideNote>
           <SideNote x={1129.5} y={2320.5} w={190.5} color={NAVY}>
-            Para alinhar os requisitos de negócio.
+            Quem preenche não é quem limpa, e quem atesta a limpeza é o supervisor, com assinatura.
           </SideNote>
           <SideNote x={1129.5} y={2501.3} w={228.8} color={NAVY}>
-            Para visualizar visualmente os gargalos operacionais de ponta a ponta.
+            Mostrou o deslocamento até a máquina para achar o responsável e o retrabalho quando o checklist volta.
           </SideNote>
           <Connectors
             color={BLUE}
@@ -456,7 +462,7 @@ export default function Tiddo() {
           <Dropdown
             x={403.5}
             y={2087.3}
-            title="Processo de Design"
+            title="O que cada etapa revelou"
             selected={1}
             items={[
               'Visitas de campo às instalações',
@@ -563,7 +569,7 @@ export default function Tiddo() {
             incluíram:
           </T>
           {DECISIONS.map((d) => (
-            <Abs key={d.x + '-' + d.y} x={d.x} y={d.y} w={420} h={313} className={s.decision} data-reveal="up">
+            <Abs key={d.x + '-' + d.y} x={d.x} y={d.y} w={420} h={d.h} className={s.decision} data-reveal="up">
               {d.icons.map((icon, i) => (
                 <span key={i} className={s.decisionIcon} style={{ left: u(30 + i * 216), backgroundColor: icon.bg }}>
                   <img src={icon.src} alt="" width={icon.w} height={icon.h} style={{ width: u(icon.w), height: u(icon.h) }} />
@@ -652,29 +658,33 @@ export default function Tiddo() {
             alt="Dois iPhones com as telas de checklists feitas e de revisão do Tiddo"
           data-reveal="up" data-parallax="view" style={{ '--parallax': u(30) } as CSSProperties} />
           <T x={78} y={10939.5} w={432} fs={27} lh={43.2} weight={700} color={WHITE} data-reveal="up">
-            O sucesso chamou a atenção da indústria parceira, e o conceito evoluiu para um projeto piloto.
+            O 2º lugar abriu a porta da fábrica. No projeto piloto, em Maracanaú, descobrimos que a nossa solução não era a
+            única.
           </T>
           <Abs x={829.5} y={11959.5} w={713.3} h={171.8} className={s.band} style={bleed(829.5, 713.3, 'right')} data-reveal="wipe-r" />
-          <T x={918} y={11988.8} w={444} fs={18} lh={28.8} color={DARK} right data-reveal="up">
-            Descobrimos que a empresa já possuía uma iniciativa interna de digitalização operando em outra unidade, mas a
-            fábrica local <strong>necessitava de adaptações</strong> estruturais e de usabilidade.
+          <T x={918} y={11973} w={444} fs={18} lh={28.8} color={DARK} right data-reveal="up">
+            A empresa já tinha uma solução interna, da unidade de Jaboatão dos Guararapes, ainda sem previsão de chegar a
+            Maracanaú. Fizemos reuniões com a equipe de Jaboatão para entender o funcionamento e analisar o que Maracanaú
+            precisava.
           </T>
           <T x={404.3} y={12291.8} w={632.3} fs={24} lh={38.4} color={WHITE} center data-reveal="up">
             Nosso <strong>desafio como designers evoluiu</strong>: integrar nossa visão para avaliar, refinar e testar a
             solução real que estava sendo desenvolvida.
           </T>
           <SideNote x={105} y={12636.8} w={210.8} right color={WHITE}>
-            Utilizamos heurísticas de Nielsen, categorizando ocorrências para priorizar correções.
+            Avaliamos a solução com as heurísticas de Nielsen: 12 ocorrências, cada uma com gravidade e recomendação, para
+            priorizar correções.
           </SideNote>
           <SideNote x={92.3} y={12816.8} w={223.5} right color={WHITE}>
-            Conduzimos testes presenciais e preenchimentos piloto com os usuários.
+            Treinamento presencial com key users do turno da manhã, com um preenchimento piloto mediado.
           </SideNote>
           <SideNote x={84} y={12998.3} w={231.8} right color={WHITE}>
-            Estabelecemos um canal aberto via Microsoft Teams para capturar dúvidas e oportunidades de melhoria com os
-            usuários finais.
+            Abrimos um canal no Microsoft Teams para dúvidas e melhorias. Os pontos do canal e do treinamento entraram na
+            nova proposta de interface.
           </SideNote>
           <SideNote x={1137} y={12734.3} w={211.5} color={WHITE}>
-            Cadastramos mais de 300 novos componentes de maquinário no banco de dados.
+            Cadastramos mais de 300 novos componentes da linha de Snacks, ampliando as informações para criar novos
+            checklists.
           </SideNote>
           <SideNote x={1137} y={12915} w={228.8} color={WHITE}>
             Desenvolvemos uma &quot;Cartilha de Uso&quot; visual e objetiva para facilitar o onboarding e garantir a adoção da
@@ -699,7 +709,7 @@ export default function Tiddo() {
             items={[
               'Avaliação Heurística',
               'Revisão da arquitetura da informação',
-              'Testes de usabilidade',
+              'Treinamento e testes',
               'Documentação de apoio',
               'Coleta de feedback contínuo',
             ]}
@@ -716,7 +726,7 @@ export default function Tiddo() {
 
         {/* —— Impactos —— */}
         <section aria-labelledby="tiddo-impactos">
-          <TitleBand id="tiddo-impactos" band={[401.3, 13894.5, 1170.8]} side="right" text={[543.8, 354, 'impactos']} />
+          <TitleBand id="tiddo-impactos" band={[401.3, 13894.5, 1170.8]} side="right" text={[543, 354, 'Impactos']} />
           <Chip x={76.5} y={14142} w={333}>
             <h3>Eficiência</h3>
           </Chip>

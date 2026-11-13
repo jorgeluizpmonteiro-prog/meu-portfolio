@@ -38,7 +38,7 @@ export const notes: Note[] = [
   { x: 872.2, y: 3967.4, color: '#fbfed0', text: 'Planos de higienização configurados de acordo com equipamento.' },
   { x: 1144.3, y: 3997.7, color: '#d0f0fe', text: 'Processo simplificado e unificado que reduz o tempo da tarefa' },
   { x: 1222.4, y: 3997.7, color: '#d0f0fe', text: 'Formato sustentável e com espaço para melhorias' },
-  { x: 794, y: 4048.9, color: '#fbfed0', text: 'Garantiir a familiaridade visual com cores já familiares' },
+  { x: 794, y: 4048.9, color: '#fbfed0', text: 'Garantir a familiaridade visual com cores já familiares' },
   { x: 872.2, y: 4048.9, color: '#fbfed0', text: 'Soluções de design que simplificam e agilizam o processo.' },
   { x: 1144.3, y: 4079.8, color: '#d0f0fe', text: 'Erros são diminuídos e sua correção pode ser simplificada.' },
   { x: 1222.4, y: 4079.8, color: '#d0f0fe', text: 'Redução de estresse dos colaboradores envolvidos' },
