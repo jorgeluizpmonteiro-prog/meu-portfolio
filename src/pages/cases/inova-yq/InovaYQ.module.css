@@ -424,6 +424,9 @@
   align-items: center;
   justify-content: center;
   color: #818181;
+  /* Figma: Inter Regular nos rótulos da família de ícones */
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
   font-size: calc(var(--fs) * var(--u));
   line-height: calc(15.8 * var(--u));
   text-align: center;
@@ -506,4 +509,6 @@
 .footerTitle {
   color: #000000;
   font-weight: 700;
+  /* Uma linha só (no Figma a caixa acompanha o texto); centralizado no mesmo eixo, x 720 */
+  white-space: nowrap;
 }

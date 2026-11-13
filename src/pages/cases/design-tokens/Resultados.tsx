@@ -93,7 +93,7 @@ export default function Resultados() {
         <T x={-12} y={28691} w={1464} fs={302.8} lh={393.6} weight={300} color="#ffebd7" className={`${s.titleFont} ${s.thanks}`} aria-hidden="true" data-reveal="fade" data-parallax="drift" style={{ '--parallax': u(160) } as CSSProperties}>
           OBRIGADO
         </T>
-        <T as="h2" id="dt-fim" x={378} y={28377} w={683.3} fs={66.8} lh={100.2} weight={400} color={BROWN} center data-reveal="up">
+        <T as="h2" id="dt-fim" x={378} y={28377} w={683.3} fs={66.8} lh={100.2} weight={400} color={BROWN} center className={s.nowrap} data-reveal="up">
           Gostou do processo?
         </T>
         <T x={411.8} y={28496} w={615.8} fs={30} lh={45} color={BROWN} center data-reveal="up">

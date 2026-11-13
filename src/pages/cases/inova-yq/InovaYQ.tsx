@@ -1,4 +1,5 @@
 import { useRef, type CSSProperties, type ReactNode } from 'react'
+import '@fontsource/inter/400.css'
 import '@fontsource/inter/500.css'
 import '../../../styles/satoshi.css'
 import { Abs, AbsImg, Stage, T } from '../Stage'
@@ -617,7 +618,7 @@ function Rodape() {
   return (
     <Stage h={717} aria-labelledby="inova-fim">
       <AbsImg x={-560} y={0} w={2560} h={717} src={rodapeFundo} alt="" />
-      <T as="h2" x={391} y={13956 - Y} w={659} fs={66.77} lh={45} center className={s.footerTitle} data-reveal="up">
+      <T as="h2" x={0} y={13956 - Y} w={1440} fs={66.77} lh={45} center className={s.footerTitle} data-reveal="up">
         <span id="inova-fim">Gostou do processo?</span>
       </T>
       <T x={391} y={14073 - Y} w={659} fs={30} lh={45} center data-reveal="up">
