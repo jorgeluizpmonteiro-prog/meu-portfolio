@@ -5,7 +5,7 @@ import '../../../styles/satoshi.css'
 import { Abs, AbsImg, Stage, T } from '../Stage'
 import { Lines, ScrollProgress } from '../motion'
 import { useScrollReveal } from '../useScrollReveal'
-import { font, u } from '../units'
+import { bleed, font, u } from '../units'
 import { IA_BOX_HEIGHT, iaBoxes, iaLines } from './arquitetura'
 import { flowBoxes, flowCircles, flowDiamonds, flowLines, flowTexts } from './fluxo'
 import s from './InovaYQ.module.css'
@@ -40,6 +40,15 @@ import barraTextura from '../../../assets/cases/inova-yq/barra-textura.webp'
 import iconeLixeira from '../../../assets/cases/inova-yq/icone-lixeira.svg'
 import telasGaleria from '../../../assets/cases/inova-yq/telas-galeria.webp'
 import telasCelular from '../../../assets/cases/inova-yq/telas-celular.webp'
+import galCriarConta from '../../../assets/cases/inova-yq/galeria/criar-conta.webp'
+import galInicio from '../../../assets/cases/inova-yq/galeria/inicio.webp'
+import galPlanoDeAula from '../../../assets/cases/inova-yq/galeria/plano-de-aula.webp'
+import galTurmas from '../../../assets/cases/inova-yq/galeria/turmas.webp'
+import galRevisao from '../../../assets/cases/inova-yq/galeria/revisao.webp'
+import galConfiguracoes from '../../../assets/cases/inova-yq/galeria/configuracoes.webp'
+import galPlanoForm from '../../../assets/cases/inova-yq/galeria/plano-de-aula-form.webp'
+import galRevisao2 from '../../../assets/cases/inova-yq/galeria/revisao-2.webp'
+import galHabilidades from '../../../assets/cases/inova-yq/galeria/habilidades.webp'
 
 // Ícones do UI Kit (recortados do Figma: Group 712 › Frame 69)
 const uiIcons = import.meta.glob<string>('../../../assets/cases/inova-yq/icones/*.webp', {
@@ -576,10 +585,49 @@ function Telas() {
       <SectionTitle y={10955 - Y}>
         <span id="inova-telas">Aplicação das Telas</span>
       </SectionTitle>
-      <Abs x={0} y={11163 - Y} w={1440} className={s.gallery} data-reveal="mask">
+      {/* Parada (sem JavaScript ou com “reduzir movimento”): a composição do Figma */}
+      <Abs x={0} y={11163 - Y} w={1440} className={cx(s.gallery, s.galleryStatic)} data-reveal="mask">
         <img src={telasGaleria} alt="Galeria com as telas do Inova+YQ para professoras e secretaria: login, página inicial, plano de aula, mensagens, configurações, turmas, revisão, habilidades e cronograma" width={1440} height={918} loading="lazy" />
       </Abs>
+      <GalleryCarousel y0={Y} />
     </Stage>
+  )
+}
+
+/*
+ * Carrossel da “Aplicação das Telas” (Figma: Group 98, node 141:93092). Cada fileira repete 4 telas a cada
+ * 417,27 (tela de 399,27 + espaço de 18) e desliza sem parar, em direções alternadas, partindo da posição do
+ * Figma. As telas que no Figma só existem cortadas pela borda do quadro (Mensagens e Cronograma) dão lugar a
+ * outras telas do produto; a 1ª tela da 2ª fileira é igual à 4ª (Revisão).
+ */
+const GAL_PITCH = 417.27
+const GAL_PERIOD = GAL_PITCH * 4
+const GAL_ROWS = [
+  { y: 11184.8, x0: -8.2, dir: -1, screens: [galCriarConta, galInicio, galPlanoDeAula, galTurmas] },
+  { y: 11493.1, x0: -206, dir: 1, screens: [galRevisao, galConfiguracoes, galTurmas, galRevisao] },
+  { y: 11798.5, x0: -442.5, dir: -1, screens: [galConfiguracoes, galPlanoForm, galRevisao2, galHabilidades] },
+]
+/** Períodos antes e depois da posição do Figma (cobrem telas largas nas duas direções) */
+const GAL_BEFORE = 2
+const GAL_COPIES = 6
+
+function GalleryCarousel({ y0 }: { y0: number }) {
+  const PAD = 30 // margem para a sombra das telas
+  return (
+    <div className={s.galleryMotion} aria-hidden="true">
+      {GAL_ROWS.map((row) => (
+        <Abs key={row.y} x={0} y={row.y - PAD - y0} w={1440} h={259.53 + PAD * 2} className={s.galleryRow} style={bleed(0, 1440, 'both')} data-reveal="up" data-loop="">
+          <div
+            className={cx(s.galleryTrack, row.dir > 0 && s.galleryTrackRight)}
+            style={{ left: `calc(var(--bleed) + ${u(row.x0 - GAL_BEFORE * GAL_PERIOD)})`, top: u(PAD), '--period': u(GAL_PERIOD) } as CSSProperties}
+          >
+            {Array.from({ length: GAL_COPIES * 4 }, (_, i) => (
+              <img key={i} src={row.screens[i % 4]} alt="" width={399} height={260} loading="lazy" decoding="async" style={{ left: u(i * GAL_PITCH) }} />
+            ))}
+          </div>
+        </Abs>
+      ))}
+    </div>
   )
 }
 

@@ -498,6 +498,75 @@
   }
 }
 
+/* Carrossel das telas: só com animação ligada; sem ela, fica a imagem parada do Figma */
+.galleryMotion {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-motion] .galleryMotion {
+    display: contents;
+  }
+
+  [data-motion] .galleryStatic {
+    display: none;
+  }
+}
+
+.galleryRow {
+  overflow: hidden;
+}
+
+/* Telas maiores que 1440 px: as fileiras vão até a borda da tela e somem suavemente nas pontas */
+@media (min-width: 1441px) {
+  .galleryRow {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  }
+}
+
+.galleryTrack {
+  position: absolute;
+  height: calc(259.53 * var(--u));
+  animation: gallery-left 60s linear infinite;
+}
+
+.galleryTrackRight {
+  animation-name: gallery-right;
+}
+
+.galleryTrack > img {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: calc(399.27 * var(--u));
+  height: calc(259.53 * var(--u));
+  max-width: none;
+  border-radius: calc(8.8 * var(--u));
+  /* Figma: DROP_SHADOW r 22,5, #87b7fe */
+  box-shadow: 0 0 calc(18.75 * var(--u)) #87b7fe;
+}
+
+@keyframes gallery-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(var(--period) * -1));
+  }
+}
+
+@keyframes gallery-right {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(var(--period));
+  }
+}
+
 /* —— Resultados —— */
 .stat {
   color: var(--blue);
