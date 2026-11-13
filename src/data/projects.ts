@@ -19,7 +19,7 @@ export type ProjectStatus = 'published' | 'soon'
 export type Project = {
   slug: string
   title: string
-  /** Texto provisório (D-12): Jorge vai enviar as descrições finais. */
+  /** Resumo do projeto mostrado no card da página inicial */
   description: string
   category: string
   cover: string
@@ -37,15 +37,12 @@ export type Project = {
   year?: string
 }
 
-const PROVISIONAL_DESCRIPTION =
-  'Do desafio à solução: conheça o processo e as decisões de design deste projeto.'
-
 // Ordem de exibição na página inicial: do mais importante para o menos.
 export const projects: Project[] = [
   {
     slug: 'design-tokens',
     title: 'Design Tokens',
-    description: PROVISIONAL_DESCRIPTION,
+    description: 'Como organizei os tokens de um laboratório com vários projetos e automatizei a governança deles.',
     category: 'Design System',
     cover: '/images/projects/design-tokens/cover.webp',
     coverAlt: 'Cartões de token ligados por setas: valor hexadecimal #F88717, token base brand-1/500 e token semântico background/action/primary',
@@ -56,7 +53,7 @@ export const projects: Project[] = [
   {
     slug: 'tiddo',
     title: 'Tiddo',
-    description: PROVISIONAL_DESCRIPTION,
+    description: 'Ficamos em 2º lugar com um app. No piloto, a fábrica já tinha uma solução, e o desafio mudou.',
     category: 'Product Design',
     cover: '/images/projects/tiddo/cover.webp',
     coverAlt: 'Mãos segurando um celular com o aplicativo Tiddo',
@@ -67,7 +64,7 @@ export const projects: Project[] = [
   {
     slug: 'vizu',
     title: 'Vizu',
-    description: PROVISIONAL_DESCRIPTION,
+    description: 'Um app de IA sem tema: desenhei o ciclo de classificar imagens para servir de base a outros projetos.',
     category: 'Product Design',
     cover: '/images/projects/vizu/cover.webp',
     coverAlt: 'Telas do aplicativo Vizu em celulares',
@@ -78,7 +75,7 @@ export const projects: Project[] = [
   {
     slug: 'inova-yq',
     title: 'Inova+YQ',
-    description: PROVISIONAL_DESCRIPTION,
+    description: 'Uma plataforma que conecta professores e responsáveis em torno da rotina escolar, na web e no celular.',
     category: 'Product Design',
     cover: '/images/projects/inova-yq/cover.webp',
     coverAlt: 'Telas do Inova+YQ em um notebook e um celular',
