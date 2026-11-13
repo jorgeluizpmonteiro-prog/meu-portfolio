@@ -310,6 +310,7 @@ function ScreensCarousel() {
       className={s.screens}
       style={bleed(0, 1440, 'both')}
       role="img"
+      data-loop=""
       aria-label="Carrossel com as telas finais do Tiddo: login, dashboard, checklists feitas, componente, preenchimento e revisão"
     >
       <img
@@ -336,7 +337,7 @@ const PHOTO_SETS = 5 // 2 cópias antes (borda esquerda em telas largas), a do F
 
 function PhotoCarousel() {
   return (
-    <Abs x={0} y={10151.6} w={1440} h={460.5} className={s.photoCarousel} style={bleed(0, 1440, 'both')} data-reveal="up">
+    <Abs x={0} y={10151.6} w={1440} h={460.5} className={s.photoCarousel} style={bleed(0, 1440, 'both')} data-reveal="up" data-loop="">
       <ul
         className={s.photoTrack}
         style={{ left: `calc(var(--bleed) + ${u(-22.5 - 2 * 4 * PHOTO_STEP)})`, '--set': u(4 * PHOTO_STEP) } as CSSProperties}

@@ -127,6 +127,11 @@
     transform: translateY(125%);
   }
 
+  /* Carrosséis em loop: pausados fora da tela (o JavaScript marca data-inview) */
+  [data-motion] [data-loop]:not([data-inview]) > * {
+    animation-play-state: paused;
+  }
+
   /* Parallax sutil, ligado ao scroll (só onde o navegador tem suporte) */
   @supports (animation-timeline: view()) {
     [data-parallax='view'] {

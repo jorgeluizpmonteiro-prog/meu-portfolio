@@ -151,7 +151,7 @@ const PERSONAS = [
 const REQUIREMENTS = [
   {
     user: 'Sente a necessidade de ter mais precisão com o que está sendo classificado.',
-    func: 'Tela de segmentação de ítens identificados no momento do regidtro da imagem.',
+    func: 'Tela de segmentação dos itens identificados no momento do registro da imagem.',
     ux: 78.8,
     fx: 534,
     y: 6823.5,
@@ -215,7 +215,7 @@ const FEEDBACK = [
 ]
 const FEEDBACK_SHADES = ['Clara', 'Médio', 'Escura']
 
-/** Linhas de chamada da Aplicação das telas: trajeto e ponto da bolinha */
+/** Linhas de chamada da “O ciclo nas telas”: trajeto e ponto da bolinha */
 const CALLOUTS: { d: string; dot: [number, number] }[] = [
   { d: 'M560.25 15327.75H408.75', dot: [408.75, 15327.75] },
   { d: 'M560.25 15645.75H408.75', dot: [408.75, 15645.75] },
@@ -235,7 +235,7 @@ const CALLOUTS: { d: string; dot: [number, number] }[] = [
  */
 function MosaicCarousel({ y, src, label }: { y: number; src: string; label: string }) {
   return (
-    <Abs x={0} y={y} w={1440} h={1688.67} className={cx(s.mosaic, s.fadeX)} role="img" aria-label={label} data-reveal="mask">
+    <Abs x={0} y={y} w={1440} h={1688.67} className={cx(s.mosaic, s.fadeX)} role="img" aria-label={label} data-reveal="mask" data-loop="">
       <img src={src} alt="" width={3000} height={2533} loading="lazy" decoding="async" className={s.mosaicStrip} />
     </Abs>
   )
@@ -389,23 +389,22 @@ export default function Vizu() {
             <AbsImg x={475} y={174} w={540} h={559} src={telaCapa} alt="" eager />
           </Abs>
 
-          <T x={78} y={892.5} w={190.1} fs={16.73} lh={30.11} color={PURPLE} data-reveal="fade">
+          <T x={78} y={892.5} w={106} fs={16.73} lh={30.11} color={PURPLE} data-reveal="fade">
             Participação:
           </T>
           <T x={78} y={923.5} fs={16.73} lh={30.11} weight={700} color={PURPLE} className={s.nowrap} data-reveal="fade">
             UX/UI Design
-          </T>
-          <T x={204.1} y={923.5} fs={16.73} lh={30.11} weight={700} color={PURPLE} className={s.nowrap} data-reveal="fade">
-            Sitemap
           </T>
           <T x={1223.6} y={908} fs={16.73} lh={30.11} weight={500} color={PURPLE} className={s.nowrap} data-reveal="fade">
             Ferramenta:
           </T>
           <AbsImg x={1328} y={906.5} w={34} h={34} src={logoFigma} alt="Figma" eager data-reveal="scale" />
 
-          <T x={390.8} y={1047.8} w={659.3} fs={30} lh={45} color="#222222" data-reveal="up">
-            O Vizu é um aplicativo de classificação de imagem através de Inteligência Artificial proposto em um desafio{' '}
-            <strong>pensado de forma modular</strong>, de modo que em futuros projetos seja usado como base de referência.
+          <T x={373} y={1048} w={695} fs={30} lh={45} color="#222222" data-reveal="up">
+            O Vizu é um app de classificação de imagens por IA pensado como base modular: o laboratório pediu{' '}
+            <strong>um app sem tema</strong>, ponto de partida para futuros projetos de visão computacional. A partir de
+            conversas com quem usou apps anteriores do laboratório, o projeto chegou a <strong>um fluxo só</strong>, com o
+            Atlas na hora do resultado e a certeza da IA visível.
           </T>
 
           {/* Mão com o iPhone, recortada pelo círculo, e as faixas de luz na borda do corpo escuro */}
@@ -428,8 +427,8 @@ export default function Vizu() {
         <AbsImg x={0} y={2530.25} w={1440} h={783.48} src={faixaProcesso} alt="" style={bleed(0, 1440, 'both')} />
 
         <section aria-labelledby="vizu-processo">
-          <Title id="vizu-processo" x={378} y={2410.5} w={684}>
-            Design Process
+          <Title id="vizu-processo" x={286} y={2410.5} w={869}>
+            Processo de design
           </Title>
           {PROCESS.map((p) => (
             <Abs key={p.title} x={p.x} y={p.y} w={p.w} className={cx(s.glassCard, s.processCard)} data-reveal="up">
@@ -448,9 +447,9 @@ export default function Vizu() {
           />
         </section>
 
-        <section aria-label="Cenário e fluxos">
+        <section aria-label="O desafio e os fluxos">
           <T as="h3" x={78} y={4757.3} w={475.5} fs={27} lh={45} weight={400} color={LIGHT} data-reveal="up">
-            Cenário
+            O desafio
           </T>
           <T as="h3" x={729} y={4757.3} w={308.3} fs={27} lh={45} weight={400} color={LIGHT} data-reveal="up">
             Fluxo com perfil
@@ -460,9 +459,9 @@ export default function Vizu() {
           </T>
           <Abs x={78} y={4824.75} w={1284} h={1.5} className={s.rule} data-reveal="wipe" />
           <Body x={78} y={4850.3} w={475.5}>
-            O Laboratório Vortex precisava de uma solução base para projetos de Inteligência Artificial focados em visão
-            computacional. O objetivo não era apenas criar um app, mas <strong>definir um padrão de design modular</strong>{' '}
-            que pudesse ser replicado em futuros produtos do laboratório.
+            O Vortex cria apps de visão computacional para projetos diferentes, como um app usado em hospital. O pedido era
+            um app padrão, sem tema, que servisse de base para os próximos. O objetivo não era apenas criar um app, mas
+            definir um padrão de design modular.
           </Body>
           <Body x={729} y={4850.3} w={297}>
             Focado em retenção, histórico de evolução e gamificação.
@@ -474,8 +473,8 @@ export default function Vizu() {
 
         <section aria-labelledby="vizu-personas">
           <AbsImg x={930} y={4918} w={510} h={889} src={texturaPersonas} alt="" className={s.fadeRight} />
-          <Title id="vizu-personas" x={72.8} y={5362.5} w={406} fade="start">
-            Personas
+          <Title id="vizu-personas" x={72.8} y={5362.5} w={692} fade="start">
+            Proto-personas
           </Title>
           {PERSONAS.map((p) => (
             <div key={p.name}>
@@ -501,8 +500,8 @@ export default function Vizu() {
         </section>
 
         <section aria-labelledby="vizu-requisitos">
-          <Title id="vizu-requisitos" x={192.8} y={6572.3} w={1045}>
-            Definição de Requisitos
+          <Title id="vizu-requisitos" x={157} y={6572.3} w={1116}>
+            Da necessidade à função
           </Title>
           {REQUIREMENTS.map((r) => (
             <div key={r.y} className={s.reqRow}>
@@ -536,9 +535,9 @@ export default function Vizu() {
         </section>
 
         <section aria-labelledby="vizu-sitemap">
-          <Body x={78} y={8031} w={519}>
-            Para entender o modelo mental dos usuários, pedi aos participantes que organizassem as funcionalidades em grupos
-            que fizessem sentido para eles.
+          <Body x={78} y={8009} w={519}>
+            O briefing pedia dois fluxos distintos. Em três versões do sitemap (sem perfil, com perfil e unificado), eles
+            passaram a dividir o mesmo ciclo. O perfil ficou em login, histórico e coleções.
           </Body>
           <Title id="vizu-sitemap" x={999} y={8001.8} w={364} fade="end">
             Sitemap
@@ -554,12 +553,12 @@ export default function Vizu() {
         </section>
 
         <section aria-labelledby="vizu-fluxo">
-          <Title id="vizu-fluxo" x={345.8} y={9896.3} w={749}>
-            Fluxo do Usuário
+          <Title id="vizu-fluxo" x={457} y={9896.3} w={526}>
+            Um fluxo só
           </Title>
-          <Body x={852} y={10123.5} w={510} right>
-            O fluxo foi estruturado para atender dois modelos mentais distintos. O usuário pode optar pela{' '}
-            <strong>Classificação Rápida</strong> ou pelo <strong>Modo Coleção</strong>.
+          <Body x={852} y={10101.5} w={510} right>
+            Todo registro passa pelo mesmo ciclo: câmera, segmentação, carregamento e resultado. No fim, quem quer rapidez
+            conclui; quem quer acompanhar adiciona à coleção.
           </Body>
           <Lines lines={flowLines} x={100} y={10200} w={1240} h={1530} color="#2d1b7b" />
           <Abs as="svg" x={230} y={10340} w={650} h={850} viewBox="230 10340 650 850" className={s.diamonds} aria-hidden="true" data-reveal="fade">
@@ -600,8 +599,7 @@ export default function Vizu() {
 
         <section aria-labelledby="vizu-wireframes">
           <Body x={816} y={12006.7} w={546} right>
-            Iniciei com wireframes de <strong>média fidelidade</strong> para validar a navegação e hierarquia antes de aplicar
-            cores.
+            Comecei com wireframes de média fidelidade para definir navegação e hierarquia antes de aplicar cor.
           </Body>
           <Title id="vizu-wireframes" x={78} y={11994.7} w={517} fade="start">
             Wireframes
@@ -676,31 +674,32 @@ export default function Vizu() {
         </section>
 
         <section aria-labelledby="vizu-aplicacao">
-          <Title id="vizu-aplicacao" x={292.5} y={14896.5} w={856}>
-            Aplicação das telas
+          <Title id="vizu-aplicacao" x={358} y={14896.5} w={725}>
+            O ciclo nas telas
           </Title>
-          <Body x={81.8} y={15303} w={307.5}>
-            O sistema permite que o usuário crie e gerencie <strong>diferentes contextos</strong> de classificação.
+          <Body x={81.8} y={15300} w={307.5}>
+            Coleções que cada projeto renomeia. Aqui, Botânica e Torras de café, na mesma tela.
           </Body>
-          <Body x={81.8} y={15621.8} w={307.5}>
-            <strong>Visualização rápida</strong> das últimas análises com data e hora.
+          <Body x={81.8} y={15617} w={307.5}>
+            Histórico das últimas classificações, que fazia falta nos apps anteriores.
           </Body>
-          <Body x={81.8} y={15900.8} w={271.5}>
-            Além de classificar, o app oferece um <strong>banco de dados comparativo</strong>.
+          <Body x={82} y={15900} w={295}>
+            O Atlas de referências sai do menu e aparece na Home e em cada coleção.
           </Body>
-          <Body x={571.5} y={16431.8} w={307.5}>
+          <Body x={571.5} y={16428.8} w={307.5}>
             A interface foi reduzida ao mínimo essencial para maximizar a área de visualização.
           </Body>
-          <Body x={567} y={16679.3} w={307.5} right>
-            Atendendo à necessidade, o sistema exibe o <strong>nível de certeza</strong> da máquina.
+          <Body x={567} y={16672} w={307.5} right>
+            Para quem teme o erro da IA, o resultado mostra a certeza, o aviso de que é IA e o botão Discordar.
           </Body>
           <Body x={407.2} y={17017.5} w={633} right>
             Aqui o design <strong>conecta os dois fluxos</strong>. O botão primário &lsquo;Concluir&rsquo; encerra o ciclo
             rápido, enquanto o secundário convida o usuário a engajar e salvar o item.
           </Body>
-          <Body x={895.5} y={17574.8} w={460.5}>
-            Além do produto, <strong>desenvolvi a Landing Page </strong>para comunicar a proposta de valor do Vizu. O
-            objetivo era converter visitantes em usuários cadastrados.
+          <Body x={895.5} y={17506.8} w={460.5}>
+            Além do produto, desenvolvi a landing page para comunicar a proposta de valor do Vizu. Os três blocos repetem as
+            decisões do app: classificação ágil, Atlas integrado e coleções adaptáveis. O objetivo era converter visitantes em
+            usuários cadastrados.
           </Body>
 
           <PhoneMock p={PHONES.colecoes} data-parallax="view" style={{ '--parallax': u(30) } as CSSProperties} />

@@ -17,6 +17,8 @@ import './motion.css'
  * Elementos que entram juntos na tela aparecem em sequência (de cima para baixo, da esquerda para a
  * direita). data-count="N" num filho faz o número contar até N quando o bloco aparece.
  *
+ * data-loop num carrossel em loop pausa a animação dos filhos enquanto ele está fora da tela.
+ *
  * data-parallax="view" (ou "top", para a capa) move o elemento de leve com o scroll; a amplitude
  * vem de --parallax. Usa as animações ligadas ao scroll do CSS, só onde o navegador tem suporte.
  *
@@ -26,6 +28,8 @@ import './motion.css'
 
 const STEP_MS = 80
 const MAX_STEPS = 8
+/** Fração da janela, a partir de baixo, que as animações longas esperam antes de começar */
+const LATE = 0.3
 
 function countUp(el: HTMLElement) {
   const target = Number(el.dataset.count)
@@ -63,18 +67,21 @@ export function useScrollReveal(ref: RefObject<HTMLElement | null>) {
       el.dataset.revealed = ''
       el.querySelectorAll<HTMLElement>('[data-count]').forEach(countUp)
       observer.unobserve(el)
+      late.unobserve(el)
     }
 
     // Aparece assim que qualquer parte entra na tela; os que entram juntos aparecem em sequência
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left)
-          .forEach((entry, i) => reveal(entry.target as HTMLElement, Math.min(i, MAX_STEPS) * STEP_MS))
-      },
-      { threshold: 0 },
-    )
+    const onEnter = (entries: IntersectionObserverEntry[]) => {
+      entries
+        .filter((e) => e.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left)
+        .forEach((entry, i) => reveal(entry.target as HTMLElement, Math.min(i, MAX_STEPS) * STEP_MS))
+    }
+    const observer = new IntersectionObserver(onEnter, { threshold: 0 })
+    // Animações longas (a tela que sai do aparelho) esperam o elemento subir até 70% da altura da janela,
+    // para o movimento acontecer à vista e não no rodapé da tela
+    const late = new IntersectionObserver(onEnter, { threshold: 0, rootMargin: `0px 0px -${LATE * 100}% 0px` })
+    const isLate = (el: HTMLElement) => el.dataset.reveal === 'drop'
 
     // Rede de segurança: numa rolagem muito rápida (ou com End, âncoras, saltos) o observador pode não
     // ver um elemento passar. A cada parada da rolagem, revela tudo o que está na tela ou já passou.
@@ -83,18 +90,30 @@ export function useScrollReveal(ref: RefObject<HTMLElement | null>) {
       sweep.timer = 0
       const bottom = window.innerHeight
       pending.forEach((el) => {
-        if (el.getBoundingClientRect().top < bottom) reveal(el, 0)
+        if (el.getBoundingClientRect().top < bottom * (isLate(el) ? 1 - LATE : 1)) reveal(el, 0)
       })
     }
     const onScroll = () => {
       if (!sweep.timer) sweep.timer = window.setTimeout(check, 150)
     }
 
+    // Carrosséis em loop ([data-loop]) só animam enquanto estão na tela
+    const loops = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        const el = e.target as HTMLElement
+        if (e.isIntersecting) el.dataset.inview = ''
+        else delete el.dataset.inview
+      })
+    })
+
     root.dataset.motion = ''
-    pending.forEach((el) => observer.observe(el))
+    pending.forEach((el) => (isLate(el) ? late : observer).observe(el))
+    root.querySelectorAll<HTMLElement>('[data-loop]').forEach((el) => loops.observe(el))
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => {
       observer.disconnect()
+      late.disconnect()
+      loops.disconnect()
       window.removeEventListener('scroll', onScroll)
       window.clearTimeout(sweep.timer)
       delete root.dataset.motion
