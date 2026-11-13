@@ -778,6 +778,11 @@
   transform: translateX(-50%);
 }
 
+/* Fluxo 2: os nós ficam mais perto (83 em vez de 117); com a fonte menor, “documentação” não encosta no vizinho */
+.nodeLabelTight {
+  font-size: calc(11.5 * var(--u));
+}
+
 .flowArrows {
   overflow: visible;
   fill: none;

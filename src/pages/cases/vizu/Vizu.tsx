@@ -326,11 +326,12 @@ function DiagramBox({ b }: { b: Box }) {
       w={b.w + pad * 2}
       h={b.h + pad * 2}
       className={cx(s.box, s[b.kind])}
-      style={{ '--fs': b.fs ?? 24, borderRadius: u((b.r ?? 6) + pad) } as CSSProperties}
+      style={{ '--fs': b.fs ?? 24, '--fit': b.fit, borderRadius: u((b.r ?? 6) + pad) } as CSSProperties}
       data-reveal="scale"
+      data-fit=""
     >
-      {/* Uma linha só; quando o rótulo do Figma tem quebra, mostra a 1ª linha com reticências */}
-      <span title={b.label.replace('\n', ' ')}>{b.label.includes('\n') ? `${b.label.split('\n')[0]}...` : b.label}</span>
+      {/* Rótulo inteiro (no Figma alguns aparecem cortados com reticências) */}
+      <span>{b.label}</span>
     </Abs>
   )
 }
@@ -571,7 +572,7 @@ export default function Vizu() {
           </Abs>
           <div role="list" aria-label="Etapas do fluxo do usuário">
             {flowCircles.map((c, i) => (
-              <Abs role="listitem" key={i} x={c.x} y={c.y} w={c.size} h={c.size} className={cx(s.box, s.circle)} data-reveal="scale">
+              <Abs role="listitem" key={i} x={c.x} y={c.y} w={c.size} h={c.size} className={cx(s.box, s.circle)} data-reveal="scale" data-fit="">
                 <span>{c.label}</span>
               </Abs>
             ))}
@@ -579,14 +580,15 @@ export default function Vizu() {
               <Abs
                 role="listitem"
                 key={d.label}
-                x={d.x + d.w * 0.26}
+                x={d.x + d.w * 0.18}
                 y={d.y}
-                w={d.w * 0.48}
+                w={d.w * 0.64}
                 h={d.h}
                 className={cx(s.box, s.diamondText)}
-                style={{ '--fs': d.fs, '--lines': d.lines } as CSSProperties}
-              data-reveal="scale" >
-                <span title={d.label}>{d.label}</span>
+                style={{ '--fs': d.fs, '--fit': d.fit } as CSSProperties}
+              data-reveal="scale" data-fit="">
+                {/* Permite quebrar a linha depois da barra */}
+                <span>{d.label.replaceAll('/', '/\u200b')}</span>
               </Abs>
             ))}
             {flowBoxes.map((b, i) => (

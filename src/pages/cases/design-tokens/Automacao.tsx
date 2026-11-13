@@ -81,12 +81,12 @@ const FLOW_2: Step[] = [
 const GEMINI = st('gemini', 'Google Gemini', 'Chat Model')
 
 /** Nó do fluxo: ícone num quadrado claro e rótulo embaixo */
-function Node({ x, y, step }: { x: number; y: number; step: Step }) {
+function Node({ x, y, step, tight }: { x: number; y: number; step: Step; tight?: boolean }) {
   const ic = IC[step.icon]
   return (
     <Abs as="li" x={x} y={y} w={64} h={64} className={s.node} data-reveal="scale">
       <img src={ic.src} alt="" width={Math.round(ic.w)} height={Math.round(ic.h)} loading="lazy" style={{ width: u(ic.w), height: u(ic.h) }} />
-      <span className={s.nodeLabel}>{step.label}</span>
+      <span className={tight ? `${s.nodeLabel} ${s.nodeLabelTight}` : s.nodeLabel}>{step.label}</span>
     </Abs>
   )
 }
@@ -199,9 +199,9 @@ export default function Automacao() {
       </T>
       <ol className={s.plainList} aria-label={`Etapas: ${FLOW_2.map((f) => f.text).join(', ')}`}>
         {FLOW_2.map((f, i) => (
-          <Node key={i} x={104 + i * 83.36} y={25421} step={f} />
+          <Node key={i} x={104 + i * 83.36} y={25421} step={f} tight />
         ))}
-        <Node x={604.1} y={25562} step={GEMINI} />
+        <Node x={604.1} y={25562} step={GEMINI} tight />
       </ol>
       <Arrows x0={165} y0={25440} w={1110} h={120} width={1.5} arrows={[...flow2Arrows, [636.1, 25525, 636.1, 25552]]} />
 
