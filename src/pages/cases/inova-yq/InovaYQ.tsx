@@ -1,7 +1,9 @@
-import type { CSSProperties, ReactNode } from 'react'
+import { useRef, type CSSProperties, type ReactNode } from 'react'
 import '@fontsource/inter/500.css'
 import '../../../styles/satoshi.css'
 import { Abs, AbsImg, Stage, T } from '../Stage'
+import { Lines, ScrollProgress } from '../motion'
+import { useScrollReveal } from '../useScrollReveal'
 import { font, u } from '../units'
 import { IA_BOX_HEIGHT, iaBoxes, iaLines } from './arquitetura'
 import { flowBoxes, flowCircles, flowDiamonds, flowLines, flowTexts } from './fluxo'
@@ -50,15 +52,15 @@ const cx = (...c: (string | false | undefined)[]) => c.filter(Boolean).join(' ')
 /** Título de seção: Bold 66,77/120,2, azul, centralizado na página */
 function SectionTitle({ y, children, left }: { y: number; children: ReactNode; left?: { x: number; w: number } }) {
   return (
-    <T as="h2" x={left?.x ?? 0} y={y} w={left?.w ?? 1440} fs={66.77} lh={120.2} center={!left} className={s.title}>
-      {children}
+    <T as="h2" x={left?.x ?? 0} y={y} w={left?.w ?? 1440} fs={66.77} lh={120.2} center={!left} className={s.title} data-reveal="lines">
+      <Lines>{children}</Lines>
     </T>
   )
 }
 
 function Chip({ x, y, w, light, children }: { x: number; y: number; w: number; light?: boolean; children: ReactNode }) {
   return (
-    <Abs x={x} y={y} w={w} h={49} className={cx(s.t, s.chip, light && s.chipLight)} style={font(20.07, 36.1)}>
+    <Abs x={x} y={y} w={w} h={49} className={cx(s.t, s.chip, light && s.chipLight)} style={font(20.07, 36.1)} data-reveal="up">
       {children}
     </Abs>
   )
@@ -80,7 +82,7 @@ function Bubble({ x, y, size, rot = 0 }: { x: number; y: number; size: number; r
   const stop = (t: number) => `${(((t * size + PAD) / full) * 100).toFixed(1)}%`
   const vars = { '--blur-angle': `${117 + rot}deg`, '--blur-a': stop(0.13), '--blur-b': stop(0.87), '--pad': u(PAD) } as CSSProperties
   return (
-    <Abs x={x - PAD} y={y - PAD} w={full} h={full} className={s.bubbleWrap} style={vars} aria-hidden="true">
+    <Abs x={x - PAD} y={y - PAD} w={full} h={full} className={s.bubbleWrap} style={{ ...vars, '--parallax': u(45) } as CSSProperties} aria-hidden="true" data-parallax="view">
       <span className={s.bubbleBlur}>
         <span className={s.bubble} />
       </span>
@@ -99,8 +101,9 @@ function DottedLine({ x1, y1, x2, y2, dot }: { x1: number; y1: number; x2: numbe
   const w = Math.abs(x2 - x1) + pad * 2
   const h = Math.abs(y2 - y1) + pad * 2
   const d = dot === 'start' ? [x1, y1] : dot === 'end' ? [x2, y2] : null
+  const reveal = x1 === x2 ? 'grow' : dot === 'end' ? 'wipe-r' : 'wipe'
   return (
-    <Abs as="svg" x={minX} y={minY} w={w} h={h} className={s.dots} aria-hidden="true" viewBox={`${minX} ${minY} ${w} ${h}`}>
+    <Abs as="svg" x={minX} y={minY} w={w} h={h} className={s.dots} aria-hidden="true" viewBox={`${minX} ${minY} ${w} ${h}`} data-reveal={reveal}>
       <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="#004af7" strokeWidth={5.25} strokeDasharray="4.5 4.5" />
       {d && <circle cx={d[0]} cy={d[1]} r={14} fill="#004af7" />}
     </Abs>
@@ -200,9 +203,12 @@ const PALETTES = [
 
 /** P.02 — Case Inova+YQ. Figma: node 141:56878. */
 export default function InovaYQ() {
+  const main = useRef<HTMLElement>(null)
+  useScrollReveal(main)
   return (
-    <main id="conteudo" tabIndex={-1} className={s.page}>
+    <main ref={main} id="conteudo" tabIndex={-1} className={s.page}>
       <h1 className="visually-hidden">Inova+YQ</h1>
+      <ScrollProgress color="#004af7" />
       <Topo />
       <DesignProcess />
       <Imersao />
@@ -223,16 +229,16 @@ function Topo() {
   return (
     <Stage h={2250} aria-label="Apresentação">
       <AbsImg eager x={-560} y={0} w={2560} h={1632} src={topoFundo}
-        alt="Telas do Inova+YQ em um notebook e um celular" />
+        alt="Telas do Inova+YQ em um notebook e um celular" data-parallax="top" style={{ '--parallax': u(60) } as CSSProperties} />
       <Glow x={1156} y={1762} />
-      <Abs x={79} y={999} w={260} className={cx(s.t, s.meta)} style={font(20.07, 36.1)}>
+      <Abs x={79} y={999} w={260} className={cx(s.t, s.meta)} style={font(20.07, 36.1)} data-reveal="fade">
         <p>Participação:</p>
         <p className={s.metaValues}>
           <span>UX/UI Design</span>
           <span>Sitemap</span>
         </p>
       </Abs>
-      <Abs x={1135} y={1016} className={cx(s.t, s.tools)} style={font(20.07, 36.1)}>
+      <Abs x={1135} y={1016} className={cx(s.t, s.tools)} style={font(20.07, 36.1)} data-reveal="fade">
         <span>Ferramentas:</span>
         <span className={s.toolLogos}>
           <img src={logoMiro} alt="Miro" width={41} height={41} />
@@ -242,14 +248,14 @@ function Topo() {
       <Chip x={78} y={1127} w={230} light>
         O que é o Inova+YQ?
       </Chip>
-      <T x={391} y={1188} w={659} fs={30} lh={45}>
+      <T x={391} y={1188} w={659} fs={30} lh={45} data-reveal="up">
         O Inova+YQ é uma <strong>intervenção de Design de Serviço</strong> e Produto Digital desenvolvida para a Escola
         Yolanda Queiroz, localizada em uma área de vulnerabilidade social em Fortaleza (Comunidade do Dendê).
       </T>
-      <AbsImg x={171} y={1513} w={502} h={334} src={telaHabilidades} alt="Tela de habilidades do aluno no Inova+YQ" />
-      <AbsImg x={300} y={1738} w={842} h={476} src={notebookInicio} alt="Página inicial da professora em um notebook" />
-      <AbsImg x={834} y={1491} w={522} h={348} src={telaMensagens} alt="Tela de mensagens com alerta de emergência" />
-      <AbsImg x={68} y={1857} w={398} h={266} src={telaRevisao} alt="Tela de revisão do plano de aula" />
+      <AbsImg x={171} y={1513} w={502} h={334} src={telaHabilidades} alt="Tela de habilidades do aluno no Inova+YQ" data-reveal="left" data-parallax="view" style={{ '--parallax': u(40) } as CSSProperties} />
+      <AbsImg x={300} y={1738} w={842} h={476} src={notebookInicio} alt="Página inicial da professora em um notebook" data-reveal="up" />
+      <AbsImg x={834} y={1491} w={522} h={348} src={telaMensagens} alt="Tela de mensagens com alerta de emergência" data-reveal="up" data-parallax="view" style={{ '--parallax': u(50) } as CSSProperties} />
+      <AbsImg x={68} y={1857} w={398} h={266} src={telaRevisao} alt="Tela de revisão do plano de aula" data-reveal="left" data-parallax="view" style={{ '--parallax': u(25) } as CSSProperties} />
     </Stage>
   )
 }
@@ -262,7 +268,7 @@ function DesignProcess() {
       <SectionTitle y={9}>
         <span id="inova-design-process">Design Process</span>
       </SectionTitle>
-      <Abs as="svg" x={74} y={2382 - Y} w={1292} h={623} viewBox="74 2382 1292 623" aria-hidden="true">
+      <Abs as="svg" x={74} y={2382 - Y} w={1292} h={623} viewBox="74 2382 1292 623" aria-hidden="true" data-reveal="wipe">
         {[
           [74, 389.75], [720, 404.25], [720, 1035.75], [1366, 1050.25],
         ].map(([apex, base]) => (
@@ -271,10 +277,10 @@ function DesignProcess() {
         ))}
       </Abs>
       {DESIGN_PROCESS.map((p) => [
-        <T key={p.label} as="h3" x={p.box[0]} y={p.box[1] - Y} w={p.box[2]} h={p.box[3]} fs={20.07} lh={36.1} className={s.rotLabel}>
+        <T key={p.label} as="h3" x={p.box[0]} y={p.box[1] - Y} w={p.box[2]} h={p.box[3]} fs={20.07} lh={36.1} className={s.rotLabel} data-reveal="scale">
           <span>{p.label}</span>
         </T>,
-        <Abs key={p.label + '-lista'} as="ul" x={p.list[0]} y={p.list[1] - Y} w={p.list[2]} className={cx(s.t, s.phaseList)} style={font(20.07, 36.1)}>
+        <Abs key={p.label + '-lista'} as="ul" x={p.list[0]} y={p.list[1] - Y} w={p.list[2]} className={cx(s.t, s.phaseList)} style={font(20.07, 36.1)} data-reveal="up">
           {p.items.map((i) => (
             <li key={i}>{i}</li>
           ))}
@@ -304,14 +310,14 @@ function Imersao() {
       <Chip x={92} y={3060 - Y} w={183}>
         Como agimos:
       </Chip>
-      <T as="h2" x={64} y={3168 - Y} w={151} h={373} fs={83.55} lh={150.4} className={s.vertical}>
+      <T as="h2" x={64} y={3168 - Y} w={151} h={373} fs={83.55} lh={150.4} className={s.vertical} data-reveal="fade">
         <span>IMERSÃO</span>
       </T>
-      <T x={251} y={3175 - Y} w={383} fs={30} lh={45}>
+      <T x={251} y={3175 - Y} w={383} fs={30} lh={45} data-reveal="up">
         Identificamos um cenário <strong>crítico na comunicação</strong> entre gestão, professores e mais de 500 famílias. O
         fluxo informacional estava fragmentado entre canais desconexos (Google Drive, WhatsApp e Canvas).
       </T>
-      <Abs x={dx} y={dy - Y} className={s.canvasWrap} role="img"
+      <Abs x={dx} y={dy - Y} className={s.canvasWrap} data-reveal="scale" role="img"
         aria-label="Diagrama dos fluxos de comunicação: no Fluxo 01, o plano de ensino circula pelo Drive entre a secretaria e as professoras A e B; no Fluxo 02, a agenda vai da secretaria para os pais pelo WhatsApp e volta como feedback presencial.">
         <div className={s.canvas} style={{ '--cw': 694, '--ch': 387 } as CSSProperties} aria-hidden="true">
           <img src={fluxoSetas1} alt="" style={{ left: `calc(${692.4 - dx} * var(--du))`, top: `calc(${3195.75 - dy} * var(--du))`, width: `calc(331 * var(--du))`, height: `calc(314 * var(--du))` }} />
@@ -348,20 +354,20 @@ function MatrizCSD() {
       </SectionTitle>
       {CSD.map((c) => (
         <Abs key={c.title} x={c.x} y={3854 - Y} w={c.w} className={s.csdColumn}>
-          <h3 className={cx(s.t, s.csdHeading)} style={font(36, 36.1, { color: c.color })}>
+          <h3 className={cx(s.t, s.csdHeading)} style={font(36, 36.1, { color: c.color })} data-reveal="up">
             {c.title}
           </h3>
           <ul className={s.csdNotes}>
             {c.notes.map((n) => (
-              <li key={n} className={s.note} style={{ backgroundColor: c.note }}>
+              <li key={n} className={s.note} style={{ backgroundColor: c.note }} data-reveal="scale">
                 {n}
               </li>
             ))}
           </ul>
         </Abs>
       ))}
-      <T x={246} y={4331 - Y} w={948} fs={30} lh={45} center color="#000000">
-        Realizamos imersão na escola e rodamos uma <strong>survey com 129 famílias</strong> para mapear as falhas de
+      <T x={246} y={4331 - Y} w={948} fs={30} lh={45} center color="#000000" data-reveal="up">
+        Realizamos imersão na escola e rodamos uma <strong>survey com <span data-count="129">129</span> famílias</strong> para mapear as falhas de
         comunicação.
       </T>
     </Stage>
@@ -372,7 +378,7 @@ function MatrizCSD() {
 function Necessidades() {
   const Y = 4440
   const persona = (p: (typeof PERSONAS)[number]) => (
-    <Abs key={p.title + p.y} x={p.x} y={p.y - Y} w={470} className={s.persona}>
+    <Abs key={p.title + p.y} x={p.x} y={p.y - Y} w={470} className={s.persona} data-reveal={p.need ? 'scale' : 'up'}>
       <img src={p.avatar} alt="" width={80} height={80} loading="lazy" />
       <div className={cx(s.personaText, p.need && s.need)}>
         <h3 className={s.t} style={font(30, 45, { minHeight: u(p.titleH) })}>
@@ -404,16 +410,16 @@ function Necessidades() {
       </Chip>
       {persona(PERSONAS[0])}
       {persona(PERSONAS[1])}
-      <AbsImg x={789} y={4713 - Y} w={586} h={936} src={telaPlanoDeAula} alt="Formulário de plano de aula com sugestão automática dos códigos da BNCC" />
+      <AbsImg x={789} y={4713 - Y} w={586} h={936} src={telaPlanoDeAula} alt="Formulário de plano de aula com sugestão automática dos códigos da BNCC" data-reveal="up" data-parallax="view" style={{ '--parallax': u(30) } as CSSProperties} />
       {persona(PERSONAS[2])}
       {persona(PERSONAS[3])}
-      <AbsImg x={61} y={5706 - Y} w={599} h={401} src={telaRevisaoPlano} alt="Tela de revisão do plano de aula" />
-      <AbsImg x={65} y={6129 - Y} w={591} h={394} src={telaMensagensAlerta} alt="Tela de mensagens com alerta de emergência para os responsáveis" />
+      <AbsImg x={61} y={5706 - Y} w={599} h={401} src={telaRevisaoPlano} alt="Tela de revisão do plano de aula" data-reveal="left" />
+      <AbsImg x={65} y={6129 - Y} w={591} h={394} src={telaMensagensAlerta} alt="Tela de mensagens com alerta de emergência para os responsáveis" data-reveal="left" />
       {persona(PERSONAS[4])}
       {persona(PERSONAS[5])}
-      <AbsImg x={960} y={6528 - Y} w={190} h={188} src={iconeSom} alt="" />
-      <AbsImg x={734} y={6594 - Y} w={706} h={682} src={celularNaMao} alt="Mão segurando um celular com o app do Inova+YQ para responsáveis" />
-      <AbsImg x={568} y={7277 - Y} w={872} h={69} src={barraTextura} alt="" />
+      <AbsImg x={960} y={6528 - Y} w={190} h={188} src={iconeSom} alt="" data-reveal="scale" />
+      <AbsImg x={734} y={6594 - Y} w={706} h={682} src={celularNaMao} alt="Mão segurando um celular com o app do Inova+YQ para responsáveis" data-reveal="up" data-parallax="view" style={{ '--parallax': u(30) } as CSSProperties} />
+      <AbsImg x={568} y={7277 - Y} w={872} h={69} src={barraTextura} alt="" data-reveal="wipe-r" />
     </Stage>
   )
 }
@@ -432,14 +438,14 @@ function Arquitetura() {
         aria-label="Mapa do site: a Home leva a Agenda Escolar, Plano de Aula, Conteúdo, Avaliações, Arquivos Complementares, Configurações, Caixa de Entrada, Cronograma e Buscar; o Plano de Aula se desdobra no preenchimento do plano e seus campos.">
         <Bubble x={-71.6} y={8546.4 - Y} size={156.2} rot={105} />
         <Glass x={-141.1} y={8156.9 - Y} size={469.2} />
-        <Abs as="svg" x={0} y={0} w={1440} h={740} viewBox={`0 ${Y} 1440 740`} aria-hidden="true">
+        <Abs as="svg" x={0} y={0} w={1440} h={740} viewBox={`0 ${Y} 1440 740`} aria-hidden="true" data-reveal="fade">
           {iaLines.map(([x1, y1, x2, y2]) => (
             <line key={`${x1}-${y1}-${x2}-${y2}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#87b7fe" strokeWidth={0.8} />
           ))}
         </Abs>
         {iaBoxes.map(([x, y, w, kind, label, lw]) => (
           <Abs key={`${x}-${y}`} x={x} y={y - Y} w={w} h={IA_BOX_HEIGHT} aria-hidden="true"
-            className={cx(s.iaBox, kind === 1 && s.iaLight, kind === 2 && s.iaPrimary)}>
+            className={cx(s.iaBox, kind === 1 && s.iaLight, kind === 2 && s.iaPrimary)} data-reveal="scale">
             <span style={{ maxWidth: u(lw + 1) }}>
               {label}
               {label === 'BOTÃO DE EXCLUIR ARQUIVO' && (
@@ -468,7 +474,7 @@ function Fluxo() {
       <Stage h={1010} role="img"
         aria-label="Fluxo do usuário: do acesso e login até a página inicial, com os caminhos de criação do plano de aula, atualização de habilidades das turmas e saída do sistema.">
         <Glow x={1027} y={8870 - Y} />
-        <Abs as="svg" x={0} y={0} w={1440} h={1010} viewBox={`0 ${Y} 1440 1010`} aria-hidden="true">
+        <Abs as="svg" x={0} y={0} w={1440} h={1010} viewBox={`0 ${Y} 1440 1010`} aria-hidden="true" data-reveal="fade">
           <defs>
             <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse">
               <path d="M1 1 L9 5 L1 9" fill="none" stroke="#818181" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -480,19 +486,19 @@ function Fluxo() {
           ))}
         </Abs>
         {flowBoxes.map(([x, y, w, h]) => (
-          <Abs key={`b${x}-${y}`} x={x} y={y - Y} w={w} h={h} className={s.flowBox} aria-hidden="true" />
+          <Abs key={`b${x}-${y}`} x={x} y={y - Y} w={w} h={h} className={s.flowBox} aria-hidden="true" data-reveal="fade" />
         ))}
         {flowCircles.map(([x, y, d]) => (
-          <Abs key={`c${x}-${y}`} x={x} y={y - Y} w={d} h={d} className={s.flowCircle} aria-hidden="true" />
+          <Abs key={`c${x}-${y}`} x={x} y={y - Y} w={d} h={d} className={s.flowCircle} aria-hidden="true" data-reveal="fade" />
         ))}
         {flowDiamonds.map(([x, y, d]) => (
-          <Abs key={`d${x}-${y}`} x={x} y={y - Y} w={d} h={d} className={s.flowDiamond} aria-hidden="true">
+          <Abs key={`d${x}-${y}`} x={x} y={y - Y} w={d} h={d} className={s.flowDiamond} aria-hidden="true" data-reveal="fade">
             <span />
           </Abs>
         ))}
         {flowTexts.map(([x, y, w, h, text, kind]) => (
           <Abs key={`t${x}-${y}`} x={x} y={y - Y} w={w} h={h} aria-hidden="true"
-            className={cx(s.flowText, kind >= 2 && s.flowTextLight, kind === 3 && s.flowTextDiamond)}>
+            className={cx(s.flowText, kind >= 2 && s.flowTextLight, kind === 3 && s.flowTextDiamond)} data-reveal="fade">
             {text}
           </Abs>
         ))}
@@ -512,7 +518,7 @@ function UIKit() {
       <Chip x={78.8} y={9729 - Y} w={307.5}>
         Escalas Tipográficas
       </Chip>
-      <Abs x={99} y={9816 - Y} className={s.canvasWrap}>
+      <Abs x={99} y={9816 - Y} className={s.canvasWrap} data-reveal="up">
         <div className={cx(s.canvas, s.typeScale)} style={{ '--cw': 260, '--ch': 392 } as CSSProperties}>
           {TYPE_SCALE.map(([x, y, text, st]) => {
             const [fs, lh, wt, color] = TYPE_STYLES[st]
@@ -529,7 +535,7 @@ function UIKit() {
       </Chip>
       <Abs as="ul" x={429.8} y={9819.8 - Y} className={s.iconGrid}>
         {ICONS.map(([name, slug, fs]) => (
-          <li key={slug} className={s.iconTile} style={{ '--fs': fs } as CSSProperties}>
+          <li key={slug} className={s.iconTile} style={{ '--fs': fs } as CSSProperties} data-reveal="scale">
             <img src={uiIcon(slug)} alt="" width={18} height={18} loading="lazy" />
             <span>{name}</span>
           </li>
@@ -542,7 +548,7 @@ function UIKit() {
         Cores de Feedback
       </Chip>
       {PALETTES.map((p) => (
-        <Abs key={p.title} x={p.x} y={p.y - Y} className={s.palette}>
+        <Abs key={p.title} x={p.x} y={p.y - Y} className={s.palette} data-reveal="wipe">
           <h3 className={s.t} style={font(24, p.title === 'Erro' ? 30 : 36, p.title === 'Erro' ? { fontWeight: 700 } : undefined)}>
             {p.title}
           </h3>
@@ -569,7 +575,7 @@ function Telas() {
       <SectionTitle y={10955 - Y}>
         <span id="inova-telas">Aplicação das Telas</span>
       </SectionTitle>
-      <Abs x={0} y={11163 - Y} w={1440} className={s.gallery}>
+      <Abs x={0} y={11163 - Y} w={1440} className={s.gallery} data-reveal="mask">
         <img src={telasGaleria} alt="Galeria com as telas do Inova+YQ para professoras e secretaria: login, página inicial, plano de aula, mensagens, configurações, turmas, revisão, habilidades e cronograma" width={1440} height={918} loading="lazy" />
       </Abs>
     </Stage>
@@ -581,7 +587,7 @@ function Resultados() {
   const Y = 12100
   return (
     <Stage h={1497} aria-labelledby="inova-resultados">
-      <Abs x={0} y={12130 - Y} w={1440} className={s.gallery}>
+      <Abs x={0} y={12130 - Y} w={1440} className={s.gallery} data-reveal="mask">
         <img src={telasCelular} alt="Telas do app para responsáveis: página inicial, mensagens, perfil do aluno e agenda escolar" width={1440} height={1357} loading="lazy" />
       </Abs>
       <SectionTitle y={13092 - Y} left={{ x: 78, w: 338 }}>
@@ -590,15 +596,15 @@ function Resultados() {
       <Chip x={892} y={13136 - Y} w={470}>
         Eficiência Operacional
       </Chip>
-      <T x={78} y={13247 - Y} w={694} fs={30} lh={45}>
+      <T x={78} y={13247 - Y} w={694} fs={30} lh={45} data-reveal="up">
         Para confirmar a eficácia do Inova+YQ, realizamos testes de usabilidade com a coordenação e o corpo docente da
         escola. O cenário de teste focou na tarefa mais crítica da jornada:{' '}
         <strong>o preenchimento e envio do planejamento semanal.</strong>
       </T>
-      <T x={896} y={13187 - Y} w={276} fs={132.44} lh={238.4} className={s.stat}>
-        75%
+      <T x={896} y={13187 - Y} w={276} fs={132.44} lh={238.4} className={s.stat} data-reveal="up">
+        <span data-count="75">75</span>%
       </T>
-      <T x={1191} y={13248 - Y} w={166} fs={20.07} lh={30.1}>
+      <T x={1191} y={13248 - Y} w={166} fs={20.07} lh={30.1} data-reveal="fade">
         De <strong>redução</strong> do tempo de preenchimento dos planos de aula
       </T>
     </Stage>
@@ -611,10 +617,10 @@ function Rodape() {
   return (
     <Stage h={717} aria-labelledby="inova-fim">
       <AbsImg x={-560} y={0} w={2560} h={717} src={rodapeFundo} alt="" />
-      <T as="h2" x={391} y={13956 - Y} w={659} fs={66.77} lh={45} center className={s.footerTitle}>
+      <T as="h2" x={391} y={13956 - Y} w={659} fs={66.77} lh={45} center className={s.footerTitle} data-reveal="up">
         <span id="inova-fim">Gostou do processo?</span>
       </T>
-      <T x={391} y={14073 - Y} w={659} fs={30} lh={45} center>
+      <T x={391} y={14073 - Y} w={659} fs={30} lh={45} center data-reveal="up">
         Obrigado por ter visto até aqui, espero que tenha gostado do projeto!
       </T>
     </Stage>
