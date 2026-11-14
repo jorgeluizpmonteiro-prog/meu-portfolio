@@ -2,7 +2,8 @@ import { useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import { CONTACT_LIMITS, validateContact, type ContactErrors, type ContactInput } from '../../../shared/contact'
 import { Button } from '../../components/Button/Button'
 import { TextField } from '../../components/TextField/TextField'
-import { site } from '../../config/site'
+import emailjsClient from '@emailjs/browser'
+import { emailjs, site } from '../../config/site'
 import styles from './Contact.module.css'
 
 type Status = 'idle' | 'sending' | 'success' | 'failure'
@@ -37,24 +38,23 @@ export function Contact() {
       return
     }
 
+    // Campo invisível para pessoas: se vier preenchido, é robô. Finge sucesso sem enviar.
+    if (honeypot.trim() !== '') {
+      setStatus('success')
+      return
+    }
+
     setStatus('sending')
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...values, website: honeypot }),
-      })
-      const result = (await response.json().catch(() => ({}))) as { ok?: boolean; errors?: ContactErrors }
-      if (response.ok && result.ok) {
-        setStatus('success')
-        setValues(EMPTY)
-        requestAnimationFrame(() => successRef.current?.focus())
-      } else if (response.status === 422 && result.errors) {
-        setErrors(result.errors)
-        setStatus('idle')
-      } else {
-        setStatus('failure')
-      }
+      await emailjsClient.send(
+        emailjs.serviceId,
+        emailjs.templateId,
+        { from_email: values.email.trim(), subject: values.subject.trim(), message: values.message.trim() },
+        { publicKey: emailjs.publicKey, limitRate: { id: 'contato', throttle: 10000 } },
+      )
+      setStatus('success')
+      setValues(EMPTY)
+      requestAnimationFrame(() => successRef.current?.focus())
     } catch {
       setStatus('failure')
     }

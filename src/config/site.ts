@@ -12,6 +12,16 @@ export const site = {
   cvUrl: null as string | null,
 }
 
+/**
+ * Formulário de contato pelo EmailJS (emailjs.com). Os três valores são públicos por natureza
+ * (ficam no código do site). O modelo do e-mail usa {{from_email}}, {{subject}} e {{message}}.
+ */
+export const emailjs = {
+  serviceId: 'service_5rng765',
+  templateId: 'template_wiguhft',
+  publicKey: 'abYIsrQVzxkDOt5cH',
+}
+
 export const navItems = [
   { label: 'Projetos', to: '/', match: (path: string) => path === '/' || path.startsWith('/projetos') },
   { label: 'Sobre mim', to: '/sobre', match: (path: string) => path.startsWith('/sobre') },
